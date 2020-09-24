@@ -80,13 +80,13 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
 
 ## 7. Jelentések
 ### 7.1. Munka menedzsment
-A munkát `xyz` koordinálja…
+A munkát Kanyó József koordinálja. Ő felelős a dokumentációval és adminisztrációval kapcsolatos szervezési feladatokért, míg a Projektmenedzser: Madarász Máté a projekt megvalósításával kapcsolatos, technikai jellegű szervezési feladatokat látja el.
 
-`Ki menedzseli a munkát (általában a projekt menedzser). Le kell írni, hogy milyen módon, mik a feladatai, és azokat hogyan hajtja végre.`
 
 ### 7.2. Csoportgyűlések
 
-`A projekt hetente ülésezik, hogy megvitassák az azt megelőző hét problémáit, ill. megbeszéljék a következő hét feladatait. A megbeszélésről minden esetben MEMO készül (ezt itt kell vezetni a félév végéig), mely tartalmazza a következőket: jelenlévők listája, megbeszélés helye és ideje, megbeszélt tevékenységek, felmerült kérdések, igények, azaz hogy betekintést kapjunk hogyan szerveződnek, zajlanak a csoportgyűlések)`
+A csapat minden hónapban 3-4 alkalommal ülésezik. Ezeken az üléseken történik meg azon föbb problémák, öteletek és feladatok átbeszélése, melyek megoldásához az írásbeli kommunikáció nem volt elégséges eszköz.
+A megbeszélésekről feljegyzés készül, melyet a megbeszélés elején kijelölt moderátor rögzít és tölt fel a projektkönyvtárba.
 
 ### 7.3. Minőségbiztosítás
 Az elkészült terveket a terveken nem dolgozó csapattársak közül átnézik, hogy megfelel-e a specifikációnak és az egyes diagramtípusok összhangban vannak-e egymással. A meglévő rendszerünk helyes működését a prototípusok bemutatása előtt a tesztelési dokumentumban leírtak végrehajtása alapján ellenőrizzük és összevetjük a specifikációval, hogy az elvárt eredményt kapjuk-e. További tesztelési lehetőségek: unit tesztek írása az egyes modulokhoz vagy a kód közös átnézése (code review) egy, a vizsgált modul programozásában nem résztvevő csapattaggal. Szoftverünk minőségét a végső leadás előtt javítani kell a rendszerünkre lefuttatott kódelemzés során kapott metrikaértékek és szabálysértések figyelembevételével.
