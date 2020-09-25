@@ -1,0 +1,140 @@
+Madarász Máté
+Kubato Tamás
+Kanyó József
+Kurai István
+Pusztai Ágnes Anna
+Zombori Tamás
+
+Általános tundivalók:
+Én beosztottam kvázi mindent, de mindenki szabadk ezet kap, ellenszegülhet megbeszélhet mindent én sem voltam még soha menedzser, de szeretek kvázi "igen te ezt cisnáld meg te meg ezt" módszerrel elkezdeni dolgozni és utána mindenki szól hogym i nem tetszik, elcserélik sézpen a feladatokat és ennek megfelelően átállítják az issuek-nak a referensát Git-en stb.. és elemgyünk ebbe az iráynba, de szerintem alapnak nem rossz ez, ezrét megcisnálom
+
+Kuba
+1. FELADAT: Git-es repo mapapszerkezet kialakítása
+- itt arra gondolok, hogy pusholj fel egy mappaszerkezetet még itt a legelején, hogy később, amikor létrehozunk egy prezentációt, a gantt diagramot, egy html fájlt css, .java fájlt stb, akkor már ne kelljen gondolkodni, hogy hova töltsük fel
+- az RF-es Gitlab odlal alapján írok ide neked egy kezdeti szerkezetet, de alapvetően úgy gondolom, hogy jól átlátod ezeket a dolgokat és emiatt nagyrészt csináld belátásod szerint (pl Maven a java mappán belül stb..)
+- ISSUE: nyitni fogok rá egyet, amikor elkészült a feladattal, akkor szépen CLOSED-ra állítod az issuet és kommetnbe feltöltesz egy áfjlt vagy hozzászólásba beírod a mappaszerkezetet, amit létrehoztál
+
+Példa: ha / jelöli a root mappát és ami ()-ben van azt ne fedd figyelembe, csak szemléltetés
+
+/
+	doc/
+		diagrams/
+			UML/
+			EK-Rleational/
+			Gantt/
+		tests/
+		presentations/
+		meeting-info/
+	spring/
+		src-main
+			java/
+				application/
+					auth/
+					controller/
+					model/
+					view/
+					(Application.java)
+			resources/
+				static/
+					img/
+					css/
+				templates/
+					(index.html)
+					fragments/
+						(footer.html)
+				action/
+		
+
+
+
+2. FELADAT: a Projektterv vázlatban a 3. pont: A Projekt bemutatása kitölteni
+- a MINTA részt nem kell átírnod, mert még nincs neve a projektnek
+- a dátumot írd át és hangzatosan fogalmazd meg a projekt célját, ami igazából az összefoglalónak egy részénes ismétlése
+Példa: A projekt célja egy olyan alkalmazás előállítása, mely az SZTE-s hallgatók számára biztosító akadálymentes és fókuszált információmegosztási és kommunikációs lehetőségeket a tanulási folyamatok javítása érdekében.
+- "A megvalósítás további álaláos leírása" -> ide jöhet hogy kiből áll a acsapat, ki kell találnod valamit, hogy hány átanadó lesz, pl.: 3 mert adatbázis, fronted, backend, nem lényeg annyira, illetve még ide pluszba szépen beírhatod, hogy milyen eszközöket hanszálunk, ehehz adok mellékletet
+- 3.1-es részhez le kell írnod, hogy mit fog tudni a rendszer (tanulótárs bekövetése, tanulócsporthoz csatlakozás, hírfoylamra írás, privát adat kezelése stb..). Miért van szükség a projektre, ide gyakorlatilag a célt újrafogalmazod, amit az előbb leírtam.
+- 3.2-es Funkcionális követelmények: ez az előadásanyagban később van és semmitmondó, de majd mellékelek egy pdf-et hozzá a 2018-as anyagból, én azt tenném hogy a 3.1-es potnba csak nagyvonalakba újrafolamaznám a célt, ide meg tényelg felsorolásszerűen beírnám, hogy mit fog tudni (tanulótárs bejelölése, hírfoylamra írás stb...)
+- 3.3-as Nem funkcionálsi követelmény: ide ilyesmiket kell írnod, hogy Herokuban fut, mert ak öltségvetés miatt és a felhasnzálóbázis sázma miatt ezt tudtuk és akartuk megengedni magunknak, MySQL adatbázis tökéletesen alklamas az alkalmazás méretéhez, ezért a gyorsasággal nem lesz gond stb...
+ISSUE: erre is létre fogok hozni egy issute, miután végetél a feladataiddal, hozzászólásba írd be a szövegeket amiket a projektterve is beilelsztettél szépen a projektterv pontjainak megfelleően pontokba szedve és állítsd CLOSED-ra az issuet
+
+1. MELLÉKLET: felhasznált eszközök
+Adatbázis kezelése: MySQL
+Backend fejlesztése: Spring Boot, Java programozási nyelv (JVM), IntelliJ IDEA
+Adatbázis és backend közötti kapcsolatteremtés: JDBC
+Build tool: Apache Maven
+Frontend megvalósítása: HTML5, CSS3, SCSS preprocesszor, JavaScript (ES2020), jQuery, Webstorm, Visual Studio Code
+Design eszközök: Dia, ArgoUML, Figma, Photoshop
+Webszerver: Tomcat
+Deployment környezet: Heroku
+
+2. MELLÉKLET: említett funkcionalitások
+- bejelentkezés felhasználónév és jelszó segítségével
+- ezen bejelentkezés ellenőrzése
+- személyes adatok felvitele és frissítése
+- profilkép beállítása
+- tanulótárs keresése
+- tanulótárs bejelölése
+- hírfolyamon keresztül történő információcsere a bejelölést elfogadó tanulótársakkal
+
+3. MELLÉKLET: 2018-as RF tantárgy 5. előadásfóliája->linkelve
+
+Ági
+1. FELADAT: projektterv mitna pusholása -> TELJESÍTVE
+2. FELADAT A projektterv összefoglalójának megírása (1. pont a tervben):
+- meg kell írni szépen, hogym iről szól, ehhez készítettem egy mintát, átolvasod alakíthatsz vagy feltöltöd, ezt mellékelem
+ISSUE: nyitok rá egy issuet, hozzászólásba majd írd be a szöveget amit készítettél és módosítsd ap rojekttervet ennek megfelleően, majd CLSOED-ra az issuet
+3. FELADAT: projektterv 2. pontjának megírása, bevallom ezt annyira nem vágom, az biztos, hogy a táblázat legalább 12 soros kell hogy legyen, de alapvetően itt nem tudok segíteni, fel kell töltened vlamiylen adatokkal ,ehhez utáan kell nézned a dátumoknak stb.. mellékelem az RF oldalról a dátumokat
+ISSUE: létre lesz rá hozva szépen az ISSUE? majd hozzásózlásba mehet a táblázat és ha átírtad a tervben akkor CLOSED-ra állítod
+
+1. MELLÉKLET: minta összefoglaló szöveg
+A megrendelő, Márkus András, gyakran fejezte ki aggódalmát, hogy a jelenlegi közösségi médiák tele vannak fölösleges részletekkel, így a diákok képtelen az anyagra koncentrálni anélkül, hogy közben egy hírfolyamot böngésszenek vagy egy nyereményjátékon vegyenek részt. "FacebookKlón" webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa a tanulók közötti információmegosztáshoz szükséges legfontosabb funkciókat, illetve hogy minden felesleges, figyelemelterelő funkcionalitás terhe alól mentesítse a felhasználóbázisát. Az alkalmazás lehetővé teszi a diákok számára személyes adataik kezelését, tanulótársak felkutatását, illetve az így létrehozott tanulmányi kapcsolatok megerősítését a közös projektekhez szükséges legfontosabb eszköz biztosításával, ami a hatékony információáramlás, azaz a kommunikáció.
+
+2. MELLÉKLET: RF oldalon lévő dátumos infók am érföldkövekről
+M1: 2020.10.05-i héten, leadás - 1. mérföldkő: Projektterv (leadás a gyakorlat előtti nap éjfél, bemutatás: 2020.10.12-i héten)
+M2: 2020.10.19-i héten, leadás - 2. mérföldkő: UML és adatbázis tervek (bemutatás: 2020.10.26-i héten)
+M3: 2020.11.02-i héten, leadás - 3. mérföldkő: működő prototípus (fejlesztési folyamattól függően), tesztelési dokumentáció; a bemutatás közben új funkciókat kérhet a gyakorlatvezető és a többi hallgató (bemutatás: 2020.11.09-i héten)
+M4: 2020.11.30-i héten, leadás - 4. mérföldkő: végleges, működő program, tesztelési dokumentáció, megváltozott tervek, új funkciók (bemutatás: 2020.11.30-i héten)
+
+Kanyó József: külön nem írok ki mindent, de alapvetően én csinálom a 7-es 10-es és 9-es pontját a projekttervnek
+Mind a háromra nyitok magamnak issuet majd és csinálgatom a dolgomat
+Ez jelenti a csoprotgyülésk leszervezését
+Gantt diagramot és afeladatok beosztását, ezek angyjából összefügnek ezért ezeket én cisnálom majd
+
+Máté:
+1. FELADAT projektterv 4. pontjának kitöltése
+- Ehhez találsz az RF gyakorlati mappban coospacen anyagot, ami leírja mi az a személynap meg hogy sázmold ki
+ISSUE: nyitni fogok, megint hozzásózlásban feltöltöd amit  csináltál és utáan CLOSED-ra állítod
+2. FELADAT projektterv 11. pontjának kitöltése
+- ez nagyban kapcsolódik a 4-es feladathoz, engedd el a fantáziád és töls ki mindent, de figyelj arra, hogy amit a 4-esben leír ahhoz tartsd magad 1 nappal se legyen kevesebb vagy több a felhanszált szmeélnyapok összességem, illetve figylej rá oda, ha valaki 3 feladatot ávllal a kövi szakszban epdig 6-ot akkro ha az első részben x pontot kapott am ásodikban 22x pontot írj be stbb
+- ehhez megint rf gyakorlati mappában találsz néhány sor infót
+ISSUE: nyitom rá, hozázszólás, CLOSED, ahogy kell
+
+István:
+1. FELADAT Projektterv 5. pontjának kitöltése
+- Gyakorlatvezető helyére a Márkus megy, a MINTA nevet még nem tudjuk
+- szakmai tapasztalat, ezt szépen kikerekítheted, de melékelem amit előző héten beszéltünk
+- nyilván discordon is ha úgy érzed privátba lehet ráírogatni a csapattagokra és kérdezni tőlük
+- a capatbontáshoz is használd a mellékletet pl.: kuba - adatbázis, máté - projektmenedzser, te - frontednd, tamás - prezentáció, ági -backend, én - dokumentáció
+ISSUE: nyitni fogom rá, hozzászólásba beírod a dolgoakt CLOSED-ra állítod
+2. FELADAT: Projektterv 6. réséznek kitöltése
+- amit korábban is írtam, hogy be kell kérni szépen midenkitől, hogy milyen speckje van a gépének, mellékletben küldöm az enyémet, a többiekre meg rá kell írni, összefügg az előző pontban azzal hogy baszogatni elhet a többieket Discordon stb. hogy küldjék el pineljék be a csopiba
+- Rizikómeendzsment rész-hez kapuzni kell pl.: koronavírus miatti kihagyás, valószínűsége közepes, hatása határidő csúszás, védekezés home-office stb.. egy 3-4 faktor jó lenne hogy jól mutasson
+ISSUE: megy rá az issue, komment, CLOSED
+
+1. MELLÉKLET "szakmai tapasztalatok, érdkelődések":
+Pusztai Ágnes Anna --> backend, adatbázis, UML diagramok, JUnit
+Kubatov Tamás --> backend, adatbázis, UML diagramok, Vue.js
+Kurai István --> Java, C#, frontend, design
+Madarász Máté --> Java, JavaFx, C#, Spring, backend, adatbázis
+Zombori Tamás -> Java, backend, frontend, prezentáció
+Kanyó József --> dokumentáció, SASS, Flexbox
+
+Tamás:
+1. FELADAT: 8 rész megírása a projekttervből
+- vízesés, inkrementális/itercáiós, extremProgramozás, RAD, WINWIN, Spriál, evóluciós prototípus, formális módszer (cleanroom), 4GT fejlesztés
+- ezek közül kiválasztasz egyet ami legjobban illik ap rjektre és leírdo, hogym irét, hogyan ehhez az RF előadás 3. és 4. diasora használhaót, amit át fogom küldeni
+ISSUE menni fog szépen rá, hozzászólás és CLOSED
+2. FELADAT prezentáicó elkészítése az 1. mérföldkőhöz:
+- hajrá :)
+- nyiván ilyeneket raknék bele, hogy ki mit csinált, hogyan osztottuk fel, issue-kkal hogyna jelöltük és igazából végig viszed a prezentációbna a tervet, 1 dia a cél, még egy dia a csapat mégegy az eszközök, még egy ak öltésgvetés stb. szóval használd a diákhoz mankónak a projekttervet
+ISSUE: menni fog rá, hozzászólás, CLOSED
