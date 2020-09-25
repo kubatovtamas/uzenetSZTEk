@@ -1,9 +1,9 @@
-# `FacebookKlón` Projektterv 2020
+# `MINTA` Projektterv 2020
 
 ## 1. Összefoglaló 
 A megrendelő, Márkus András, gyakran fejezte ki aggódalmát, hogy a jelenlegi közösségi médiák tele vannak fölösleges részletekkel,
 így a diákok képtelenek az anyagra koncentrálni anélkül, hogy közben egy-egy hírfolyamot böngésszenek vagy nyereményjátékokon vegyenek részt.
-"FacebookKlón" webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa
+`MINTA` webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa
 a tanulók közötti információmegosztáshoz szükséges legfontosabb funkciókat, illetve hogy minden felesleges,
 figyelemelterelő funkcionalitás terhe alól mentesítse a felhanszálóbázisát. Az alkalmazás lehetővé teszi a diákok számára személyes adataik kezelését,
 tanulótársak felkutatását, illetve az így létrehozott tanulmányi kapcsolatok megerősítését a közös projektekhez szükséges legfontosabb eszköz biztosításával,
