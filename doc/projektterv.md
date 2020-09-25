@@ -130,176 +130,172 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 ## 9. Feladatlista
 
-A `MINTA projekt 2019. szeptember 02-án` indult. A következőkben a tervezett feladatok részletes összefoglalása található:
+A `MINTA` projekt 2020. szeptember 24-én indult. A következőkben a tervezett feladatok részletes összefoglalása található:
 
 ### 9.1. Projektterv (1. mérföldkő)
-Ennek a feladatnak az a célja, hogy `… `
+Ennek a feladatnak az a célja, hogy elkészítsük a projekttervet, mely a szoftverfejlesztési modellel együtt a alkalmazás elkészítésének alapkövét jelenti.
 
 Részfeladatai a következők:
 
 #### 9.1.1. Projektterv kitöltése
 
-Felelős: `Mindenki`
+Felelős: Mindenki
 
-Tartam:  `7 nap`
+Tartam:  7 nap
 
-Erőforrásigény:  `5 személynap`
+Erőforrásigény:  4 személynap
 
 
 #### 9.1.2. Bemutató elkészítése
-`A mérföldkőhöz tartozó feladatok bemutatása PPT keretében, pl. feladat, tagok, Gantt diagram`
 
-Felelős: `Hot Elek`
+Felelős: Zombori Tamás
 
-Tartam:  `2 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `1 személynap`
+Erőforrásigény:  1 személynap
 
 ### 9.2. UML és adatbázis tervek (2. mérföldkő)
-Ennek a feladatnak az a célja, hogy `…`
+Ennek a feladatnak az a célja, hogy elkészítsük a fejlesztési folyamathoz, illetve a követelmények validálásához szükséges diagramokat
 
 Részfeladatai a következők:
 
 #### 9.2.1. Use Case diagram
 
-Felelős: `Teszt Elek`
+Felelős: Pusztai Ágnes Anna, Zombori Tamás
 
-Tartam:  `5 nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `3 személynap`
+Erőforrásigény:  4 személynap
 
 #### 9.2.2. Class diagram
 
-Felelős: `Lev Elek`
+Felelős: Madarász Máté, Kanyó József
 
-Tartam:  `6 nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `4 személynap`
+Erőforrásigény:  5 személynap
 
 #### 9.2.3. Sequence diagram
 
-Felelős: `..`
+Felelős: Madarász Máté, Kanyó József
 
-Tartam:  `.. nap`
+Tartam:  4 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  5 személynap
 
 #### 9.2.4. Egyed-kapcsolat diagram adatbázishoz
 
-Felelős: `..`
+Felelős: Kubatov Tamás, Zombori Tamás, Pusztai Ágnes Anna
 
-Tartam:  `.. nap`
+Tartam:  5 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  8 személynap
 
 #### 9.2.5. Package diagram
 
-Felelős: `..`
+Felelős: Madarász Máté, Kubatov Tamás, Kanyó József
 
-Tartam:  `.. nap`
+Tartam:  5 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  3 személynap
 
 #### 9.2.6. Képernyőtervek
 
-Felelős: `..`
+Felelős: Kurai István
 
-Tartam:  `.. nap`
+Tartam:  7 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  6 személynap
 
 #### 9.2.7. Bemutató elkészítése
-`A mérföldkőhöz tartozó feladatok bemutatása PPT keretében`
 
-Felelős: `..`
+Felelős: Pusztai Ágnes Anna, Zombori Tamás
 
-Tartam:  `.. nap`
+Tartam:  2 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  2 személynap
 
 ### 9.3. Prototípus I. (3. mérföldkő)
-Ennek a feladatnak az a célja, hogy `…`
+Ennek a feladatnak az a célja, hogy elkészítsünk egy működőképes rendszert, mely biztosítja majd a lehetőséget arra, hogy a 4. mérföldkő során optimalizáljuk az alkalamzás működésést.
 
 Részfeladatai a következők:
 
-#### 9.3.1.  `Bejelentkezési felület frontend`
+#### 9.3.1.  Statikus weblapok elkészítése (frontend)
 
-Felelős: `..`
+Felelős: Kurai István, Kanyó József, Zombori Tamás
 
-Tartam:  `.. nap`
+Tartam:  7 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  6 személynap
 
-#### 9.3.2.  `Bejelentkezési felület backend`
+#### 9.3.2.  Üzleti logika kifejlesztése (backend)
 
-Felelős: `..`
+Felelős: Pusztai Ágnes Anna, Madarász Máté, Kurai István
 
-Tartam:  `.. nap`
+Tartam:  5 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  5 személynap
 
-#### 9.3.3.  `Adatbázis feltöltése tesztadatokkal`
+#### 9.3.3.  Adatbázis felállítása, feltötlése adatokkal
 
-Felelős: `..`
+Felelős: Madarász Máté, Kubatov Tamás, Kanyó József
 
-Tartam:  `.. nap`
+Tartam:  7 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  7 személynap
 
 #### 9.3.4. Tesztelési dokumentum
 
-Felelős: `..`
+Felelős: Pusztai Ágnes Anna, Zombori Tamás
 
-Tartam:  `.. nap`
+Tartam:  5 nap
 
-Erőforrásigény:  `.. személynap`
-
+Erőforrásigény:  3 személynap
 
 #### 9.3.5. Bemutató elkészítése 
-`A prototípust kell bemutatni lokális gépen`
 
-Felelős: `..`
+Felelős: Kubatov Tamás
 
-Tartam:  `.. nap`
+Tartam:  2 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  2 személynap
 
 ### 9.4. Prototípus II. (4. mérföldkő)
-Ennek a feladatnak az a célja, hogy `…`
+Ennek a feladatnak az a célja, hogy kifejlesszük a végső terméket, és azt az összes dokumentációval együtt képesek legyünk átadni a mgerendelőnek.
 
 Részfeladatai a következők:
 
 #### 9.4.1. Dokumentációk, tervek az új funkciókhoz
-Felelős: `..`
 
-Tartam:  `.. nap`
+Felelős: Kanyó József, Kurai István, Kubatov Tamás
 
-Erőforrásigény:  `.. személynap`
+Tartam:  7 nap
+
+Erőforrásigény:  15 személynap
 
 #### 9.4.2. Javított minőségű prototípus új funkciókkal
 
-Felelős: `..`
+Felelős: Mindenki
 
-Tartam:  `.. nap`
+Tartam:  18 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  25 személynap
 
 #### 9.4.3. Tesztelési dokumentum az új funkciókhoz
 
-Felelős: `..`
+Felelős: Mindenki
 
-Tartam:  `.. nap`
+Tartam:  18 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  10 személynap
 
 #### 9.4.4. Bemutató elkészítése 
-`A prototípust kell bemutatni az AWS szolgáltatásán`
 
-Felelős: `..`
+Felelős: Madarász Máté
 
-Tartam:  `.. nap`
+Tartam:  3 nap
 
-Erőforrásigény:  `.. személynap`
+Erőforrásigény:  5 személynap
 
 
 
