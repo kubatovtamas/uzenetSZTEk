@@ -10,19 +10,23 @@ tanulótársak felkutatását, illetve az így létrehozott tanulmányi kapcsola
 ami a hatékony információáramlás, azaz a kommunikáció.
 
 ## 2. Verziók
-`Mint ahogy maga az alkalmazás, úgy a Projektterv is folyamatosan változik a félév során, ezeket a főbb változtatásokat itt kell vezetni.
-Általánosságban elmondható, hogy mérföldkövenként legalább 3 fő verziót érdemes megjelölni (Tervezet-Előterjesztés-Elfogadott).
-A verzió számozásának következetesnek kell lennie. A szerzőknél azoknak a nevét kell felsorolni, akik hozzájárultak a fő verzióhoz (azaz nem feltétlen mindenki, aki módosította a dokumentumot, pl. átírt egy elírást). ` 
-
-
-| Verzió |          Szerző(k)           |     Dátum    |     Státusz     |                      Megjegyzés                     |
-|:------:|:----------------------------:|:------------:|:---------------:|:---------------------------------------------------:|
-|  `0.1` |          `Teszt Elek`        | `2020-XX-XX` |    `Tervezet`   |                   `Legelső verzió`                  |
-|  `0.2` | `Remek Elek, Ebéd Elek`      | `2020-XX-XX` | `Előterjesztés` |         `A projekt menedzsere jónak találta`        |
-|  `1.0` |   `Lev Elek`                 | `2020-XX-XX` |   `Elfogadott`  |                `Apróbb átszervezések`               |
-|  `1.1` |  `Hot Elek`                  | `2020-XX-XX` | `Tervezet`      | `képernyőtervek, személyes felelősségek bevezetése` |
-|  `1.2` |  `Hot Elek`                  | `2020-XX-XX` | `Előterjesztés` | `II. mérföldkő további módosításai`                 |
-|  `2.0` |  `Ebéd Elek`                 | `2020-XX-XX` |   `Elfogadott`  |         `Módosított változat véglegesítése`         |
+|   Verzió | Szerző(k)                                        |          Dátum | Státusz           | Megjegyzés                                            |
+| :------: | :----------------------------------------------: | :------------: | :---------------: | :---------------------------------------------------: |
+|      0.1 | Mindenki                                         |     2020-10-01 | Tervezet          | Projektterv elkészítés, munkafelosztás                |
+|      0.2 | Mindenki                                         |     2020-10-03 | Előterjesztés     | Projektterv letisztítás, környezet kialakítása        |
+|      1.0 | Kanyó József                                     |     2020-10-05 | Elfogadott        | Apróbb átszervezések                                  |
+|----------|--------------------------------------------------|----------------|-------------------|-------------------------------------------------------|
+|      1.1 | Kubatov Tamás, Pusztai Ágnes Anna                |     2020-10-10 | Tervezet          | UML és adatbázis tervek                               |
+|      1.2 | Kubatov Tamás, Pusztai Ágnes Anna, Madarász Máté |     2020-10-15 | Előterjesztés     | Szükséges módosítások                                 |
+|      2.0 | Madarász Máté, Kanyó József                      |     2020-10-19 | Elfogadott        | Módosított változat véglegesítése                     |
+|----------|--------------------------------------------------|----------------|-------------------|-------------------------------------------------------|
+|      2.1 | Kurai István, Zombori Tamás                      |     2020-11-25 | Tervezet          | Prototípus                                            |
+|      2.2 | Madarász Máté, Kurai István                      |     2020-11-30 | Előterjesztés     | Módosítások                                           |
+|      3.0 | Kanyó József, Zombori Tamás                      |     2020-11-02 | Elfogadott        | Módosított változat véglegesítése                     |
+|----------|--------------------------------------------------|----------------|-------------------|-------------------------------------------------------|
+|      3.1 | Zombori Tamás, Pusztai Ágnes Anna, Kurai István  |     2020-11-10 | Tervezet          | Végleges program, dokumentáció, új funkciók           |
+|      3.2 | Madarász Máté, Kubatov Tamás                     |     2020-11-27 | Előterjesztés     | Szükséges módosítások                                 |
+|      4.0 | Mindenki                                         |     2020-11-30 | Elfogadott        | Módosított változat véglegesítése                     |
 
 Státusz osztályozás:
  - Tervezet: befejezetlen dokumentum
