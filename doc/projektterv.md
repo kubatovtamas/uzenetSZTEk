@@ -58,12 +58,12 @@ A rendelkezésünkre áll összesen`Y`pont.
 ## 5. Szervezeti felépítés és felelősségmegosztás
 A projekt megrendelője `Márkus András`. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely `…`
 
-Pusztai Ágnes Anna --> backend, adatbázis, UML diagramok, JUnit
-Kubatov Tamás --> backend, adatbázis, UML diagramok, Vue.js
-Kurai István --> Java, C#, frontend, design
-Madarász Máté --> Java, JavaFx, C#, Spring, backend, adatbázis
-Zombori Tamás -> Java, backend, frontend, prezentáció
-Kanyó József --> dokumentáció, SASS, Flexbox
+- Pusztai Ágnes Anna --> backend, adatbázis, UML diagramok, JUnit
+- Kubatov Tamás --> backend, adatbázis, UML diagramok, Vue.js
+- Kurai István --> Java, C#, frontend, design
+- Madarász Máté --> Java, JavaFx, C#, Spring, backend, adatbázis
+- Zombori Tamás -> Java, backend, frontend, prezentáció
+- Kanyó József --> dokumentáció, SASS, Flexbox
 
 ### 5.1 Projektcsapat
 A projekt a következő emberekből áll:
@@ -89,9 +89,9 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
  - Pusztai Ágnes anna: Lenovo ThinkPad x230 CPU: Dual Core Intel Core i5-3320M (-MT MCP-) speed/min/max: 1269/1200/3300 MHz Kernel: 5.8.6-1-MANJARO x86_64 Mem: 7778.6 MiB Storage: 352.14 GiB (SSD)
  - Kubatov Tamás: Lenovo Legion 5 OS: Manjaro Linux Resolution 1920x1080 CPU: AMD Ryzen 7 4800H GPU: NVIDIA GeForce GTX 1650Ti Mobile Memory: 8GB 
  - Kanyó József : Huawei Matebook X Pro CPU: Intel Core i7-8550U Memory: 16GB 512GB SSD GPU: Intel® UHD Graphics 620 Resolution: 3000x2000 OS: Windows 10 Home
- - Kurai István : Huawei Matebook 13 CPU: 10th Generation Intel® Core™ i5-10210U Memory: 1×8 Resolution:2160 x 1440 GB DDR4 GPU: Intel® UHD Graphics 620 512GB SSD OS: Windows 10 Home
+ - Kurai István : Huawei Matebook 13 CPU: 10th Generation Intel Core™ i5-10210U Memory: 1×8 Resolution:2160 x 1440 GB DDR4 GPU: Intel UHD Graphics 620 512GB SSD OS: Windows 10 Home
  - Zombori Tamás: PC: GPU: 1050ti  Memory: 16gb CPU: ryzen 5 2400g 256GB SSD OS: Windows 10 Pro Resolution: 1920x1080
- - Madarász Máté: CPU: Intel® Core™ i5-5300U GPU: Mesa Intel® HD Graphics 5500 128GB SSD Resolution: 1920x1080 OS: Kali Linux
+ - Madarász Máté: CPU: Intel Core i5-5300U GPU: Mesa Intel HD Graphics 5500 128GB SSD Resolution: 1920x1080 OS: Kali Linux
 
 ### 6.2. Rizikómenedzsment
  - `Rizikótényező (hatás):
