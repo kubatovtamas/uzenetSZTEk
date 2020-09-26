@@ -56,7 +56,7 @@ A rendelkezésünkre áll összesen`Y`pont.
 `(Becsült sarokszámok, a rendelkezésre álló erőforrás fejenként általában 17-21 személynap, a pontok száma = fejenként a projektre kapható maxpont * tagok száma)`
 
 ## 5. Szervezeti felépítés és felelősségmegosztás
-A projekt megrendelője `Márkus András`. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely tagjainak nevét, illetve szakmai tapasztalatait a következő felsorolás ismerteti:
+A projekt megrendelője Márkus András. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely tagjainak nevét, illetve szakmai tapasztalatait a következő felsorolás ismerteti:
 
 - Pusztai Ágnes Anna --> backend, adatbázis, UML diagramok, JUnit
 - Kubatov Tamás --> backend, adatbázis, UML diagramok, Vue.js
