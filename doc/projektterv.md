@@ -75,7 +75,7 @@ hogy a prezentációért felelős tag adja elő.`
 |:--------------------------------------------:|:-----------------:|:---------------------:|
 |                  Megrendelő                  | `Márkus András`   |`markusa@inf.u-szeged.hu`|
 |               Projekt menedzser              |  Madarász Máté    |h984188@stud.u-szeged.hu|
-| `Adatbázisért és adatkapcsolatokért felelős` |  Kubatov Tamás    |@stud.u-szeged.hu|
+| `Adatbázisért és adatkapcsolatokért felelős` |  Kubatov Tamás    |h665398@stud.u-szeged.hu|
 |      `Felhasználói felületekért felelős`     |  Kurai István     |h983940@stud.u-szeged.hu|
 |   `A rendszer működési logikájáért felelős`  |Pusztai Ágnes Anna |h984944@stud.u-szeged.hu|
 |           `Dokumentációért felelős`          |  Zombori Tamás    |h986217@stud.u-szeged.hu
