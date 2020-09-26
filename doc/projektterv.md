@@ -96,11 +96,11 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
 ### 6.2. Rizikómenedzsment
  - `Rizikótényező (hatás):
 (Leírni, hogy mit jelent, megbecsülni a bekövetkezési valószínűségét (alacsony, közepes, magas) és a hatását (kis, közepes és nagy) pl. betegség, szoftver-hardver probléma, tag kiesése, stb..)`
-Koronavírus miatti kihagyás (valószínűsége: alacsony, hatása: kicsi)
-Internetszolgáltató miatti kiesés (Valószínűsége: közepes, hatása: közepes)
-Influenza/megfázás miatti késés: (Valószínűsége: közepes, hatása: kicsi)
-Hardver meghibásodás miatti kihagyás: (Valószínűsége: alacsony, hatása: nagy)
-Családi okból eredő kiesés/késés: (Valószínűsége: közepes, hatása: kicsi)
+- Koronavírus miatti kihagyás (valószínűsége: alacsony, hatása: kicsi)
+- Internetszolgáltató miatti kiesés (Valószínűsége: közepes, hatása: közepes)
+- Influenza/megfázás miatti késés: (Valószínűsége: közepes, hatása: kicsi)
+- Hardver meghibásodás miatti kihagyás: (Valószínűsége: alacsony, hatása: nagy)
+- Családi okból eredő kiesés/késés: (Valószínűsége: közepes, hatása: kicsi)
 
 ## 7. Jelentések
 ### 7.1. Munka menedzsment
