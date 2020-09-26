@@ -56,7 +56,7 @@ A rendelkezésünkre áll összesen`Y`pont.
 `(Becsült sarokszámok, a rendelkezésre álló erőforrás fejenként általában 17-21 személynap, a pontok száma = fejenként a projektre kapható maxpont * tagok száma)`
 
 ## 5. Szervezeti felépítés és felelősségmegosztás
-A projekt megrendelője `Márkus András`. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely `…`
+A projekt megrendelője `Márkus András`. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely tagjainak nevét, illetve szakmai tapasztalatait a következő felsorolás ismerteti:
 
 - Pusztai Ágnes Anna --> backend, adatbázis, UML diagramok, JUnit
 - Kubatov Tamás --> backend, adatbázis, UML diagramok, Vue.js
@@ -68,24 +68,20 @@ A projekt megrendelője `Márkus András`. A `MINTA` projektet a projektcsapat f
 ### 5.1 Projektcsapat
 A projekt a következő emberekből áll:
 
-`Nem csak az adott egység felelősének feladata az adott részegység elkészítése, pl. a mérföldkövekhez tartozó prezentációt mindenki szerkesztheti, de elvárható,
-hogy a prezentációért felelős tag adja elő.`
 
-|                                              |        Név        |  E-mail cím (stud-os) |
-|:--------------------------------------------:|:-----------------:|:---------------------:|
-|                  Megrendelő                  | `Márkus András`   |`markusa@inf.u-szeged.hu`|
-|               Projekt menedzser              |  Madarász Máté    |h984188@stud.u-szeged.hu|
-| `Adatbázisért és adatkapcsolatokért felelős` |  Kubatov Tamás    |h665398@stud.u-szeged.hu|
-|      `Felhasználói felületekért felelős`     |  Kurai István     |h983940@stud.u-szeged.hu|
-|   `A rendszer működési logikájáért felelős`  |Pusztai Ágnes Anna |h984944@stud.u-szeged.hu|
-|           `Dokumentációért felelős`          |  Zombori Tamás    |h986217@stud.u-szeged.hu
-|           `Prezentációért felelős`           |  Kanyó József     |@stud.u-szeged.hu|
-|                 `Projekt tag`                |                   |                       |
+|                                            |        Név        |  E-mail cím (stud-os) |
+|:------------------------------------------:|:-----------------:|:---------------------:|
+|                  Megrendelő                | Márkus András     |markusa@inf.u-szeged.hu|
+|               Projekt menedzser            |  Madarász Máté    |h984188@stud.u-szeged.hu|
+| Adatbázisért és adatkapcsolatokért felelős |  Kubatov Tamás    |h665398@stud.u-szeged.hu|
+|      Felhasználói felületekért felelős     |  Kurai István     |h983940@stud.u-szeged.hu|
+|   A rendszer működési logikájáért felelős  |Pusztai Ágnes Anna |h984944@stud.u-szeged.hu|
+|           Dokumentációért felelős          |  Zombori Tamás    |h986217@stud.u-szeged.hu|
+|           Prezentációért felelős           |  Kanyó József     |h658542@stud.u-szeged.hu|
 
 ## 6. A munka feltételei
 ### 6.1. Munkakörnyezet
 A projekt a következő munkaállomásokat fogja használni a munka során:
- - `Milyen és hány gépet használ a projekt, milyen OS-t használ, milyen szoftverkörnyezetben, stb.`
  - Pusztai Ágnes anna: Lenovo ThinkPad x230 CPU: Dual Core Intel Core i5-3320M (-MT MCP-) speed/min/max: 1269/1200/3300 MHz Kernel: 5.8.6-1-MANJARO x86_64 Mem: 7778.6 MiB Storage: 352.14 GiB (SSD)
  - Kubatov Tamás: Lenovo Legion 5 OS: Manjaro Linux Resolution 1920x1080 CPU: AMD Ryzen 7 4800H GPU: NVIDIA GeForce GTX 1650Ti Mobile Memory: 8GB 
  - Kanyó József : Huawei Matebook X Pro CPU: Intel Core i7-8550U Memory: 16GB 512GB SSD GPU: Intel UHD Graphics 620 Resolution: 3000x2000 OS: Windows 10 Home
@@ -94,13 +90,12 @@ A projekt a következő munkaállomásokat fogja használni a munka során:
  - Madarász Máté: CPU: Intel Core i5-5300U GPU: Mesa Intel HD Graphics 5500 128GB SSD Resolution: 1920x1080 OS: Kali Linux
 
 ### 6.2. Rizikómenedzsment
- - `Rizikótényező (hatás):
-(Leírni, hogy mit jelent, megbecsülni a bekövetkezési valószínűségét (alacsony, közepes, magas) és a hatását (kis, közepes és nagy) pl. betegség, szoftver-hardver probléma, tag kiesése, stb..)`
-- Koronavírus miatti kihagyás (valószínűsége: alacsony, hatása: kicsi)
-- Internetszolgáltató miatti kiesés (Valószínűsége: közepes, hatása: közepes)
-- Influenza/megfázás miatti késés: (Valószínűsége: közepes, hatása: kicsi)
-- Hardver meghibásodás miatti kihagyás: (Valószínűsége: alacsony, hatása: nagy)
-- Családi okból eredő kiesés/késés: (Valószínűsége: közepes, hatása: kicsi)
+ - Rizikótényező (hatás):
+- Koronavírus miatti kihagyás (valószínűsége: alacsony, hatása: kicsi, kezelése: otthoni munkavégzés lehetséges, legrosszabb esetben az adott feladatot más végzi el )
+- Internetszolgáltató miatti kiesés (Valószínűsége: közepes, hatása: közepes, kezelése: többi napokon többet foglalkozik a projekttel az illető, előre megbeszélten)
+- Influenza/megfázás miatti késés: (Valószínűsége: közepes, hatása: kicsi, kezelése: otthoni munkavégzés lehetséges)
+- Hardver meghibásodás miatti kihagyás: (Valószínűsége: alacsony, hatása: nagy, kezelése: eloszlanak a feladatai a többi csapattag között, esetleges megoldásig)
+- Családi okból eredő kiesés/késés: (Valószínűsége: közepes, hatása: kicsi, kezelése: többi napokon többet foglalkozik a projekttel az illető, előre megbeszélten)
 
 ## 7. Jelentések
 ### 7.1. Munka menedzsment
