@@ -49,11 +49,9 @@ Miért van szükség a projektre? (4-6 mondat)`
 - `A rendszer nem funkcionális követelményei, pl.: milyen környezetben fusson, milyen teljesítményt kell produkálnia, milyen megjelenéssel kell rendelkeznie (elegendő felsorolni)`
 
 ## 4. Költség- és erőforrás-szükségletek
-Az erőforrásigényünk összesen kb. `X` személynap.
+Az erőforrásigényünk összesen kb. 126 személynap.
 
-A rendelkezésünkre áll összesen`Y`pont.
-
-`(Becsült sarokszámok, a rendelkezésre álló erőforrás fejenként általában 17-21 személynap, a pontok száma = fejenként a projektre kapható maxpont * tagok száma)`
+A rendelkezésünkre áll összesen 420 pont.
 
 ## 5. Szervezeti felépítés és felelősségmegosztás
 A projekt megrendelője Márkus András. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely tagjainak nevét, illetve szakmai tapasztalatait a következő felsorolás ismerteti:
@@ -154,7 +152,7 @@ Felelős: Mindenki
 
 Tartam:  7 nap
 
-Erőforrásigény:  4 személynap
+Erőforrásigény:  6 személynap
 
 
 #### 9.1.2. Bemutató elkészítése
@@ -224,7 +222,7 @@ Felelős: Pusztai Ágnes Anna, Zombori Tamás
 
 Tartam:  2 nap
 
-Erőforrásigény:  2 személynap
+Erőforrásigény:  4 személynap
 
 ### 9.3. Prototípus I. (3. mérföldkő)
 Ennek a feladatnak az a célja, hogy elkészítsünk egy működőképes rendszert, mely biztosítja majd a lehetőséget arra, hogy a 4. mérföldkő során optimalizáljuk az alkalamzás működésést.
@@ -237,7 +235,7 @@ Felelős: Kurai István, Kanyó József, Zombori Tamás
 
 Tartam:  7 nap
 
-Erőforrásigény:  6 személynap
+Erőforrásigény:  7 személynap
 
 #### 9.3.2.  Üzleti logika kifejlesztése (backend)
 
@@ -290,7 +288,7 @@ Felelős: Mindenki
 
 Tartam:  18 nap
 
-Erőforrásigény:  25 személynap
+Erőforrásigény:  28 személynap
 
 #### 9.4.3. Tesztelési dokumentum az új funkciókhoz
 
@@ -298,7 +296,7 @@ Felelős: Mindenki
 
 Tartam:  18 nap
 
-Erőforrásigény:  10 személynap
+Erőforrásigény:  12 személynap
 
 #### 9.4.4. Bemutató elkészítése 
 
@@ -320,22 +318,24 @@ Erőforrásigény:  5 személynap
 
 |                     Név                    | 1. leadás - Projektterv | 2. leadás - UML és adatbázis | 3. leadás - Prototípus I. | 4. leadás - Prototípus II. | Összesen |
 |:------------------------------------------:|:----------------------:|:--------------------------:|:-----------------------:|:------------------------:|:---------:|
-|                     `Teszt Elek`           |           `2`          |             `4`            |           `7`           |            `6`           |    `19`   |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
+|                     Kanyó József           |           2            |             5              |           4             |            10            |    21     |
+|                     Kubatov Tamás          |           1            |             4              |           5             |            11            |    21     |
+|                     Kurai István           |           1            |             6              |           3             |            11            |    21     |
+|                     Madarász Máté          |           1            |             7              |           3             |            10            |    21     |
+|                     Pusztai Ágnes Anna     |           1            |             7              |           4             |            9             |    21     |
+|                     Zombori Tamás          |           1            |             6              |           5             |            9             |    21     |
 
 ### 11.2. Részletes feladatszámok
 `(Az egyes leadások alkalmával teljesíthető feladatok számát kell beírni minden emberre külön-külön.)`
 
 |                     Név                    | 1. leadás - Projektterv | 2. leadás - UML és adatbázis | 3. leadás - Prototípus I. | 4. leadás - Prototípus II. | Összesen |
 |:------------------------------------------:|:----------------------:|:--------------------------:|:-----------------------:|:------------------------:|:---------:|
-|                     `Teszt Elek`           |           `1`          |             `2`            |           `6`           |            `5`           |    `14`   |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |    `X`    |
+|                     Kanyó József           |           1            |             3              |           2             |            3             |    9      |
+|                     Kubatov Tamás          |           1            |             2              |           2             |            3             |    8      |
+|                     Kurai István           |           1            |             1              |           2             |            3             |    7      |
+|                     Madarász Máté          |           1            |             3              |           2             |            3             |    9      |
+|                     Pusztai Ágnes Anna     |           1            |             3              |           2             |            2             |    8      |
+|                     Zombori Tamás          |           1            |             3              |           2             |            2             |    8      |
 
 ### 11.3. Részletes költségvetés
 `(Az egyes leadások alkalmával teljesíthető pontszámot kell beírni minden emberre külön-külön.)`
@@ -343,11 +343,12 @@ Erőforrásigény:  5 személynap
 |                     Név                    | 1. leadás - Projektterv | 2. leadás - UML és adatbázis | 3. leadás - Prototípus I. | 4. leadás - Prototípus II. | Összesen |
 |:------------------------------------------:|:----------------------:|:--------------------------:|:-----------------------:|:------------------------:|:---------:|
 |    Maximálisan pontszám %-ban              |         10% (7)        |           30% (21)         |         40% (28)        |            30% (21)      | 100% (70) |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |     70    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |     70    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |     70    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |     70    |
-|                     `X`                    |           `X`          |             `X`            |           `X`           |            `X`           |     70    |
+|                     Kanyó József           |           7            |             18             |           26            |            19            |     70    |
+|                     Kubatov Tamás          |           4            |             17             |           28            |            21            |     70    |
+|                     Kurai István           |           5            |             19             |           25            |            21            |     70    |
+|                     Madarász Máté          |           4            |             21             |           24            |            21            |     70    |
+|                     Pusztai Ágnes Anna     |           4            |             21             |           26            |            19            |     70    |
+|                     Zombori Tamás          |           4            |             19             |           28            |            19            |     70    |
 
 ### 11.4. Átvétel
 A projektet a megrendelő a következő eredménnyel vette át:
