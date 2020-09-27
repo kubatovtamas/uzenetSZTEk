@@ -314,7 +314,6 @@ Erőforrásigény:  5 személynap
 ## 11. Projekt költségvetés
 
 ### 11.1. Részletes erőforrásigény (személynap)
-`(Az egyes leadások alkalmával rögzített erőforrásigényt kell beírni minden emberre külön-külön.)`
 
 |                     Név                    | 1. leadás - Projektterv | 2. leadás - UML és adatbázis | 3. leadás - Prototípus I. | 4. leadás - Prototípus II. | Összesen |
 |:------------------------------------------:|:----------------------:|:--------------------------:|:-----------------------:|:------------------------:|:---------:|
@@ -326,7 +325,6 @@ Erőforrásigény:  5 személynap
 |                     Zombori Tamás          |           1            |             6              |           5             |            9             |    21     |
 
 ### 11.2. Részletes feladatszámok
-`(Az egyes leadások alkalmával teljesíthető feladatok számát kell beírni minden emberre külön-külön.)`
 
 |                     Név                    | 1. leadás - Projektterv | 2. leadás - UML és adatbázis | 3. leadás - Prototípus I. | 4. leadás - Prototípus II. | Összesen |
 |:------------------------------------------:|:----------------------:|:--------------------------:|:-----------------------:|:------------------------:|:---------:|
@@ -338,7 +336,6 @@ Erőforrásigény:  5 személynap
 |                     Zombori Tamás          |           1            |             3              |           2             |            2             |    8      |
 
 ### 11.3. Részletes költségvetés
-`(Az egyes leadások alkalmával teljesíthető pontszámot kell beírni minden emberre külön-külön.)`
 
 |                     Név                    | 1. leadás - Projektterv | 2. leadás - UML és adatbázis | 3. leadás - Prototípus I. | 4. leadás - Prototípus II. | Összesen |
 |:------------------------------------------:|:----------------------:|:--------------------------:|:-----------------------:|:------------------------:|:---------:|
