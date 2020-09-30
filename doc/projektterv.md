@@ -34,19 +34,46 @@ Státusz osztályozás:
  - Elfogadott: a megrendelő által elfogadva
 
 ## 3. A projekt bemutatása
-Ez a projektterv a `MINTA` projektet mutatja be, mely `2020-XX-XX-től 2020-XX-XX-ig`tart. A projekt célja `…`
+Ez a projektterv a `MINTA` projektet mutatja be, mely `2020-09-07-től 2020-11-30-ig`tart. A projekt célja, hogy a felhasználók könnyedén meg tudjanak osztani oktatással kapcsolatos információkat,  segítséget tudjanak nyújtani és kérni az egyetemi kurzusokhoz, ezen felül szociális platformot nyújt a regisztrált tagoknak.
 
-`A megvalósítás további általános leírása, pl. mennyi főből áll a csapat, mennyi átadandó lesz a megrendelőnek a félév során.(4-6 mondat)`
+A csapat 6 főből áll, a projekt 4 mérföldköves átadási struktúrában lesz megvalósítva.
 
 ### 3.1. Rendszerspecifikáció
-`Ide írd le részletesen, hogy mit fog tudni a rendszer (funkcionalitás, célok), amit a projekt keretében megvalósítotok. Mik a megrendelő és a felhasználók igényei? 
-Miért van szükség a projektre? (4-6 mondat)`
+A megrendelő kérései hogy kiszolgálja a felhasználók igényeit, illetve biztonságos felületet nyújtson az információk megosztására. A megvalósításhoz az alábbi felületeket szükséges létrehozni:
+
+- Egy regisztrációs, illetve bejelentkezési felület
+    - Átlátható, letisztult, felhasználóbarát
+    - Biztonságos regisztráció és beléptetés, e-mailes visszaigazolási rendszerrel, jelszó visszaállítással
+- Egy felület a belépett felhasználók beállításainak
+    - Személyes adatok megadása
+    - Megosztani kívánt adatok beállítása
+    - Profilkép és becenév beállítása
+- Egy felület ahol a felhasználók a különböző fórumokat olvashatnak, azokra feliratkozhatnak, hozzászólhatnak
+    - A feliratkozott fórumok áttekintése
+    - Hozzászólások írása
+    - Hozzászólások értékelése (reakciók)
+- Egy profil felület, ahol más felhasználók ismerősnek jelölhetnek, illetve a megosztani kívánt adatait, fényképeit elérhetik a felhasználónak
+    - Ismerősnek jelölés
+    - Adatok megtekintése
+    - Privát üzenet írása
+- Admin felület, ahol hozzáadni, módosítani, törölni lehet fórumokat, azokhoz érkezett hozzászólásokat moderálni.
+
+Összességében egy olyan grafikus rendszer megvalósítása a feladat, hol egy egyszerű felületen, könnyedén tud különböző témákról olvasni, azokhoz hozzászólni egy felhasználó, illetve lehetőséget nyújt a felhasználóknak egymással való ismerettségek kialakítására.
 
 ### 3.2. Funkcionális követelmények
-- `Ide kerülnek a rendszerrel szemben támasztott funkcionális igények: mit kell a rendszernek tudnia (elegendő felsorolni)`
+- A megrendelő részéről:
+    - Adminisztrációs felület megvalósítása
+    - A fórum moderációs funkciók megvalósítása
+
+- A felhasználói részről:
+    - Fórumok követése
+    - Hozzászólások írása, azoknak a módosítása, törlése
+    - Más felhasználók ismerősnek jelölése
+    - Privát üzenetváltás más felhasználókkal
+    - Képek feltöltése a profilra, illetve a választott fórumokra poszt formájában
 
 ### 3.3. Nem funkcionális követelmények
-- `A rendszer nem funkcionális követelményei, pl.: milyen környezetben fusson, milyen teljesítményt kell produkálnia, milyen megjelenéssel kell rendelkeznie (elegendő felsorolni)`
+Online felületen fusson teljesen a szoftver, böngészőn kívül más programra ne legyen szükség a használatához. Legyen biztonságos a felhasználó kezelés. Mobilon és asztali környezetben is jól használható, letisztult kinézete legyen.
 
 ## 4. Költség- és erőforrás-szükségletek
 Az erőforrásigényünk összesen kb. 126 személynap.
