@@ -140,7 +140,7 @@ Az alábbi lehetőségek vannak a szoftver megfelelő minőségének biztosítá
 - Kód átnézése (választható)
 
 ### 7.4. Átadás, eredmények elfogadása
-A projekt eredményeit Márkus András fogja elfogadni. A projektterven változásokat csak  Márkus András írásos kérés esetén Márkus András engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek.
+A projekt eredményeit Márkus András fogja elfogadni. A projektterven változásokat csak maga Márkus András, illetve írásos kérés esetén Márkus András engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek.
 Az elfogadás feltételeire és beadás formájára vonatkozó részletes leírás Kertész Attila fő gyakorlatvezető honlapján olvasható.
 
 ### 7.5. Státuszjelentés
