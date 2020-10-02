@@ -1,9 +1,9 @@
-# `MINTA` Projektterv 2020
+# üzeneteSZTEk Projektterv 2020
 
 ## 1. Összefoglaló 
 A megrendelő, Márkus András, gyakran fejezte ki aggódalmát, hogy a jelenlegi közösségi médiák tele vannak fölösleges részletekkel,
 így a diákok képtelenek az anyagra koncentrálni anélkül, hogy közben egy-egy hírfolyamot böngésszenek vagy nyereményjátékokon vegyenek részt.
-`MINTA` webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa
+üzeneteSZTEk webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa
 a tanulók közötti információmegosztáshoz szükséges legfontosabb funkciókat, illetve hogy minden felesleges,
 figyelemelterelő funkcionalitás terhe alól mentesítse a felhanszálóbázisát. Az alkalmazás lehetővé teszi a diákok számára személyes adataik kezelését,
 tanulótársak felkutatását, illetve az így létrehozott tanulmányi kapcsolatok megerősítését a közös projektekhez szükséges legfontosabb eszköz biztosításával,
@@ -34,7 +34,7 @@ Státusz osztályozás:
  - Elfogadott: a megrendelő által elfogadva
 
 ## 3. A projekt bemutatása
-Ez a projektterv a `MINTA` projektet mutatja be, mely `2020-09-07-től 2020-11-30-ig`tart. A projekt célja, hogy a felhasználók könnyedén meg tudjanak osztani oktatással kapcsolatos információkat,  segítséget tudjanak nyújtani és kérni az egyetemi kurzusokhoz, ezen felül szociális platformot nyújt a regisztrált tagoknak.
+Ez a projektterv a üzeneteSZTEk projektet mutatja be, mely 2020-09-24-től 2020-11-30-ig tart. A projekt célja, hogy a felhasználók könnyedén meg tudjanak osztani oktatással kapcsolatos információkat,  segítséget tudjanak nyújtani és kérni az egyetemi kurzusokhoz, ezen felül szociális platformot nyújt a regisztrált tagoknak.
 
 A csapat 6 főből áll, a projekt 4 mérföldköves átadási struktúrában lesz megvalósítva.
 
@@ -81,7 +81,7 @@ Az erőforrásigényünk összesen kb. 126 személynap.
 A rendelkezésünkre áll összesen 420 pont.
 
 ## 5. Szervezeti felépítés és felelősségmegosztás
-A projekt megrendelője Márkus András. A `MINTA` projektet a projektcsapat fogja végrehajtani, amely tagjainak nevét, illetve szakmai tapasztalatait a következő felsorolás ismerteti:
+A projekt megrendelője Márkus András. A üzeneteSZTEk projektet a projektcsapat fogja végrehajtani, amely tagjainak nevét, illetve szakmai tapasztalatait a következő felsorolás ismerteti:
 
 - Pusztai Ágnes Anna --> backend, adatbázis, UML diagramok, JUnit
 - Kubatov Tamás --> backend, adatbázis, UML diagramok, Vue.js
@@ -141,7 +141,7 @@ Az alábbi lehetőségek vannak a szoftver megfelelő minőségének biztosítá
 - Kód átnézése (választható)
 
 ### 7.4. Átadás, eredmények elfogadása
-A projekt eredményeit `Gyakorlatvezető` fogja elfogadni. A projektterven változásokat csak  `Gyakorlatvezető` írásos kérés esetén `Gyakorlatvezető`engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek.
+A projekt eredményeit Márkus András fogja elfogadni. A projektterven változásokat csak  Márkus András írásos kérés esetén Márkus András engedélyével lehet tenni. A projekt eredményesnek bizonyul, ha specifikáció helyes és határidőn belül készül el. Az esetleges késések pontlevonást eredményeznek.
 Az elfogadás feltételeire és beadás formájára vonatkozó részletes leírás Kertész Attila fő gyakorlatvezető honlapján olvasható.
 
 ### 7.5. Státuszjelentés
@@ -159,18 +159,17 @@ Architektúrának webes applikációt választottunk, Spring Boot,Java, MySQL, J
 ### 8.2. Átadandók és határidők
 A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
-`D - dokumentáció, P - prototíus`
 
 | Szállítandó |                 Neve                |   Határideje  |
 |:-----------:|:-----------------------------------:|:-------------:|
-|      D1     |       Projektterv és útmutató       | `2020-10-05 ` |
-|      D2     | UML és adatbázis tervek és bemutató | `2020-10-19 ` |
-|    P1+D3    |      Prototípus I. és bemutató      | `2020-11-02 ` |
-|    P2+D4    |      Prototípus Ii. és bemutató     | `2020-11-30 ` |
+|      D1     |       Projektterv és útmutató       |  2020-10-05   |
+|      D2     | UML és adatbázis tervek és bemutató |  2020-10-19   |
+|    P1+D3    |      Prototípus I. és bemutató      |  2020-11-02   |
+|    P2+D4    |      Prototípus Ii. és bemutató     |  2020-11-30   |
 
 ## 9. Feladatlista
 
-A `MINTA` projekt 2020. szeptember 24-én indult. A következőkben a tervezett feladatok részletes összefoglalása található:
+A üzeneteSZTEk projekt 2020. szeptember 24-én indult. A következőkben a tervezett feladatok részletes összefoglalása található:
 
 ### 9.1. Projektterv (1. mérföldkő)
 Ennek a feladatnak az a célja, hogy elkészítsük a projekttervet, mely a szoftverfejlesztési modellel együtt a alkalmazás elkészítésének alapkövét jelenti.
@@ -389,7 +388,7 @@ A projektet a megrendelő a következő eredménnyel vette át:
 |                                            |                        |                            |                         |                          |        |
 |                                            |                        |                            |                         |                          |        |
 
-Szeged, `2020-XX-XX.
+Szeged, 2020-10-05.
 
 #### &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Az átadó részéről &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Az átvevő részéről 
 
