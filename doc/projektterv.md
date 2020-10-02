@@ -148,7 +148,7 @@ Minden leadásnál a projektmenedzser jelentést tesz a projekt haladásáról, 
 
 ## 8. A munka tartalma
 ### 8.1. Tervezett szoftverfolyamat modell és architektúra
-Inkrementális modellt követve próbáljuk meg előállítani a prototípusokat. Azért ezt választottuk, mert így a főbb funkciókra tudunk fókuszálni, és időben elkészíteni egy működő prototípust. Mivel inkremensekre lesznek bontva egyes részek, így azok magukban is működőképesek lesznek. 
+Inkrementális modellt követve fogjuk előállítani a prototípust és a végterméket. Azért ezt választottuk, mert így a főbb funkciókra tudunk fókuszálni, és időben elkészíteni egy működő prototípust. Mivel inkremensekre lesznek bontva egyes részek, így azok magukban is működőképesek lesznek. 
 
 Architektúrának webes applikációt választottunk, Spring Boot,Java, MySQL, JavaScript, HTML, CSS nyelveket szeretnénk alkalmazni a megvalósításához. A programban fontos szerepet játszanak majd a:
 -adatbázistáblák
