@@ -338,7 +338,9 @@ Erőforrásigény:  5 személynap
 
 
 ## 10. Részletes időbeosztás
-`Ide kell berakni a Gantt diagramot, amely a 9. fejezetben található részfeladatokat tartalmazza felelős/tartam bontásban`
+![Gantt Diagram][Gantt]
+
+[Gantt]: ./diagrams/Gantt/Gantt_kep.png "Gantt Diagram"
 
 ## 11. Projekt költségvetés
 
