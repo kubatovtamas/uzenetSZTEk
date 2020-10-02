@@ -149,8 +149,12 @@ Minden leadásnál a projektmenedzser jelentést tesz a projekt haladásáról, 
 
 ## 8. A munka tartalma
 ### 8.1. Tervezett szoftverfolyamat modell és architektúra
-`Milyen szoftverfolyamat modellt követve állítja elő a csapat a specifikációnak megfelelő prototípusokat? Miért ezt választja? (gyakorlatvezetővel megbeszélve)
-A gyakorlatvezetővel egyeztetve a csapat milyen architektúrát választ a projekt megvalósításához? Milyen nyelven? Milyen rétegek (logikai, adat, GUI)?`
+Inkrementális modellt követve próbáljuk meg előállítani a prototípusokat. Azért ezt választottuk, mert így a főbb funkciókra tudunk fókuszálni, és időben elkészíteni egy működő prototípust. Mivel inkremensekre lesznek bontva egyes részek, így azok magukban is működőképesek lesznek. 
+
+Architektúrának webes applikációt választottunk, Spring Boot,Java, MySQL, JavaScript, HTML, CSS nyelveket szeretnénk alkalmazni a megvalósításához. A programban fontos szerepet játszanak majd a:
+-adatbázistáblák
+-grafikus felület
+-logikai kapcsolat
 
 ### 8.2. Átadandók és határidők
 A főbb átadandók és határidők a projekt időtartama alatt a következők:
@@ -159,10 +163,10 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 | Szállítandó |                 Neve                |   Határideje  |
 |:-----------:|:-----------------------------------:|:-------------:|
-|      D1     |       Projektterv és útmutató       |  `2020-XX-XX` |
-|    P1+D2    | UML és adatbázis tervek és bemutató | `2020-XX-XX ` |
-|    P1+D3    |      Prototípus I. és bemutató      | `2020-XX-XX ` |
-|    P2+D4    |      Prototípus Ii. és bemutató     | `2020-XX-XX ` |
+|      D1     |       Projektterv és útmutató       | `2020-10-05 ` |
+|      D2     | UML és adatbázis tervek és bemutató | `2020-10-19 ` |
+|    P1+D3    |      Prototípus I. és bemutató      | `2020-11-02 ` |
+|    P2+D4    |      Prototípus Ii. és bemutató     | `2020-11-30 ` |
 
 ## 9. Feladatlista
 
