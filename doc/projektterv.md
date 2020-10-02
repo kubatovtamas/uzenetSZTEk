@@ -2,8 +2,7 @@
 
 ## 1. Összefoglaló 
 A megrendelő, Márkus András, gyakran fejezte ki aggódalmát, hogy a jelenlegi közösségi médiák tele vannak fölösleges részletekkel,
-így a diákok képtelenek az anyagra koncentrálni anélkül, hogy közben egy-egy hírfolyamot böngésszenek vagy nyereményjátékokon vegyenek részt.
-üzeneteSZTEk webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa
+így a diákok képtelenek az anyagra koncentrálni anélkül, hogy közben egy-egy hírfolyamot böngésszenek vagy nyereményjátékokon vegyenek részt. Az üzeneteSZTEk webalkalmazás egy letisztult közösségi felületet nyújt a Szegedi Tudományegyetem hallgatói számára. A termék fő célja, hogy biztosítsa
 a tanulók közötti információmegosztáshoz szükséges legfontosabb funkciókat, illetve hogy minden felesleges,
 figyelemelterelő funkcionalitás terhe alól mentesítse a felhanszálóbázisát. Az alkalmazás lehetővé teszi a diákok számára személyes adataik kezelését,
 tanulótársak felkutatását, illetve az így létrehozott tanulmányi kapcsolatok megerősítését a közös projektekhez szükséges legfontosabb eszköz biztosításával,
@@ -34,7 +33,7 @@ Státusz osztályozás:
  - Elfogadott: a megrendelő által elfogadva
 
 ## 3. A projekt bemutatása
-Ez a projektterv a üzeneteSZTEk projektet mutatja be, mely 2020-09-24-től 2020-11-30-ig tart. A projekt célja, hogy a felhasználók könnyedén meg tudjanak osztani oktatással kapcsolatos információkat,  segítséget tudjanak nyújtani és kérni az egyetemi kurzusokhoz, ezen felül szociális platformot nyújt a regisztrált tagoknak.
+Ez a projektterv az üzeneteSZTEk projektet mutatja be, mely 2020-09-24-től 2020-11-30-ig tart. A projekt célja, hogy a felhasználók könnyedén meg tudjanak osztani oktatással kapcsolatos információkat,  segítséget tudjanak nyújtani és kérni az egyetemi kurzusokhoz, ezen felül szociális platformot nyújt a regisztrált tagoknak.
 
 A csapat 6 főből áll, a projekt 4 mérföldköves átadási struktúrában lesz megvalósítva.
 
@@ -169,7 +168,7 @@ A főbb átadandók és határidők a projekt időtartama alatt a következők:
 
 ## 9. Feladatlista
 
-A üzeneteSZTEk projekt 2020. szeptember 24-én indult. A következőkben a tervezett feladatok részletes összefoglalása található:
+Az üzeneteSZTEk projekt 2020. szeptember 24-én indult. A következőkben a tervezett feladatok részletes összefoglalása található:
 
 ### 9.1. Projektterv (1. mérföldkő)
 Ennek a feladatnak az a célja, hogy elkészítsük a projekttervet, mely a szoftverfejlesztési modellel együtt a alkalmazás elkészítésének alapkövét jelenti.
