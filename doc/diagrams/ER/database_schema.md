@@ -11,19 +11,6 @@ bold == underline `¯\_(ツ)_/¯`
 
 ***
 
-### Add to ER:
-
-- [ ] user.userid
-    
-- [ ] admin.admin_since
-    
-- [ ] topic.topicid
-    
-- [ ] change: post.content
-    
-    
-***
-
 USER (
     **userid**,
     email, 
