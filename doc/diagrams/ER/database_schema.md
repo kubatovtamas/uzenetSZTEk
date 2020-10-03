@@ -1,4 +1,4 @@
-bold == underline ¯\\_(ツ)_/¯
+bold == underline `¯\_(ツ)_/¯`
 
 '*'     => italic,      foreign key
 
