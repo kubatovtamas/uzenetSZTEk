@@ -13,19 +13,19 @@ bold == underline `¯\_(ツ)_/¯`
 
 ### Add to ER:
 
-    - [ ] user.userid
+- [ ] user.userid
     
-    - [ ] admin.admin_since
+- [ ] admin.admin_since
     
-    - [ ] topic.topicid
+- [ ] topic.topicid
     
-    - [ ] change: post.content
+- [ ] change: post.content
     
     
 ***
 
 USER (
-    **userid** [not in ER],
+    **userid**,
     email, 
     first_name, 
     last_name,
@@ -36,28 +36,28 @@ USER (
 )
 
 ADMIN (
-     ***USER.userid*** [not in ER],
-     admin_since [not in ER]
+     ***USER.userid***,
+     admin_since 
 )
 
 FOLLOWS (
-    ***USER.follower_userid*** [not in ER],
-    ***USER.following_userid*** [not in ER]
+    ***USER.follower_userid*** ,
+    ***USER.following_userid*** 
 )
 
 TOPIC (
-    **topicid** [not in ER],
+    **topicid** ,
     name,
-    *TOPIC.parent_topicid* [not in ER],
-    *USER.userid* [not in ER]
+    *TOPIC.parent_topicid* ,
+    *USER.userid* 
     timestamp
 )
 
 POST (
     **postid**,
     *POST.parent_postid*
-    *USER.userid*, [not in ER]
-    *TOPIC.topicid*, [not in ER]
+    *USER.userid*, 
+    *TOPIC.topicid*, 
     file,
     timestamp,
     text_content [not called this way in ER]
