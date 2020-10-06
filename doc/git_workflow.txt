@@ -47,3 +47,6 @@ Random useful stuff:
     git merge branchnév
     git branch -d branchnév (töröl)
     
+    
+    
+just testing
