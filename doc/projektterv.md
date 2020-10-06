@@ -315,19 +315,43 @@ Erőforrásigény:  15 személynap
 
 Felelős: Mindenki
 
-Tartam:  18 nap
+Tartam:  9 nap
 
-Erőforrásigény:  28 személynap
+Erőforrásigény:  18 személynap
 
-#### 9.4.3. Tesztelési dokumentum az új funkciókhoz
+#### 9.4.3. Projekt optimalizálás (képek, kód tömörítése stb..)
 
 Felelős: Mindenki
 
-Tartam:  18 nap
+Tartam:  4 nap
 
-Erőforrásigény:  12 személynap
+Erőforrásigény:  3 személynap
 
-#### 9.4.4. Bemutató elkészítése 
+#### 9.4.4. SEO optimalizálás
+
+Felelős: Mindenki
+
+Tartam:  5 nap
+
+Erőforrásigény:  7 személynap
+
+#### 9.4.5. JUnit tesztkörnyezet előkészítése
+
+Felelős: Pusztai Ágnes Anna, Zombori Tamás
+
+Tartam:  9 nap
+
+Erőforrásigény:  6 személynap
+
+#### 9.4.6. Tesztelési dokumentum az új funkciókhoz
+
+Felelős: Mindenki
+
+Tartam:  9 nap
+
+Erőforrásigény:  6 személynap
+
+#### 9.4.7. Bemutató elkészítése 
 
 Felelős: Madarász Máté
 
