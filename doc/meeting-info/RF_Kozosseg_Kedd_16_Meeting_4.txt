@@ -1,0 +1,8 @@
+1) Adatbázissal kapcsolatos kérdések:
+A megbeszélésen letisztáztuk néhány módosítás szükségességét az Egyed-Kapcsolat diagrammal kapcsolatban, melyért Zombori Tamás lesz a felelős, majd reflektálja ezeket a változásokat a relációsémában is.
+
+2) Feladatfelosztás:
+Megbeszéltük pontosan az elkészítendő diagramok határidejét és beosztsását a projekttervnek megfelelően és leegyeztettük az ehhez szükséges időpontokat, hogy mindenkinek megfeleljen
+
+3) Adminisztráció, tisztogatás:
+Felmeről még néhény adminisztratív kérdés, melyek megválaszolásra kerültek.
