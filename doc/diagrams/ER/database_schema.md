@@ -27,11 +27,6 @@ ADMIN (
      admin_since 
 )
 
-FOLLOWS (
-    ***USER.follower_userid*** ,
-    ***USER.following_userid*** 
-)
-
 TOPIC (
     **topicid** ,
     name,
@@ -48,5 +43,20 @@ POST (
     file,
     timestamp,
     text_content [not called this way in ER]
+)
+
+FOLLOWS_USER (
+    ***USER.follower_userid*** ,
+    ***USER.following_userid*** 
+)
+
+FOLLOWS_TOPIC (
+    ***USER.userid*** ,
+    ***TOPIC.topicid*** 
+)
+
+LIKES_POST (
+    ***USER.userid*** ,
+    ***POST.postid*** 
 )
 
