@@ -1,0 +1,11 @@
+1) III. mérföldkő feladatinak ponotsítása:
+- felosztottuk magunk között a mérföldkőhöz tartozó feladatokat
+- megbeszéltük a végrehajtási időpontokat és azt hogy a kisebb csapatok milyen platformon fognak egyeztetni egymással
+
+2) Issuek létrehozása:
+- a dokumentációhoz szükséges issue-kat létrehoztuk
+- megbeszéltük, hogy az issuek vezetése milyen elvek mentén fog működni
+
+3) Metódusok rögzítése:
+- megbeszéltük, hogy az egyes fontosabb pontokat milyen módszerrel fogjuk előkészíteni
+- milyen módszerrel lesznek tesztelve az elemek működőképessége
