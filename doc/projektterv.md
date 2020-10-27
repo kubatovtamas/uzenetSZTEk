@@ -260,7 +260,7 @@ Részfeladatai a következők:
 
 #### 9.3.1.  Statikus weblapok elkészítése (frontend)
 
-Felelős: Kurai István, Kanyó József, Zombori Tamás
+Felelős: Kurai István, Zombori Tamás
 
 Tartam:  7 nap
 
@@ -268,7 +268,7 @@ Erőforrásigény:  7 személynap
 
 #### 9.3.2.  Üzleti logika kifejlesztése (backend)
 
-Felelős: Pusztai Ágnes Anna, Madarász Máté, Kurai István
+Felelős: Pusztai Ágnes Anna, Madarász Máté, Kubatov Tamás
 
 Tartam:  5 nap
 
@@ -276,7 +276,7 @@ Erőforrásigény:  5 személynap
 
 #### 9.3.3.  Adatbázis felállítása, feltötlése adatokkal
 
-Felelős: Madarász Máté, Kubatov Tamás, Kanyó József
+Felelős: Madarász Máté, Kubatov Tamás, Kanyó József, Pusztai Ágnes Anna
 
 Tartam:  7 nap
 
