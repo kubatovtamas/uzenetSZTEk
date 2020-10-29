@@ -11,7 +11,7 @@
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left">üzeneteSZTEk</h1>
         <label for="Search"></label>
-        <input id="Search" class="float-right my-4 mx-2" type="text" placeholder="Search...">
+        <input id="Search" class="float-right my-4 mx-2 bg-teal-800" type="text" placeholder="Search...">
     </div>
 </header>
 
@@ -25,54 +25,34 @@
 <div class="text-gray-500">
 <div class="ml-24 w-4/12 float-left">
 <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl ">
-    <div class="text-center py-2">Profile picture</div>
+    <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
     <div>
         <img id="user_Pic" src="../public/pics/profpic.jpg" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
     </div>
-    <div id="user_Name" class="text-gray-500 text-center py-2">
+    <div id="user_Name" class="text-gray-500 text-center py-2">     <!--User's name-->
         Name
     </div>
-    <div id="Interests" class="text-gray-500 text-center py-2">
+    <div id="Interests" class="text-gray-500 text-center py-2">     <!--Something of the User-->
         Interests
     </div>
-    <div id="Details" class="text-gray-500 text-center py-2">
+    <div id="Details" class="text-gray-500 text-center py-2">       <!--Details(birth date, univercity)-->
         Details
     </div>
 
 </div>
 
-    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl">
+    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl">      <!--Followed topics by the user-->
         <div class="py-2">
             You are following these topics:
-        </div>
-
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl">
-            <a href="">Topic's name as link</a>
-        </div>
-
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl p-2 w-9/12 block inline-block mt-2 shadow-2xl">
-            <a href="">Topic's name as link</a>
-        </div>
-
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl">
-            <a href="">Topic's name as link</a>
-        </div>
-
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl">
-            <a href="">Topic's name as link</a>
-        </div>
-
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl">
-            <a href="">Topic's name as link</a>
         </div>
     </div>
 
 </div>
 <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl ">
-        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3">
+        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3">        <!--Posting-->
             <input id="Posting" onfocus="posting(this)" class="bg-current text-center text-2xl" type="text" placeholder="Posting...">
         </div>
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center">
+        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center">      <!--Post's from the user-->
             Something that the user posted..
         </div>
 </div>
