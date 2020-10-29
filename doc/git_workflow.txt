@@ -1,0 +1,52 @@
+Issuek: Doing, Closed, ne felejtsd el
+
+
+Feature developement:
+
+    SPAMELD A GIT STATUST ÉS OLVASD IS EL!
+    Ha valami nem 100, akkor inkább kérdezz mielőtt leoffolod 4 órányi munkád
+    
+    git add --all vagy git add /valami/subfolder/*.txt (std linux commands)
+    git commit -m "useful commit msg"
+    
+    git checkout -b "branch-name"               Csinalsz uj branchet featurenek (lehet jó ilyenkor issue numbert beleirni, és descriptive nevet adni pl "#1234 Add authorization page") 
+        git status, git add, git commit ...
+    git push -u origin "branch-name"            "branch-name" branchre pusholsz
+        eloszor, aztan csak git push eleg
+    merge request GitLabon                      
+        git checkout "branch-name"              -> mas dolgozhat rajta merge elott saját gépén
+    merge
+
+    
+Hogy ne veszitsd el a modositasaid:
+
+    git stash
+    git fetch
+    git pull
+    git stash pop
+
+    vagy
+
+    git fetch
+    git pull --rebase
+
+    
+Random useful stuff:
+
+    git log --oneline
+    git pull origin master --allow-unrelated-histories
+    git remote add origin http (ha elobb van lokál repo mint remote repo)
+    git clone (ha elobb van remote mint lokal)
+    git diff
+    git reset (ne commitold megse)
+    git checkout -- file(teljesen visszater az elozohoz a file verzio)
+
+    git branch név
+    git checkout branchnév
+    git rm file
+    git merge branchnév
+    git branch -d branchnév (töröl)
+    
+    
+    
+just testing

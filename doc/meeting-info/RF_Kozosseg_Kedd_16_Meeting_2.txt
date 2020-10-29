@@ -1,0 +1,39 @@
+Discord id és név párosítás:
+@MediMadi -> Madarász Máté
+@KanyJoz4 -> Kanyó József
+@kuba -> Kubatov Tamás
+@Tamás ->Zombori Tamás
+@Károly, @Kurai -> Kurai István
+@Gigi -> Pusztai Ágnes Anna
+
+0) Moderátor kiválasztása az adott meeting-re:
+
+Moderátor: Kanyó József
+
+1) Applikáció nevének végleges megbeszélése
+Az alkalmazás neve: üzeneteSZTEk
+
+2) A Projekttervben át kell javítani a Gyakorlatvezető és a MINTA szavakat a megfelelő értékekre, Issuek lezárása
+Ezeket a feladatokat a meeting közben, képernyőmegosztás segítségével elvégeztük részben, míg a meeting-et követően a moderátor és a projektmenedzser le fogja zárni az I. mérföldkőhöz tartozó Issue-kat.
+Emellett megtörtént az issue-k lezárásával kapcsolatos egyéb, technikai kérdések megválaszolása is.
+
+3) Gantt diagramm elhelyezése a diagrammban
+Az applikáció nevét megbeszéltük, a Gantt diagram a megbeszélés folyamán frissítve lett és fel is lett töltve a központi tárhelyre. A Projektterv 10. pontjának befejezését Kanyó József végzi el a meeting-et követő napokban.
+
+4) Fejlesztési eszközök átbeszélése
+Gyorsan átbeszéltük még egyszer pontosan, hogy milyen környezetben, milyen eszközökkel fog elkészülni az alkalmazás, egy két kérdés fennmaradt, de ezek tisztázása a III. mérföldkő teendői közé tartoznak.
+
+5) Git Workflow átbeszélése
+Kubatov Tamás elkészített egy workflow dokumentációt a git-hez, illetve megbeszéltük, hogy mikor és milyen körülmények között hozunk létre brancheket.
+
+6) Prezentáció ellenőrzése
+Zombori Tamás prezentációját ellenőriztük, kérdéseit megválaszoltuk, a prezentáció el is készült a megbeszélés ideje alatt, fel lesz töltve a központi tárhelyre.
+
+7) Feladatok kiosztása a következő hétre
+Ma 2020. 10. 02. van és 2020. 10. 03-én egy újabb megbeszélést tartunk, ahol elkezdjük megvalósítani a kiosztott feladatokat. Egyelőre a Képernyőtervek és az EK diagramm elkészítésére fókuszálunk.
+
+8) Issuek létrehozása ezeknek megfelelően
+Meetinget követően az alapot képző feladatfelosztást Kanyó József fogja elvégezni
+
+9) Következő meeting időpontjának előterjesztése
+Feltételezhetően az adott dokumentációhoz tartozó meeting-hez képest 1 hét

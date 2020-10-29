@@ -1,0 +1,18 @@
+A harmadik meeting, mely a II. mérföldkő első meeting-je volt, egy rövidebb összejövetel volt 2020. 10. 03-án.
+A meeting témája az Egyed-Kapcsolat diagram elkészítése volt.
+
+1) Egyed-Kapcsolat diagram elkészítése:
+Magát a diagram vázlatát elkészítettük a draw.io böngészőalkalmazás segítségével, a mintát lementettük és felkerül a központi tárhelyre, mely mindenki számára elérhető vált. Amennyiben elkészül majd a végleges változata is a diagramnak akkor egy külön kép is felkerül majd róla a központ tárhelyre.
+A diagram szerkezete röviden:
+1) Egyedek:
+	--> user
+	--> topic
+	--> post
+2) Kapcsolatok:
+	--> a felhasználók ismerősnek jelölhetik egymást
+	--> a topic-ok szülő gyermek kapcsolatba kerülhetnek egymással
+	--> a post az lehet egy főpost, mint a facebookon a post és lehet egy gyerekposzt, mint a hozzászólás facebookon
+	--> és persze a felhanszálók hozzák létre a topic-okat
+	--> illetve a felhasználók hozzák létre a post-okat is
+
+A relációséma elkészítését Kubatov Tamás vállalta magára, mely a diagramból következik.
