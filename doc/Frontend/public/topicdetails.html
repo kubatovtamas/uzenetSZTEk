@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="whitedark.css">
     <meta charset="UTF-8">
     <title>üzeneteSZTEk</title>
 </head>
@@ -9,23 +10,33 @@
 
 <header>
     <div>
-        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left">üzeneteSZTEk</h1>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
         <label for="Search"></label>
-        <input id="Search" class="float-right my-4 mx-2 bg-teal-800" type="text" placeholder="Search...">
+        <input id="Search" class="float-right my-4 mx-2 bg-teal-800 hat" type="text" placeholder="Search...">
     </div>
 </header>
-<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3" >
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat" >
     <nav class="space-x-56">
-        <a href="index.html" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl ">Main</a>
-        <a href="profile.html" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl ">Profile</a>
-        <a href="topic.html" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl ">Topic</a>
+        <a href="index.html" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov">Main</a>
+        <a href="profile.html" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
+        <a href="topic.html" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov">Topic</a>
     </nav> <!--menu buttons-->
 </div>
 
-<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20"> <!--main div's start-->
+<div class="flex flex-row-reverse">
+    <input type="checkbox" id="checkbox" class="absolute opacity-0 checkbox">
+
+    <label for="checkbox" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
+        <i class="text-teal-700 relative"><img width="20" height="20" src="pics/darkmode.png"></i>
+        <i class="text-teal-700 relative"><img width="20" height="20" src="pics/whitemode.png"></i> <!--white/dark theme button-->
+        <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
+    </label>
+</div>
+
+<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
     <div class="text-gray-500 text-2xl">
 
-        <article class="bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl px-5">
+        <article class="bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl px-5 hat bord">
             <header class="flex">
                 <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
                     <p>Choosen topic's name</p>
@@ -36,7 +47,7 @@
                 </div>
             </header>
 
-            <section class="border-blue-800 flex">
+            <section class="border-blue-800 flex bord">
                 <div class="flex flex-row-reverse inline-block">
                     <button><img border="0" width="30px" height="30px" src="pics/upvote.png"></button> <!--upvote-->
                 </div>
@@ -48,7 +59,7 @@
             </footer>
         </article>
 
-        <article class="bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl ml-20 mt-5 px-5">
+        <article class="bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl ml-20 mt-5 px-5 hat bord">
             <header class="flex">
                 <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
                     <p>Subtopic's name</p>
@@ -59,7 +70,7 @@
                 </div>
             </header>
 
-            <section class="border-blue-800 flex">
+            <section class="border-blue-800 flex bord">
                 <div class="flex flex-row-reverse inline-block">
                     <button><img border="0" width="30px" height="30px" src="pics/upvote.png"></button>    <!--subtop upvote-->
                 </div>
@@ -73,11 +84,20 @@
 
 
             <div>
-                <input class="bg-current border-t-0 border-4 border-gray-400 bg-transparent rounded-b-2xl rounded-l-xl rounded-r-xl py-5 px-10 mt-10" type="text" placeholder="Post subtopic...">
+                <input class="bg-current hat border-t-0 border-4 border-gray-400 bg-transparent rounded-b-2xl rounded-l-xl rounded-r-xl py-5 px-10 mt-10 bord2 szov" type="text" placeholder="Post subtopic...">
             </div>
     </div>
 </div>
 
+<script>
+    const checkbox =
+        document.getElementById("checkbox")
+
+    checkbox.addEventListener('change', () => {
+        //change the theme of the website
+        document.body.classList.toggle('white')
+    });
+</script>
 
 
 </body>

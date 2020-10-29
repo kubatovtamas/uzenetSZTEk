@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="whitedark.css">
     <meta charset="UTF-8">
     <title>üzeneteSZTEk</title>
 </head>
@@ -9,45 +10,66 @@
 
         <header>
             <div>
-                <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left">üzeneteSZTEk</h1>
+                <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
                 <label for="Search"></label>
-                <input id="Search" class="float-right my-4 mx-2 bg-teal-800" type="text" placeholder="Search...">
+                <input id="Search" class="float-right my-4 mx-2" type="text" placeholder="Search...">
             </div>
         </header>
-        <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3" >
+
+        <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord" >
             <nav class="space-x-56">
-                <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900">Main</a>
-                <a href="profile.html" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl ">Profile</a>
-                <a href="topic.html" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl ">Topic</a>
+                <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">Main</a>
+                <a href="profile.html" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
+                <a href="topic.html" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Topic</a>
             </nav> <!--menu buttons-->
         </div>
 
-        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3">
-            <input class="bg-current text-center text-2xl" type="text" placeholder="Posting...">
+        <div class="flex flex-row-reverse">
+            <input type="checkbox" id="checkbox" class="absolute opacity-0 checkbox">
+
+                <label for="checkbox" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
+                    <i class="text-teal-700 relative"><img width="20" height="20" src="pics/darkmode.png"></i>
+                    <i class="text-teal-700 relative"><img width="20" height="20" src="pics/whitemode.png"></i> <!--white/dark theme button-->
+                    <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
+                </label>
         </div>
 
-        <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20"> <!--main div's start-->
-            <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl">
-                <article>
-                    <header class="flex">
-                        <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
-                            <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl">Notified topic's name</a>
-                        </div>
-                        <p class="mx-6 text-2xl"> - </p>
-                        <div class="flex flex-row-reverse inline-block text-2xl">      <!--poster's name-->
-                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl">Poster's Name</p>
-                        </div>
-                    </header>
-                    <section>
-                        <p class="my-2 mx-10 text-xl py-5">Topic's content...</p>  <!--Topic's content-->
-                    </section>
+        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
+            <input class="bg-current text-center text-2xl szov hat" type="text" placeholder="Posting...">
+        </div>
 
-                    <footer>
-                        <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--Topic's publication date-->
-                    </footer>
+        <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
+            <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl szov bord2">
+                <article>
+                        <header class="flex">
+                            <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
+                                <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord">Notified topic's name</a>
+                            </div>
+                            <p class="mx-6 text-2xl"> - </p>
+                            <div class="flex flex-row-reverse inline-block text-2xl">      <!--poster's name-->
+                                <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord">Poster's Name</p>
+                            </div>
+                        </header>
+                        <section>
+                            <p class="my-2 mx-10 text-xl py-5">Topic's content...</p>  <!--Topic's content-->
+                        </section>
+
+                        <footer>
+                            <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--Topic's publication date-->
+                        </footer>
                 </article>
             </div>
         </div>
+
+<script>
+    const checkbox =
+        document.getElementById("checkbox")
+
+    checkbox.addEventListener('change', () => {
+        //change the theme of the website
+        document.body.classList.toggle('white')
+    });
+</script>
 
 
 
