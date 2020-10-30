@@ -76,7 +76,7 @@
                     </section>
 
                     <footer>
-                        <p class=" flex flex-row-reverse text-sm" th:text="${pojo.getDob()}">2020/10/28 16:51</p> <!--Topic's publication date-->
+                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(pojo.getDob(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p> <!--Topic's publication date-->
                     </footer>
                 </article>
             </div>
