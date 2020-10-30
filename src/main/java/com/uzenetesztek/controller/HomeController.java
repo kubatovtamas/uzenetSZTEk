@@ -3,6 +3,7 @@ package com.uzenetesztek.controller;
 import com.uzenetesztek.domain.testPOJO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
@@ -18,6 +19,27 @@ public class HomeController {
         model.addAttribute("testPOJOs", getTestPOJOs()); // inject a list of pojos into html
         return "index";
     }
+
+    @RequestMapping("/profile")
+    public String profile(Model model) {
+        return "profile";
+    }
+
+    @RequestMapping("/sign")
+    public String sign(Model model) {
+        return "sign";
+    }
+
+    @RequestMapping("/topic")
+    public String topic(Model model) {
+        return "topic";
+    }
+
+    @RequestMapping("/topicdetails")
+    public String searchForTopic(Model model) {
+        return "topicdetails";
+    }
+
 
     private ArrayList<testPOJO> getTestPOJOs() {
         ArrayList<testPOJO> pojos = new ArrayList<>();
