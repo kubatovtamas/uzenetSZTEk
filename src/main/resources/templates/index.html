@@ -77,18 +77,17 @@
                         <!--        For Each Post In Topic                -->
                         <article th:each="post : ${topic.posts}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
                             <header class="flex">
-                                <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
+                                <div class="flex flex-row inline-block text-2xl">      <!--Poster First Name-->
                                     <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getFirstName()}">Poster's Name</p>
                                 </div>
                                 <p class="mx-6 text-2xl"> - </p>
-                                <div class="flex flex-row-reverse inline-block text-2xl">      <!--poster's name-->
+                                <div class="flex flex-row-reverse inline-block text-2xl">      <!--Poster Last name-->
                                     <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getLastName()}">Poster's Name</p>
                                 </div>
                             </header>
-                            <p th:text="${post.getTextContent()}">LOREM IPSUM</p>
-                            <footer>
+                            <p th:text="${post.getTextContent()}">LOREM IPSUM</p>   <!--Text Content-->
+                            <footer> <!--Timestamp-->
                                 <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
-<!--                                <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> &lt;!&ndash;Topic's publication date&ndash;&gt;-->
                             </footer>
                         </article>
                     </section>
