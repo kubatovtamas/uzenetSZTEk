@@ -20,4 +20,7 @@ public class Post {
 
     @ManyToOne          // many posts but only one user per post
     private User user;
+
+    @ManyToOne
+    private Topic parentTopic; //Let's try that a Post has just a topic parent at first (so comment right not available)
 }
