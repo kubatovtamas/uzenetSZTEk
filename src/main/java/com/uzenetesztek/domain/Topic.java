@@ -13,6 +13,8 @@ public class Topic {
     @Id         // primary key
     private Long id;
     private String name;
+
+    @ManyToOne
     private Topic parent;
 
     // One Topic can has more than 1 posts, but a post has just one parent topic
