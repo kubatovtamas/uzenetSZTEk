@@ -1,7 +1,9 @@
 package com.uzenetesztek.controller;
 
+import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.testPOJO;
 import com.uzenetesztek.repository.testPOJORepository;
+import com.uzenetesztek.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,8 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("testAttribute", "This is a test attribute");
-        model.addAttribute("testPOJOs", getTestPOJOs());
+//        model.addAttribute("testPOJOs", getTestPOJOs());
+        model.addAttribute("posts", getPosts());
         return "index";
     }
 
@@ -42,12 +44,18 @@ public class HomeController {
     }
 
 
+//    @Autowired
+//    testPOJORepository pojoRepo;
     @Autowired
-    testPOJORepository pojoRepo;
+    PostRepository postRepo;
 
-    private ArrayList<testPOJO> getTestPOJOs() {
-        ArrayList<testPOJO> pojos = pojoRepo.findAll();
-        return pojos;
+//    private ArrayList<testPOJO> getTestPOJOs() {
+//        ArrayList<testPOJO> pojos = pojoRepo.findAll();
+//        return pojos;
+//    }
+    
+    private ArrayList<Post> getPosts() {
+        return postRepo.findAll();
     }
 }
 
