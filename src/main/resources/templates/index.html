@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/whitedark.css">
@@ -57,6 +59,26 @@
                         <footer>
                             <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--Topic's publication date-->
                         </footer>
+                </article>
+
+                <article>
+                    <header class="flex">
+                        <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
+                            <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord">Notified topic's name</a>
+                        </div>
+                        <p class="mx-6 text-2xl"> - </p>
+                        <div class="flex flex-row-reverse inline-block text-2xl">      <!--poster's name-->
+                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord">Poster's Name</p>
+                        </div>
+                    </header>
+                    <section>
+                                    <!-- Thymeleaf injection: -->
+                        <p class="my-2 mx-10 text-xl py-5" th:text="${testAttribute}">Topic's content...</p>  <!--Topic's content-->
+                    </section>
+
+                    <footer>
+                        <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--Topic's publication date-->
+                    </footer>
                 </article>
             </div>
         </div>
