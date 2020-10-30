@@ -2,11 +2,13 @@ package com.uzenetesztek.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
+
 
 @Entity
 @Data // lombok generates boilerplate code, see Structure tab for details

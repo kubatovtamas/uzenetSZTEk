@@ -1,22 +1,25 @@
 package com.uzenetesztek.controller;
 
 import com.uzenetesztek.domain.testPOJO;
+import com.uzenetesztek.repository.testPOJORepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 
 @Controller
 public class HomeController {
 
+
+
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("testAttribute", "This is a test attribute");
-        model.addAttribute("testPOJOs", getTestPOJOs()); // inject a list of pojos into html
+        model.addAttribute("testPOJOs", getTestPOJOs());
         return "index";
     }
 
@@ -41,13 +44,11 @@ public class HomeController {
     }
 
 
-    private ArrayList<testPOJO> getTestPOJOs() {
-        ArrayList<testPOJO> pojos = new ArrayList<>();
-        testPOJO pojo1 = new testPOJO(1, "macska", "macs@ka.com", new Date(), true);
-        testPOJO pojo2 = new testPOJO(1, "kutya", "ku@tya.com", new Date(),false);
+    @Autowired
+    testPOJORepository pojoRepo;
 
-        pojos.add(pojo1);
-        pojos.add(pojo2);
+    private ArrayList<testPOJO> getTestPOJOs() {
+        ArrayList<testPOJO> pojos = pojoRepo.findAll();
         return pojos;
     }
 }
