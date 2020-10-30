@@ -14,8 +14,6 @@ import java.util.ArrayList;
 @Controller
 public class HomeController {
 
-
-
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("testAttribute", "This is a test attribute");
