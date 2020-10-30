@@ -27,31 +27,28 @@
 </div>
 
 <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
-    <p class="bg-current text-center text-2xl text-gray-500 szov hat">Oops...</p>
+    <p th:text="${error}" class="bg-current text-center text-2xl text-gray-500 szov hat">Oops...</p> <!--Oops text--> <!--Oops text-->
 </div>
 
-<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
+<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-2 bord"> <!--main div's start-->
     <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl szov bord2">
         <article>
-            <header class="flex">
-<!--                <div class="flex flex-row inline-block text-2xl">      &lt;!&ndash;Topic's Name&ndash;&gt;-->
-<!--                    <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord">Error</a>-->
-<!--                </div>-->
-<!--                <p class="mx-6 text-2xl"> - </p>-->
-<!--                <div class="flex flex-row-reverse inline-block text-2xl">      &lt;!&ndash;poster's name&ndash;&gt;-->
-<!--                    <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord">Error</p>-->
-<!--                </div>-->
+            <header class="flex flex-row justify-center mb-5 pb-5">
+                <p th:text="${message}">message</p>
             </header>
-            <section>
-                <img>
-                <!--<p class="text-3xl my-2 mx-10 text-xl py-5" th:text="${error}">error</p>
-                <p class="text-3xl my-2 mx-10 text-xl py-5" th:text="${message}">message</p> 
-                <p class="text-3xl my-2 mx-10 text-xl py-5" th:text="${path}">path</p> 
-                <p class="text-3xl my-2 mx-10 text-xl py-5" th:text="${status}">status</p> 
-                <p class="text-3xl my-2 mx-10 text-xl py-5" th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>-->
+            <section class="flex flex-row justify-center mb-5 pb-5">
+                <p>Status code: </p>
+                <p th:text="${status}">status</p>
             </section>
-            <footer class="flex flex-row justify-center">
-                <a href="index.html" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">Back to Main Page</a>
+            <section class="flex flex-row justify-center mb-5 pb-5">
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
+            </section>
+            <section class="flex flex-row justify-center mb-5 pb-5">
+                <p><img th:src="@{images/error_img.png}" src="images/kep.png"></p>
+            </section>
+
+            <footer class="flex flex-row justify-center"> <!--Back to Main Page href-->
+                <a href="/" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">Back to Main Page</a>
             </footer>
         </article>
     </div>
