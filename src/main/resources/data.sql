@@ -998,3 +998,9 @@ insert into USER (ID, FIRST_NAME, LAST_NAME, EMAIL, PROFILE_PICTURE, IS_ADMIN) v
 insert into USER (ID, FIRST_NAME, LAST_NAME, EMAIL, PROFILE_PICTURE, IS_ADMIN) values (998, 'Sybille', 'McDuff', 'smcduffrp@livejournal.com', 'http://dummyimage.com/215x101.bmp/cc0000/ffffff', false);
 insert into USER (ID, FIRST_NAME, LAST_NAME, EMAIL, PROFILE_PICTURE, IS_ADMIN) values (999, 'Amber', 'Zebedee', 'azebedeerq@cornell.edu', 'http://dummyimage.com/150x203.bmp/5fa2dd/ffffff', false);
 insert into USER (ID, FIRST_NAME, LAST_NAME, EMAIL, PROFILE_PICTURE, IS_ADMIN) values (1000, 'Lyssa', 'Colloff', 'lcolloffrr@blogger.com', 'http://dummyimage.com/112x212.png/5fa2dd/ffffff', false);
+
+insert into TESTPOJO (id, name, email, dob, space_cat) values (1, 'Mikkel', 'mnother0@blogs.com', '2019-11-12 22:33:32', false);
+insert into TESTPOJO (id, name, email, dob, space_cat) values (2, 'Nannie', 'nchiverstone1@yahoo.com', '2020-06-30 22:50:39', true);
+insert into TESTPOJO (id, name, email, dob, space_cat) values (3, 'Reynolds', 'rscrowson2@webnode.com', '2020-02-17 15:17:39', true);
+insert into TESTPOJO (id, name, email, dob, space_cat) values (4, 'Boony', 'bjikylls3@alibaba.com', '2020-01-26 06:27:02', false);
+insert into TESTPOJO (id, name, email, dob, space_cat) values (5, 'Uri', 'unorthleigh4@hc360.com', '2020-06-04 02:41:15', false);
