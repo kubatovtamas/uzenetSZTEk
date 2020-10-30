@@ -5,9 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.ArrayList;
 
 @Controller
 public class HomeController {
