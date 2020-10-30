@@ -61,22 +61,34 @@
                         </footer>
                 </article>
 
-                <article th:each="post : ${posts}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+                <article th:each="topic : ${topics}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
                     <header class="flex">
                         <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
-                            <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord">Notified topic's name</a>
+                            <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord" th:text="${topic.getName()}">Notified topic's name</a>
                         </div>
                         <p class="mx-6 text-2xl"> - </p>
                         <div class="flex flex-row-reverse inline-block text-2xl">      <!--poster's name-->
-                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getFirstName()}">Poster's Name</p>
+                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${topic.getUser().getFirstName()}">Poster's Name</p>
                         </div>
                     </header>
                     <section>
-                        <p class="my-2 mx-10 text-xl py-5" th:text="${post.getTextContent()}">Topic's content...</p>  <!--Topic's content-->
+                        <article th:each="post : ${topic.posts}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+                            <header class="flex">
+                                <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
+                                    <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getFirstName()}">Poster's Name</p>
+                                </div>
+                                <p class="mx-6 text-2xl"> - </p>
+                                <div class="flex flex-row-reverse inline-block text-2xl">      <!--poster's name-->
+                                    <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getLastName()}">Poster's Name</p>
+                                </div>
+                            </header>
+                            <p th:text="${post.getTextContent()}">LOREM IPSUM</p>
+                        </article>
                     </section>
 
                     <footer>
-                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p> <!--Topic's publication date-->
+<!--                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>-->
+                        <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--Topic's publication date-->
                     </footer>
                 </article>
             </div>
