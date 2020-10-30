@@ -30,8 +30,8 @@
     <input type="checkbox" id="checkbox" class="absolute opacity-0 checkbox">
 
     <label for="checkbox" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current hat label hat bord">
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png"></i>
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png"></i> <!--white/dark theme button-->
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{images/darkmode.png}"></i>
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{images/whitemode.png}"></i> <!--white/dark theme button-->
         <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
     </label>
 </div>
@@ -41,7 +41,7 @@
 <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
     <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
     <div>
-        <img id="user_Pic" src="../public/pics/profpic.jpg" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
+        <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="@{images/profpic.jpg}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
     </div>
     <div id="user_Name" class="text-gray-500 text-center py-2 szov">     <!--User's name-->
         Name
