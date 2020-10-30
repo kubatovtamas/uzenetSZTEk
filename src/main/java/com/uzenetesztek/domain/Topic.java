@@ -14,9 +14,6 @@ public class Topic {
     private Long id;
     private String name;
 
-    @ManyToOne
-    private Topic parent;
-
     // One Topic can have more than 1 post, but a post has just one parent topic
     @OneToMany(mappedBy = "parentTopic")
     private List<Post> posts;

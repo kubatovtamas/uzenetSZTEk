@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity         // for hibernate
 @Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
@@ -22,5 +23,8 @@ public class Post {
     private User user;
 
     @ManyToOne
-    private Topic parentTopic; //Let's try that a Post has just a topic parent at first (so comment right not available)
+    private Topic parentTopic;
+
+    @OneToMany          // each post can have many replies
+    private List<Post> replyPosts;
 }

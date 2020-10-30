@@ -24,11 +24,11 @@ public class User {
 
 
     // User Posts
-    @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Post.user field
+    @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Post.user object's id
     private List<Post> posts;
 
     // User Topics
-    @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Post.user field
+    @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Topic.user object's id
     private List<Topic> topics;
 
 }
