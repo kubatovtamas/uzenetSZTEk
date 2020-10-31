@@ -52,6 +52,14 @@ public class HomeController {
         return "topicdetails";
     }
 
+    @RequestMapping("/user/{email}")
+    public String searchForUser(@PathVariable(value="email") String email, Model model) throws Exception{
+        if(email == null)
+            throw new Exception("No user found");
+        model.addAttribute("user", userServ.getSpecificUser(email));
+        return "user";
+    }
+
     @Autowired
     PostService postServ;
 

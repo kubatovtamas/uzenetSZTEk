@@ -31,4 +31,7 @@ public class User {
     @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Topic.user object's id
     private List<Topic> topics;
 
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
 }
