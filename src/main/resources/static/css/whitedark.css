@@ -1,6 +1,6 @@
 
-.input-group{
-    transition: .5s;
+.postername{
+    left: 70%;
 }
 
 .formbox{
@@ -14,7 +14,7 @@
 }
 
 #log{
- left: 80px;
+    left: 80px;
 }
 
 #reg{

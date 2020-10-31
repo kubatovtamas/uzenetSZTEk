@@ -20,9 +20,9 @@
 
 <div>
     <div class=" bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord szov">
-        <a href="/" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Main</a>
+        <a href="index.html" th:href="@{templates/index.html}" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Main</a>
         <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov">Profile</a>
-        <a href="topic" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Topic</a>
+        <a href="topic.html" th:href="@{templates/topic.html}" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Topic</a>
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
     <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
     <div>
-        <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="@{images/profpic.jpg}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
+        <img id="user_Pic" src="../static/images/profpic.jpg" th:src="@{images/profpic.jpg}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
     </div>
     <div id="user_Name" class="text-gray-500 text-center py-2 szov">     <!--User's name-->
         Name
@@ -56,7 +56,7 @@
 
 </div>
 
-    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord">      <!--Followed topics by the user-->
+    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">      <!--Followed topics by the user-->
         <div class="py-2">
             You are following these topics:
         </div>
