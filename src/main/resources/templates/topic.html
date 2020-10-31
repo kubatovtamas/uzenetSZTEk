@@ -19,8 +19,8 @@
 </header>
 <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat" >
     <nav class="space-x-56">
-        <a href="index.html" th:href="@{templates/index.html}" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Main</a>
-        <a href="profile.html" th:href="@{templates/index.html}" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
+        <a href="/" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Main</a>
+        <a href="profile" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
         <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">Topic</a>
     </nav> <!--menu buttons-->
 </div>
@@ -39,28 +39,31 @@
         <p class="flex-row flex justify-center text-3xl text-gray-500 border-l-2 border-r-2 border-b-4 border-blue-800 rounded-2xl px-3 mx-5 bord szov">Topics</p>
     </header>
 
-    <div class=" text-gray-500 rounded-3xl px-3 mx-5 my-8 bord szov">
-        <article th:each="topic : ${topics}" class=" relative bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl px-5 hat bord">
-            <header class="flex">
-                <div class="flex flex-row inline text-2xl absolute">
-                    <img src="../static/images/profpic.jpg" width="50" height="50" class="my-2 ml-1 mr-3 rounded-2xl">     <!--profile picture-->
-                    <a href="" class="my-2" th:text="${topic.getName()}">Notified topic's name</a> <!--Topic's Name-->
+    <div class=" text-gray-500 border-l-4 border-blue-800 rounded-3xl px-3 m-auto w-auto mx-5 my-8 bord szov">
+        <article>
+            <header class="flex inline">
+                <div class="flex flex-row text-2xl">      <!--Topic's Name-->
+                    <a href="topicdetails.html" class="bg-transparent rounded-2xl border-l-2 border-blue-800 px-2 my-3 shadow-2xl bord szov">Topic's name</a>
                 </div>
-                <div class="flex flex-row-reverse text-xl mt-3 postername absolute">      <!--Poster's name-->
-                    <p th:text="${topic.getUser().getFirstName()}">By Poster's Name</p>
+
+                <div class="flex flex-row-reverse text-2xl m-auto w-6/12 szov">      <!--poster's name-->
+                    <p class="text-right my-3 border-r-2 border-blue-800 rounded-2xl shadow-2xl bord">Poster's Name</p>
                 </div>
             </header>
 
-            <section class="border-blue-800 flex bord mt-8">
+            <section class="flex inline-block">
                 <div class="flex flex-row-reverse inline-block">
-                    <button><img border="0" width="30px" height="30px" class="mt-8" src="../static/images/upvote.png"></button> <!--upvote-->
+                    <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}"></button>      <!--upvote-->
                 </div>
-                <p th:text="${post.getTextContent()}" class="my-2 mx-10 text-xl py-5 mt-10">Topic's content...</p><!--Topic's content-->
+                <p class="my-2 mx-10 text-xl py-5">Followed topic (last)...</p> <!--Topic's content-->
+
 
             </section>
 
             <footer>
-                <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p> <!--Topic's publication date-->
+                <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--Topic's publication date-->
+
+
             </footer>
         </article>
     </div>

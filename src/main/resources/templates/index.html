@@ -10,85 +10,94 @@
 </head>
 <body class="bg-gray-800">
 
-        <header>
-            <div>
-                <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
-                <label for="Search"></label>
-                <input id="Search" class="float-right my-4 mx-2" type="text" placeholder="Search...">
-            </div>
-        </header>
+<header>
+    <div>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
+        <label for="Search"></label>
+        <input id="Search" class="float-right my-4 mx-2" type="text" placeholder="Search...">
+    </div>
+</header>
 
-        <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord" >
-            <nav class="space-x-56">
-                <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">Main</a>
-                <a href="profile.html" th:href="@{templates/profile.html}" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
-                <a href="topic.html" th:href="@{templates/topic.html}" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Topic</a>
-            </nav> <!--menu buttons-->
-        </div>
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord" >
+    <nav class="space-x-56">
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">Main</a>
+        <a href="profile" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
+        <a href="topic" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Topic</a>
+    </nav> <!--menu buttons-->
+</div>
 
-        <div class="flex flex-row-reverse">
-            <button id="toggle-white-mode" class="absolute"></button>
+<div class="flex flex-row-reverse">
+    <button id="toggle-white-mode" class="absolute"></button>
 
-                <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
-                    <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{images/darkmode.png}"></i>
-                    <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{images/whitemode.png}"></i> <!--white/dark theme button-->
-                    <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
-                </label>
-        </div>
+    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{images/darkmode.png}"></i>
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{images/whitemode.png}"></i> <!--white/dark theme button-->
+        <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
+    </label>
+</div>
 
-        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
-            <input class="bg-current text-center text-2xl szov hat" type="text" placeholder="Posting...">
-        </div>
+<div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
+    <input class="bg-current text-center text-2xl szov hat" type="text" placeholder="Posting...">
+</div>
 
-        <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
-            <div class="text-gray-500 mx-16 py-8 px-5 text-2xl szov">
-<!--                <article class="border-teal-700 border-b-4 rounded-2xl bord px-3 bord2">-->
-<!--                        <header class="flex">-->
-<!--                            <div class="flex flex-row inline-block text-2xl">      &lt;!&ndash;Topic's Name&ndash;&gt;-->
-<!--                                <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord">Notified topic's name</a>-->
-<!--                            </div>-->
-<!--                            <p class="mx-6 text-2xl"> - </p>-->
-<!--                            <div class="flex flex-row-reverse inline-block text-2xl">      &lt;!&ndash;poster's name&ndash;&gt;-->
-<!--                                <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord">Poster's Name</p>-->
-<!--                            </div>-->
-<!--                        </header>-->
-<!--                        <section>-->
-<!--                            <p class="my-2 mx-10 text-xl py-5">Topic's content...</p>  &lt;!&ndash;Topic's content&ndash;&gt;-->
-<!--                        </section>-->
+<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
+    <div class="text-gray-500 mx-16 py-8 px-5 text-2xl szov">
+        <!--                <article class="border-teal-700 border-b-4 rounded-2xl bord px-3 bord2">-->
+        <!--                        <header class="flex">-->
+        <!--                            <div class="flex flex-row inline-block text-2xl">      &lt;!&ndash;Topic's Name&ndash;&gt;-->
+        <!--                                <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord">Notified topic's name</a>-->
+        <!--                            </div>-->
+        <!--                            <p class="mx-6 text-2xl"> - </p>-->
+        <!--                            <div class="flex flex-row-reverse inline-block text-2xl">      &lt;!&ndash;poster's name&ndash;&gt;-->
+        <!--                                <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord">Poster's Name</p>-->
+        <!--                            </div>-->
+        <!--                        </header>-->
+        <!--                        <section>-->
+        <!--                            <p class="my-2 mx-10 text-xl py-5">Topic's content...</p>  &lt;!&ndash;Topic's content&ndash;&gt;-->
+        <!--                        </section>-->
 
-<!--                        <footer>-->
-<!--                            <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> &lt;!&ndash;Topic's publication date&ndash;&gt;-->
-<!--                        </footer>-->
-<!--                </article>-->
+        <!--                        <footer>-->
+        <!--                            <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> &lt;!&ndash;Topic's publication date&ndash;&gt;-->
+        <!--                        </footer>-->
+        <!--                </article>-->
 
-                <!--      For Each Topic      -->
-                <article th:each="topic : ${topics}" class=" relative bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl px-5 hat bord">
+        <!--      For Each Topic      -->
+        <article th:each="topic : ${topics}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+            <header class="flex">
+                <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
+                    <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord" th:text="${topic.getName()}">Notified topic's name</a>
+                </div>
+                <p class="mx-6 text-2xl"> - </p>
+                <div class="flex flex-row-reverse inline-block text-2xl">      <!--Poster's name-->
+                    <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${topic.getUser().getFirstName()}">Poster's Name</p>
+                </div>
+            </header>
+
+            <section>
+                <!--        For Each Post In Topic                -->
+                <article th:each="post : ${topic.posts}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
                     <header class="flex">
-                        <div class="flex flex-row inline text-2xl absolute">
-                            <img src="../static/images/profpic.jpg" width="50" height="50" class="my-2 ml-1 mr-3 rounded-2xl">     <!--profile picture-->
-                            <a href="" class="my-2" th:text="${topic.getName()}">Notified topic's name</a> <!--Topic's Name-->
+                        <div class="flex flex-row inline-block text-2xl">      <!--Poster First Name-->
+                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getFirstName()}">Poster's Name</p>
                         </div>
-                        <div class="flex flex-row-reverse text-xl mt-3 postername absolute">      <!--Poster's name-->
-                            <p th:text="${topic.getUser().getFirstName()}">By Poster's Name</p>
+                        <p class="mx-6 text-2xl"> - </p>
+                        <div class="flex flex-row-reverse inline-block text-2xl">      <!--Poster Last name-->
+                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getLastName()}">Poster's Name</p>
                         </div>
                     </header>
-
-                    <section class="border-blue-800 flex bord mt-8">
-                        <div class="flex flex-row-reverse inline-block">
-                            <button><img border="0" width="30px" height="30px" class="mt-8" src="../static/images/upvote.png"></button> <!--upvote-->
-                        </div>
-                        <p th:text="${post.getTextContent()}" class="my-2 mx-10 text-xl py-5 mt-10">Topic's content...</p><!--Topic's content-->
-
-                    </section>
-
-                    <footer>
-                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p> <!--Topic's publication date-->
+                    <p th:text="${post.getTextContent()}">LOREM IPSUM</p>   <!--Text Content-->
+                    <footer> <!--Timestamp-->
+                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
                     </footer>
                 </article>
-            </div>
-        </div>
+            </section>
 
-        <script src="../static/js/main.js" th:src="@{js/main.js}"></script>
+
+        </article>
+    </div>
+</div>
+
+<script src="../static/js/main.js" th:src="@{js/main.js}"></script>
 
 
 
