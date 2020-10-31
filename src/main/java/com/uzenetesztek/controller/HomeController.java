@@ -8,6 +8,9 @@ import com.uzenetesztek.repository.TopicRepository;
 import com.uzenetesztek.repository.UserRepository;
 import com.uzenetesztek.repository.testPOJORepository;
 import com.uzenetesztek.repository.PostRepository;
+import com.uzenetesztek.service.PostService;
+import com.uzenetesztek.service.TopicService;
+import com.uzenetesztek.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -49,25 +53,24 @@ public class HomeController {
     }
 
     @Autowired
-    PostRepository postRepo;
+    PostService postServ;
 
     @Autowired
-    TopicRepository topicRepo;
+    UserService userServ;
 
     @Autowired
-    UserRepository userRepo;
-
+    TopicService topicServ;
     
-    private ArrayList<Post> getPosts() {
-        return postRepo.findAll();
+    private List<Post> getPosts() {
+        return postServ.getPostRepo().findAll();
     }
 
-    private ArrayList<Topic> getTopics() {
-        return topicRepo.findAll();
+    private List<Topic> getTopics() {
+        return topicServ.getTopicRepo().findAll();
     }
 
-    private ArrayList<User> getUsers() {
-        return userRepo.findAll();
+    private List<User> getUsers() {
+        return userServ.getUserRepo().findAll();
     }
 }
 
