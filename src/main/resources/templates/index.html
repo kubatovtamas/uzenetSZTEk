@@ -67,22 +67,20 @@
                 <div class="flex flex-row inline-block text-2xl">      <!--Topic's Name-->
                     <a href="topicdetails.html" class="border-l-2 border-blue-800 rounded-2xl pl-3 shadow-2xl bord" th:text="${topic.getName()}">Notified topic's name</a>
                 </div>
-                <p class="mx-6 text-2xl"> - </p>
-                <div class="flex flex-row-reverse inline-block text-2xl">      <!--Poster's name-->
-                    <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${topic.getUser().getFirstName()}">Poster's Name</p>
+                <div class="flex flex-row-reverse inline-block text-xl postername absolute">      <!--Poster's name-->
+                    <p class="pr-3 shadow-2xl text-xl" th:text="${topic.getUser().getFirstName()}">By Poster's Name</p>
                 </div>
             </header>
 
             <section>
                 <!--        For Each Post In Topic                -->
-                <article th:each="post : ${topic.posts}" class="border-teal-700 border-b-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+                <article th:each="post : ${topic.posts}" class="bord my-3 px-3 mt-5">
                     <header class="flex">
-                        <div class="flex flex-row inline-block text-2xl">      <!--Poster First Name-->
-                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getFirstName()}">Poster's Name</p>
+                        <div class="flex flex-row inline-block text-xl postername1 absolute">      <!--Poster First Name-->
+                            <p class="pr-3 " th:text="${post.getUser().getFirstName()}">First Name</p>
                         </div>
-                        <p class="mx-6 text-2xl"> - </p>
-                        <div class="flex flex-row-reverse inline-block text-2xl">      <!--Poster Last name-->
-                            <p class="border-r-2 border-blue-800 rounded-2xl pr-3 shadow-2xl bord" th:text="${post.getUser().getLastName()}">Poster's Name</p>
+                        <div class="flex flex-row-reverse inline-block text-xl absolute postername">      <!--Poster Last name-->
+                            <p class="pr-3" th:text="${post.getUser().getLastName()}">Last Name</p>
                         </div>
                     </header>
                     <p th:text="${post.getTextContent()}">LOREM IPSUM</p>   <!--Text Content-->
