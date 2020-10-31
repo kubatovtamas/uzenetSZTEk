@@ -1,5 +1,6 @@
 package com.uzenetesztek.controller;
 
+import antlr.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -10,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 @Controller
 public class ErrorPageController implements ErrorController {
@@ -33,6 +38,31 @@ public class ErrorPageController implements ErrorController {
         model.addAttribute("path", error.get("path"));
         model.addAttribute("status", error.get("status"));
         model.addAttribute("timestamp", error.get("timestamp"));
+
+        //reworking invalid urls and specifying the appropriate format
+        String path = error.get("path").toString();
+        long countSymbol = path.chars().filter(ch -> ch == '/').count();
+
+        Map<String, String> thymeleafE = new HashMap<>(); //contains html elements
+        thymeleafE.put("cssPath","css/styles.css");
+        thymeleafE.put("whiteThemePath","css/whitedark.css");
+        thymeleafE.put("errorImage","images/error_img.png");
+        thymeleafE.put("darkMode","images/darkmode.png");
+        thymeleafE.put("whiteMode","images/whitemode.png");
+
+        if(countSymbol > 1){ //If the url contains more than one "/"
+            StringBuilder sb = new StringBuilder();
+            for(int i=0;i<countSymbol-1;i++){
+                sb.append("../"); //the correct path form
+            }
+            Iterator elements = thymeleafE.entrySet().iterator();
+            while (elements.hasNext()) {
+                Map.Entry element = (Map.Entry) elements.next();
+                thymeleafE.put((String) element.getKey(),sb.toString()+element.getValue());
+            }
+        }
+        model.addAllAttributes(thymeleafE);
+
 
 //        if (error.get("status") == "404") {
 //            return notFound(model, request);  // this is how to handle specific error codes for different error pages
