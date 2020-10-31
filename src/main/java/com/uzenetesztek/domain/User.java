@@ -3,6 +3,7 @@ package com.uzenetesztek.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,18 @@ public class User {
     private List<Post> posts;
 
     // User Topics
-    @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Topic.user object's id
+    @OneToMany(mappedBy = "user")          // one user can have many topics, mapped by Topic.user object's id
     private List<Topic> topics;
+
+    // User User
+    @ManyToMany
+    private List<User> follows;
+    @ManyToMany(mappedBy = "follows")      // user can follow other people and it's true backwards as well
+    private List<User> followees;
+
+    // User Topics
+    @ManyToMany
+    private List<Topic> followTopics;
+
 
 }
