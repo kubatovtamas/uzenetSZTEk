@@ -34,33 +34,41 @@
     </label>
 </div>
 
-<div class="w-6/12 float-none m-auto h-auto justify-center border-b-4 border-t-4 border-l-2 border-r-2 border-blue-800 rounded-2xl py-3 bord">  <!--main div's start--->
+<div class="container mx-auto my-5 h-auto justify-center border-l-2 border-r-2 border-blue-800 rounded-2xl py-3 bord">  <!--main div's start--->
     <header>
         <p class="flex-row flex justify-center text-3xl text-gray-500 border-l-2 border-r-2 border-b-4 border-blue-800 rounded-2xl px-3 mx-5 bord szov">Topics</p>
     </header>
 
-    <div class=" text-gray-500 mx-3 my-8 bord szov">
-        <article class=" relative bg-current border-4 border-t-0 border-b-0 border-blue-800 rounded-b-3xl rounded-l-xl rounded-r-xl mt-5 px-5 hat bord">
-            <header class="flex">
-                <img src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl">
-                <div class="flex flex-row inline-block text-2xl mt-5 absolute ml-20">      <!--Topic's Name-->
-                    <p>Subtopic's name</p>
+    <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-5 bord szov text-gray-500">
+        <article th:each="topic : ${topics}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+            <header class="flex relative">
+                <div class="flex text-2xl relative">      <!--Poster's Name-->
+                    <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">
+                    <p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">By Poster's Name</p>
                 </div>
-                <div class="flex flex-row-reverse inline-block text-xl mt-5 postername absolute">      <!--Poster's name-->
-                    <p>By Poster's Name</p>
+
+                <div class="text-2xl container text-center absolute">      <!--Topic's name-->
+                    <b><a href="topicdetails.html" th:text="${topic.getName()}">Notified topic's name</a></b>
                 </div>
             </header>
+            <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="flex absolute mt-10 ml-1"></button>
+            <section class="bg-current hat ml-16 rounded-2xl">
 
-            <section class="border-blue-800 flex bord">
-                <div class="flex flex-row-reverse inline-block">
-                    <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}"></button>    <!--subtop upvote-->
-                </div>
-                <p class="my-2 mx-10 text-xl py-5">Topic's content...</p>       <!--Subtopic's content-->
+                <!--        For Each Post In Topic                -->
+                <article th:each="post : ${topic.posts}" class="bord my-3 px-3 border-b-4 border-blue-800 rounded-2xl hat">
+                    <header class="flex space-x-24">
+                        <div class="flex flex-row inline-block text-xl absolute">      <!--Poster First Name-->
+                            <p class="pr-3 " th:text="${post.getUser().getFullName()}">Name</p>
+                        </div>
+                    </header>
+                    <p th:text="${post.getTextContent()}" class="mt-8">LOREM IPSUM</p>   <!--Text Content-->
+                    <footer> <!--Timestamp-->
+                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
+                    </footer>
+                </article>
             </section>
 
-            <footer>
-                <p class=" flex flex-row-reverse text-sm">2020/10/28 16:51</p> <!--subtopic's publication date-->
-            </footer>
+
         </article>
     </div>
 </div>      <!--main div's end-->
