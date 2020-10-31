@@ -3,8 +3,8 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}">
-    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="@{css/whitedark.css}">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="${cssPath}">
+    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="${whiteThemePath}">
     <meta charset="UTF-8">
     <title>üzeneteSZTEk</title>
 </head>
@@ -20,8 +20,8 @@
     <button id="toggle-white-mode" class="absolute"></button>
 
     <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{images/darkmode.png}"></i>
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{images/whitemode.png}"></i> <!--white/dark theme button-->
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="${darkMode}"></i>
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="${whiteMode}"></i> <!--white/dark theme button-->
     </label>
 </div>
 
@@ -43,7 +43,7 @@
                 <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
             </section>
             <section class="flex flex-row justify-center mb-5 pb-5">
-                <p><img th:src="@{images/error_img.png}" src="images/kep.png"></p>
+                <p><img th:src="${errorImage}" src="images/kep.png"></p>
             </section>
 
             <footer class="flex flex-row justify-center"> <!--Back to Main Page href-->

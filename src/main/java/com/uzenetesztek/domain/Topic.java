@@ -21,4 +21,8 @@ public class Topic {
     // One user can make many topics, but a topic is made by one user
     @ManyToOne
     private User user;
+
+    // User - Topics follows
+    @ManyToMany(mappedBy = "followTopics")
+    private List<User> followers;
 }

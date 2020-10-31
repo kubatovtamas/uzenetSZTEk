@@ -36,46 +36,46 @@
 </div>
 
 <div class="text-gray-500 szov">
-<div class="ml-24 w-4/12 float-left">
-<div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
-    <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
-    <div>
-        <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="@{images/profpic.jpg}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
-    </div>
-    <div id="user_Name" class="text-gray-500 text-center py-2 szov">     <!--User's name-->
-        Name
-    </div>
-    <div id="Interests" class="text-gray-500 text-center py-2 szov">     <!--Something of the User-->
-        Interests
-    </div>
-    <div id="Details" class="text-gray-500 text-center py-2 szov">       <!--Details(birth date, univercity)-->
-        Details
-    </div>
+    <div class="ml-24 w-4/12 float-left">
+        <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
+            <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
+            <div>
+                <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="@{images/profpic.jpg}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
+            </div>
+            <div id="user_Name" class="text-gray-500 text-center py-2 szov">     <!--User's name-->
+                Name
+            </div>
+            <div id="Interests" class="text-gray-500 text-center py-2 szov">     <!--Something of the User-->
+                Interests
+            </div>
+            <div id="Details" class="text-gray-500 text-center py-2 szov">       <!--Details(birth date, univercity)-->
+                Details
+            </div>
 
 
 
-</div>
-
-    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord">      <!--Followed topics by the user-->
-        <div class="py-2">
-            You are following these topics:
         </div>
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl bord">
-            <a href="">Topic's name as link</a>
+
+        <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord">      <!--Followed topics by the user-->
+            <div class="py-2">
+                You are following these topics:
+            </div>
+            <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl bord">
+                <a href="">Topic's name as link</a>
+            </div>
         </div>
+
+
+
     </div>
-
-
-
-</div>
-<div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
+    <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
         <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord">        <!--Posting-->
             <input id="Posting" onfocus="posting(this)" class="bg-current text-center text-2xl hat" type="text" placeholder="Posting...">
         </div>
         <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center bord">      <!--Post's from the user-->
             Something that the user posted..
         </div>
-</div>
+    </div>
 </div>
 
 <script>

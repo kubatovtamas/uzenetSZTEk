@@ -19,12 +19,17 @@ public class Post {
     private String file;
     private Date timestamp;
 
+
     @ManyToOne          // many posts but only one user per post
     private User user;
 
     @ManyToOne
     private Topic parentTopic;
 
-    @OneToMany          // each post can have many replies
+    // sel join part
+    @ManyToOne
+    private Post starterPost;
+
+    @OneToMany(mappedBy = "starterPost")          // each post can have many replies
     private List<Post> replyPosts;
 }
