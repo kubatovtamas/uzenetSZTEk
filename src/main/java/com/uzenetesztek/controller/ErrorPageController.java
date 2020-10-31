@@ -49,6 +49,7 @@ public class ErrorPageController implements ErrorController {
         thymeleafE.put("errorImage","images/error_img.png");
         thymeleafE.put("darkMode","images/darkmode.png");
         thymeleafE.put("whiteMode","images/whitemode.png");
+        thymeleafE.put("themeSwitch","js/main.js");
 
         if(countSymbol > 1){ //If the url contains more than one "/"
             StringBuilder sb = new StringBuilder();
