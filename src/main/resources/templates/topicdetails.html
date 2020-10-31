@@ -26,9 +26,9 @@
 </div>
 
 <div class="flex flex-row-reverse">
-    <input type="checkbox" id="checkbox" class="absolute opacity-0 checkbox">
+    <button id="toggle-white-mode" class="absolute"></button>
 
-    <label for="checkbox" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
+    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
         <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{images/darkmode.png}"></i>
         <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{images/whitemode.png}"></i> <!--white/dark theme button-->
         <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
@@ -91,15 +91,7 @@
     </div>
 </div>
 
-<script>
-    const checkbox =
-        document.getElementById("checkbox")
-
-    checkbox.addEventListener('change', () => {
-        //change the theme of the website
-        document.body.classList.toggle('white')
-    });
-</script>
+<script src="../static/js/main.js" th:src="@{js/main.js}"></script>
 
 
 </body>

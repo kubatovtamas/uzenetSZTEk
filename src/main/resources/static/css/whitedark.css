@@ -1,4 +1,26 @@
 
+.input-group{
+    transition: .5s;
+}
+
+.formbox{
+    position: relative;
+    width: 380px;
+    height: 480px;
+    margin: 6% auto;
+    background-color: transparent;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#log{
+ left: 80px;
+}
+
+#reg{
+    left: 450px
+}
+
 body.white input::placeholder{
     color: #e94e4e;
 }
@@ -41,6 +63,4 @@ body.white{
     transition: transform 0.2s linear;
 }
 
-.checkbox:checked + .label .ball{
-    transform: translateX(20px);
-}
+
