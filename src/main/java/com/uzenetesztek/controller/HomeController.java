@@ -44,11 +44,24 @@ public class HomeController {
 
     @RequestMapping("/topic")
     public String topic(Model model) {
+        model.addAttribute("posts", getPosts());
+        model.addAttribute("topics", getTopics());
+        model.addAttribute("users", getUsers());
         return "topic";
     }
 
-    @RequestMapping("/topicdetails")
+    /*@RequestMapping("/topicdetails")
     public String searchForTopic(Model model) {
+        model.addAttribute("posts", getPosts());
+        model.addAttribute("topics", getTopics());
+        model.addAttribute("users", getUsers());
+        return "topicdetails";
+    }*/
+    @RequestMapping("/topics/{name}")
+    public String searchForTopic(@PathVariable(value="name") String name, Model model) throws Exception{
+        if(name == null)
+            throw new Exception("No topic found");
+        model.addAttribute("specificTopic", topicServ.getSpecificTopic(name));
         return "topicdetails";
     }
 

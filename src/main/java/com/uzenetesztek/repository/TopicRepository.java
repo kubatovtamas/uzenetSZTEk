@@ -9,4 +9,6 @@ import java.util.List;
 public interface TopicRepository extends CrudRepository<Topic, Long> {
     @Override
     List<Topic> findAll();
+
+    Topic findFirstByName(String name);
 }

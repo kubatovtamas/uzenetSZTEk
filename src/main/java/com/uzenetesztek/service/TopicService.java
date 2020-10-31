@@ -10,4 +10,8 @@ import org.springframework.stereotype.Service;
 public class TopicService {
     @Autowired
     TopicRepository topicRepo;
+
+    public Object getSpecificTopic(String name) {
+        return topicRepo.findFirstByName(name);
+    }
 }
