@@ -42,5 +42,7 @@ public class User {
     @ManyToMany
     private List<Topic> followTopics;
 
-
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
 }
