@@ -1,6 +1,6 @@
 package com.uzenetesztek.service;
 
-import com.uzenetesztek.domain.Post;
+import com.uzenetesztek.Exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.repository.TopicRepository;
@@ -29,8 +29,14 @@ public class TopicService {
         this.userRepo = userRepo;
     }
 
-    public Topic getSpecificTopic(String name) {
-        return topicRepo.findFirstByName(name);
+    public Topic getSpecificTopic(String name) throws RecordNotFoundException {
+        Topic t = topicRepo.findFirstByName(name);
+
+        if (t == null) {
+            throw new RecordNotFoundException("No topic found with name: " + name);
+        } else {
+            return topicRepo.findFirstByName(name);
+        }
     }
 
     public List<Topic> getTopics() {

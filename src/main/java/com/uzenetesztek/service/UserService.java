@@ -1,5 +1,6 @@
 package com.uzenetesztek.service;
 
+import com.uzenetesztek.Exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.repository.UserRepository;
 import lombok.Data;
@@ -18,8 +19,14 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public User getSpecificUser(String email){
-        return userRepo.findByEmail(email);
+    public User getSpecificUser(String email) throws RecordNotFoundException{
+        User u = userRepo.findByEmail(email);
+
+        if (u == null) {
+            throw new RecordNotFoundException("No user found with email: " + email);
+        } else {
+            return userRepo.findByEmail(email);
+        }
     }
 
 
