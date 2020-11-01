@@ -1,13 +1,9 @@
 package com.uzenetesztek.controller;
 
+import com.uzenetesztek.Exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
-import com.uzenetesztek.domain.testPOJO;
-import com.uzenetesztek.repository.TopicRepository;
-import com.uzenetesztek.repository.UserRepository;
-import com.uzenetesztek.repository.testPOJORepository;
-import com.uzenetesztek.repository.PostRepository;
 import com.uzenetesztek.service.PostService;
 import com.uzenetesztek.service.TopicService;
 import com.uzenetesztek.service.UserService;
@@ -17,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -76,15 +70,13 @@ public class HomeController {
     }
 
     @RequestMapping("/topics/{name}")
-    public String searchForTopic(@PathVariable(value="name") String name, Model model) throws Exception{
+    public String searchForTopic(@PathVariable(value="name") String name, Model model) throws RecordNotFoundException {
         model.addAttribute("specificTopic", topicServ.getSpecificTopic(name));
         return "topicdetails";
     }
 
     @RequestMapping("/user/{email}")
-    public String searchForUser(@PathVariable(value="email") String email, Model model) throws Exception{
-        if(email == null)
-            throw new Exception("No user found");
+    public String searchForUser(@PathVariable(value="email") String email, Model model) throws RecordNotFoundException{
         model.addAttribute("user", userServ.getSpecificUser(email));
         return "user";
     }
