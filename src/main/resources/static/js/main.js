@@ -36,11 +36,11 @@
 
     function register(){
         x.style.left = "-400px";
-        y.style.left = '430px'
+        y.style.left = '430px';
     }
     function login(){
         x.style.left = "80px";
-        y.style.left = '400px'
+        y.style.left = '400px';
     }
     function dropDown(){
         let droping =document.getElementById('drop');
