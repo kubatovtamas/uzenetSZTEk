@@ -54,16 +54,17 @@
             <!-- Follow Button -->
             <button><img border="0" width="40px" height="40px" src="../static/images/follow.png" th:src="@{../images/follow.png}" class="flex absolute mt-8"></button>
             <section class="bg-current hat ml-16 rounded-2xl relative">
-                <!-- upvote button/counter -->
-                <div class="flex right-0 absolute mr-4 mt-2">
-                    <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
-                </div>
-                <br>
-                <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
-                <!--        For Each Post In Topic                -->
+                
  
                <article th:each="post : ${topic.getPosts()}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+               <!-- upvote button/counter -->
+               <div class="flex right-0 absolute mr-4 mt-2">
+                <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
+            </div>
+            <br>
+            <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
                 <header class="flex">
+                   
                             <div class="flex flex-row inline-block text-xl">   
                                 <img th:src="${post.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="40" height="40" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord">
                                 <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
@@ -74,7 +75,7 @@
                             <p class="flex-row-reverse flex text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
                      </footer>
                 </article>
-            </section>
+            </section> 
 
 
         </article>
