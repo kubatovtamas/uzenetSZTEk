@@ -1,7 +1,7 @@
 package com.uzenetesztek.domain;
 
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity         // for hibernate
-@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
+//@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
+@Getter @Setter @ToString @RequiredArgsConstructor
 public class Post {
     @GeneratedValue
     @Id                 // primary key
@@ -33,4 +34,7 @@ public class Post {
 
     @OneToMany(mappedBy = "starterPost")          // each post can have many replies
     private Set<Post> replyPosts;
+
+    @ManyToMany
+    private Set<Post> userLikes;
 }

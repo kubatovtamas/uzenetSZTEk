@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity         // for hibernate
-@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
+//@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
+@Getter @Setter @ToString @RequiredArgsConstructor
 public class User {
     @GeneratedValue
     @Id         // primary key
@@ -45,7 +46,7 @@ public class User {
     private Set<Topic> followTopics;
 
     // Posts Liked by user
-    @ManyToMany
+    @ManyToMany(mappedBy = "userLikes")
     private Set<Post> likedPosts;       // only one like per post per user
 
     public String getFullName(){
