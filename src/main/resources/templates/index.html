@@ -72,12 +72,18 @@
                 </div>
             </header>
 
-            <section class="bg-current hat ml-10 rounded-2xl">
+            <section class="bg-current hat ml-10 rounded-2xl relative">
+                <!-- upvote button/counter -->
+                <div class="flex right-0 absolute mr-4 mt-2">
+                    <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
+                </div>
+                <br>
+                <div class="text-sm flex absolute right-0 mr-3">counter</div>
                 <!--        For Each Post In Topic                -->
                 <article th:each="post : ${topic.posts}" class="bord my-3 px-3 mt-5 border-b-4 border-blue-800 rounded-2xl hat">
-                    <header class="flex space-x-24">
-                        <div class="flex flex-row inline-block text-xl absolute">      <!--Poster First Name-->
-                            <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 " th:text="${post.getUser().getFullName()}">Name</p></a>
+                    <header class="flex">
+                        <div class="flex text-xl absolute">      <!--Poster First Name-->
+                            <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="" th:text="${post.getUser().getFullName()}">Name</p></a>
                         </div>
                     </header>
                     <p th:text="${post.getTextContent()}" class="mt-8">LOREM IPSUM</p>   <!--Text Content-->
