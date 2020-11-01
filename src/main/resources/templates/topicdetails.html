@@ -37,7 +37,7 @@
 
 <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
     <div class="text-gray-500 text-2xl">
-        <a href="\"><img src="../static/images/arrowOne.png" width="50" height="50" alt="back" class="float-right"></a> <!-- Back button -->
+        <a href="/"><img src="../static/images/arrowOne.png" width="50" height="50" alt="back" class="float-right"></a> <!-- Back button -->
 
         <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord px-3 bord2 mt-5">
             <header class="flex relative">
@@ -60,24 +60,27 @@
                 <br>
                 <div class="text-sm flex absolute right-0 mr-2 mt-1 szov">counter</div>
                 <!--        For Each Post In Topic                -->
-                <article th:each="post : ${topic.posts}" class="bord px-3 border-b-4 border-blue-800 rounded-2xl hat">
-                    <header class="flex relative">
-                        <div class="flex flex-row inline-block text-xl absolute">      <!--Poster First Name-->
-                            <p class="pr-3 " th:text="${post.getUser().getFullName()}">Name</p>
-                        </div>
-                    </header>
-                    <p th:text="${post.getTextContent()}" class="mt-8">LOREM IPSUM</p>   <!--Text Content-->
-                    <footer> <!--Timestamp-->
-                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
-                    </footer>
-                </article>
-            </section>
+                <div class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+                    <article th:each="post : ${topic.posts}" class=" flex"> 
+                     <header class="flex">
+                             <div class="flex text-xl absolute top-0 mt-2">   
+                                 <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="40" height="40" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord">
+                                 <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
+                             </div>
+                         </header>
+                         <p th:text="${post.getTextContent()}" >LOREM IPSUM</p>  
+                        <footer class="flex absolute right-0 bottom-0 mb-1 mr-1"> 
+                             <p class=" flex text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
+                         </footer>
+                     </article>
+                 </section>
+     
+     
+             </article>
+         </div>
 
-
-        </article>
-
-        <div>
-            <input class="bg-current hat border-t-0 border-4 border-gray-400 bg-transparent rounded-b-2xl rounded-l-xl rounded-r-xl py-5 px-10 mt-10 bord2 szov" type="text" placeholder="Posting a post">
+        <div class="flex mx-auto">
+            <input class="flex mx-auto border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 px-24 py-3 bg-current text-2xl text-center bord2  szov" type="text" placeholder="Posting a post">
         </div>
     </div>
 </div>

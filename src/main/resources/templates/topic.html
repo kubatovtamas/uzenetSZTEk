@@ -61,21 +61,24 @@
                 <br>
                 <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
                 <!--        For Each Post In Topic                -->
-                <article th:each="post : ${topic.posts}" class="bord px-3 border-b-4 border-blue-800 rounded-2xl hat">
-                    <header class="flex relative">
-                        <div class="flex text-xl absolute">      <!--Poster First Name-->
-                            <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3" th:text="${post.getUser().getFullName()}">Name</p></a>
+            <div class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+               <article th:each="post : ${topic.posts}" class=" flex"> 
+                <header class="flex">
+                        <div class="flex text-xl absolute top-0 mt-2">   
+                            <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="40" height="40" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord">
+                            <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
                         </div>
                     </header>
-                    <p th:text="${post.getTextContent()}" class="mt-8">LOREM IPSUM</p>   <!--Text Content-->
-                    <footer> <!--Timestamp-->
-                        <p class=" flex flex-row-reverse text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
+                    <p th:text="${post.getTextContent()}" >LOREM IPSUM</p>  
+                   <footer class="flex absolute right-0 bottom-0 mb-1 mr-1"> 
+                        <p class=" flex text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
                     </footer>
                 </article>
             </section>
 
 
         </article>
+    </div>
     </div>
 </div>      <!--main div's end-->
 
