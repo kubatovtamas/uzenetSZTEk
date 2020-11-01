@@ -74,20 +74,23 @@ public class HomeController {
     }
 
     @Autowired
-    PostService postServ;
+    private PostService postServ;
 
     @Autowired
-    UserService userServ;
+    private UserService userServ;
 
     @Autowired
-    TopicService topicServ;
+    private TopicService topicServ;
     
     private List<Post> getPosts() {
         return postServ.getPostRepo().findAll();
     }
 
+//    private List<Topic> getTopics() {
+//        return topicServ.getTopicRepo().findAll();
+//    }
     private List<Topic> getTopics() {
-        return topicServ.getTopicRepo().findAll();
+        return topicServ.getTopics();
     }
 
     private List<User> getUsers() {

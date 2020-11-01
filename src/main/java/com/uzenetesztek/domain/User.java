@@ -3,7 +3,6 @@ package com.uzenetesztek.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +10,7 @@ import java.util.Set;
 @Entity         // for hibernate
 //@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
 @Getter @Setter @ToString @RequiredArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 public class User {
     @GeneratedValue
     @Id         // primary key
@@ -19,9 +19,12 @@ public class User {
     private String lastName;
     private Date dateOfBirth; // date of birth
     private Date lastLogin;
+    @NonNull
     @Column(unique=true)        // only one user per username
     private String email;
+    @NonNull
     private String password;
+    @NonNull
     private boolean isAdmin;
     @Column(columnDefinition = "TEXT")
     private String profilePicture;
