@@ -14,7 +14,7 @@
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
         <label for="Search"></label>
-        <input id="Search" class="float-right my-4 mx-2" type="text" placeholder="Search...">
+        <input id="Search" class="float-right my-4 mx-2 bg-teal-800 hat" type="text" placeholder="Search...">
     </div>
 </header>
 
@@ -36,7 +36,26 @@
 </div>
 
 <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
-    <input class="bg-current text-center text-2xl szov hat" type="text" placeholder="Posting...">
+    <div class="w-11/12">
+        <div class="flex flex-row justify-center">
+            <button id="dropDown" onclick="dropDown()" class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 p-2" >Posting...</button>
+        </div>
+        <div id="drop" style="display: none;" class="text-gray-500">
+            <div class=" pt-4 flex flex-row justify-center">
+                <label for="topicTitle"></label>
+                <input id="topicTitle" type="text" class="border-2 border-blue-800 rounded-3xl px-1 bg-current text-center text-2xl w-9/12 szov hat" placeholder="Topic's title">
+            </div>
+            <div class="pt-4 pb-4 flex flex-row justify-center">
+                <label for="mainContent"></label>
+                <textarea id="mainContent" name="textarea" rows="3" class=" border-2 border-blue-800 rounded-3xl px-1 bg-current text-2xl szov hat w-9/12" placeholder="Posting"></textarea>
+            </div>
+            <div class="mx-40">
+                <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2">Submit</button>
+                <input type="file" id="file" style="display: none;" placeholder="File upload">
+                <label for="file" class="bg-transparent border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-left p-2">Choose a file</label>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-5 bord"> <!--main div's start-->
