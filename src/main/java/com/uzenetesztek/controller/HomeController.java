@@ -86,8 +86,11 @@ public class HomeController {
         return postServ.getPostRepo().findAll();
     }
 
+//    private List<Topic> getTopics() {
+//        return topicServ.getTopicRepo().findAll();
+//    }
     private List<Topic> getTopics() {
-        return topicServ.getTopicRepo().findAll();
+        return topicServ.getTopics();
     }
 
     private List<User> getUsers() {

@@ -11,7 +11,7 @@ import java.util.Optional;
 @Data
 @Service
 public class UserService {
-    UserRepository userRepo;
+    private UserRepository userRepo;
 
     @Autowired
     public void setUserRepo(UserRepository userRepo) {
@@ -21,5 +21,12 @@ public class UserService {
     public User getSpecificUser(String email){
         return userRepo.findByEmail(email);
     }
+
+
+    // This is how registration will look like
+//    public void init() {
+//        User user = new User("ijustwantto@register", "thisismypassword", false);
+//        userRepo.save(user);
+//    }
 }
 
