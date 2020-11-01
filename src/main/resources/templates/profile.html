@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}">
+    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="@{css/whitedark.css}">
+    <meta charset="UTF-8">
+    <title>üzeneteSZTEk</title>
+
+</head>
+<body class="bg-gray-800">
+<header>
+    <div>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
+        <label for="Search"></label>
+        <input id="Search" class="float-right my-4 mx-2 bg-teal-800 hat" type="text" placeholder="Search...">
+    </div>
+</header>
+
+<div>
+    <div class=" bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord szov">
+        <a href="/" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Main</a>
+        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov">Profile</a>
+        <a href="topic" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Topic</a>
+    </div>
+</div>
+
+<div class="flex flex-row-reverse">
+    <button id="toggle-white-mode" class="absolute"></button>
+
+    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current hat label hat bord">
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{images/darkmode.png}"></i>
+        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{images/whitemode.png}"></i> <!--white/dark theme button-->
+    </label>
+</div>
+
+<div class="text-gray-500 szov">
+    <div class="ml-24 w-4/12 float-left">
+        <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
+            <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
+            <div>
+                <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="@{images/profpic.jpg}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
+            </div>
+            <div id="user_Name" class="text-gray-500 text-center py-2 szov">     <!--User's name-->
+                Name
+            </div>
+            <div id="Interests" class="text-gray-500 text-center py-2 szov">     <!--Something of the User-->
+                Interests
+            </div>
+            <div id="Details" class="text-gray-500 text-center py-2 szov">       <!--Details(birth date, univercity)-->
+                Details
+            </div>
+
+
+
+        </div>
+
+        <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">      <!--Followed topics by the user-->
+            <div class="py-2">
+                You are following these topics:
+            </div>
+            <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl bord">
+                <a href="">Topic's name as link</a>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
+        <div class="flex flex-row justify-center mx-10 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
+            <!--   <input class="bg-current text-center text-2xl szov hat" type="text" placeholder="Posting..."> -->
+            <div class="w-11/12">
+                <div class="flex flex-row justify-center">
+                    <button id="dropDown" onclick="dropDown()" class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 p-2" >Posting...</button>
+                </div>
+                <div id="drop" style="display: none;" class="text-gray-500">
+                    <div class=" pt-4 flex flex-row justify-center">
+                        <label for="topicTitle"></label>
+                        <input id="topicTitle" type="text" class="border-2 border-blue-800 rounded-3xl px-1 bg-current text-center text-2xl w-9/12 szov hat" placeholder="Topic's title">
+                    </div>
+                    <div class="pt-4 pb-4 flex flex-row justify-center">
+                        <label for="mainContent"></label>
+                        <textarea id="mainContent" name="textarea" rows="3" class=" border-2 border-blue-800 rounded-3xl px-1 bg-current text-2xl szov hat w-9/12" placeholder="Posting"></textarea>
+                    </div>
+                    <div class="mx-20">
+                        <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2">Submit</button>
+                        <input type="file" id="file" style="display: none;" placeholder="File upload">
+                        <label for="file" class="bg-transparent border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-left p-2">Choose a file</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center bord">      <!--Post's from the user-->
+            Something that the user posted..
+        </div>
+    </div>
+</div>
+
+<script>
+    function posting(x) {
+        x.width = 400
+        x.height = 400
+    }
+
+
+</script>
+
+<script src="../static/js/main.js" th:src="@{js/main.js}"></script>
+
+</body>
+</html>
