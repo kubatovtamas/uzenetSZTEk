@@ -17,6 +17,7 @@ public class User {
     private String lastName;
     private Date dateOfBirth; // date of birth
     private Date lastLogin;
+    @Column(unique=true)        // only one user per username
     private String email;
     private String password;
     private boolean isAdmin;

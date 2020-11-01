@@ -3,7 +3,9 @@ package com.uzenetesztek.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity         // for hibernate
 @Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
@@ -12,7 +14,9 @@ public class Topic {
     @GeneratedValue
     @Id         // primary key
     private Long id;
+    @Column(unique=true)
     private String name;
+    private Date timestamp;
 
     // One Topic can have more than 1 post, but a post has just one parent topic
     @OneToMany(mappedBy = "parentTopic")
@@ -24,5 +28,5 @@ public class Topic {
 
     // User - Topics follows
     @ManyToMany(mappedBy = "followTopics")
-    private List<User> followers;
+    private Set<User> followers;            //  unique followers per topic
 }
