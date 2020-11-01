@@ -6,13 +6,14 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity         // for hibernate
 @Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
 public class Post {
     @GeneratedValue
     @Id                 // primary key
-    private Long postid;
+    private Long id;
     @Column(columnDefinition = "TEXT")
     private String textContent;
     @Column(columnDefinition = "TEXT")
@@ -31,5 +32,5 @@ public class Post {
     private Post starterPost;
 
     @OneToMany(mappedBy = "starterPost")          // each post can have many replies
-    private List<Post> replyPosts;
+    private Set<Post> replyPosts;
 }

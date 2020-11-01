@@ -20,7 +20,7 @@ public class Topic {
 
     // One Topic can have more than 1 post, but a post has just one parent topic
     @OneToMany(mappedBy = "parentTopic")
-    private List<Post> posts;
+    private Set<Post> posts;
 
     // One user can make many topics, but a topic is made by one user
     @ManyToOne
@@ -29,4 +29,5 @@ public class Topic {
     // User - Topics follows
     @ManyToMany(mappedBy = "followTopics")
     private Set<User> followers;            //  unique followers per topic
+
 }

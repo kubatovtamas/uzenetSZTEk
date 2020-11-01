@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity         // for hibernate
 @Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
@@ -27,21 +28,25 @@ public class User {
 
     // User Posts
     @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Post.user object's id
-    private List<Post> posts;
+    private Set<Post> posts;
 
     // User Topics
     @OneToMany(mappedBy = "user")          // one user can have many topics, mapped by Topic.user object's id
-    private List<Topic> topics;
+    private Set<Topic> topics;             // each topic is unique in this list
 
     // User User
     @ManyToMany
     private List<User> follows;
     @ManyToMany(mappedBy = "follows")      // user can follow other people and it's true backwards as well
-    private List<User> followees;
+    private Set<User> followees;            // can't follow the same person twice
 
     // User Topics
     @ManyToMany
-    private List<Topic> followTopics;
+    private Set<Topic> followTopics;
+
+    // Posts Liked by user
+    @ManyToMany
+    private Set<Post> likedPosts;       // only one like per post per user
 
     public String getFullName(){
         return firstName + " " + lastName;
