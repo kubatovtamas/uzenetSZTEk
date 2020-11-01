@@ -44,11 +44,11 @@
             <header class="flex relative">
                 <div class="flex text-2xl relative">      <!--Poster's Name-->
                     <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">
-                    <p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">By Poster's Name</p>
+                    <a th:href="@{/user/{email}(email=${topic.getUser().getEmail()})}" href="#"><p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">By Poster's Name</p></a>
                 </div>
 
                 <div class="text-2xl container text-center absolute">      <!--Topic's name-->
-                    <b><a href="topicdetails.html" th:text="${topic.getName()}">Notified topic's name</a></b>
+                    <b><a th:href="@{/topics/{name}(name=${topic.getName()})}" href="topicdetails.html" th:text="${topic.getName()}">Notified topic's name</a></b>
                 </div>
             </header>
             <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="flex absolute mt-10 ml-1"></button>
@@ -58,7 +58,7 @@
                 <article th:each="post : ${topic.posts}" class="bord my-3 px-3 border-b-4 border-blue-800 rounded-2xl hat">
                     <header class="flex space-x-24">
                         <div class="flex flex-row inline-block text-xl absolute">      <!--Poster First Name-->
-                            <p class="pr-3 " th:text="${post.getUser().getFullName()}">Name</p>
+                            <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 " th:text="${post.getUser().getFullName()}">Name</p></a>
                         </div>
                     </header>
                     <p th:text="${post.getTextContent()}" class="mt-8">LOREM IPSUM</p>   <!--Text Content-->
