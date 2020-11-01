@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 @Data
 @Service
 public class PostService {
-    @Autowired
     PostRepository postRepo;
+
+    @Autowired
+    public void setPostRepo(PostRepository postRepo) {
+        this.postRepo = postRepo;
+    }
 }

@@ -11,8 +11,12 @@ import java.util.Optional;
 @Data
 @Service
 public class UserService {
-    @Autowired
     UserRepository userRepo;
+
+    @Autowired
+    public void setUserRepo(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
 
     public User getSpecificUser(String email){
         return userRepo.findByEmail(email);
