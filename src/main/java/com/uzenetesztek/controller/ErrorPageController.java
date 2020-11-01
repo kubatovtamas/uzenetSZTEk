@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,10 +43,20 @@ public class ErrorPageController implements ErrorController {
         ServletWebRequest servletWebRequest = new ServletWebRequest(request); // get the attributes of the request
         Map<String, Object> error = this.errorAttributes.getErrorAttributes(servletWebRequest, true); // get only the attributes concerning the error
 
-        model.addAttribute("error", error.get("error")); // add attributes to the model
-        model.addAttribute("message", error.get("message"));
-        model.addAttribute("path", error.get("path"));
+        // add attributes to the model
         model.addAttribute("status", error.get("status"));
+        model.addAttribute("error", error.get("error"));
+
+        String message;
+        if (error.get("status").toString().equals("404")) { // if status code == 404 display specific error msg to user
+            message = "Not found: " + error.get("path");
+        } else {
+            message = error.get("message").toString();
+        }
+
+        model.addAttribute("message", message);
+        model.addAttribute("path", error.get("path"));
+
         model.addAttribute("timestamp", error.get("timestamp"));
 
         //reworking invalid urls and specifying the appropriate format
