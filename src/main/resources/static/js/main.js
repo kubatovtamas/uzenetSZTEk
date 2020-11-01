@@ -42,3 +42,16 @@
         x.style.left = "80px";
         y.style.left = '400px'
     }
+    function dropDown(){
+        let droping =document.getElementById('drop');
+        let btn = document.getElementById("dropDown")
+        if (droping.style.display === "none"){
+            droping.style.display = "block";
+        }else{
+            droping.style.display = "none";
+        }
+    }
+    function autoGrow(element) {
+        element.style.height = 10;
+        element.style.height = (element.scrollHeight + "px");
+    }

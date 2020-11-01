@@ -14,7 +14,7 @@
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
         <label for="Search"></label>
-        <input id="Search" class="float-right my-4 mx-2" type="text" placeholder="Search...">
+        <input id="Search" class="float-right my-4 mx-2 bg-teal-800 hat" type="text" placeholder="Search...">
     </div>
 </header>
 
@@ -35,10 +35,12 @@
     </label>
 </div>
 
+
+
 <div class="text-gray-500 szov">
 <div class="ml-24 w-4/12 float-left">
 <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
-    <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
+    <!--Uploading photo-->
     <div>
         <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="${user.profilePicture}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
     </div>
@@ -56,7 +58,7 @@
 
 </div>
 
-    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord">      <!--Followed topics by the user-->
+    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">      <!--Followed topics by the user-->
         <div class="py-2">
             You are following these topics:
         </div>
