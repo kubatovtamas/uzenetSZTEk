@@ -55,7 +55,7 @@
             <section class="bg-current hat ml-16 rounded-2xl relative">
                 
                 <!--        For Each Post In Topic                -->
-                    <article th:each="post : ${topic.getPosts()}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+                    <article th:each="post : ${specificTopic.getPosts()}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
                         <!-- upvote button/counter -->
                         <div class="flex right-0 absolute mr-4 mt-2">
                          <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
