@@ -24,6 +24,31 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    @Autowired
+    PostService postServ;
+
+    @Autowired
+    UserService userServ;
+
+    @Autowired
+    TopicService topicServ;
+
+    private List<Post> getPosts() {
+        return postServ.getPostRepo().findAll();
+    }
+
+    private List<Topic> getTopics() {
+        return topicServ.getTopicRepo().findAll();
+    }
+
+    private List<User> getUsers() {
+        return userServ.getUserRepo().findAll();
+    }
+
+
+
+    /*          Routing          */
+
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("posts", getPosts());
@@ -50,17 +75,8 @@ public class HomeController {
         return "topic";
     }
 
-    /*@RequestMapping("/topicdetails")
-    public String searchForTopic(Model model) {
-        model.addAttribute("posts", getPosts());
-        model.addAttribute("topics", getTopics());
-        model.addAttribute("users", getUsers());
-        return "topicdetails";
-    }*/
     @RequestMapping("/topics/{name}")
     public String searchForTopic(@PathVariable(value="name") String name, Model model) throws Exception{
-        if(name == null)
-            throw new Exception("No topic found");
         model.addAttribute("specificTopic", topicServ.getSpecificTopic(name));
         return "topicdetails";
     }
@@ -73,26 +89,6 @@ public class HomeController {
         return "user";
     }
 
-    @Autowired
-    PostService postServ;
-
-    @Autowired
-    UserService userServ;
-
-    @Autowired
-    TopicService topicServ;
-    
-    private List<Post> getPosts() {
-        return postServ.getPostRepo().findAll();
-    }
-
-    private List<Topic> getTopics() {
-        return topicServ.getTopicRepo().findAll();
-    }
-
-    private List<User> getUsers() {
-        return userServ.getUserRepo().findAll();
-    }
 }
 
 

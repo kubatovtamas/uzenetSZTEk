@@ -1,6 +1,8 @@
 package com.uzenetesztek.controller;
 
 import antlr.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -23,9 +25,16 @@ public class ErrorPageController implements ErrorController {
 
     private ErrorAttributes errorAttributes;
 
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     public void setErrorAttributes(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
+    }
+
+    @Override
+    public String getErrorPath() {
+        return ERROR_PATH;
     }
 
     @RequestMapping(ERROR_PATH)
@@ -64,20 +73,12 @@ public class ErrorPageController implements ErrorController {
         }
         model.addAllAttributes(thymeleafE);
 
-
-//        if (error.get("status") == "404") {
-//            return notFound(model, request);  // this is how to handle specific error codes for different error pages
-//        }
+        LOG.error(error.get("timestamp").toString());
+        LOG.error(error.get("status").toString());
+        LOG.error(error.get("error").toString());
+        LOG.error(error.get("message").toString());
+        LOG.error(error.get("path").toString());
 
         return "error";
-    }
-
-//    public String notFound(Model model, HttpServletRequest request) {
-//        return "404";  // this redirects to the 404.html page
-//    }
-
-    @Override
-    public String getErrorPath() {
-        return ERROR_PATH;
     }
 }
