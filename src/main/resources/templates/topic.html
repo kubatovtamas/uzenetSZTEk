@@ -42,14 +42,15 @@
     <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-5 bord szov text-gray-500">
         <article th:each="topic : ${topics}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
             <header class="flex relative">
+                <div class="text-2xl container text-center absolute">      <!--Topic's name-->
+                    <b><a th:href="@{/topics/{name}(name=${topic.getName()})}" href="topicdetails.html" th:text="${topic.getName()}">Notified topic's name</a></b>
+                </div>
                 <div class="flex text-2xl relative">      <!--Poster's Name-->
                     <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">
                     <a th:href="@{/user/{email}(email=${topic.getUser().getEmail()})}" href="#"><p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">By Poster's Name</p></a>
                 </div>
 
-                <div class="text-2xl container text-center absolute">      <!--Topic's name-->
-                    <b><a th:href="@{/topics/{name}(name=${topic.getName()})}" href="topicdetails.html" th:text="${topic.getName()}">Notified topic's name</a></b>
-                </div>
+
             </header>
             <!-- Follow Button -->
             <button><img border="0" width="40px" height="40px" src="../static/images/follow.png" th:src="@{../images/follow.png}" class="flex absolute mt-8"></button>

@@ -25,21 +25,10 @@
     </label>
 </div>
 
-<div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
-    <p th:text="${error}" class="bg-current text-center text-2xl text-gray-500 szov hat">Oops...</p> <!--Oops text--> <!--Oops text-->
-</div>
-
 <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-2 bord"> <!--main div's start-->
     <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl szov bord2">
-        <article>
-            <header class="flex flex-row justify-center mb-5 pb-5">
-                <p th:text="${message}">message</p>
-            </header>
-            <section class="flex flex-row justify-center mb-5 pb-5">
-                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
-            </section>
-            <!-- ErrorCode status -->
-            <section class="flex flex-row justify-center mb-5 pb-5 relative">
+        <article class="relative">
+            <header class="flex flex-row justify-center mb-5 pb-5 relative">
                 <p><img th:src="${errorImage}" src="../static/images/error_img.png"></p>
                 <div><div th:text="${status}" style="justify-content: center;
                     align-items: center;
@@ -50,16 +39,28 @@
                     right: 0;
                     bottom: 0;
                     font-size: 2.3em;">
-                        errorCode
+                    errorCode
                 </div></div>
+            </header>
+            <section class="flex flex-row justify-center mb-5 pb-5">
+                <p th:text="${message}">message</p>
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
+            </section>
+            <!-- ErrorCode status -->
+            <section class="flex flex-row justify-center mb-5 pb-5 relative">
             </section>
 
-            <footer class="flex flex-row justify-center"> <!--Back to Main Page href-->
-                <a href="/" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">Back to Main Page</a>
+            <footer class="flex flex-row right-0 mb-2 absolute"> <!--Back to Main Page href-->
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
             </footer>
         </article>
+
     </div>
 </div>
+<div class="flex inline-block justify-center  text-2xl text-gray-500">
+    <a href="/" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">Back to Main Page</a>
+</div>
+
 
 <script src="../static/js/main.js" th:src="${themeSwitch}"></script>
 
