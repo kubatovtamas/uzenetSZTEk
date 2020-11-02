@@ -27,6 +27,8 @@ public class Topic {
     private String name;
     @NonNull
     private Date timestamp;
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     // One Topic can have more than 1 post, but a post has just one parent topic
     @OneToMany(mappedBy = "parentTopic")
