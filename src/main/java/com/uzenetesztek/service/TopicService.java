@@ -38,6 +38,6 @@ public class TopicService {
 
     public List<Topic> getTopics() {
 
-        return topicRepo.findAll();
+        return topicRepo.findAllByOrderByNameAsc();
     }
 }

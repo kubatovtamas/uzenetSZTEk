@@ -55,7 +55,7 @@ public class HomeController {
 
     private List<Topic> getTopics() {
 
-        return topicServ.getTopicRepo().findAll();
+        return topicServ.getTopicRepo().findAllByOrderByNameAsc();
     }
 
     private Topic getTopicByName(String name) {

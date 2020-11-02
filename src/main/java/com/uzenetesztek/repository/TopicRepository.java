@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface TopicRepository extends CrudRepository<Topic, Long> {
-    @Override
-    List<Topic> findAll();
+    List<Topic> findAllByOrderByNameAsc();
 
     Topic findFirstByName(String name);
 }
