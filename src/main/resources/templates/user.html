@@ -21,7 +21,7 @@
 <div>
     <div class=" bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord szov">
         <a href="/" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Main</a>
-        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov">Profile</a>
+        <a href="../profile" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
         <a href="../topic" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Topic</a>
     </div>
 </div>
@@ -79,32 +79,30 @@
 <!--        </div>-->
 <!--</div>-->
     <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
-        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord">
+      <!--  <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord"> -->
             <article th:each="post : ${usersPosts}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
                 <header class="flex relative">
-<!--                    <div class="flex text-2xl relative">      &lt;!&ndash;Poster's Name&ndash;&gt;-->
-<!--                        <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">-->
-<!--                        <a th:href="@{/user/{email}(email=${topic.getUser().getEmail()})}" href="#"><p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">By Poster's Name</p></a>-->
-<!--                    </div>-->
-
                     <div class="text-2xl container text-center absolute">      <!--Topic's name-->
                         <b><a th:href="@{/topics/{name}(name=${post.parentTopic.getName()})}" href="topicdetails.html" th:text="${post.parentTopic.getName()}">Notified topic's name</a></b>
                     </div>
+                    <div class="flex relative text-xl">
+                        <img th:src="${post.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">
+                        <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-4 ml-1 text-xl" th:text="${post.getUser().getFullName()}">Name</p></a>
+                    </div>
+
                 </header>
+                <button><img border="0" width="40px" height="40px" src="../static/images/follow.png" th:src="@{../images/follow.png}" class="flex mt-8 absolute"></button>
+
                 <!-- Follow Button -->
-                <button><img border="0" width="40px" height="40px" src="../static/images/follow.png" th:src="@{../images/follow.png}" class="flex absolute mt-8"></button>
                 <section class="bg-current hat ml-16 rounded-2xl relative">
-
-
-                    <article th:each="post : ${post.parentTopic.getPosts()}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+                    <article th:each="post : ${post.parentTopic.getPosts()}" class="bord px-3 py-4 border-b-4 border-blue-800 rounded-2xl hat ">
                         <!-- upvote button/counter -->
                         <div class="flex right-0 absolute mr-4 mt-2">
-                            <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
+                            <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{../images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
                         </div>
                         <br>
                         <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
                         <header class="flex">
-
                             <div class="flex flex-row inline-block text-xl">
                                 <img th:src="${post.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="40" height="40" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord">
                                 <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
@@ -115,12 +113,12 @@
                             <p class="flex-row-reverse flex text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
                         </footer>
                     </article>
-                </section>
-            </article>
-        </div>
-        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center bord">
 
-        </div>
+                </section>
+
+
+
+            </article>
     </div>
 </div>
 
