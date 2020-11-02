@@ -22,11 +22,11 @@ public class PostService {
         this.postRepo = postRepo;
     }
 
-    public List<Post> getPostsByUser(User user) throws RecordNotFoundException {
-        List<Post> post = postRepo.findAllByUser(user);
+    public List<Post> getPostsByUserOrdered(User user) throws RecordNotFoundException {
+        List<Post> post = postRepo.findAllByUserOrderByTimestampAsc(user);
 
-        if (post == null) {
-            throw new RecordNotFoundException("The user has no posts");
+        if (post == null) { // || post.size() == 0 -> causes 500 internal server error in thymeleaf
+            throw new RecordNotFoundException("The user has no posts"); // never happens
         } else {
             return post;
         }

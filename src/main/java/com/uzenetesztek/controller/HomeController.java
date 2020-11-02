@@ -45,23 +45,23 @@ public class HomeController {
 
     /*          Queries          */
 
+    /* Returns Post */
     private List<Post> getPosts() {
 
-        return postServ.getPostRepo().findAll();
+        return postServ.getPostRepo().findAllByOrderByTimestampDesc();
     }
 
     private List<Post> getPostsOrdered(Topic topic) {
         return postServ.getPostsOrdered(topic);
     }
 
-    private List<Post> getPostsByUser(User user) {
-
-        return postServ.getPostsByUser(user);
-    }
-
-
+    /* Returns Topic */
     private List<Topic> getTopicsOrdered() {
         return topicServ.getTopicsOrdered();
+    }
+
+    private List<Topic> getTopicsByUserOrdered(User user) {
+        return topicServ.getTopicsByUserOrdered(user);
     }
 
     private Topic getTopicByName(String name) {
@@ -69,15 +69,18 @@ public class HomeController {
         return topicServ.getTopicByName(name);
     }
 
+    /* Returns User */
     private List<User> getUsers() {
 
         return userServ.getUserRepo().findAll();
     }
 
     private User getUserByEmail(String email) {
+
         return userServ.getUserByEmail(email);
     }
 
+    /* Returns Map<Topic, Posts> */
     private Map<Topic, List<Post>> getTopicPostsOrdered() {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
         List<Topic> topics = topicServ.getTopicsOrdered();
@@ -86,6 +89,16 @@ public class HomeController {
             ordered.put(t, posts);
         }
        return ordered;
+    }
+
+    private Map<Topic, List<Post>> getTopicPostsOrderedByUser(User user) {
+        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
+        List<Topic> topics = topicServ.getTopicsByUserOrdered(user);
+        for ( Topic t : topics) {
+            List<Post> posts = postServ.getPostsOrdered(t);
+            ordered.put(t, posts);
+        }
+        return ordered;
     }
 
 
@@ -136,7 +149,8 @@ public class HomeController {
         User user = getUserByEmail(email);
 
         model.addAttribute("user", user);
-        model.addAttribute("usersPosts", getPostsByUser(user));
+        model.addAttribute("topics", getTopicsByUserOrdered(user));
+        model.addAttribute("topicsUserPostedIn", getTopicPostsOrderedByUser(user));
 
         return "user";
     }

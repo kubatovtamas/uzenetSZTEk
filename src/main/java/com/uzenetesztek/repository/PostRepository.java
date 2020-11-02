@@ -11,11 +11,11 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
-    @Override
-    List<Post> findAll();
+    List<Post> findAllByOrderByTimestampDesc();
 
     List<Post> findAllByUser(User u);
 
     List<Post> findAllByParentTopicOrderByTimestampAsc(Topic topic);
 
+    List<Post> findAllByUserOrderByTimestampAsc(User user);
 }

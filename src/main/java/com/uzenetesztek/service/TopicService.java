@@ -1,5 +1,6 @@
 package com.uzenetesztek.service;
 
+import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.repository.TopicRepository;
@@ -39,5 +40,10 @@ public class TopicService {
     public List<Topic> getTopicsOrdered() {
 
         return topicRepo.findAllByOrderByNameAsc();
+    }
+
+    public List<Topic> getTopicsByUserOrdered(User user) {
+
+        return topicRepo.findAllByUserOrderByTimestampAsc(user);
     }
 }
