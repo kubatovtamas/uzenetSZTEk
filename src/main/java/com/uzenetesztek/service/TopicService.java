@@ -1,16 +1,13 @@
 package com.uzenetesztek.service;
 
-import com.uzenetesztek.Exceptions.RecordNotFoundException;
+import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.Topic;
-import com.uzenetesztek.domain.User;
 import com.uzenetesztek.repository.TopicRepository;
 import com.uzenetesztek.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.Date;
 import java.util.List;
 
 @Data

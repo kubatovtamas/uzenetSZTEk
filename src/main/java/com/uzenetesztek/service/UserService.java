@@ -1,13 +1,14 @@
 package com.uzenetesztek.service;
 
-import com.uzenetesztek.Exceptions.RecordNotFoundException;
+import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import javax.annotation.PostConstruct;
+import java.util.Date;
 
 @Data
 @Service
@@ -30,10 +31,10 @@ public class UserService {
     }
 
 
-    // This is how registration will look like
-//    public void init() {
-//        User user = new User("ijustwantto@register", "thisismypassword", false);
-//        userRepo.save(user);
-//    }
+    @PostConstruct
+    public void init() {
+        User user = new User("test", "xd", false);
+        userRepo.save(user);
+    }
 }
 

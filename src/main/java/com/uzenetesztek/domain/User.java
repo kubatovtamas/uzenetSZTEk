@@ -7,10 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Entity         // for hibernate
-//@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
-@Getter @Setter @ToString @RequiredArgsConstructor
-@AllArgsConstructor @NoArgsConstructor
+@Entity
+@Getter @Setter @ToString @NoArgsConstructor @RequiredArgsConstructor @AllArgsConstructor
 public class User {
     @GeneratedValue
     @Id         // primary key

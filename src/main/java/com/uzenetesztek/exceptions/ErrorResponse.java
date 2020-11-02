@@ -1,4 +1,4 @@
-package com.uzenetesztek.Exceptions;
+package com.uzenetesztek.exceptions;
 
 import java.util.List;
 

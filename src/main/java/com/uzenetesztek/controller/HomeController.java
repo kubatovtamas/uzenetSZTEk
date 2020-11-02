@@ -1,9 +1,9 @@
 package com.uzenetesztek.controller;
 
-import com.uzenetesztek.Exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
+import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.service.PostService;
 import com.uzenetesztek.service.TopicService;
 import com.uzenetesztek.service.UserService;
@@ -18,14 +18,24 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @Autowired
-    PostService postServ;
 
+    private PostService postServ;
     @Autowired
-    UserService userServ;
+    public void setPostService(PostService postServ) {
+        this.postServ = postServ;
+    }
 
+    private UserService userServ;
     @Autowired
-    TopicService topicServ;
+    public void setUserService(UserService userServ) {
+        this.userServ = userServ;
+    }
+
+    private TopicService topicServ;
+    @Autowired
+    public void setTopicService(TopicService topicServ) {
+        this.topicServ = topicServ;
+    }
 
     private List<Post> getPosts() {
         return postServ.getPostRepo().findAll();
@@ -80,6 +90,7 @@ public class HomeController {
         model.addAttribute("user", userServ.getSpecificUser(email));
         return "user";
     }
+
 
 }
 

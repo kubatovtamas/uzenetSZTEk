@@ -1,8 +1,6 @@
-package com.uzenetesztek.Exceptions;
+package com.uzenetesztek.exceptions;
 
-import com.uzenetesztek.controller.ErrorPageController;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
