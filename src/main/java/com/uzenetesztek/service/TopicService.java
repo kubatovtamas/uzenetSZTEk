@@ -36,7 +36,7 @@ public class TopicService {
         }
     }
 
-    public List<Topic> getTopics() {
+    public List<Topic> getTopicsOrdered() {
 
         return topicRepo.findAllByOrderByNameAsc();
     }

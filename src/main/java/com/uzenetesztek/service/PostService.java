@@ -1,6 +1,7 @@
 package com.uzenetesztek.service;
 
 import com.uzenetesztek.domain.Post;
+import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.PostRepository;
@@ -31,9 +32,8 @@ public class PostService {
         }
     }
 
-    // Not in use
-    public List<Post> getPostsOrdered() throws RecordNotFoundException {
-        List<Post> post = postRepo.findByOrderByTimestampDesc();
+    public List<Post> getPostsOrdered(Topic topic) throws RecordNotFoundException {
+        List<Post> post = postRepo.findAllByParentTopicOrderByTimestampAsc(topic);
 
         if (post == null) {
             throw new RecordNotFoundException("The user has no posts");

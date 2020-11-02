@@ -1,11 +1,14 @@
 package com.uzenetesztek.domain;
 
+import com.uzenetesztek.controller.HomeController;
 import com.uzenetesztek.repository.PostRepository;
+import com.uzenetesztek.service.TopicService;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 
 import javax.persistence.*;
 import java.util.*;
@@ -37,11 +40,5 @@ public class Topic {
     // User - Topics follows
     @ManyToMany(mappedBy = "followTopics")
     private Set<User> followers;            //  unique followers per topic
-
-    public List<Post> getPosts() {
-        List<Post> postList = new ArrayList<Post>(posts);
-        postList.sort(Comparator.comparing(o -> o.getTimestamp()));
-        return postList;
-    }
 
 }

@@ -1,6 +1,7 @@
 package com.uzenetesztek.repository;
 
 import com.uzenetesztek.domain.Post;
+import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
@@ -13,5 +14,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     List<Post> findAllByUser(User u);
 
-    List<Post> findByOrderByTimestampDesc();
+    List<Post> findAllByParentTopicOrderByTimestampAsc(Topic topic);
+
 }

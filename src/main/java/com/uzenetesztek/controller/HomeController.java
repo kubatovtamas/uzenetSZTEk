@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -48,9 +50,8 @@ public class HomeController {
         return postServ.getPostRepo().findAll();
     }
 
-    private List<Post> getPostsOrdered() {
-
-        return postServ.getPostsOrdered();
+    private List<Post> getPostsOrdered(Topic topic) {
+        return postServ.getPostsOrdered(topic);
     }
 
     private List<Post> getPostsByUser(User user) {
@@ -58,9 +59,9 @@ public class HomeController {
         return postServ.getPostsByUser(user);
     }
 
-    private List<Topic> getTopics() {
 
-        return topicServ.getTopicRepo().findAllByOrderByNameAsc();
+    private List<Topic> getTopicsOrdered() {
+        return topicServ.getTopicsOrdered();
     }
 
     private Topic getTopicByName(String name) {
@@ -77,15 +78,25 @@ public class HomeController {
         return userServ.getUserByEmail(email);
     }
 
+    private Map<Topic, List<Post>> getTopicPostsOrdered() {
+        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
+        List<Topic> topics = topicServ.getTopicsOrdered();
+        for ( Topic t : topics) {
+            List<Post> posts = postServ.getPostsOrdered(t);
+            ordered.put(t, posts);
+        }
+       return ordered;
+    }
+
 
 
     /*          Routing          */
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("posts", getPosts());
-        model.addAttribute("topics", getTopics());
-        model.addAttribute("users", getUsers());
+        model.addAttribute("topics", getTopicsOrdered());
+        model.addAttribute("topicPosts", getTopicPostsOrdered());
+//        model.addAttribute("users", getUsers());
 
         return "index";
     }
@@ -104,16 +115,18 @@ public class HomeController {
 
     @RequestMapping("/topic")
     public String topic(Model model) {
-        model.addAttribute("posts", getPosts());
-        model.addAttribute("topics", getTopics());
-        model.addAttribute("users", getUsers());
+        model.addAttribute("topics", getTopicsOrdered());
+        model.addAttribute("topicPosts", getTopicPostsOrdered());
 
         return "topic";
     }
 
     @RequestMapping("/topics/{name}")
     public String searchForTopic(@PathVariable(value="name") String name, Model model) throws RecordNotFoundException {
-        model.addAttribute("specificTopic", getTopicByName(name));
+        Topic topic = getTopicByName(name);
+
+        model.addAttribute("specificTopic", topic);
+        model.addAttribute("posts", getPostsOrdered(topic));
 
         return "topicdetails";
     }
