@@ -1,14 +1,14 @@
 package com.uzenetesztek.service;
 
 import com.uzenetesztek.domain.Post;
-import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
+import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.PostRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.util.List;
 
 @Data
 @Service
@@ -17,14 +17,17 @@ public class PostService {
 
     @Autowired
     public void setPostRepo(PostRepository postRepo) {
+
         this.postRepo = postRepo;
     }
 
-    // basic idea of how internally created post function might work
-//    public void init() {
-//        User user = new User("ijustwantto@register", "thisismypassword", false);
-//        Topic topic = new Topic("New Topic", new Date(), user);
-//        Post post = new Post("I wrote a story today", new Date(), user, topic);
-//        postRepo.save(post);
-//    }
+    public List<Post> getPostsByUser(User user) throws RecordNotFoundException {
+        List<Post> post = postRepo.findAllByUser(user);
+
+        if (post == null) {
+            throw new RecordNotFoundException("The user has no posts");
+        } else {
+            return post;
+        }
+    }
 }

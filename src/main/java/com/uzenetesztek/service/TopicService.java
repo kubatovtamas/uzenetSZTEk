@@ -26,27 +26,18 @@ public class TopicService {
         this.userRepo = userRepo;
     }
 
-    public Topic getSpecificTopic(String name) throws RecordNotFoundException {
-        Topic t = topicRepo.findFirstByName(name);
+    public Topic getTopicByName(String name) throws RecordNotFoundException {
+        Topic topic = topicRepo.findFirstByName(name);
 
-        if (t == null) {
+        if (topic == null) {
             throw new RecordNotFoundException("No topic found with name: " + name);
         } else {
-            return topicRepo.findFirstByName(name);
+            return topic;
         }
     }
 
     public List<Topic> getTopics() {
+
         return topicRepo.findAll();
     }
-
-
-    // basic idea of how internally created topic function might work
-//    @PostConstruct // this right now is always called, how do I prevent that?
-//    public void init() {
-//        User user = new User( "ijustwantto@register", "thisismypassword", false);
-//        userRepo.save(user);
-//        Topic topic = new Topic("This is my topic", new Date(), user);
-//        topicRepo.save(topic);
-//    }
 }

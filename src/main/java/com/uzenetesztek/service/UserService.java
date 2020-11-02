@@ -20,16 +20,15 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public User getSpecificUser(String email) throws RecordNotFoundException{
-        User u = userRepo.findByEmail(email);
+    public User getUserByEmail(String email) throws RecordNotFoundException{
+        User user = userRepo.findByEmail(email);
 
-        if (u == null) {
+        if (user == null) {
             throw new RecordNotFoundException("No user found with email: " + email);
         } else {
-            return userRepo.findByEmail(email);
+            return user;
         }
     }
-
 
     @PostConstruct
     public void init() {
