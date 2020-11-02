@@ -37,13 +37,16 @@ public class TopicService {
         }
     }
 
-    public List<Topic> getTopicsOrdered() {
+    public List<Topic> getTopicsByUser(User user) {
+        return topicRepo.findAllByUser(user);
+    }
 
+
+    public List<Topic> getTopicsOrdered() {
         return topicRepo.findAllByOrderByNameAsc();
     }
 
     public List<Topic> getTopicsByUserOrdered(User user) {
-
         return topicRepo.findAllByUserOrderByTimestampAsc(user);
     }
 }
