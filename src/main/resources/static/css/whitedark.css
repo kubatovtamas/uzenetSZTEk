@@ -1,0 +1,71 @@
+
+
+.postername1{
+    left: 62%;
+}
+
+.postername{
+    left: 70%;
+}
+
+.formbox{
+    position: relative;
+    width: 380px;
+    height: 480px;
+    margin: 6% auto;
+    background-color: transparent;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#log{
+    left: 80px;
+}
+
+#reg{
+    left: 450px
+}
+
+body.white input::placeholder{
+    color: #e94e4e;
+}
+
+body.white p{
+    color: #e94e4e;
+}
+
+body.white .szov{
+    color: #e94e4e;
+}
+
+body.white .hat {
+    background-color: #e3986c;
+}
+
+body.white .bord{
+    border-color: #ab3e3e;
+}
+
+body.white .actual{
+    background-color: #802B2B;
+}
+
+body.white .bord2{
+    border-color: #e94e4e;
+}
+
+body {
+    transition: background 0.2s linear;
+}
+
+body.white{
+    background-color: #feebc8;
+}
+
+
+
+.ball{
+    transition: transform 0.2s linear;
+}
+
+
