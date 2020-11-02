@@ -37,9 +37,12 @@
 
 <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
     <div class="text-gray-500 text-2xl">
-        <a href="/"><img src="../static/images/arrowOne.png" th:src="@{../images/arrowOne.png}" width="50" height="50" alt="back" class="float-right"></a> <!-- Back button -->
 
-        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord px-3 bord2 mt-5">
+
+        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord bord2 mt-5">
+
+            <a href="/"><img src="../static/images/arrowOne.png" th:src="@{../images/arrowOne.png}" width="50" height="50" alt="back" class="float-right"></a> <!-- Back button -->
+            <div class="px-3">
             <header class="flex relative">
                 <div class="flex text-2xl relative">      <!--Poster's Name-->
                     <img th:src="${specificTopic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">
@@ -75,8 +78,8 @@
                               </footer>
                          </article>
                  </section>
-     
-     
+
+            </div>
              </article>
         <div class="flex">
             <input class="flex mx-auto border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 px-24 py-3 bg-current text-2xl text-center bord2 hat szov" type="text" placeholder="Posting a post">
