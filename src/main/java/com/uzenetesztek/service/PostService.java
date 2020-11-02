@@ -30,4 +30,15 @@ public class PostService {
             return post;
         }
     }
+
+    // Not in use
+    public List<Post> getPostsOrdered() throws RecordNotFoundException {
+        List<Post> post = postRepo.findByOrderByTimestampDesc();
+
+        if (post == null) {
+            throw new RecordNotFoundException("The user has no posts");
+        } else {
+            return post;
+        }
+    }
 }

@@ -12,4 +12,6 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     List<Post> findAll();
 
     List<Post> findAllByUser(User u);
+
+    List<Post> findByOrderByTimestampDesc();
 }

@@ -48,6 +48,11 @@ public class HomeController {
         return postServ.getPostRepo().findAll();
     }
 
+    private List<Post> getPostsOrdered() {
+
+        return postServ.getPostsOrdered();
+    }
+
     private List<Post> getPostsByUser(User user) {
 
         return postServ.getPostsByUser(user);
