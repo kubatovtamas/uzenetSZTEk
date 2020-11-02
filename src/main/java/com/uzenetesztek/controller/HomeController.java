@@ -60,7 +60,7 @@ public class HomeController {
         return topicServ.getTopicsOrdered();
     }
 
-    private List<Topic> getTopicsByUserOrdered(User user) {
+    private List<Topic> getTopicsOrdered(User user) {
         return topicServ.getTopicsByUserOrdered(user);
     }
 
@@ -91,9 +91,10 @@ public class HomeController {
        return ordered;
     }
 
-    private Map<Topic, List<Post>> getTopicPostsOrderedByUser(User user) {
+    private Map<Topic, List<Post>> getTopicPostsOrdered(User user) {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
-        List<Topic> topics = topicServ.getTopicsByUserOrdered(user);
+//        List<Topic> topics = topicServ.getTopicsByUserOrdered(user);
+        List<Topic> topics = topicServ.getTopicsByUser(user);
         for ( Topic t : topics) {
             List<Post> posts = postServ.getPostsOrdered(t);
             ordered.put(t, posts);
@@ -149,8 +150,8 @@ public class HomeController {
         User user = getUserByEmail(email);
 
         model.addAttribute("user", user);
-        model.addAttribute("topics", getTopicsByUserOrdered(user));
-        model.addAttribute("topicsUserPostedIn", getTopicPostsOrderedByUser(user));
+        model.addAttribute("topics", getTopicsOrdered(user));
+        model.addAttribute("topicsPosted", getTopicPostsOrdered(user));
 
         return "user";
     }

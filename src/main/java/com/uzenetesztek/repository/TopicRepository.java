@@ -16,5 +16,7 @@ public interface TopicRepository extends CrudRepository<Topic, Long> {
 
     Topic findFirstByName(String name);
 
+    List<Topic> findAllByUser(User user);
+
     List<Topic> findAllByUserOrderByTimestampAsc(User user);
 }
