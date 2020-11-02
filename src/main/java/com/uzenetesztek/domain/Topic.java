@@ -27,6 +27,7 @@ public class Topic {
     private String name;
     @NonNull
     private Date timestamp;
+    @NonNull
     @Column(columnDefinition = "TEXT")
     private String description;
 
