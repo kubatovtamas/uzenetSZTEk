@@ -142,7 +142,7 @@ public class HomeController {
         model.addAttribute("specificTopic", topic);
         model.addAttribute("posts", getPostsOrdered(topic));
 
-        return "topicdetails";
+        return "topic_details";
     }
 
     @RequestMapping("/user/{email}")

@@ -65,10 +65,10 @@ public class ErrorPageController implements ErrorController {
 
         Map<String, String> thymeleafE = new HashMap<>(); //contains html elements
         thymeleafE.put("cssPath","css/styles.css");
-        thymeleafE.put("whiteThemePath","css/whitedark.css");
+        thymeleafE.put("whiteThemePath","css/white_dark.css");
         thymeleafE.put("errorImage","images/error_img.png");
-        thymeleafE.put("darkMode","images/darkmode.png");
-        thymeleafE.put("whiteMode","images/whitemode.png");
+        thymeleafE.put("darkMode","images/dark_mode.png");
+        thymeleafE.put("whiteMode","images/white_mode.png");
         thymeleafE.put("themeSwitch","js/main.js");
 
         if(countSymbol > 1){ //If the url contains more than one "/"

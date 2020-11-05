@@ -3,8 +3,8 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="${cssPath}">
-    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="${whiteThemePath}">
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="${cssPath}">
+    <link href="../static/css/white_dark.css" rel="stylesheet" th:href="${whiteThemePath}">
     <meta charset="UTF-8">
     <title>üzeneteSZTEk</title>
 </head>
@@ -17,11 +17,14 @@
 </header>
 
 <div class="flex flex-row-reverse">
-    <button id="toggle-white-mode" class="absolute"></button>
+    <button class="absolute" id="toggle-white-mode"></button>
 
-    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="${darkMode}"></i>
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="${whiteMode}"></i> <!--white/dark theme button-->
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord"
+           for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="${darkMode}"
+                                               width="20"></i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="${whiteMode}"
+                                               width="20"></i> <!--white/dark theme button-->
     </label>
 </div>
 
@@ -29,8 +32,9 @@
     <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl szov bord2">
         <article class="relative">
             <header class="flex flex-row justify-center mb-5 pb-5 relative">
-                <p><img th:src="${errorImage}" src="../static/images/error_img.png"></p>
-                <div><div th:text="${status}" style="justify-content: center;
+                <p><img src="../static/images/error_img.png" th:src="${errorImage}"></p>
+                <div>
+                    <div style="justify-content: center;
                     align-items: center;
                     display: flex;
                     position: absolute;
@@ -38,9 +42,10 @@
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    font-size: 2.3em;">
-                    errorCode
-                </div></div>
+                    font-size: 2.3em;" th:text="${status}">
+                        errorCode
+                    </div>
+                </div>
             </header>
             <section class="flex flex-row justify-center mb-5 pb-5">
                 <p th:text="${message}">message</p>
@@ -54,16 +59,15 @@
                 <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
             </footer>
         </article>
-
     </div>
 </div>
+
 <div class="flex inline-block justify-center  text-2xl text-gray-500">
-    <a href="/" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">Back to Main Page</a>
+    <a class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord" href="/">Back to Main Page</a>
 </div>
 
 
 <script src="../static/js/main.js" th:src="${themeSwitch}"></script>
-
 
 
 </body>

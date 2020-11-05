@@ -3,8 +3,8 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}">
-    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="@{css/whitedark.css}">
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{css/styles.css}">
+    <link href="../static/css/white_dark.css" rel="stylesheet" th:href="@{css/white_dark.css}">
     <meta charset="UTF-8">
     <title>üzeneteSZTEk</title>
 </head>
@@ -14,114 +14,157 @@
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
         <label for="Search"></label>
-        <input id="Search" class="float-right my-4 mx-2 bg-teal-800 hat" type="text" placeholder="Search...">
+        <input class="float-right my-4 mx-2 bg-teal-800 hat" id="Search" placeholder="Search..." type="text">
     </div>
 </header>
-<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat" >
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat">
     <nav class="space-x-56">
-        <a href="/" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov">Main</a>
-        <a href="profile" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov">Profile</a>
-        <a href="topic" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov">Topic</a>
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+           href="/">Main</a>
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+           href="profile">Profile</a>
+        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+           href="topic">Topic</a>
     </nav> <!--menu buttons-->
 </div>
 
 <div class="flex flex-row-reverse">
-    <button id="toggle-white-mode" class="absolute"></button>
+    <button class="absolute" id="toggle-white-mode"></button>
 
-    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current switch space-x-1 px-1at  hat bord">
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png"></i>
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png"></i> <!--white/dark theme button-->
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current switch space-x-1 px-1at  hat bord"
+           for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" width="20"></i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" width="20"></i>
+        <!--white/dark theme button-->
     </label>
 </div>
 
 <div class="w-10/12 border-t-4 border-blue-800 rounded-3xl justify-center m-auto bord">
-<div class="w-8/12 justify-center m-auto ">
-<!--login and register buttons-->
-    <div class="py-4 flex">
-        <div class="flex flex-row m-auto">
-            <button onclick="login()" class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord"> <!--Login button-->
-                Login
-            </button>
+    <div class="w-8/12 justify-center m-auto ">
+        <!--login and register buttons-->
+        <div class="py-4 flex">
+            <div class="flex flex-row m-auto">
+                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord"
+                        onclick="login()">
+                    <!--Login button-->
+                    Login
+                </button>
+            </div>
+
+            <div class="flex flex-row-reverse m-auto">
+                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord"
+                        onclick="register()">
+                    <!--Register button-->
+                    Register
+                </button>
+            </div>
         </div>
 
-        <div class="flex flex-row-reverse m-auto">
-            <button onclick="register()" class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord"> <!--Register button-->
-                Register
-            </button>
-        </div>
-    </div>
-
-    <div class="flex flex-row justify-center py-4">
-        <div class=" border-r-4 border-t-4 border-blue-800 rounded-3xl bord formbox"> <!--Login inputs-->
-            <div id="log" class="absolute">
+        <div class="flex flex-row justify-center py-4">
+            <div class=" border-r-4 border-t-4 border-blue-800 rounded-3xl bord formbox"> <!--Login inputs-->
+                <div class="absolute" id="log">
                     <div class="py-4 absolute">
-                    <div > <!--Login inputs-->
-                        <div class="py-2 my-2">
-                            <div class="flex flex-row justify-center py-2">
-                                <label for="log_Email"></label>
-                                <input id="log_Email" type="email" placeholder="Email address" class=" input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login Email input-->
-                        </div>
-                
-                            <div class="flex flex-row justify-center py-2">
-                                <label for="log_Password"></label>
-                                <input id="log_Password" type="password" placeholder="Password" class="input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login Password input-->
+                        <div> <!--Login inputs-->
+                            <div class="py-2 my-2">
+                                <div class="flex flex-row justify-center py-2">
+                                    <label for="log_Email"></label>
+                                    <input class=" input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"
+                                           id="log_Email" placeholder="Email address"
+                                           type="email">
+                                    <!--Login Email input-->
+                                </div>
+
+                                <div class="flex flex-row justify-center py-2">
+                                    <label for="log_Password"></label>
+                                    <input class="input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"
+                                           id="log_Password" placeholder="Password"
+                                           type="password">
+                                    <!--Login Password input-->
+                                </div>
+                                <div class="flex flex-row justify-center">
+                                    <button class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
-                        <div class="flex flex-row justify-center">
-                            <button class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">Submit</button>
                         </div>
+                    </div> <!--Login inputs' end-->
+                    <div class="py-6 px-8 absolute input-group" id="reg">
+                        <div class="flex flex-row justify-center py-4 px-4">
+                            <label for="first_Name"></label>
+                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                   id="first_Name" placeholder="First name"
+                                   type="text">
+                            <!--Login first_Name input-->
+                        </div>
+
+                        <div class="flex flex-row justify-center py-4 px-4">
+                            <label for="last_Name"></label>
+                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                   id="last_Name" placeholder="Last name"
+                                   type="text">
+                            <!--Login last_Name input-->
+                        </div>
+
+                        <div class="flex flex-row justify-center py-4 px-4">
+                            <label for="birth_Date"></label>
+                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                   id="birth_Date"
+                                   type="date">
+                            <!--Login Password input-->
+                        </div>
+
+                        <div class="flex flex-row justify-center py-4 px-4">
+                            <label for="reg_Email"></label>
+                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                   id="reg_Email" placeholder="Email address"
+                                   type="email">
+                            <!--Login Email input-->
+                        </div>
+
+                        <div class="flex flex-row justify-center py-4 px-4">
+                            <label for="reg_Password"></label>
+                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                   id="reg_Password" placeholder="Password"
+                                   type="password">
+                            <!--Login Password input-->
+                        </div>
+                        <div class="flex flex-row justify-center">
+                            <button class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
+                                Submit
+                            </button>
                         </div>
                     </div>
-                </div> <!--Login inputs' end-->
-            <div class="py-6 px-8 absolute input-group" id="reg">
-                <div class="flex flex-row justify-center py-4 px-4">
-                    <label for="first_Name"></label>
-                    <input id="first_Name" type="text" placeholder="First name" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login first_Name input-->
-                </div>
-
-                <div class="flex flex-row justify-center py-4 px-4">
-                    <label for="last_Name"></label>
-                    <input id="last_Name" type="text" placeholder="Last name" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login last_Name input-->
-                </div>
-
-                <div class="flex flex-row justify-center py-4 px-4">
-                    <label for="birth_Date"></label>
-                    <input id="birth_Date" type="date" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login Password input-->
-                </div>
-
-                <div class="flex flex-row justify-center py-4 px-4">
-                    <label for="reg_Email"></label>
-                    <input id="reg_Email" type="email" placeholder="Email address" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login Email input-->
-                </div>
-
-                <div class="flex flex-row justify-center py-4 px-4">
-                    <label for="reg_Password"></label>
-                    <input id="reg_Password" type="password" placeholder="Password" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"> <!--Login Password input-->
-                </div>
-                <div class="flex flex-row justify-center">
-                    <button class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">Submit</button>
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
+
 <script src="../static/js/main.js" th:src="@{js/main.js}"></script>
+
 
 </body>
 </html>
 
 
 <style>
-    input[type=text]{
+    input[type=text] {
         color: #a0aec0;
     }
-    input[type=date]{
+
+    input[type=date] {
         color: #a0aec0;
     }
-    input[type=password]{
+
+    input[type=password] {
         color: #a0aec0;
     }
-    input[type=email]{
+
+    input[type=email] {
         color: #a0aec0;
     }
 </style>
