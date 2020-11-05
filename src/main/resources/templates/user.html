@@ -119,7 +119,7 @@
                                     class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
                         </div>
                     </header>
-                    <p th:text="${post.getTextContent()}">LOREM IPSUM</p>
+                    <p th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" > LOREM IPSUM </p>
                     <footer>
                         <p class="flex-row-reverse flex text-sm"
                            th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
