@@ -1,14 +1,13 @@
 package com.uzenetesztek.service;
 
-import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.domain.User;
+import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.Date;
 
 @Data
 @Service
@@ -20,7 +19,7 @@ public class UserService {
         this.userRepo = userRepo;
     }
 
-    public User getUserByEmail(String email) throws RecordNotFoundException{
+    public User getUserByEmail(String email) throws RecordNotFoundException {
         User user = userRepo.findByEmail(email);
 
         if (user == null) {

@@ -3,7 +3,6 @@ package com.uzenetesztek.service;
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
-import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.PostRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +21,15 @@ public class PostService {
         this.postRepo = postRepo;
     }
 
-    public List<Post> getPostsByUserOrdered(User user) throws RecordNotFoundException {
-        List<Post> post = postRepo.findAllByUserOrderByTimestampAsc(user);
+    public List<Post> getPostsByUserOrdered(User user) {
 
-        if (post == null) { // || post.size() == 0 -> causes 500 internal server error in thymeleaf
-            throw new RecordNotFoundException("The user has no posts"); // never happens
-        } else {
-            return post;
-        }
+        // user should check if return value is empty list
+        return postRepo.findAllByUserOrderByTimestampAsc(user);
     }
 
-    public List<Post> getPostsOrdered(Topic topic) throws RecordNotFoundException {
-        List<Post> post = postRepo.findAllByParentTopicOrderByTimestampAsc(topic);
+    public List<Post> getPostsOrdered(Topic topic) {
 
-        if (post == null) {
-            throw new RecordNotFoundException("The user has no posts");
-        } else {
-            return post;
-        }
+        // user should check if return value is empty list
+        return postRepo.findAllByParentTopicOrderByTimestampAsc(topic);
     }
 }
