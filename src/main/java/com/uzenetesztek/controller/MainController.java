@@ -18,9 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController {
+public class MainController {
 
     private PostService postServ;
+
     @Autowired
     public void setPostService(PostService postServ) {
 
@@ -28,6 +29,7 @@ public class HomeController {
     }
 
     private UserService userServ;
+
     @Autowired
     public void setUserService(UserService userServ) {
 
@@ -35,6 +37,7 @@ public class HomeController {
     }
 
     private TopicService topicServ;
+
     @Autowired
     public void setTopicService(TopicService topicServ) {
 
@@ -84,18 +87,18 @@ public class HomeController {
     private Map<Topic, List<Post>> getTopicPostsOrdered() {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
         List<Topic> topics = topicServ.getTopicsOrdered();
-        for ( Topic t : topics) {
+        for (Topic t : topics) {
             List<Post> posts = postServ.getPostsOrdered(t);
             ordered.put(t, posts);
         }
-       return ordered;
+        return ordered;
     }
 
     private Map<Topic, List<Post>> getTopicPostsOrdered(User user) {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
 //        List<Topic> topics = topicServ.getTopicsByUserOrdered(user);
         List<Topic> topics = topicServ.getTopicsByUser(user);
-        for ( Topic t : topics) {
+        for (Topic t : topics) {
             List<Post> posts = postServ.getPostsOrdered(t);
             ordered.put(t, posts);
         }
@@ -136,7 +139,7 @@ public class HomeController {
     }
 
     @RequestMapping("/topics/{name}")
-    public String searchForTopic(@PathVariable(value="name") String name, Model model) throws RecordNotFoundException {
+    public String searchForTopic(@PathVariable(value = "name") String name, Model model) throws RecordNotFoundException {
         Topic topic = getTopicByName(name);
 
         model.addAttribute("specificTopic", topic);
@@ -146,7 +149,7 @@ public class HomeController {
     }
 
     @RequestMapping("/user/{email}")
-    public String searchForUser(@PathVariable(value="email") String email, Model model) throws RecordNotFoundException{
+    public String searchForUser(@PathVariable(value = "email") String email, Model model) throws RecordNotFoundException {
         User user = getUserByEmail(email);
 
         model.addAttribute("user", user);
