@@ -7,12 +7,15 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
-@Entity         // for hibernate
-//@Data           // getters, setters, toString, equalsHashCode, RequiredArgsConstructor
-@Getter @Setter @ToString @RequiredArgsConstructor @NoArgsConstructor
+@Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class Post {
     @GeneratedValue
-    @Id                 // primary key
+    @Id
     private Long id;
     @NonNull
     @Column(columnDefinition = "TEXT")

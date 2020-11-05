@@ -8,7 +8,12 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Getter @Setter @ToString @NoArgsConstructor @RequiredArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class User {
     @GeneratedValue
     @Id         // primary key
@@ -18,7 +23,7 @@ public class User {
     private Date dateOfBirth; // date of birth
     private Date lastLogin;
     @NonNull
-    @Column(unique=true)        // only one user per username
+    @Column(unique = true)        // only one user per username
     private String email;
     @NonNull
     private String password;
@@ -50,7 +55,7 @@ public class User {
     @ManyToMany(mappedBy = "userLikes")
     private Set<Post> likedPosts;       // only one like per post per user
 
-    public String getFullName(){
+    public String getFullName() {
         return firstName + " " + lastName;
     }
 }
