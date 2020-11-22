@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 public class MainController {
 
@@ -40,7 +42,7 @@ public class MainController {
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("topics", topicServ.getTopicsOrdered());
-        model.addAttribute("topicPosts", topicServ.getAllTopicsWithPostsOrdered());
+        model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
 
         return "index";
     }
@@ -57,22 +59,25 @@ public class MainController {
         return "sign";
     }
 
-    @RequestMapping("/topic")
-    public String topic(Model model) {
-        model.addAttribute("topics", topicServ.getTopicsOrdered());
-        model.addAttribute("topicPosts", topicServ.getAllTopicsWithPostsOrdered());
+    @RequestMapping(path = {"/topics", "/topics/{name}"})
+    public String searchForTopic(@PathVariable("name") Optional<String> name, Model model) throws RecordNotFoundException {
+        if (name.isPresent()) {
+            // Every Topic
 
-        return "topic";
-    }
+            Topic topic = topicServ.getTopicByName(name.get());
 
-    @RequestMapping("/topics/{name}")
-    public String searchForTopic(@PathVariable(value = "name") String name, Model model) throws RecordNotFoundException {
-        Topic topic = topicServ.getTopicByName(name);
+            model.addAttribute("specificTopic", topicServ.getTopicByName(name.get()));
+            model.addAttribute("posts", postServ.getPostsByTopicOrdered(topic));
 
-        model.addAttribute("specificTopic", topic);
-        model.addAttribute("posts", postServ.getPostsByTopicOrdered(topic));
+            return "topic_details";
+        } else {
+            // Specific Topic
 
-        return "topic_details";
+            model.addAttribute("topics", topicServ.getTopicsOrdered());
+            model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
+
+            return "topics";
+        }
     }
 
     @RequestMapping("/user/{email}")
@@ -81,7 +86,7 @@ public class MainController {
 
         model.addAttribute("user", user);
         model.addAttribute("topics", topicServ.getTopicsByUserOrdered(user));
-        model.addAttribute("topicsPosted", topicServ.getAllTopicsWithPostsOrdered(user));
+        model.addAttribute("topicsPosted", topicServ.getAllTopicsAndTheirPostsOrdered(user));
 
         return "user";
     }

@@ -46,11 +46,6 @@ public class TopicService {
         }
     }
 
-    public List<Topic> getTopicsByUser(User user) {
-
-        return topicRepo.findAllByUser(user);
-    }
-
     public List<Topic> getTopicsOrdered() {
 
         return topicRepo.findAllByOrderByNameAsc();
@@ -61,7 +56,7 @@ public class TopicService {
         return topicRepo.findAllByUserOrderByTimestampAsc(user);
     }
 
-    public Map<Topic, List<Post>> getAllTopicsWithPostsOrdered() {
+    public Map<Topic, List<Post>> getAllTopicsAndTheirPostsOrdered() {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
         List<Topic> topics = getTopicsOrdered();
         for (Topic topic : topics) {
@@ -71,9 +66,9 @@ public class TopicService {
         return ordered;
     }
 
-    public Map<Topic, List<Post>> getAllTopicsWithPostsOrdered(User user) {
+    public Map<Topic, List<Post>> getAllTopicsAndTheirPostsOrdered(User user) {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
-        List<Topic> topics = getTopicsByUser(user);
+        List<Topic> topics = getTopicsByUserOrdered(user);
         for (Topic topic : topics) {
             List<Post> posts = postServ.getPostsByTopicOrdered(topic);
             ordered.put(topic, posts);
