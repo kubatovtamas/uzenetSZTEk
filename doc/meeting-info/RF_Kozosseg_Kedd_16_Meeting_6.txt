@@ -1,0 +1,62 @@
+A IV. mérföldkővel kapcsolatos feladatok:
+
+9.4.2. Javított minőségű prototípus új funkciókkal
+    Felelős: Mindenki
+
+    - Elsődleges prioritás
+
+    Megvalósítandó funkciók:
+        authentication/authorization:
+            register
+            login
+            logoff
+            az elérés autentikációhoz kötése
+
+        inter user interakció:
+            follow_user
+
+        post interakció:
+            send_post
+            edit_post
+            delete_post
+            like_post
+
+        topik interakció:
+            create_topic
+            edit_topic
+            delete_topic
+            follow_topic
+
+        user settings:
+            upload_picture
+
+    Deploy: Heroku app, fájl kezeléshez Amazon S3
+
+9.4.3. Projekt optimalizálás (képek, kód tömörítése stb..)
+    Felelős: Mindenki
+
+    - Deploy után
+    - A végleges funkciókkal ellátott verzió refaktorálása, redundáns kódrészek eltávolítása.
+
+9.4.4. SEO optimalizálás
+    Felelős: Mindenki
+
+    - Deploy után
+
+    https://moz.com/beginners-guide-to-seo
+
+
+9.4.5. JUnit tesztkörnyezet előkészítése
+    Felelős: Pusztai Ágnes Anna, Zombori Tamás
+
+    - Az új funkciók fejlesztésével párhuzamosan
+    - Unit tesztek a backenden
+
+9.4.6. Tesztelési dokumentum az új funkciókhoz
+    Felelős: Mindenki
+
+    - Az új funkciók fejlesztése után
+    - Use case tesztek
+
+9.4.7. Bemutató elkészítése
+    Felelős: Madarász Máté
