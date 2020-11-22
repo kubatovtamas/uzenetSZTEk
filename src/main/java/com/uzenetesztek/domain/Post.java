@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@ToString
+@ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(of="id")
 @Getter
 @Setter
@@ -19,20 +19,25 @@ public class Post {
 
     @GeneratedValue
     @Id
+    @ToString.Include
     private Long id;
 
     @NonNull
     @Column(columnDefinition = "TEXT")
+    @ToString.Include
     private String textContent;
 
     @Column(columnDefinition = "TEXT")
+    @ToString.Include
     private String file;
 
     @NonNull
+    @ToString.Include
     private Date timestamp;
 
     @NonNull
     @ManyToOne          // many posts but only one user per post
+    @ToString.Include
     private User user;
 
     @NonNull

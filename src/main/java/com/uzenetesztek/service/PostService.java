@@ -13,16 +13,20 @@ import java.util.List;
 @Data
 @Service
 public class PostService {
-    private PostRepository postRepo;
 
+    private PostRepository postRepo;
     @Autowired
     public void setPostRepo(PostRepository postRepo) {
 
         this.postRepo = postRepo;
     }
 
-    private List<Post> getPosts() {
-        return postRepo.findAllByOrderByTimestampDesc();
+
+
+    public List<Post> getPostsByTopicOrdered(Topic topic) {
+
+        // user should check if return value is empty list
+        return postRepo.findAllByParentTopicOrderByTimestampAsc(topic);
     }
 
     public List<Post> getPostsByUserOrdered(User user) {
@@ -31,9 +35,5 @@ public class PostService {
         return postRepo.findAllByUserOrderByTimestampAsc(user);
     }
 
-    public List<Post> getPostsOrdered(Topic topic) {
 
-        // user should check if return value is empty list
-        return postRepo.findAllByParentTopicOrderByTimestampAsc(topic);
-    }
 }

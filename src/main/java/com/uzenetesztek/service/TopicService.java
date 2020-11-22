@@ -65,7 +65,7 @@ public class TopicService {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
         List<Topic> topics = getTopicsOrdered();
         for (Topic topic : topics) {
-            List<Post> posts = postServ.getPostsOrdered(topic);
+            List<Post> posts = postServ.getPostsByTopicOrdered(topic);
             ordered.put(topic, posts);
         }
         return ordered;
@@ -75,7 +75,7 @@ public class TopicService {
         Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
         List<Topic> topics = getTopicsByUser(user);
         for (Topic topic : topics) {
-            List<Post> posts = postServ.getPostsOrdered(topic);
+            List<Post> posts = postServ.getPostsByTopicOrdered(topic);
             ordered.put(topic, posts);
         }
         return ordered;

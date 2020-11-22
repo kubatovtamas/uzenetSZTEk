@@ -10,9 +10,6 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
-    List<Post> findAllByOrderByTimestampDesc();
-
-    List<Post> findAllByUser(User u);
 
     List<Post> findAllByParentTopicOrderByTimestampAsc(Topic topic);
 

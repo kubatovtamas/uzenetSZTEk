@@ -1,6 +1,5 @@
 package com.uzenetesztek.controller;
 
-import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
@@ -12,10 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class MainController {
@@ -75,7 +70,7 @@ public class MainController {
         Topic topic = topicServ.getTopicByName(name);
 
         model.addAttribute("specificTopic", topic);
-        model.addAttribute("posts", postServ.getPostsOrdered(topic));
+        model.addAttribute("posts", postServ.getPostsByTopicOrdered(topic));
 
         return "topic_details";
     }

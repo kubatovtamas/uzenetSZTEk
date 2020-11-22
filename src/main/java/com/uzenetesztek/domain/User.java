@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@ToString
+@ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(of="id")
 @Getter
 @Setter
@@ -19,30 +19,38 @@ public class User {
 
     @GeneratedValue
     @Id         // primary key
+    @ToString.Include
     private Long id;
 
+    @ToString.Include
     private String firstName;
 
+    @ToString.Include
     private String lastName;
 
+    @ToString.Include
     private Date dateOfBirth;
 
+    @ToString.Include
     private Date lastLogin;
 
     @NonNull
     @Column(unique = true)                      // only one user per username
+    @ToString.Include
     private String email;
 
     @NonNull
     private String password;
 
     @NonNull
+    @ToString.Include
     private boolean isAdmin;
 
     @Column(columnDefinition = "TEXT")
     private String profilePicture;
 
     @OneToMany(mappedBy = "user")               // one user can have many posts, mapped by Post.user object's id
+    @ToString.Exclude
     private Set<Post> posts;
 
     @OneToMany(mappedBy = "user")               // one user can have many topics, mapped by Topic.user object's id
