@@ -26,13 +26,13 @@ public class PostService {
     public List<Post> getPostsByTopicOrdered(Topic topic) {
 
         // user should check if return value is empty list
-        return postRepo.findAllByParentTopicOrderByTimestampAsc(topic);
+        return postRepo.findAllByParentTopicOrderByTimestampDesc(topic);
     }
 
     public List<Post> getPostsByUserOrdered(User user) {
 
         // user should check if return value is empty list
-        return postRepo.findAllByUserOrderByTimestampAsc(user);
+        return postRepo.findAllByUserOrderByTimestampDesc(user);
     }
 
 

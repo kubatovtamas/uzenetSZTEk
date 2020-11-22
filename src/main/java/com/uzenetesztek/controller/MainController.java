@@ -62,16 +62,16 @@ public class MainController {
     @RequestMapping(path = {"/topics", "/topics/{name}"})
     public String searchForTopic(@PathVariable("name") Optional<String> name, Model model) throws RecordNotFoundException {
         if (name.isPresent()) {
-            // Every Topic
+            // Specific Topic
 
             Topic topic = topicServ.getTopicByName(name.get());
 
-            model.addAttribute("specificTopic", topicServ.getTopicByName(name.get()));
+            model.addAttribute("specificTopic", topic);
             model.addAttribute("posts", postServ.getPostsByTopicOrdered(topic));
 
             return "topic_details";
         } else {
-            // Specific Topic
+            // Every Topic
 
             model.addAttribute("topics", topicServ.getTopicsOrdered());
             model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
@@ -90,8 +90,6 @@ public class MainController {
 
         return "user";
     }
-
-
 }
 
 

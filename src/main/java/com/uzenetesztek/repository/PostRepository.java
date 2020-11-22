@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
 
-    List<Post> findAllByParentTopicOrderByTimestampAsc(Topic topic);
+    List<Post> findAllByParentTopicOrderByTimestampDesc(Topic topic);
 
-    List<Post> findAllByUserOrderByTimestampAsc(User user);
+    List<Post> findAllByUserOrderByTimestampDesc(User user);
 }

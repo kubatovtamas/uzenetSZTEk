@@ -74,7 +74,7 @@
 
                     <!--        For Each Post In Topic                -->
                     <article class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat "
-                             th:each="post : ${specificTopic.getPosts()}">
+                             th:each="post : ${posts}">
                         <!-- upvote button/counter -->
                         <div class="flex right-0 absolute mr-4 mt-2">
                             <button><img border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
