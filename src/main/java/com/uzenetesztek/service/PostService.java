@@ -21,6 +21,10 @@ public class PostService {
         this.postRepo = postRepo;
     }
 
+    private List<Post> getPosts() {
+        return postRepo.findAllByOrderByTimestampDesc();
+    }
+
     public List<Post> getPostsByUserOrdered(User user) {
 
         // user should check if return value is empty list

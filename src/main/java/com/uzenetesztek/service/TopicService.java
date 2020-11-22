@@ -1,5 +1,6 @@
 package com.uzenetesztek.service;
 
+import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
@@ -9,22 +10,30 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Service
 public class TopicService {
-    private TopicRepository topicRepo;
-    private UserRepository userRepo;
 
+    private TopicRepository topicRepo;
     @Autowired
     public void setTopicRepo(TopicRepository topicRepo) {
         this.topicRepo = topicRepo;
     }
 
+    private UserRepository userRepo;
     @Autowired
     public void setUserRepo(UserRepository userRepo) {
         this.userRepo = userRepo;
+    }
+
+    private PostService postServ;
+    @Autowired
+    public void setPostService(PostService postServ) {
+        this.postServ = postServ;
     }
 
     public Topic getTopicByName(String name) throws RecordNotFoundException {
@@ -42,7 +51,6 @@ public class TopicService {
         return topicRepo.findAllByUser(user);
     }
 
-
     public List<Topic> getTopicsOrdered() {
 
         return topicRepo.findAllByOrderByNameAsc();
@@ -51,5 +59,25 @@ public class TopicService {
     public List<Topic> getTopicsByUserOrdered(User user) {
 
         return topicRepo.findAllByUserOrderByTimestampAsc(user);
+    }
+
+    public Map<Topic, List<Post>> getAllTopicsWithPostsOrdered() {
+        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
+        List<Topic> topics = getTopicsOrdered();
+        for (Topic topic : topics) {
+            List<Post> posts = postServ.getPostsOrdered(topic);
+            ordered.put(topic, posts);
+        }
+        return ordered;
+    }
+
+    public Map<Topic, List<Post>> getAllTopicsWithPostsOrdered(User user) {
+        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
+        List<Topic> topics = getTopicsByUser(user);
+        for (Topic topic : topics) {
+            List<Post> posts = postServ.getPostsOrdered(topic);
+            ordered.put(topic, posts);
+        }
+        return ordered;
     }
 }

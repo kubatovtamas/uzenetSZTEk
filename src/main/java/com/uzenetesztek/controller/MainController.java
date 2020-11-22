@@ -21,99 +21,29 @@ import java.util.Map;
 public class MainController {
 
     private PostService postServ;
-
     @Autowired
     public void setPostService(PostService postServ) {
-
         this.postServ = postServ;
     }
 
     private UserService userServ;
-
     @Autowired
     public void setUserService(UserService userServ) {
-
         this.userServ = userServ;
     }
 
     private TopicService topicServ;
-
     @Autowired
     public void setTopicService(TopicService topicServ) {
-
         this.topicServ = topicServ;
     }
 
 
 
-    /*          Queries          */
-
-    /* Returns Post */
-    private List<Post> getPosts() {
-
-        return postServ.getPostRepo().findAllByOrderByTimestampDesc();
-    }
-
-    private List<Post> getPostsOrdered(Topic topic) {
-        return postServ.getPostsOrdered(topic);
-    }
-
-    /* Returns Topic */
-    private List<Topic> getTopicsOrdered() {
-        return topicServ.getTopicsOrdered();
-    }
-
-    private List<Topic> getTopicsOrdered(User user) {
-        return topicServ.getTopicsByUserOrdered(user);
-    }
-
-    private Topic getTopicByName(String name) {
-
-        return topicServ.getTopicByName(name);
-    }
-
-    /* Returns User */
-    private List<User> getUsers() {
-
-        return userServ.getUserRepo().findAll();
-    }
-
-    private User getUserByEmail(String email) {
-
-        return userServ.getUserByEmail(email);
-    }
-
-    /* Returns Map<Topic, Posts> */
-    private Map<Topic, List<Post>> getTopicPostsOrdered() {
-        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
-        List<Topic> topics = topicServ.getTopicsOrdered();
-        for (Topic t : topics) {
-            List<Post> posts = postServ.getPostsOrdered(t);
-            ordered.put(t, posts);
-        }
-        return ordered;
-    }
-
-    private Map<Topic, List<Post>> getTopicPostsOrdered(User user) {
-        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
-//        List<Topic> topics = topicServ.getTopicsByUserOrdered(user);
-        List<Topic> topics = topicServ.getTopicsByUser(user);
-        for (Topic t : topics) {
-            List<Post> posts = postServ.getPostsOrdered(t);
-            ordered.put(t, posts);
-        }
-        return ordered;
-    }
-
-
-
-    /*          Routing          */
-
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("topics", getTopicsOrdered());
-        model.addAttribute("topicPosts", getTopicPostsOrdered());
-//        model.addAttribute("users", getUsers());
+        model.addAttribute("topics", topicServ.getTopicsOrdered());
+        model.addAttribute("topicPosts", topicServ.getAllTopicsWithPostsOrdered());
 
         return "index";
     }
@@ -132,29 +62,29 @@ public class MainController {
 
     @RequestMapping("/topic")
     public String topic(Model model) {
-        model.addAttribute("topics", getTopicsOrdered());
-        model.addAttribute("topicPosts", getTopicPostsOrdered());
+        model.addAttribute("topics", topicServ.getTopicsOrdered());
+        model.addAttribute("topicPosts", topicServ.getAllTopicsWithPostsOrdered());
 
         return "topic";
     }
 
     @RequestMapping("/topics/{name}")
     public String searchForTopic(@PathVariable(value = "name") String name, Model model) throws RecordNotFoundException {
-        Topic topic = getTopicByName(name);
+        Topic topic = topicServ.getTopicByName(name);
 
         model.addAttribute("specificTopic", topic);
-        model.addAttribute("posts", getPostsOrdered(topic));
+        model.addAttribute("posts", postServ.getPostsOrdered(topic));
 
         return "topic_details";
     }
 
     @RequestMapping("/user/{email}")
     public String searchForUser(@PathVariable(value = "email") String email, Model model) throws RecordNotFoundException {
-        User user = getUserByEmail(email);
+        User user = userServ.getUserByEmail(email);
 
         model.addAttribute("user", user);
-        model.addAttribute("topics", getTopicsOrdered(user));
-        model.addAttribute("topicsPosted", getTopicPostsOrdered(user));
+        model.addAttribute("topics", topicServ.getTopicsByUserOrdered(user));
+        model.addAttribute("topicsPosted", topicServ.getAllTopicsWithPostsOrdered(user));
 
         return "user";
     }
