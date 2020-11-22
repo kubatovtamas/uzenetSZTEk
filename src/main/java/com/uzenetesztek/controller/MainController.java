@@ -21,12 +21,14 @@ import java.util.Map;
 public class MainController {
 
     private PostService postServ;
+
     @Autowired
     public void setPostService(PostService postServ) {
         this.postServ = postServ;
     }
 
     private UserService userServ;
+
     @Autowired
     public void setUserService(UserService userServ) {
         this.userServ = userServ;
