@@ -105,20 +105,6 @@ public class TopicServiceImpl implements CrudServiceInterface<Topic, Long> {
         // TODO: meaningful errors on specific cases
     }
 
-
-
-
-
-    public Topic getTopicByName(String name) throws RecordNotFoundException {
-        Optional<Topic> entity = topicRepo.findFirstByName(name);
-
-        if (entity.isPresent()) {
-            return entity.get();
-        } else {
-            throw new RecordNotFoundException("Topic with name: " + name + " not found");
-        }
-    }
-
     public List<Topic> getAllTopicsOrdered() {
         List<Topic> entities = (List<Topic>) topicRepo.findAllByOrderByNameAsc();
 
@@ -129,7 +115,7 @@ public class TopicServiceImpl implements CrudServiceInterface<Topic, Long> {
         }
     }
 
-    public List<Topic> getTopicsByUserOrdered(User user) {
+    public List<Topic> getAllTopicsOrdered(User user) {
         List<Topic> entities = (List<Topic>) topicRepo.findAllByUserOrderByTimestampAsc(user);
 
         if (entities.size() > 0) {

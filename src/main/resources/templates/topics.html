@@ -12,30 +12,35 @@
 
 <header>
     <div>
-        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
+            üzeneteSZTEk
+        </h1>
         <label for="Search"></label>
-        <input class="float-right my-4 mx-2 bg-teal-800 hat" id="Search" placeholder="Search..." type="text">
+        <input class="float-right my-4 mx-2 bg-teal-800 hat" id="Search" placeholder="Search for topic" type="text">
     </div>
 </header>
-<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat">
+
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
     <nav class="space-x-56">
-        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord"
-           href="/">Main</a>
-        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord"
-           href="profile">Profile</a>
-        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">Topic</a>
-    </nav> <!--menu buttons-->
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord" href="/">
+            Main
+        </a>
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord" href="profile">
+            Profile
+        </a>
+        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov">
+            Topic
+        </a>
+    </nav>
 </div>
 
 <div class="flex flex-row-reverse">
+    <!-- White/Dark Theme Button -->
     <button class="absolute" id="toggle-white-mode"></button>
 
-    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord"
-           for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
-                                               width="20"></i>
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
-                                               width="20"></i> <!--white/dark theme button-->
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord" for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}" width="20"></i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}" width="20"></i>
     </label>
 </div>
 
@@ -43,12 +48,13 @@
     <!--main div's start--->
     <header>
         <p class="flex-row flex justify-center text-3xl text-gray-500 border-l-2 border-r-2 border-b-4 border-blue-800 rounded-2xl px-3 mx-5 bord szov">
-            Topics</p>
+            Topics
+        </p>
     </header>
 
     <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-5 bord szov text-gray-500">
         <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
-                 th:each="topic : ${topics}">
+                 th:each="topic : ${topicsWithPosts.keySet()}">
             <header class="flex relative">
                 <div class="text-2xl container text-center absolute">      <!--Topic's name-->
                     <b><a href="topic_details.html" th:href="@{/topics/{name}(name=${topic.getName()})}"

@@ -97,7 +97,7 @@
                 <!-- Topic's Name -->
                 <div class="text-2xl container text-center absolute">
                     <b>
-                        <a href="topic_details.html" th:href="@{/topics/{name}(name=${topic.getName()})}"
+                        <a href="topic_details.html" th:href="@{/topics/{id}(id=${topic.getId()})}"
                            th:text="${topic.getName()}">
                             Topic Name
                         </a>
@@ -108,7 +108,7 @@
                 <div class="flex text-2xl relative">
                     <img class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="50"
                          src="../static/images/profile_pic.jpg" th:src="${topic.getUser().getProfilePicture()}" width="50">
-                    <a href="#" th:href="@{/user/{email}(email=${topic.getUser().getEmail()})}">
+                    <a href="#" th:href="@{/user/{id}(id=${topic.getUser().getId()})}">
                         <p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">
                             Poster Name
                         </p>
