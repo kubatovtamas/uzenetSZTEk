@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Data
 @Service
 public class TopicServiceImpl implements CrudServiceInterface<Topic, Long> {
 
@@ -108,45 +107,35 @@ public class TopicServiceImpl implements CrudServiceInterface<Topic, Long> {
 
 
 
-    public Topic getTopicByName(String name) throws RecordNotFoundException {
-        Topic topic = topicRepo.findFirstByName(name);
 
-        if (topic == null) {
-            throw new RecordNotFoundException("No topic found with name: " + name);
+
+    public Topic getTopicByName(String name) throws RecordNotFoundException {
+        Optional<Topic> entity = topicRepo.findFirstByName(name);
+
+        if (entity.isPresent()) {
+            return entity.get();
         } else {
-            return topic;
+            throw new RecordNotFoundException("Topic with name: " + name + " not found");
         }
     }
 
     public List<Topic> getAllTopicsOrdered() {
+        List<Topic> entities = (List<Topic>) topicRepo.findAllByOrderByNameAsc();
 
-        return topicRepo.findAllByOrderByNameAsc();
+        if (entities.size() > 0) {
+            return entities;
+        } else {
+            return new ArrayList<Topic>();
+        }
     }
 
     public List<Topic> getTopicsByUserOrdered(User user) {
+        List<Topic> entities = (List<Topic>) topicRepo.findAllByUserOrderByTimestampAsc(user);
 
-        return topicRepo.findAllByUserOrderByTimestampAsc(user);
-    }
-
-    public Map<Topic, List<Post>> getAllTopicsAndTheirPostsOrdered() {
-        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
-        List<Topic> topics = getAllTopicsOrdered();
-        for (Topic topic : topics) {
-            List<Post> posts = postServ.getPostsByTopicOrdered(topic);
-            ordered.put(topic, posts);
+        if (entities.size() > 0) {
+            return entities;
+        } else {
+            return new ArrayList<Topic>();
         }
-        return ordered;
     }
-
-    public Map<Topic, List<Post>> getAllTopicsAndTheirPostsOrdered(User user) {
-        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
-        List<Topic> topics = getTopicsByUserOrdered(user);
-        for (Topic topic : topics) {
-            List<Post> posts = postServ.getPostsByTopicOrdered(topic);
-            ordered.put(topic, posts);
-        }
-        return ordered;
-    }
-
-
 }

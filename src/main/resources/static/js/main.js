@@ -43,12 +43,12 @@ function login() {
 }
 
 function dropDown() {
-    let droping = document.getElementById('drop');
+    let dropping = document.getElementById('drop');
     let btn = document.getElementById("dropDown")
-    if (droping.style.display === "none") {
-        droping.style.display = "block";
+    if (dropping.style.display === "none") {
+        dropping.style.display = "block";
     } else {
-        droping.style.display = "none";
+        dropping.style.display = "none";
     }
 }
 

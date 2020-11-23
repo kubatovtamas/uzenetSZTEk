@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 public interface CrudServiceInterface<Type, IdType> {
     public List<Type> getAll();
 

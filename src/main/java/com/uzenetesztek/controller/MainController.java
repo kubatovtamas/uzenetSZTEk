@@ -5,6 +5,7 @@ import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.service.PostServiceImpl;
 import com.uzenetesztek.service.TopicServiceImpl;
+import com.uzenetesztek.service.TopicWithPostsService;
 import com.uzenetesztek.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,30 +18,32 @@ import java.util.Optional;
 @Controller
 public class MainController {
 
-    private PostServiceImpl postServ;
+    private PostServiceImpl postService;
     @Autowired
     public void setPostService(PostServiceImpl postServ) {
-        this.postServ = postServ;
+        this.postService = postServ;
     }
 
-    private UserServiceImpl userServ;
+    private UserServiceImpl userService;
     @Autowired
     public void setUserService(UserServiceImpl userServ) {
-        this.userServ = userServ;
+        this.userService = userServ;
     }
 
-    private TopicServiceImpl topicServ;
+    private TopicServiceImpl topicService;
     @Autowired
     public void setTopicService(TopicServiceImpl topicServ) {
-        this.topicServ = topicServ;
+        this.topicService = topicServ;
     }
 
-
+    private TopicWithPostsService topicWithPostsService;
+    @Autowired
+    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService;
+    }
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("topics", topicServ.getAllTopicsOrdered());
-        model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
+        model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
 
         return "index";
     }
@@ -51,28 +54,49 @@ public class MainController {
         return "profile";
     }
 
-    @RequestMapping("/sign")
-    public String sign(Model model) {
+    @RequestMapping("/signin")
+    public String signin(Model model) {
 
-        return "sign";
+        return "sign_in";
     }
 
-    @RequestMapping(path = {"/topics", "/topics/{name}"})
-    public String searchForTopic(@PathVariable("name") Optional<String> name, Model model) throws RecordNotFoundException {
-        if (name.isPresent()) {
-            // Specific Topic
+//    @RequestMapping(path = {"/topics", "/topics/{name}"})
+//    public String searchForTopic(@PathVariable("name") Optional<String> name, Model model) throws RecordNotFoundException {
+//        if (name.isPresent()) {
+//            // Specific Topic
+//
+//            Topic topic = topicService.getTopicByName(name.get());
+//
+//            model.addAttribute("specificTopic", topic);
+//            model.addAttribute("posts", postService.getPostsByTopicOrdered(topic));
+//
+//            return "topic_details";
+//        } else {
+//            // Every Topic
+//
+//            model.addAttribute("topics", topicService.getAllTopicsOrdered());  //TODO: remove
+//            model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
+//
+//            return "topics";
+//        }
+//    }
 
-            Topic topic = topicServ.getTopicByName(name.get());
+    @RequestMapping(path = {"/topics", "/topics/{id}"})
+    public String getTopics(@PathVariable("id") Optional<Long> id, Model model) throws RecordNotFoundException {
+        // Specific Topic
+        if (id.isPresent()) {
 
+            Topic topic = topicService.getById(id.get());
             model.addAttribute("specificTopic", topic);
-            model.addAttribute("posts", postServ.getPostsByTopicOrdered(topic));
+            model.addAttribute("posts", postService.getPostsByTopicOrdered(topic));
 
             return "topic_details";
-        } else {
-            // Every Topic
 
-            model.addAttribute("topics", topicServ.getAllTopicsOrdered());
-            model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
+        }
+        // Every Topic
+        else {
+
+            model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
 
             return "topics";
         }
@@ -80,11 +104,11 @@ public class MainController {
 
     @RequestMapping("/user/{email}")
     public String searchForUser(@PathVariable(value = "email") String email, Model model) throws RecordNotFoundException {
-        User user = userServ.getUserByEmail(email);
+        User user = userService.getUserByEmail(email);
 
         model.addAttribute("user", user);
-        model.addAttribute("topics", topicServ.getTopicsByUserOrdered(user));
-        model.addAttribute("topicsPosted", topicServ.getAllTopicsAndTheirPostsOrdered(user));
+        model.addAttribute("topics", topicService.getTopicsByUserOrdered(user));
+        model.addAttribute("topicsPosted", topicWithPostsService.getAllTopicsWithPostsOrdered(user));
 
         return "user";
     }
