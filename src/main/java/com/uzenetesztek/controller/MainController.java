@@ -3,9 +3,9 @@ package com.uzenetesztek.controller;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
-import com.uzenetesztek.service.PostService;
-import com.uzenetesztek.service.TopicService;
-import com.uzenetesztek.service.UserService;
+import com.uzenetesztek.service.PostServiceImpl;
+import com.uzenetesztek.service.TopicServiceImpl;
+import com.uzenetesztek.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,23 +17,21 @@ import java.util.Optional;
 @Controller
 public class MainController {
 
-    private PostService postServ;
-
+    private PostServiceImpl postServ;
     @Autowired
-    public void setPostService(PostService postServ) {
+    public void setPostService(PostServiceImpl postServ) {
         this.postServ = postServ;
     }
 
-    private UserService userServ;
-
+    private UserServiceImpl userServ;
     @Autowired
-    public void setUserService(UserService userServ) {
+    public void setUserService(UserServiceImpl userServ) {
         this.userServ = userServ;
     }
 
-    private TopicService topicServ;
+    private TopicServiceImpl topicServ;
     @Autowired
-    public void setTopicService(TopicService topicServ) {
+    public void setTopicService(TopicServiceImpl topicServ) {
         this.topicServ = topicServ;
     }
 
@@ -41,7 +39,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("topics", topicServ.getTopicsOrdered());
+        model.addAttribute("topics", topicServ.getAllTopicsOrdered());
         model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
 
         return "index";
@@ -73,7 +71,7 @@ public class MainController {
         } else {
             // Every Topic
 
-            model.addAttribute("topics", topicServ.getTopicsOrdered());
+            model.addAttribute("topics", topicServ.getAllTopicsOrdered());
             model.addAttribute("topicPosts", topicServ.getAllTopicsAndTheirPostsOrdered());
 
             return "topics";
