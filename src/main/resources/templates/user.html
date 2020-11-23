@@ -85,13 +85,13 @@
 
             <header class="flex relative">
                 <div class="text-2xl container text-center absolute">      <!--Topic's name-->
-                    <b><a href="topic_details.html" th:href="@{/topics/{name}(name=${topic.getName()})}"
+                    <b><a href="topic_details.html" th:href="@{/topics/{id}(id=${topic.getId()})}"
                           th:text="${topic.getName()}">Notified topic's name</a></b>
                 </div>
                 <div class="flex relative text-xl">
                     <img class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="50"
                          src="../static/images/profile_pic.jpg" th:src="${topic.getUser().getProfilePicture()}" width="50">
-                    <a href="#" th:href="@{/user/{email}(email=${topic.getUser().getEmail()})}"><p
+                    <a href="#" th:href="@{/user/{id}(id=${topic.getUser().getId()})}"><p
                             class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">Name</p></a>
                 </div>
 
@@ -115,7 +115,7 @@
                         <div class="flex flex-row inline-block text-xl">
                             <img class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="40"
                                  src="../static/images/profile_pic.jpg" th:src="${post.getUser().getProfilePicture()}" width="40">
-                            <a href="#" th:href="@{/user/{email}(email=${post.getUser().getEmail()})}"><p
+                            <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}"><p
                                     class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
                         </div>
                     </header>

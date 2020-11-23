@@ -94,17 +94,13 @@ public class PostServiceImpl implements CrudServiceInterface<Post, Long> {
         // TODO: meaningful errors on specific cases
     }
 
-
-
     public List<Post> getPostsByTopicOrdered(Topic topic) {
+        List<Post> entities = (List<Post>) postRepo.findAllByParentTopicOrderByTimestampDesc(topic);
 
-        // user should check if return value is empty list
-        return postRepo.findAllByParentTopicOrderByTimestampDesc(topic);
-    }
-
-    public List<Post> getPostsByUserOrdered(User user) {
-
-        // user should check if return value is empty list
-        return postRepo.findAllByUserOrderByTimestampDesc(user);
+        if (entities.size() > 0) {
+            return entities;
+        } else {
+            return new ArrayList<Post>();
+        }
     }
 }

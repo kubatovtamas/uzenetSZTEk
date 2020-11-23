@@ -140,8 +140,11 @@
                         <div class="flex flex-row inline-block text-xl">
                             <img class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="40"
                                  src="../static/images/profile_pic.jpg" th:src="${post.getUser().getProfilePicture()}" width="40">
-                            <a href="#" th:href="@{/user/{email}(email=${post.getUser().getEmail()})}"><p
-                                    class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
+                            <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}">
+                                <p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">
+                                    Poster Name
+                                </p>
+                            </a>
                         </div>
                     </header>
 

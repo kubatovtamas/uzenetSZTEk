@@ -61,7 +61,7 @@
                                  width="50">
                         </div>
                         <a class="clear-both" href="#"
-                           th:href="@{/user/{email}(email=${specificTopic.getUser().getEmail()})}"><p class="pr-3 mt-4 ml-1 text-xl"
+                           th:href="@{/user/{id}(email=${specificTopic.getUser().getId()})}"><p class="pr-3 mt-4 ml-1 text-xl"
                                        th:text="${specificTopic.getUser().getFullName()}">By Poster's Name</p></a>
                     </div>
 
@@ -89,7 +89,7 @@
                                 <img class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord"
                                      height="40" src="../static/images/profile_pic.jpg" th:src="${post.getUser().getProfilePicture()}"
                                      width="40">
-                                <a href="#" th:href="@{/user/{email}(email=${post.getUser().getEmail()})}"><p
+                                <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}"><p
                                         class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
                             </div>
                         </header>

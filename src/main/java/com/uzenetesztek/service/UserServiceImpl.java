@@ -100,17 +100,5 @@ public class UserServiceImpl implements CrudServiceInterface<User, Long> {
         }
         // TODO: meaningful errors on specific cases
     }
-
-
-
-    public User getUserByEmail(String email) throws RecordNotFoundException {
-        User user = userRepo.findByEmail(email);
-
-        if (user == null) {
-            throw new RecordNotFoundException("No user found with email: " + email);
-        } else {
-            return user;
-        }
-    }
 }
 
