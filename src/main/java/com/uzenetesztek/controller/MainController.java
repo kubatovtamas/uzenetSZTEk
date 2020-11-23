@@ -3,10 +3,10 @@ package com.uzenetesztek.controller;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
-import com.uzenetesztek.service.PostServiceImpl;
-import com.uzenetesztek.service.TopicServiceImpl;
+import com.uzenetesztek.service.PostService;
+import com.uzenetesztek.service.TopicService;
 import com.uzenetesztek.service.TopicWithPostsService;
-import com.uzenetesztek.service.UserServiceImpl;
+import com.uzenetesztek.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,21 +18,21 @@ import java.util.Optional;
 @Controller
 public class MainController {
 
-    private PostServiceImpl postService;
+    private PostService postService;
     @Autowired
-    public void setPostService(PostServiceImpl postServ) {
+    public void setPostService(PostService postServ) {
         this.postService = postServ;
     }
 
-    private UserServiceImpl userService;
+    private UserService userService;
     @Autowired
-    public void setUserService(UserServiceImpl userServ) {
+    public void setUserService(UserService userServ) {
         this.userService = userServ;
     }
 
-    private TopicServiceImpl topicService;
+    private TopicService topicService;
     @Autowired
-    public void setTopicService(TopicServiceImpl topicServ) {
+    public void setTopicService(TopicService topicServ) {
         this.topicService = topicServ;
     }
 
@@ -40,6 +40,8 @@ public class MainController {
     @Autowired
     public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService;
     }
+
+
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -86,7 +88,6 @@ public class MainController {
         User user = userService.getById(id);
 
         model.addAttribute("user", user);
-        model.addAttribute("topics", topicService.getAllTopicsOrdered(user));
         model.addAttribute("topicsPosted", topicWithPostsService.getAllTopicsWithPostsOrdered(user));
 
         return "user";

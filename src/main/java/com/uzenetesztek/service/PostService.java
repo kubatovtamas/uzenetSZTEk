@@ -15,7 +15,7 @@ import java.util.Optional;
 
 
 @Service
-public class PostServiceImpl implements CrudServiceInterface<Post, Long> {
+public class PostService implements CrudServiceInterface<Post, Long> {
 
     private PostRepository postRepo;
     @Autowired

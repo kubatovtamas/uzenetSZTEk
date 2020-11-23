@@ -13,15 +13,15 @@ import java.util.Map;
 @Service
 public class TopicWithPostsService {
 
-    private PostServiceImpl postServ;
+    private PostService postServ;
     @Autowired
-    public void setPostService(PostServiceImpl postServ) {
+    public void setPostService(PostService postServ) {
         this.postServ = postServ;
     }
 
-    private TopicServiceImpl topicServ;
+    private TopicService topicServ;
     @Autowired
-    public void setTopicService(TopicServiceImpl topicServ) {
+    public void setTopicService(TopicService topicServ) {
         this.topicServ = topicServ;
     }
 

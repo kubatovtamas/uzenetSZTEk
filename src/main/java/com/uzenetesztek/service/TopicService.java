@@ -1,20 +1,18 @@
 package com.uzenetesztek.service;
 
-import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.DataIntegrityViolationException;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.TopicRepository;
 import com.uzenetesztek.repository.UserRepository;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-public class TopicServiceImpl implements CrudServiceInterface<Topic, Long> {
+public class TopicService implements CrudServiceInterface<Topic, Long> {
 
     private TopicRepository topicRepo;
     @Autowired
@@ -28,9 +26,9 @@ public class TopicServiceImpl implements CrudServiceInterface<Topic, Long> {
         this.userRepo = userRepo;
     }
 
-    private PostServiceImpl postServ;
+    private PostService postServ;
     @Autowired
-    public void setPostService(PostServiceImpl postServ) {
+    public void setPostService(PostService postServ) {
         this.postServ = postServ;
     }
 

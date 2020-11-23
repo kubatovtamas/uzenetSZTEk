@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @Service
-public class UserServiceImpl implements CrudServiceInterface<User, Long> {
+public class UserService implements CrudServiceInterface<User, Long> {
 
     private UserRepository userRepo;
     @Autowired
