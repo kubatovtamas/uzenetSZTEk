@@ -718,3 +718,14 @@ insert into POST (id, file, text_content, timestamp, parent_topic_id, starter_po
 Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
 
 Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', '2019-12-28 00:30:23', ifnull(select parent_topic_id from POST where id = @starter_post_id, FLOOR(RAND()*49+1)), null, 37);
+insert into USER_FOLLOW_TOPICS (FOLLOWERS_ID, FOLLOW_TOPICS_ID) values (1, 12);
+insert into USER_FOLLOW_TOPICS (FOLLOWERS_ID, FOLLOW_TOPICS_ID) values (1, 2);
+insert into USER_FOLLOW_TOPICS (FOLLOWERS_ID, FOLLOW_TOPICS_ID) values (20, 44);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (1, 4);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (1, 7);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (1, 5);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (1, 2);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (1, 3);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (2, 1);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (2, 13);
+insert into USER_FOLLOWS (FOLLOWERS_ID, FOLLOWS_ID) values (2, 16);
