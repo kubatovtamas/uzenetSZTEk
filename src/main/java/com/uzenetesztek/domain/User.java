@@ -57,10 +57,10 @@ public class User {
     private Set<Topic> topics;                  // each topic is unique in this list
 
     @ManyToMany
-    private List<User> follows;
+    private Set<User> follows;                 // people we follow
 
     @ManyToMany(mappedBy = "follows")           // user can follow other people and it's true backwards as well
-    private Set<User> followees;                // can't follow the same person twice
+    private Set<User> followers;                // people who follow us
 
     @ManyToMany
     private Set<Topic> followTopics;

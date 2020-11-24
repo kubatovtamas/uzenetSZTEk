@@ -63,7 +63,7 @@ public class UserService implements CrudServiceInterface<User, Long> {
                 newEntity.setEmail(entity.getEmail());
                 newEntity.setFirstName(entity.getFirstName());
                 newEntity.setLastName(entity.getLastName());
-                newEntity.setFollowees(entity.getFollowees());
+                newEntity.setFollowers(entity.getFollowers());
                 newEntity.setFollows(entity.getFollows());
                 newEntity.setFollowTopics(entity.getFollowTopics());
                 newEntity.setLikedPosts(entity.getLikedPosts());
@@ -99,6 +99,10 @@ public class UserService implements CrudServiceInterface<User, Long> {
             throw new DataIntegrityViolationException("Data Integrity Validation");
         }
         // TODO: meaningful errors on specific cases
+    }
+
+    public void userFollowsUser(User user, User userToFollow) {
+
     }
 }
 
