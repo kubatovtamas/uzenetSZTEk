@@ -15,7 +15,28 @@
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
             üzeneteSZTEk
         </h1>
+        <label for="Search">
+        </label>
+        <input class="float-right my-4 mx-2 bg-teal-800 hat" id="Search" placeholder="Search..." type="text">
     </div>
+
+    <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
+        <nav class="space-x-56">
+            <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+               th:href="@{/}">
+                Main
+            </a>
+            <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord"
+               th:href="@{/profile}">
+                Profile
+            </a>
+            <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+               th:href="@{/topics}">
+                Topics
+            </a>
+        </nav> <!--menu buttons-->
+    </div>
+
 </header>
 
 <div class="flex flex-row-reverse">
@@ -73,9 +94,9 @@
 </div>
 
 <div class="flex inline-block justify-center  text-2xl text-gray-500">
-    <a class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord" href="/">
-        Back to Main Page
-    </a>
+    <button onclick="goBack()" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">
+        Go Back
+    </button>
 </div>
 
 <div> <!--- TODO: href thymeleaf --->

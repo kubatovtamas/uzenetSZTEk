@@ -61,3 +61,7 @@ function posting(x) {
     x.width = 400
     x.height = 400
 }
+
+function goBack() {
+    window.history.back();
+}
