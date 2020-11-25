@@ -29,8 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // Top To Bottom: Most Restrictive -> Least Restrictive
         http.authorizeRequests()
-                .antMatchers("/**").hasRole("ADMIN")
+                .antMatchers("/adminlevel").hasRole("ADMIN")
+                .antMatchers("/userlevel").hasRole("USER")
+                .antMatchers("/","static/css", "static/js", "static/images").permitAll()
                 .and()
                 .formLogin();
     }
