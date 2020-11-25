@@ -2,7 +2,6 @@ package com.uzenetesztek.service;
 
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
-import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.DataIntegrityViolationException;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.PostRepository;
@@ -15,7 +14,7 @@ import java.util.Optional;
 
 
 @Service
-public class PostService implements CrudServiceInterface<Post, Long> {
+public class PostService implements ICrudService<Post, Long> {
 
     private PostRepository postRepo;
     @Autowired

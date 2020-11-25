@@ -12,24 +12,12 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class TopicService implements CrudServiceInterface<Topic, Long> {
+public class TopicService implements ICrudService<Topic, Long> {
 
     private TopicRepository topicRepo;
     @Autowired
     public void setTopicRepo(TopicRepository topicRepo) {
         this.topicRepo = topicRepo;
-    }
-
-    private UserRepository userRepo;
-    @Autowired
-    public void setUserRepo(UserRepository userRepo) {
-        this.userRepo = userRepo;
-    }
-
-    private PostService postServ;
-    @Autowired
-    public void setPostService(PostService postServ) {
-        this.postServ = postServ;
     }
 
 

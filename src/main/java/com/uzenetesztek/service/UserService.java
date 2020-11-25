@@ -1,6 +1,5 @@
 package com.uzenetesztek.service;
 
-import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.DataIntegrityViolationException;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 
 @Service
-public class UserService implements CrudServiceInterface<User, Long> {
+public class UserService implements ICrudService<User, Long> {
 
     private UserRepository userRepo;
     @Autowired
