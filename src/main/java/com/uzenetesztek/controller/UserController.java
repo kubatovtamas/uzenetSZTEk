@@ -24,7 +24,6 @@ public class UserController {
     @Autowired
     public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
 
-    @Secured("ROLE_ADMIN")
     @RequestMapping("/profile")
     public String profile(Model model) {
         return "profile";

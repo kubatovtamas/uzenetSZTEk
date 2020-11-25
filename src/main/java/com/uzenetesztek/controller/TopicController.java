@@ -41,7 +41,6 @@ public class TopicController {
         return "index";
     }
 
-    @Secured("ROLE_USER")
     @RequestMapping(path = {"/topics", "/topics/{id}"})
     public String getTopics(@PathVariable("id") Optional<Long> id, Model model) throws RecordNotFoundException {
         // Specific Topic
