@@ -31,11 +31,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // Top To Bottom: Most Restrictive -> Least Restrictive
         http.authorizeRequests()
+//                .antMatchers("/db/**").permitAll()
                 .antMatchers("/adminlevel").hasRole("ADMIN")
-                .antMatchers("/userlevel").hasRole("USER")
-                .antMatchers("/","static/css", "static/js", "static/images").permitAll()
+                .antMatchers("/userlevel").hasAnyRole("ADMIN","USER")
+                .antMatchers("/","static/css", "static/js", "static/images", "/db/**").permitAll()
                 .and()
                 .formLogin();
+
+        // Required For H2 Console
+        // TODO: Remove this when H2 no longer needed
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Bean
