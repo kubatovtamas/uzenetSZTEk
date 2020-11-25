@@ -20,7 +20,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("foo")
                 .password("foo")
-                .roles("USER");
+                .roles("USER")
+                .and()
+                .withUser("bar")
+                .password("bar")
+                .roles("ADMIN");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/**").hasRole("ADMIN")
+                .and()
+                .formLogin();
     }
 
     @Bean
@@ -28,19 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    //    @Autowired
-//    protected void configureAuth(AuthenticationManagerBuilder auth) throws Exception {
-//         auth.inMemoryAuthentication()
-//                 .withUser("test2")
-//                 .password("pass")
-//                 .roles("USER")
-//             .and()
-//                 .withUser("testAdmin")
-//                 .password("pass")
-//                 .roles("ADMIN")
-//             ;
-//    }
-//
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
