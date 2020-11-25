@@ -81,7 +81,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/userlevel").hasAnyRole("ADMIN","USER")
                 .antMatchers("/","static/css", "static/js", "static/images", "/db/**").permitAll()
                 .and()
-                .formLogin();
+                .formLogin()
+                    .permitAll()
+                    .loginPage("/login");
+//                .and()
+//                .logout()
+//                    .permitAll()
+//                .and()
+//                .exceptionHandling().accessDeniedPage("/error");
 
         // Required For H2 Console
         // TODO: Remove this when H2 no longer needed
