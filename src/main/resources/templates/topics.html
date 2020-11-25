@@ -39,8 +39,12 @@
     <button class="absolute" id="toggle-white-mode"></button>
 
     <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord" for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}" width="20"></i>
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}" width="20"></i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
+                                               width="20">
+        </i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
+                                               width="20">
+        </i>
     </label>
 </div>
 
@@ -57,15 +61,20 @@
                  th:each="topic : ${topicsWithPosts.keySet()}">
             <header class="flex relative">
                 <div class="text-2xl container text-center absolute">      <!--Topic's name-->
-                    <b><a href="topic_details.html" th:href="@{/topics/{id}(id=${topic.getId()})}"
-                          th:text="${topic.getName()}">Notified topic's name</a></b>
+                    <b>
+                        <a href="topic_details.html" th:href="@{/topics/{id}(id=${topic.getId()})}"
+                          th:text="${topic.getName()}">Notified topic's name
+                    </a>
+                    </b>
                 </div>
                 <div class="flex text-2xl relative">      <!--Poster's Name-->
                     <img class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="50"
                          src="../static/images/profile_pic.jpg" th:src="${topic.getUser().getProfilePicture()}" width="50">
-                    <a href="#" th:href="@{/user/{id}(id=${topic.getUser().getId()})}"><p
-                            class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">By Poster's
-                        Name</p></a>
+                    <a href="#" th:href="@{/user/{id}(id=${topic.getUser().getId()})}">
+                        <p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">
+                            By Poster's Name
+                        </p>
+                    </a>
                 </div>
 
 
@@ -82,7 +91,8 @@
                     <div class="flex right-0 absolute mr-4 mt-2">
                         <button><img border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
                                      th:src="@{images/upvote.png}"
-                                     width="30px"></button>
+                                     width="30px">
+                        </button>
                     </div>
                     <br>
                     <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
@@ -91,14 +101,21 @@
                         <div class="flex flex-row inline-block text-xl">
                             <img class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="40"
                                  src="../static/images/profile_pic.jpg" th:src="${post.getUser().getProfilePicture()}" width="40">
-                            <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}"><p
-                                    class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
+                            <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}">
+                                <p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">
+                                    Name
+                                </p>
+                            </a>
                         </div>
                     </header>
-                    <p th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}" > LOREM IPSUM </p>
+                    <p th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                        LOREM IPSUM
+                    </p>
                     <footer>
                         <p class="flex-row-reverse flex text-sm"
-                           th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
+                           th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">
+                            2020/10/28 16:51
+                        </p>
                     </footer>
                 </article>
             </section>

@@ -12,7 +12,9 @@
 
 <header>
     <div>
-        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
+            üzeneteSZTEk
+        </h1>
     </div>
 </header>
 
@@ -32,7 +34,9 @@
     <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl szov bord2">
         <article class="relative">
             <header class="flex flex-row justify-center mb-5 pb-5 relative">
-                <p><img src="../static/images/error_img.png" th:src="${errorImage}"></p>
+                <p>
+                    <img src="../static/images/error_img.png" th:src="${errorImage}">
+                </p>
                 <div>
                     <div style="justify-content: center;
                     align-items: center;
@@ -48,22 +52,30 @@
                 </div>
             </header>
             <section class="flex flex-row justify-center mb-5 pb-5">
-                <p th:text="${message}">message</p>
-                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
+                <p th:text="${message}">
+                    message
+                </p>
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">
+                    timestamp
+                </p>
             </section>
             <!-- ErrorCode status -->
             <section class="flex flex-row justify-center mb-5 pb-5 relative">
             </section>
 
             <footer class="flex flex-row right-0 mb-2 absolute"> <!--Back to Main Page href-->
-                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">
+                    timestamp
+                </p>
             </footer>
         </article>
     </div>
 </div>
 
 <div class="flex inline-block justify-center  text-2xl text-gray-500">
-    <a class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord" href="/">Back to Main Page</a>
+    <a class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord" href="/">
+        Back to Main Page
+    </a>
 </div>
 
 
