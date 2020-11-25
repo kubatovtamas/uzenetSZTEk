@@ -5,6 +5,7 @@ import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.service.TopicWithPostsService;
 import com.uzenetesztek.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,15 +24,16 @@ public class UserController {
     @Autowired
     public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping("/profile")
     public String profile(Model model) {
         return "profile";
     }
 
-    @RequestMapping("/login2")
-    public String login(Model model) {
-        return "login";
-    }
+//    @RequestMapping("/login")
+//    public String login(Model model) {
+//        return "login";
+//    }
 
     @RequestMapping("/user/{id}")
     public String searchForUser(@PathVariable(value = "id") Long id, Model model) throws RecordNotFoundException {

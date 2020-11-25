@@ -6,6 +6,7 @@ import com.uzenetesztek.service.PostService;
 import com.uzenetesztek.service.TopicService;
 import com.uzenetesztek.service.TopicWithPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +31,9 @@ public class TopicController {
 
     private TopicWithPostsService topicWithPostsService;
     @Autowired
-    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService;
-    }
+    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
+
+
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -39,6 +41,7 @@ public class TopicController {
         return "index";
     }
 
+    @Secured("ROLE_USER")
     @RequestMapping(path = {"/topics", "/topics/{id}"})
     public String getTopics(@PathVariable("id") Optional<Long> id, Model model) throws RecordNotFoundException {
         // Specific Topic
