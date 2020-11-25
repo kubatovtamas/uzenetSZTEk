@@ -120,6 +120,11 @@
                 </div>
 
             </header>
+            <!-- TODO: href th:text content -->
+
+            <p  class="ml-24 mb-3">
+                LOREM IPSUM
+            </p>
 
             <!-- Posts -->
             <section class="bg-current hat ml-10 rounded-2xl relative">
@@ -153,7 +158,8 @@
                     </header>
 
                     <!-- Content -->
-                    <p th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                    <p class="ml-5 mt-3" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),
+                            '&lt;br /&gt;')}">
                         Post content
                     </p>
 

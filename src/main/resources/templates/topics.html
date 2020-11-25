@@ -78,10 +78,18 @@
                 </div>
 
 
+
             </header>
+            <!-- TODO: href th:text content -->
+
+            <p  class="ml-24">
+                LOREM IPSUM
+            </p>
+
             <!-- Follow Button -->
             <button><img border="0" class="flex absolute mt-8" height="40px" src="../static/images/follow.png"
-                         th:src="@{../images/follow.png}" width="40px"></button>
+                         th:src="@{../images/follow.png}" width="40px">
+            </button>
             <section class="bg-current hat ml-16 rounded-2xl relative">
 
 
@@ -108,7 +116,7 @@
                             </a>
                         </div>
                     </header>
-                    <p th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                    <p class="mt-3 ml-5" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
                         LOREM IPSUM
                     </p>
                     <footer>
