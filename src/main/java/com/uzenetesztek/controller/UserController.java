@@ -31,7 +31,7 @@ public class UserController {
 
     @RequestMapping("/signin")
     public String signin(Model model) {
-        return "sign_in";
+        return "login";
     }
 
     @RequestMapping("/user/{id}")
