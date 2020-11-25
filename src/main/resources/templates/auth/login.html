@@ -20,22 +20,30 @@
 <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat">
     <nav class="space-x-56">
         <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
-           href="/">Main</a>
-        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
-           href="profile">Profile</a>
+           th:href="@{/}">
+            Main
+        </a>
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord"
+           th:href="@{/profile}">
+            Profile
+        </a>
         <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
-           href="topics">Topic</a>
-    </nav> <!--menu buttons-->
+           th:href="@{/topics}">
+            Topics
+        </a>
+    </nav>
 </div>
 
 <div class="flex flex-row-reverse">
+    <!-- White/Dark Theme Button -->
     <button class="absolute" id="toggle-white-mode"></button>
-
-    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current switch space-x-1 px-1at  hat bord"
-           for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img height="20" src="../../static/images/dark_mode.png" width="20"></i>
-        <i class="text-teal-700 relative"><img height="20" src="../../static/images/white_mode.png" width="20"></i>
-        <!--white/dark theme button-->
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord" for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
+                                               width="20">
+        </i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
+                                               width="20">
+        </i>
     </label>
 </div>
 
@@ -47,16 +55,16 @@
 
             <!-- Login Button -->
             <div class="flex flex-row m-auto">
-                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" onclick="showLogin()">
+                <a  class="bg-teal-700 toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" >
                     Login
-                </button>
+                </a>
             </div>
 
-            <!-- Register Button -->
+            <!-- Register Button --> <!-- TODO: th:href reg.html -->
             <div class="flex flex-row-reverse m-auto">
-                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" onclick="showRegister()">
+                <a class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord">
                     Register
-                </button>
+                </a>
             </div>
 
         </div>
@@ -65,7 +73,9 @@
         <div class="flex flex-row justify-center py-4">
             <div class=" border-r-4 border-t-4 border-blue-800 rounded-3xl bord formbox">
 
-                <p th:if="${param.logout}">You have successfully logged out.</p>
+                <p th:if="${param.logout}">
+                   You have successfully logged out.
+                </p>
 
                 <div class="absolute" id="log">
 
@@ -101,62 +111,6 @@
 
                         </form>
                     </div>
-
-<!--                    &lt;!&ndash; Register &ndash;&gt;-->
-<!--                    <div class="py-6 px-8 absolute input-group" id="reg">-->
-
-<!--                        <form name="registration" th:action="@{/reg}" th:object="${user}" method="post">-->
-
-
-<!--                            &lt;!&ndash; First Name &ndash;&gt;-->
-<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
-<!--                                <label for="first_name"></label>-->
-<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
-<!--                                       id="first_name" placeholder="First Name"-->
-<!--                                       type="text" th:field="*{firstName}">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Last Name &ndash;&gt;-->
-<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
-<!--                                <label for="last_name"></label>-->
-<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
-<!--                                       id="last_name" placeholder="Last name"-->
-<!--                                       type="text" th:field="*{lastName}">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; DOB &ndash;&gt;-->
-<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
-<!--                                <label for="birth_Date"></label>-->
-<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
-<!--                                       id="birth_Date" type="date" th:field="*{dateOfBirth}"> &lt;!&ndash; TODO: date description placeholder &ndash;&gt;-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Email &ndash;&gt;-->
-<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
-<!--                                <label for="reg_Email"></label>-->
-<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
-<!--                                       id="reg_Email" placeholder="Email address"-->
-<!--                                       type="email" th:field="*{email}">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Password &ndash;&gt;-->
-<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
-<!--                                <label for="reg_Password"></label>-->
-<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
-<!--                                       id="reg_Password" placeholder="Password"-->
-<!--                                       type="password" th:field="*{password}">-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; Submit &ndash;&gt;-->
-<!--                            <div class="flex flex-row justify-center">-->
-<!--                                <button type="submit" class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">-->
-<!--                                    Submit-->
-<!--                                </button>-->
-<!--                            </div>-->
-
-<!--                            &lt;!&ndash; TODO: add hidden form inputs for user object vreation on non-required fields &ndash;&gt;-->
-<!--                        </form>-->
-<!--                    </div>-->
 
                 </div>
 
