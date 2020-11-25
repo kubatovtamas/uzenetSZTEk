@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -41,18 +38,23 @@ public class UserController {
         return "user";
     }
 
+
+    // TODO: reg and login is on the same page -> add new User model to login ???
+
 //    @RequestMapping("/login")
 //    public String login(Model model) {
+//        model.addAttribute("user", new User());
 //        return "login";
+//
 //    }
 
-    @RequestMapping("/registration")
-    public String login(Model model) {
-        model.addAttribute("user", new User());
-        return "auth/login";
-    }
+//    @RequestMapping("/registration")
+//    public String login(Model model) {
+//        model.addAttribute("user", new User());
+//        return "auth/login";
+//    }
 
-    @RequestMapping(value = "/reg", method = RequestMethod.POST)
+    @PostMapping(value = "/reg")
     public String greetingSubmit(@ModelAttribute User user) {
         return "auth/login";
     }
