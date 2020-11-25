@@ -103,5 +103,27 @@ public class UserService implements ICrudService<User, Long> {
     public void userFollowsUser(User user, User userToFollow) {
 
     }
+
+    // returns optional for possible future use in UserDetails
+    public Optional<User> findByEmail(String email) throws RecordNotFoundException {
+        Optional<User> entity = userRepo.findByEmail(email);
+
+        if (entity.isPresent()) {
+            return entity;
+        } else {
+            throw new RecordNotFoundException("User with email: " + email + " not found");
+        }
+    }
+
+    // returns User
+    public User getByEmail(String email) throws RecordNotFoundException {
+        Optional<User> entity = userRepo.findByEmail(email);
+
+        if (entity.isPresent()) {
+            return entity.get();
+        } else {
+            throw new RecordNotFoundException("User with email: " + email + " not found");
+        }
+    }
 }
 
