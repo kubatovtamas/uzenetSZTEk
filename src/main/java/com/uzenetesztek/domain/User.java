@@ -50,7 +50,7 @@ public class User {
 
     @NotNull
     @ToString.Include
-    private boolean isAdmin;
+    private String authority;
 
     @Column(columnDefinition = "TEXT")
     private String profilePicture;

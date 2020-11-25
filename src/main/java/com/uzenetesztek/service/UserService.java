@@ -57,7 +57,7 @@ public class UserService implements ICrudService<User, Long> {
 
             if (existingEntity.isPresent()) {
                 User newEntity = existingEntity.get();
-                newEntity.setAdmin(entity.isAdmin());
+                newEntity.setAuthority(entity.getAuthority());
                 newEntity.setDateOfBirth(entity.getDateOfBirth());
                 newEntity.setEmail(entity.getEmail());
                 newEntity.setFirstName(entity.getFirstName());
