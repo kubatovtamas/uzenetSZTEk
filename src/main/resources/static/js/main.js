@@ -32,12 +32,12 @@ whiteModeToggle.addEventListener('click', () => {
 var x = document.getElementById("log");
 var y = document.getElementById("reg");
 
-function register() {
+function showRegister() {
     x.style.left = "-400px";
     y.style.left = '430px';
 }
 
-function login() {
+function showLogin() {
     x.style.left = "80px";
     y.style.left = '400px';
 }

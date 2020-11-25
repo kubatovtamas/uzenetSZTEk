@@ -47,14 +47,14 @@
 
             <!-- Login Button -->
             <div class="flex flex-row m-auto">
-                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" onclick="login()">
+                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" onclick="showLogin()">
                     Login
                 </button>
             </div>
 
             <!-- Register Button -->
             <div class="flex flex-row-reverse m-auto">
-                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" onclick="register()">
+                <button class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord" onclick="showRegister()">
                     Register
                 </button>
             </div>
@@ -64,7 +64,9 @@
         <!-- Input Fields -->
         <div class="flex flex-row justify-center py-4">
             <div class=" border-r-4 border-t-4 border-blue-800 rounded-3xl bord formbox">
+
                 <p th:if="${param.logout}">You have successfully logged out.</p>
+
                 <div class="absolute" id="log">
 
                     <!-- Login -->
@@ -93,7 +95,7 @@
                             <!-- Submit -->
                             <div class="flex flex-row justify-center">
                                 <button type="submit" class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
-                                    Submit
+                                    Log In
                                 </button>
                             </div>
 
