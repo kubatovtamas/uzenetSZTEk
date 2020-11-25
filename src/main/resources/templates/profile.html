@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link href="../static/css/styles.css" rel="stylesheet" th:href="@{css/styles.css}">
     <link href="../static/css/white_dark.css" rel="stylesheet" th:href="@{css/white_dark.css}">
@@ -56,7 +56,7 @@
                 <img alt="kugya" class="rounded-3xl block m-auto py-2 " height="200" id="user_Pic"
                      src="../public/pics/profile_pic.jpg" th:src="@{images/profile_pic.jpg}" width="200">
             </div>
-            <div class="text-gray-500 text-center py-2 szov" id="user_Name">     <!--User's name-->
+            <div class="text-gray-500 text-center py-2 szov" id="user_Name" sec:authentication="name">     <!--User's name-->
                 Name
             </div>
             <div class="text-gray-500 text-center py-2 szov" id="Interests">     <!--Something of the User-->
