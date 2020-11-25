@@ -64,36 +64,36 @@
         <!-- Input Fields -->
         <div class="flex flex-row justify-center py-4">
             <div class=" border-r-4 border-t-4 border-blue-800 rounded-3xl bord formbox">
+                <p th:if="${param.logout}">You have successfully logged out.</p>
                 <div class="absolute" id="log">
 
                     <!-- Login -->
                     <div class="py-4 absolute">
+                        <form name="login" th:action="@{/login}" method="post">
 
-                        <!-- Email -->
-                        <div class="flex flex-row justify-center py-2">
+                            <!-- Email -->
+                            <div class="flex flex-row justify-center py-2">
 
-                            <label for="log_Email"></label>
-                            <input class=" input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="log_Email" placeholder="Email address"
-                                   type="email">
-                        </div>
+                                <label for="login_email"></label>
+                                <input class=" input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"
+                                       name="login_email" id="login_email" placeholder="Email address" type="email" required="required">
+                            </div>
 
-                        <!-- Password -->
-                        <div class="flex flex-row justify-center py-2">
-                            <label for="log_Password"></label>
-                            <input class="input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="log_Password" placeholder="Password"
-                                   type="password">
+                            <!-- Password -->
+                            <div class="flex flex-row justify-center py-2">
+                                <label for="login_password"></label>
+                                <input class="input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"
+                                       name="login_password" id="login_password" placeholder="Password" type="password" required="required">
+                            </div>
 
-                        </div>
+                            <!-- Submit -->
+                            <div class="flex flex-row justify-center">
+                                <button type="submit" class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
+                                    Submit
+                                </button>
+                            </div>
 
-                        <!-- Submit -->
-                        <div class="flex flex-row justify-center">
-                            <button class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
-                                Submit
-                            </button>
-                        </div>
-
+                        </form>
                     </div>
 
                     <!-- Register -->
