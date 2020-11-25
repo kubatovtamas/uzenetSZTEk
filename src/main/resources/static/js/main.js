@@ -29,19 +29,6 @@ whiteModeToggle.addEventListener('click', () => {
 });
 
 
-var x = document.getElementById("log");
-var y = document.getElementById("reg");
-
-function showRegister() {
-    x.style.left = "-400px";
-    y.style.left = '430px';
-}
-
-function showLogin() {
-    x.style.left = "80px";
-    y.style.left = '400px';
-}
-
 function dropDown() {
     let dropping = document.getElementById('drop');
     let btn = document.getElementById("dropDown")
