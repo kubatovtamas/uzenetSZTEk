@@ -21,16 +21,15 @@ public class UserController {
     
     private TopicWithPostsService topicWithPostsService;
     @Autowired
-    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService;
-    }
+    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
 
     @RequestMapping("/profile")
     public String profile(Model model) {
         return "profile";
     }
 
-    @RequestMapping("/signin")
-    public String signin(Model model) {
+    @RequestMapping("/login2")
+    public String login(Model model) {
         return "login";
     }
 
