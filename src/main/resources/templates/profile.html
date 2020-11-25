@@ -12,9 +12,13 @@
 <body class="bg-gray-800">
 <header>
     <div>
-        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
-        <label for="Search"></label>
-        <input class="float-right my-4 mx-2 bg-teal-800 hat" id="Search" placeholder="Search..." type="text">
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
+            üzeneteSZTEk
+        </h1>
+        <!--- TODO: href thymeleaf --->
+        <button class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+            Log Out
+        </button>
     </div>
 </header>
 
@@ -58,12 +62,6 @@
             </div>
             <div class="text-gray-500 text-center py-2 szov" id="user_Name">     <!--User's name-->
                 Name
-            </div>
-            <div class="text-gray-500 text-center py-2 szov" id="Interests">     <!--Something of the User-->
-                Interests
-            </div>
-            <div class="text-gray-500 text-center py-2 szov" id="Details">       <!--Details(birth date, univercity)-->
-                Details
             </div>
 
 
@@ -125,12 +123,6 @@
             Something that the user posted..
         </div>
     </div>
-</div>
-
-<div> <!--- TODO: href thymeleaf --->
-    <button class="fixed flex bottom-0 left-0 ml-5 mb-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
-        Log Out
-    </button>
 </div>
 
 <script src="../static/js/main.js" th:src="@{js/main.js}"></script>
