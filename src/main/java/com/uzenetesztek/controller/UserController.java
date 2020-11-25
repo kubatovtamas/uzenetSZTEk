@@ -23,6 +23,8 @@ public class UserController {
     @Autowired
     public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
 
+
+
     @RequestMapping("/profile")
     public String profile(Model model) {
         return "profile";
@@ -38,8 +40,7 @@ public class UserController {
         return "user";
     }
 
-
-    // TODO: reg and login is on the same page -> add new User model to login ???
+// TODO: reg and login is on the same page -> add new User model to login ???
 
 //    @RequestMapping("/login")
 //    public String login(Model model) {
@@ -54,8 +55,8 @@ public class UserController {
 //        return "auth/login";
 //    }
 
-    @PostMapping(value = "/reg")
-    public String greetingSubmit(@ModelAttribute User user) {
-        return "auth/login";
-    }
+//    @PostMapping(value = "/reg")
+//    public String greetingSubmit(@ModelAttribute User user) {
+//        return "auth/login";
+//    }
 }
