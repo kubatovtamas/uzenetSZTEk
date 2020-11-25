@@ -1,11 +1,14 @@
 package com.uzenetesztek.domain;
 
+
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @ToString(onlyExplicitlyIncluded = true)
@@ -13,36 +16,39 @@ import java.util.Set;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 public class User {
 
     @GeneratedValue
-    @Id         // primary key
+    @Id
     @ToString.Include
     private Long id;
 
+    @NotBlank(message = "First Name Cannot Be Blank")
     @ToString.Include
     private String firstName;
 
+    @NotBlank(message = "Last Name Cannot Be Blank")
     @ToString.Include
     private String lastName;
 
+    @NotNull
     @ToString.Include
     private Date dateOfBirth;
 
     @ToString.Include
     private Date lastLogin;
 
-    @NonNull
-    @Column(unique = true)                      // only one user per username
+    @NotNull
+    @Column(unique = true, nullable = false)      // only one user per username
     @ToString.Include
     private String email;
 
-    @NonNull
+    @NotNull
     private String password;
 
-    @NonNull
+    @NotNull
     @ToString.Include
     private boolean isAdmin;
 
@@ -50,14 +56,13 @@ public class User {
     private String profilePicture;
 
     @OneToMany(mappedBy = "user")               // one user can have many posts, mapped by Post.user object's id
-    @ToString.Exclude
     private Set<Post> posts;
 
     @OneToMany(mappedBy = "user")               // one user can have many topics, mapped by Topic.user object's id
     private Set<Topic> topics;                  // each topic is unique in this list
 
     @ManyToMany
-    private Set<User> follows;                 // people we follow
+    private Set<User> follows;                  // people we follow
 
     @ManyToMany(mappedBy = "follows")           // user can follow other people and it's true backwards as well
     private Set<User> followers;                // people who follow us

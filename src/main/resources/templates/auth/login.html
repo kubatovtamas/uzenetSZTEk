@@ -76,7 +76,7 @@
                             <!-- Email -->
                             <div class="flex flex-row justify-center py-2">
 
-
+                            <!-- TODO: switch back to email based authentication -->
 <!--                                <label for="login_email"></label>-->
 <!--                                <input class=" input-field bg-transparent px-4 text-center border-4 border-blue-800 rounded-3xl bord"-->
 <!--                                       name="login_email" id="login_email" placeholder="Email address" type="email" required="required">-->
@@ -102,58 +102,66 @@
                         </form>
                     </div>
 
-                    <!-- Register -->
-                    <div class="py-6 px-8 absolute input-group" id="reg">
+<!--                    &lt;!&ndash; Register &ndash;&gt;-->
+<!--                    <div class="py-6 px-8 absolute input-group" id="reg">-->
 
-                        <!-- First Name -->
-                        <div class="flex flex-row justify-center py-4 px-4">
-                            <label for="first_Name"></label>
-                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="first_Name" placeholder="First name"
-                                   type="text">
-                        </div>
+<!--                        <form name="registration" th:action="@{/reg}" th:object="${user}" method="post">-->
 
-                        <!-- Last Name -->
-                        <div class="flex flex-row justify-center py-4 px-4">
-                            <label for="last_Name"></label>
-                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="last_Name" placeholder="Last name"
-                                   type="text">
-                        </div>
 
-                        <!-- DOB -->
-                        <div class="flex flex-row justify-center py-4 px-4">
-                            <label for="birth_Date"></label>
-                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="birth_Date" type="date" placeholder="Date Of Birth">
-                        </div>
+<!--                            &lt;!&ndash; First Name &ndash;&gt;-->
+<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
+<!--                                <label for="first_name"></label>-->
+<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
+<!--                                       id="first_name" placeholder="First Name"-->
+<!--                                       type="text" th:field="*{firstName}">-->
+<!--                            </div>-->
 
-                        <!-- Email -->
-                        <div class="flex flex-row justify-center py-4 px-4">
-                            <label for="reg_Email"></label>
-                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="reg_Email" placeholder="Email address"
-                                   type="email">
-                        </div>
+<!--                            &lt;!&ndash; Last Name &ndash;&gt;-->
+<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
+<!--                                <label for="last_name"></label>-->
+<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
+<!--                                       id="last_name" placeholder="Last name"-->
+<!--                                       type="text" th:field="*{lastName}">-->
+<!--                            </div>-->
 
-                        <!-- Password -->
-                        <div class="flex flex-row justify-center py-4 px-4">
-                            <label for="reg_Password"></label>
-                            <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
-                                   id="reg_Password" placeholder="Password"
-                                   type="password">
-                        </div>
+<!--                            &lt;!&ndash; DOB &ndash;&gt;-->
+<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
+<!--                                <label for="birth_Date"></label>-->
+<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
+<!--                                       id="birth_Date" type="date" th:field="*{dateOfBirth}"> &lt;!&ndash; TODO: date description placeholder &ndash;&gt;-->
+<!--                            </div>-->
 
-                        <!-- Submit -->
-                        <div class="flex flex-row justify-center">
-                            <button class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
-                                Submit
-                            </button>
-                        </div>
+<!--                            &lt;!&ndash; Email &ndash;&gt;-->
+<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
+<!--                                <label for="reg_Email"></label>-->
+<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
+<!--                                       id="reg_Email" placeholder="Email address"-->
+<!--                                       type="email" th:field="*{email}">-->
+<!--                            </div>-->
 
-                    </div>
+<!--                            &lt;!&ndash; Password &ndash;&gt;-->
+<!--                            <div class="flex flex-row justify-center py-4 px-4">-->
+<!--                                <label for="reg_Password"></label>-->
+<!--                                <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"-->
+<!--                                       id="reg_Password" placeholder="Password"-->
+<!--                                       type="password" th:field="*{password}">-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Submit &ndash;&gt;-->
+<!--                            <div class="flex flex-row justify-center">-->
+<!--                                <button type="submit" class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">-->
+<!--                                    Submit-->
+<!--                                </button>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; TODO: add hidden form inputs for user object vreation on non-required fields &ndash;&gt;-->
+<!--                        </form>-->
+<!--                    </div>-->
+
                 </div>
+
             </div>
+
         </div>
 
 

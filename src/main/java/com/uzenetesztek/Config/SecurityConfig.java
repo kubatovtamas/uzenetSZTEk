@@ -31,6 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/profile").hasRole("ADMIN")
                 .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/reg").permitAll()
+                .antMatchers("/db/**").permitAll() // TODO: Remove when migrating from H2
                 .anyRequest().authenticated()
             .and()
                 .formLogin()
