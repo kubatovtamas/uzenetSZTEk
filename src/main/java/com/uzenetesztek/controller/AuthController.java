@@ -25,6 +25,11 @@ public class AuthController {
         return "auth/login";
     }
 
+    @GetMapping("/activation/login")
+    public String loginFromActivation(){
+        return "auth/login";
+    }
+
     @GetMapping("/reg")
     public String register(Model model){
         model.addAttribute("user",new User());
@@ -40,7 +45,7 @@ public class AuthController {
     @RequestMapping(path = "/activation/{code}", method = RequestMethod.GET)
     public String activation(@PathVariable("code") String code, HttpServletResponse response){
         userDetailsService.userActivation(code);
-        return "auth/login";
+        return "redirect:/login";
     }
 
 
