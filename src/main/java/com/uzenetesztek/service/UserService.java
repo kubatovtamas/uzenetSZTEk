@@ -125,5 +125,9 @@ public class UserService implements ICrudService<User, Long> {
             throw new RecordNotFoundException("User with email: " + email + " not found");
         }
     }
+
+    public User findByActivation(String code){
+        return userRepo.findByActivation(code);
+    }
 }
 

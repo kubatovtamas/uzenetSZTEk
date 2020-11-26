@@ -2,6 +2,7 @@ package com.uzenetesztek.domain;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -34,6 +35,7 @@ public class User {
     private String lastName;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ToString.Include
     private Date dateOfBirth;
 
@@ -51,6 +53,10 @@ public class User {
     @NotNull
     @ToString.Include
     private String authority;
+
+    private String activation;
+
+    private Boolean enabled;
 
     @Column(columnDefinition = "TEXT")
     private String profilePicture;

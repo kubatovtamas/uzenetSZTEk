@@ -58,7 +58,7 @@
 
             <!-- Login Button --> <!-- TODO: th:href login.html -->
             <div class="flex flex-row m-auto">
-                <a class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord">
+                <a th:href="@{/login}" class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord">
                     Login
                 </a>
             </div>
@@ -80,13 +80,13 @@
             <!--                &lt;!&ndash; Register &ndash;&gt; -->
                     <div class="py-6 px-8 input-group" id="reg">
 
-                        <form name="registration" th:action="@{/reg}" method="post">
+                        <form name="registration" th:action="@{/reg}" th:object="${user}" method="post">
 
                                     <!-- TODO: th:field, delete comment -->
                             <!--     &lt;!&ndash; First Name &ndash;&gt; -->
                                 <div class="flex flex-row justify-center py-4 px-4">
                                          <label for="first_name"></label>
-                                         <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                         <input th:field="*{firstName}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
                                                 id="first_name" placeholder="First Name"
                                                 type="text">
                                 </div>
@@ -95,7 +95,7 @@
                              <!--    &lt;!&ndash; Last Name &ndash;&gt; -->
                                  <div class="flex flex-row justify-center py-4 px-4">
                                      <label for="last_name"></label>
-                                     <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                     <input th:field="*{lastName}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
                                             id="last_name" placeholder="Last name"
                                             type="text">
                                  </div>
@@ -104,7 +104,7 @@
                             <!--    &lt;!&ndash; DOB &ndash;&gt; -->
                                 <div class="flex flex-row justify-center py-4 px-4">
                                     <label for="birth_Date"></label>
-                                    <input class="input-field px-6 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                    <input th:field="*{dateOfBirth}" class="input-field px-6 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
                                            id="birth_Date" type="date">
                              <!--      &lt;!&ndash; TODO: date description placeholder &ndash;&gt; -->
                                 </div>
@@ -113,7 +113,7 @@
                              <!--   &lt;!&ndash; Email &ndash;&gt; -->
                                 <div class="flex flex-row justify-center py-4 px-4">
                                     <label for="reg_Email"></label>
-                                    <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                    <input th:field="*{email}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
                                            id="reg_Email" placeholder="Email address"
                                            type="email">
                                 </div>
@@ -122,11 +122,11 @@
                              <!--   &lt;!&ndash; Password &ndash;&gt; -->
                                 <div class="flex flex-row justify-center py-4 px-4">
                                     <label for="reg_Password"></label>
-                                    <input class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                    <input th:field="*{password}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
                                            id="reg_Password" placeholder="Password"
                                            type="password">
                                 </div>
-
+                                <input th:field="*{authority}" type="hidden" value="ROLE_USER">
                                 <!-- TODO: th:field, delete comment -->
                             <!--    &lt;!&ndash; Submit &ndash;&gt; -->
                                  <div class="flex flex-row justify-center">

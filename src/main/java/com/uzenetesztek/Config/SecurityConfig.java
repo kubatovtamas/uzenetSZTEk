@@ -78,8 +78,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Top To Bottom: Most Restrictive -> Least Restrictive
         http.authorizeRequests()
                 .antMatchers("/adminlevel").hasRole("ADMIN")
-                .antMatchers("/userlevel").hasAnyRole("ADMIN","USER")
-                .antMatchers("/","static/css", "static/js", "static/images", "/db/**").permitAll()
+                //The explicit listing is for testing purposes only TODO: We need to modify it. Visitor can reach only login page
+                .antMatchers("/userlevel","/","/profile","/topics").hasAnyRole("ADMIN","USER")
+                .antMatchers("auth/login","static/css", "static/js", "static/images", "/db/**").permitAll()
                 .and()
                 .formLogin()
                     .permitAll()
