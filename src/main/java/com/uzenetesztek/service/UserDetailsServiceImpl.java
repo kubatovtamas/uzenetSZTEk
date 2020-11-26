@@ -37,23 +37,30 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new UserDetailsImpl(entity);
     }
 
-    public void userActivation(String code){
+    public String userActivation(String code){
         User user = userService.findByActivation(code);
         if(!Objects.isNull(user)){
             user.setEnabled(true);
             user.setActivation("");
             userService.save(user);
+            return "ok";
         }else{
-            //TODO: what if the activation code isn't exist
+            return "error";
         }
     }
 
-    public void registerUser(User user){
-        user.setEnabled(false);
-        user.setActivation(generateKey());
-        user.setAuthority("ROLE_USER");
-        userService.save(user);//It throw an exception if the user already exist
-        emailService.sendMessage(user.getEmail(), user.getFirstName(), user.getActivation()); //activation code send to user
+    public String registerUser(User user){
+        try{
+            user.setEnabled(false);
+            user.setActivation(generateKey());
+            user.setAuthority("ROLE_USER");
+            userService.save(user);//It throw an exception if the user already exist
+            emailService.sendMessage(user.getEmail(), user.getFirstName(), user.getActivation()); //activation code send to user
+            return "ok";
+        }catch (Exception e){
+            return e.getMessage();
+        }
+
     }
 
     //a 16-length activation code

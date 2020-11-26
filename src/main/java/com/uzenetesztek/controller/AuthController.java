@@ -25,10 +25,7 @@ public class AuthController {
         return "auth/login";
     }
 
-    @GetMapping("/activation/login")
-    public String loginFromActivation(){
-        return "auth/login";
-    }
+
 
     @GetMapping("/reg")
     public String register(Model model){
@@ -37,15 +34,24 @@ public class AuthController {
     }
 
     @PostMapping("/reg")
-    public String reg(@ModelAttribute User user){
-        userDetailsService.registerUser(user);
+    public String reg(@ModelAttribute User user, Model model){
+        String result = userDetailsService.registerUser(user);
+        if(result.equals("ok")){
+            model.addAttribute("resultMessage","Thank you.\nWe have sent you email to "+user.getEmail()+".\nPlease click the link in that message to activate your account.");
+        }else{
+            model.addAttribute("resultMessage","Something went wrong. User registration failed.");
+        }
         return "auth/login";
     }
 
     @RequestMapping(path = "/activation/{code}", method = RequestMethod.GET)
     public String activation(@PathVariable("code") String code, HttpServletResponse response){
-        userDetailsService.userActivation(code);
-        return "redirect:/login";
+        String result = userDetailsService.userActivation(code);
+        if(result.equals("ok")){
+            return "redirect:/login";
+        }else{
+            return "redirect:/login?error";
+        }
     }
 
 
