@@ -37,9 +37,9 @@ public class AuthController {
     public String reg(@ModelAttribute User user, Model model){
         String result = userDetailsService.registerUser(user);
         if(result.equals("ok")){
-            model.addAttribute("resultMessage","Thank you.\nWe have sent you email to "+user.getEmail()+".\nPlease click the link in that message to activate your account.");
+            model.addAttribute("resultMessage","Thank you.<br>We have sent you email to "+user.getEmail()+".<br>Please click the link in that message to activate your account.");
         }else{
-            model.addAttribute("resultMessage","Something went wrong. User registration failed.");
+            return "redirect:/login?error";
         }
         return "auth/login";
     }
