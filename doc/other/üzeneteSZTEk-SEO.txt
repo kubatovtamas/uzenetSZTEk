@@ -1,0 +1,35 @@
+1) A reszponzitivás elkészítése érdekében szükség van az ezt támogató meta-tag-re:
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+2) Az egyes .html oldalakra szükség van egy angol nyelű description meta tag-re amely bemtuatja az oldal funkcionalitását és ezált jobb rangsort kap a webapp a keresések során
+
+<meta name="description" content=""/>
+
+profile.html esetében:
+<meta name="description" content="This profile page describes the topics and public personal information of the user that logged in to the site recently. Here he/she can change his/her personal data and start a new topic as well."/>
+
+error.html esetében:
+<meta name="description" content="This page describes the error with appropriate messages about what caused the problem, it's a helpful page for the üzeneteSZTEk user if something went wrong."/>
+
+index.html esetében:
+<meta name="description" content="This pages is the index page of the üzeneteSZTEk webapplication which lists various topics and posts based on user settings."/>
+
+topic-details.html esetében:
+<meta name="description" content="This page further describes the conversation of a topic. The user can read all the posts connected to a specific topic and of course the user can reply to the post with his/her own opinion in form of a userpost."/>
+
+topics.html esetében:
+<meta name="description" content="This page lists various topics based on user settings."/>
+
+user.html esetében:
+<meta name="description" content="This pages also describes the user, but it's focused on the topics the user takes part in and not on the creationg of a new topic."/>
+
+login.html esetében:
+<meta name="description" content="This is the login site of the üzeneteSZTEK webapplication."/>
+
+reg.html esetében:
+<meta name="description" content="This is the registration site of the üzeneteSZTEk webapplication."/>
+
+
+3) Compatibilitás kevésbé fejlett böngészőkkel, ezt szolgálja a következő tag, ami a Microsfot Edge büngésző bizonyos hiábáit igyekszik figyelembe venni:
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
