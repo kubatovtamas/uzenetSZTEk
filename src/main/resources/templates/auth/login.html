@@ -112,12 +112,12 @@
                                     Log In
                                 </button>
                             </div>
-                        <div class="mt-10 border-t-2 rounded-md border-blue-800">
-                            <div class="text-red-500 text-red-500 text-2xl mx-auto mb-3 flex flex-row text-center" th:if="${param.error}">
+                        <div class="mt-10 border-t-2 rounded-md border-blue-800 px-5">
+                            <div class="text-red-500 text-red-500 text-md mx-auto mb-3 flex flex-row justify-center " th:if="${param.error}">
                                 Something went wrong
                             </div>
 
-                            <div class="text-green-500 text-2xl mx-auto mb-3 flex flex-row justify-center" th:if="${resultMessage != null}" th:text="${resultMessage}">
+                            <div class="text-green-500 text-md mx-auto mb-3 flex flex-row justify-center" th:if="${resultMessage != null}" th:text="${resultMessage}">
                                 msg
                             </div>
                         </div>
