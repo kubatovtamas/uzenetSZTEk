@@ -44,10 +44,10 @@
     <button class="absolute" id="toggle-white-mode"></button>
 
     <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord" for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
+        <i class="text-teal-700 relative"><img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
                                                width="20">
         </i>
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
+        <i class="text-teal-700 relative"><img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
                                                width="20">
         </i>
     </label>
@@ -73,7 +73,7 @@
                     </b>
                 </div>
                 <div class="flex text-2xl relative">      <!--Poster's Name-->
-                    <img class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="50"
+                    <img alt="Profile picture of the user" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="50"
                          src="../static/images/profile_pic.jpg" th:src="${topic.getUser().getProfilePicture()}" width="50">
                     <a href="#" th:href="@{/user/{id}(id=${topic.getUser().getId()})}">
                         <p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">
@@ -92,7 +92,7 @@
             </p>
 
             <!-- Follow Button -->
-            <button><img border="0" class="flex absolute mt-8" height="40px" src="../static/images/follow.png"
+            <button><img alt="Follow button" border="0" class="flex absolute mt-8" height="40px" src="../static/images/follow.png"
                          th:src="@{../images/follow.png}" width="40px">
             </button>
             <section class="bg-current hat ml-16 rounded-2xl relative">
@@ -102,7 +102,7 @@
                          th:each="post : ${topicsWithPosts.get(topic)}">
                     <!-- upvote button/counter -->
                     <div class="flex right-0 absolute mr-4 mt-2">
-                        <button><img border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
+                        <button><img alt="Upvote button" border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
                                      th:src="@{images/upvote.png}"
                                      width="30px">
                         </button>
@@ -112,7 +112,7 @@
                     <header class="flex">
 
                         <div class="flex flex-row inline-block text-xl">
-                            <img class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="40"
+                            <img alt="Profile picture of the user" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord" height="40"
                                  src="../static/images/profile_pic.jpg" th:src="${post.getUser().getProfilePicture()}" width="40">
                             <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}">
                                 <p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">

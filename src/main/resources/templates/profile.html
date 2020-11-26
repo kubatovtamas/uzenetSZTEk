@@ -45,10 +45,10 @@
 
     <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current hat label hat bord"
            for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
+        <i class="text-teal-700 relative"><img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
                                                width="20">
         </i>
-        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
+        <i class="text-teal-700 relative"><img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
                                                width="20">
         </i> <!--white/dark theme button-->
     </label>
@@ -59,7 +59,7 @@
         <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
             <div class="text-center py-2">Update profile picture</div>      <!--Uploading photo-->
             <div>
-                <img alt="kugya" class="rounded-3xl block m-auto py-2 " height="200" id="user_Pic"
+                <img alt="Profile picture of the user" class="rounded-3xl block m-auto py-2 " height="200" id="user_Pic"
                      src="../public/pics/profile_pic.jpg" th:src="@{images/profile_pic.jpg}" width="200">
             </div>
             <div class="text-gray-500 text-center py-2 szov" id="user_Name" sec:authentication="name">     <!--User's name-->
