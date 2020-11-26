@@ -18,9 +18,11 @@
             üzeneteSZTEk
         </h1>
         <!--- TODO: href thymeleaf --->
-        <button class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
-            Log Out
-        </button>
+        <form sec:authorize="isAuthenticated()" form-method="post" th:action="@{/logout}">
+            <button type="submit" class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+                Log Out
+            </button>
+        </form>
     </div>
 </header>
 
