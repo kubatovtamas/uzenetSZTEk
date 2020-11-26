@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -17,6 +18,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private UserService userService;
     private EmailService emailService;
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Autowired
     public void setEmailService(EmailService emailService) {
@@ -54,6 +61,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user.setEnabled(false);
             user.setActivation(generateKey());
             user.setAuthority("ROLE_USER");
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setProfilePicture("images/upvote.png");
             userService.save(user);//It throw an exception if the user already exist
             emailService.sendMessage(user.getEmail(), user.getFirstName(), user.getActivation()); //activation code send to user
             return "ok";
