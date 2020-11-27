@@ -2,6 +2,7 @@ package com.uzenetesztek.service;
 
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
+import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.DataIntegrityViolationException;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.PostRepository;

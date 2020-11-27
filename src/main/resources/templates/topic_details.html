@@ -11,15 +11,16 @@
     <meta name="description" content="This page further describes the conversation of a topic. The user can read all the posts connected to a specific topic and of course the user can reply to the post with his/her own opinion in form of a userpost."/>
     <title>üzeneteSZTEk</title>
 </head>
+
 <body class="bg-gray-800">
 
+<!-- Nav Bar Start -->
 <header>
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
             üzeneteSZTEk
         </h1>
-        <!--- TODO: href thymeleaf --->
-        <form sec:authorize="isAuthenticated()" form-method="post" th:action="@{/logout}">
+        <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
             <button type="submit" class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
                 Log Out
             </button>
@@ -41,40 +42,53 @@
            th:href="@{/topics}">
             Topics
         </a>
-    </nav> <!--menu buttons-->
+    </nav>
 </div>
 
 <div class="flex flex-row-reverse">
+    <!-- White/Dark Theme Button -->
     <button class="absolute" id="toggle-white-mode"></button>
-
     <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord"
            for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{../images/dark_mode.png}"
-                                               width="20"></i>
-        <i class="text-teal-700 relative"><img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{../images/white_mode.png}"
-                                               width="20"></i> <!--white/dark theme button-->
+        <i class="text-teal-700 relative">
+            <img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{../images/dark_mode.png}" width="20">
+        </i>
+        <i class="text-teal-700 relative">
+            <img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{../images/white_mode.png}"width="20">
+        </i>
         <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
     </label>
 </div>
+<!-- Nav Bar End -->
 
-<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord"> <!--main div's start-->
+<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord">
+
+    <!-- Topics And Posts Container -->
     <div class="text-gray-500 text-2xl">
 
-
+        <!-- Topics And Posts -->
         <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord  bord2 mt-5">
-            <a href="/"><img alt="back" class="float-right" height="50"
-                         src="../static/images/arrow_one.png" th:src="@{../images/arrow_one.png}" width="50">
-            </a> <!-- Back button -->
+
+            <!-- Back button -->
+            <a href="/">
+                <img alt="back" class="float-right" height="50" src="../static/images/arrow_one.png" th:src="@{../images/arrow_one.png}" width="50">
+            </a>
+
             <div class="px-3">
+
+                <!-- Topic Info Header -->
                 <header class="flex relative">
-                    <div class="text-2xl container text-center absolute szov">      <!--Topic's name-->
+                    <!--Topic's name-->
+                    <div class="text-2xl container text-center absolute szov">
                         <b>
                             <a th:href="@{/topics/{id}(id=${specificTopic.getId()})}" th:text="${specificTopic.getName()}">
-                                Notified topic's name
+                                Topic Name
                             </a>
                         </b>
                     </div>
-                    <div class="flex text-2xl relative">      <!--Poster's Name-->
+
+                    <!-- Topic's Poster -->
+                    <div class="flex text-2xl relative">
                         <div>
                             <img alt="Profile picture of the user" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord"
                                  height="50" src="../static/images/profile_pic.jpg" th:src="${specificTopic.getUser().getProfilePicture()}"
@@ -83,17 +97,15 @@
                         <a class="clear-both" href="#"
                            th:href="@{/user/{id}(email=${specificTopic.getUser().getId()})}">
                             <p class="pr-3 mt-4 ml-1 text-xl" th:text="${specificTopic.getUser().getFullName()}">
-                                By Poster's Name
+                                Topic Poster's Name
                             </p>
                         </a>
                     </div>
-
-
                 </header>
-                <!-- TODO: href th:text content -->
 
-                <p  class="ml-24">
-                    LOREM IPSUM
+                <!-- Topic's Description -->
+                <p class="ml-24" th:text="${specificTopic.getDescription()}">
+                    Description
                 </p>
 
                 <!-- Follow Button -->
@@ -101,25 +113,29 @@
                     <img border="0" class=" flex absolute mt-8" height="40px" src="../static/images/follow.png"
                              th:src="@{../images/follow.png}" width="40px">
                 </button>
+
+                <!-- Posts In Topic Container -->
                 <section class="bg-current hat ml-16 rounded-2xl relative">
 
-                    <!--        For Each Post In Topic                -->
-                    <article class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat "
-                             th:each="post : ${posts}">
-                        <!-- upvote button/counter -->
+                    <!-- Posts -->
+                    <article th:each="post : ${posts}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+
+                        <!-- Upvote Button -->
                         <div class="flex right-0 absolute mr-4 mt-2">
                             <button>
                                 <img alt="Upvote button" border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
                                      th:src="@{../images/upvote.png}" width="30px">
                             </button>
                         </div>
+
                         <br>
+
+                        <!-- Upvote Counter -->
                         <div class="text-sm flex absolute right-0 mr-3 mt-2">
                             counter
                         </div>
 
-
-
+                        <!-- Post Info Header -->
                         <header class="flex">
                             <div class="flex flex-row inline-block text-xl">
                                 <img alt="Profile picture of the user" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord"
@@ -133,15 +149,19 @@
                             </div>
                         </header>
 
+                        <!-- Post Text Content -->
                         <p class="mt-3 ml-5" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
-                            LOREM IPSUM
+                            Post Content
                         </p>
 
                         <footer>
+                            <!-- Date Posted -->
                             <p class="flex-row-reverse flex text-sm"
                                th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">
                                 2020/10/28 16:51
                             </p>
+
+                            <!-- Edit And Delete Buttons -->
                             <div class="relative">
                                 <button class="text-sm text-gray-500 flex absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2">
                                     edit
@@ -149,37 +169,52 @@
                                 <button class="text-sm text-gray-500 flex absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2">
                                     delete
                                 </button>
-                                <!-- TODO: hello kuba -->
                             </div>
+
+                            <!-- Save Button -->
                             <div class="relative flex flex-row justify-center">
                                 <button class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
                                     Save
                                 </button>
                             </div>
+
                         </footer>
 
                     </article>
+
                 </section>
 
             </div>
+
         </article>
+
+        <!-- New Post Form -->
         <div class="flex">
+
             <form sec:authorize="isAuthenticated()" th:object="${newPost}" th:action="@{/topics/{id}/post(id=${specificTopic.getId()})}" method="post">
+
+                <!-- Content Text Area -->
                 <label for="postText"></label>
                 <input id="postText" class="flex mx-auto border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 px-24 py-3 bg-current text-2xl text-center bord2 hat szov"
                        placeholder="Send new reply" type="text" th:field="*{textContent}">
+
+                <!-- Submit -->
                 <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat">
                     Submit
                 </button>
+
                 <input type="hidden" id="id" th:field="*{id}">
+
             </form>
             
         </div>
+
     </div>
+
 </div>
 
 <script src="../static/js/main.js" th:src="@{../js/main.js}"></script>
 
-
 </body>
+
 </html>

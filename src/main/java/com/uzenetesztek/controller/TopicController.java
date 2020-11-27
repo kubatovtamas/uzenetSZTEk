@@ -2,6 +2,7 @@ package com.uzenetesztek.controller;
 
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
+import com.uzenetesztek.domain.User;
 import com.uzenetesztek.domain.UserDetailsImpl;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.service.PostServiceImpl;
@@ -74,15 +75,38 @@ public class TopicController {
         }
     }
 
-    // TODO: add editing option
-    // TODO: /topics/{id}/post{id2} optional Long, if exists: edit, else new post
-    @PostMapping("/topics/{id}/post")
-    public String createOrUpdatePost(@PathVariable("id") Long id, Post post, @AuthenticationPrincipal UserDetailsImpl user) {
+    /**
+     * Saves A Post With Text Content Coming From HTML Form, Sets User, ParentTopic, TimeStamp automatically
+     * @param topicId Current Topic's Id
+     * @param user Currently Logged In User
+     * @param post New Post Object
+     * @return Redirect Back To Current Topic
+     */
+    @PostMapping("/topics/{topicId}/post")
+    public String createNewPost(@PathVariable("topicId") Long topicId, @AuthenticationPrincipal UserDetailsImpl user, Post post) {
+
         post.setUser(userServiceImpl.getByEmail(user.getUsername()));
-        post.setParentTopic(topicServiceImpl.getById(id));
+        post.setParentTopic(topicServiceImpl.getById(topicId));
         post.setTimestamp(new Date());
         postServiceImpl.createOrUpdate(post);
-        return "redirect:/topics/{id}";
+
+        return "redirect:/topics/{topicId}";
+    }
+
+    /**
+     * Saves A Post With Text Coming From HTML Form
+     * @param topicId Current Topic's Id
+     * @param postId Specific Post's Id
+     * @param user Currently Logged In User
+     * @param post Existing Post Object
+     * @return Redirect Back To Current Topic
+     */
+    @PostMapping("/topics/{topicId}/post/{postId}")
+    public String editExistingPost(@PathVariable("topicId") Long topicId, @PathVariable("postId") Long postId, @AuthenticationPrincipal UserDetailsImpl user, Post post) {
+
+        postServiceImpl.createOrUpdate(post);
+
+        return "redirect:/topics/{topicId}";
     }
 }
 

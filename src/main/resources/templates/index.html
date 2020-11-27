@@ -13,6 +13,7 @@
 </head>
 
 <body class="bg-gray-800">
+
 <header>
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
@@ -26,6 +27,7 @@
         </form>
     </div>
 </header>
+
 <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
     <nav class="space-x-56">
         <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">
@@ -39,18 +41,20 @@
         </a>
     </nav>
 </div>
+
 <div class="flex flex-row-reverse">
     <!-- White/Dark Theme Button -->
     <button class="absolute" id="toggle-white-mode"></button>
     <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord" for="toggle-white-mode">
-        <i class="text-teal-700 relative"><img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
-                                               width="20">
+        <i class="text-teal-700 relative">
+            <img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}" width="20">
         </i>
-        <i class="text-teal-700 relative"><img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
-                                               width="20">
+        <i class="text-teal-700 relative">
+            <img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}" width="20">
         </i>
     </label>
 </div>
+
 <!-- Post New Topic -->
 <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current rounded-2xl py-3 hat bord">
 
