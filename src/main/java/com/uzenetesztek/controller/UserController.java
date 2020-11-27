@@ -2,6 +2,7 @@ package com.uzenetesztek.controller;
 
 import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
+import com.uzenetesztek.service.TopicServiceImpl;
 import com.uzenetesztek.service.TopicWithPostsService;
 import com.uzenetesztek.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,12 @@ public class UserController {
     @Autowired
     public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
 
+    private TopicServiceImpl topicServiceImpl;
+    @Autowired
+    public void setTopicService(TopicServiceImpl topicServ) {
+        this.topicServiceImpl = topicServ;
+    }
+
 
 
     @RequestMapping("/profile")
@@ -34,7 +41,8 @@ public class UserController {
         User user = userServiceImpl.getById(id);
 
         model.addAttribute("user", user);
-        model.addAttribute("topicsPosted", topicWithPostsService.getAllTopicsWithPostsOrdered(user));
+        model.addAttribute("topicsOfUser", topicServiceImpl.getAllTopicsOrdered(user));
+        model.addAttribute("topicsWithPostsOfUser", topicWithPostsService.getAllTopicsWithPostsOrdered(user));
 
         return "user";
     }

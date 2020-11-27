@@ -89,7 +89,7 @@
     <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
         <!--  <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord"> -->
         <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
-                 th:each="topic : ${topicsPosted.keySet()}">
+                 th:each="topic : ${topicsOfUser}">
 
             <header class="flex relative">
                 <div class="text-2xl container text-center absolute">      <!--Topic's name-->
@@ -124,7 +124,7 @@
             <!-- Follow Button -->
             <section class="bg-current hat ml-16 rounded-2xl relative">
                 <article class="bord px-3 py-4 border-b-4 border-blue-800 rounded-2xl hat "
-                         th:each="post : ${topicsPosted.get(topic)}">
+                         th:each="post : ${topicsWithPostsOfUser.get(topic)}">
                     <!-- upvote button/counter -->
                     <div class="flex right-0 absolute mr-4 mt-2">
                         <button><img alt="Upvote button" border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"

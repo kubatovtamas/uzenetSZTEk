@@ -53,6 +53,7 @@ public class TopicController {
         }
         // Every Topic
         else {
+            model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
             model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
 
             return "topics";

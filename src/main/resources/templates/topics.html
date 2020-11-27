@@ -64,8 +64,8 @@
     </header>
 
     <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-5 bord szov text-gray-500">
-        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
-                 th:each="topic : ${topicsWithPosts.keySet()}">
+        <article th:each="topic : ${topics}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+
             <header class="flex relative">
                 <div class="text-2xl container text-center absolute">      <!--Topic's name-->
                     <b>
@@ -100,8 +100,8 @@
             <section class="bg-current hat ml-16 rounded-2xl relative">
 
 
-                <article class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat "
-                         th:each="post : ${topicsWithPosts.get(topic)}">
+                <article th:each="post : ${topicsWithPosts.get(topic)}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat">
+
                     <!-- upvote button/counter -->
                     <div class="flex right-0 absolute mr-4 mt-2">
                         <button><img alt="Upvote button" border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
@@ -109,8 +109,12 @@
                                      width="30px">
                         </button>
                     </div>
+
                     <br>
-                    <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
+
+                    <!-- TODO: show actual number of likes here -->
+                    <div class="text-sm flex absolute right-0 mr-3 mt-2">#Likes</div>
+
                     <header class="flex">
 
                         <div class="flex flex-row inline-block text-xl">
