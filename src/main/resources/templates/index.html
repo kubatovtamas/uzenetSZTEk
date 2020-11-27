@@ -99,8 +99,7 @@
 <div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-5 bord">
     <div class="text-gray-500 mx-16 py-8 px-5 text-2xl szov">
 
-        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
-                 th:each="topic : ${topicsWithPosts.keySet()}">
+        <article th:each="topic : ${topics}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
 
             <!-- Topic -->
             <header class="flex relative">
@@ -136,7 +135,7 @@
             <!-- Posts -->
             <section class="bg-current hat ml-10 rounded-2xl relative">
 
-                <article class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat" th:each="post : ${topicsWithPosts.get(topic)}">
+                <article th:each="post : ${topicsWithPosts.get(topic)}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat">
 
                     <!-- Upvote Button/Counter -->
                     <div class="flex right-0 absolute mr-4 mt-2">

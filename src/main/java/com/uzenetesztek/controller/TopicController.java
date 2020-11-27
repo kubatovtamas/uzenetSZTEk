@@ -36,6 +36,7 @@ public class TopicController {
 
     @RequestMapping("/")
     public String index(Model model) {
+        model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
         model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
         return "index";
     }
