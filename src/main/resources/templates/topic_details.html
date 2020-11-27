@@ -150,9 +150,19 @@
                         </header>
 
                         <!-- Post Text Content -->
-                        <p class="mt-3 ml-5" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                        <!-- TODO: ID Example: postContent113 -->
+                        <p class="mt-3 ml-5" th:id="'postContent' + ${post.getId()}" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
                             Post Content
                         </p>
+
+                        <!-- Edit Post Text Area -->
+                        <form>
+                            <!-- Content Text Area -->
+                            <!-- TODO: ID Example: postTextarea113 -->
+                            <label>
+                                <input th:id="'postTextArea' + ${post.getId()}" style='visibility:hidden' type="text">
+                            </label>
+                        </form>
 
                         <footer>
                             <!-- Date Posted -->
@@ -162,20 +172,23 @@
                             </p>
 
                             <!-- Edit And Delete Buttons -->
+                            <!-- TODO: th:if users own post -->
                             <div class="relative">
-                                <button class="text-sm text-gray-500 flex absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2">
-                                    edit
+                                <button th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
+                                        class="text-sm text-gray-500 flex absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2">
+                                    Edit
                                 </button>
                                 <button class="text-sm text-gray-500 flex absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2">
-                                    delete
+                                    Delete
                                 </button>
                             </div>
 
                             <!-- Save Button -->
+                            <!-- TODO: ID Example: postSaveButton113 -->
                             <div class="relative flex flex-row justify-center">
-                                <button class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
-                                    Save
-                                </button>
+                                <form th:id="'postSaveButton' + ${post.getId()}" style='visibility:hidden'>
+                                    <input type="submit" value="Save" class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
+                                </form>
                             </div>
 
                         </footer>
@@ -214,6 +227,7 @@
 </div>
 
 <script src="../static/js/main.js" th:src="@{../js/main.js}"></script>
+<script src="../static/js/main.js" th:src="@{../js/postEditHandler.js}"></script>
 
 </body>
 
