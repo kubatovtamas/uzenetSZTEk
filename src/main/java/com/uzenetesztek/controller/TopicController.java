@@ -1,17 +1,23 @@
 package com.uzenetesztek.controller;
 
+import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
+import com.uzenetesztek.domain.UserDetailsImpl;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.service.PostServiceImpl;
 import com.uzenetesztek.service.TopicServiceImpl;
 import com.uzenetesztek.service.TopicWithPostsService;
+import com.uzenetesztek.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
+import java.util.Date;
 
 @Controller
 public class TopicController {
@@ -32,6 +38,12 @@ public class TopicController {
     @Autowired
     public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
 
+    private UserServiceImpl userServiceImpl;
+    @Autowired
+    public void setUserService(UserServiceImpl userServ) {
+        this.userServiceImpl = userServ;
+    }
+
 
 
     @RequestMapping("/")
@@ -49,6 +61,8 @@ public class TopicController {
             model.addAttribute("specificTopic", topic);
             model.addAttribute("posts", postServiceImpl.getPostsByTopicOrdered(topic));
 
+            model.addAttribute("newPost", new Post());
+
             return "topic_details";
         }
         // Every Topic
@@ -60,7 +74,16 @@ public class TopicController {
         }
     }
 
-
+    // TODO: add editing option
+    // TODO: /topics/{id}/post{id2} optional Long, if exists: edit, else new post
+    @PostMapping("/topics/{id}/post")
+    public String createOrUpdatePost(@PathVariable("id") Long id, Post post, @AuthenticationPrincipal UserDetailsImpl user) {
+        post.setUser(userServiceImpl.getByEmail(user.getUsername()));
+        post.setParentTopic(topicServiceImpl.getById(id));
+        post.setTimestamp(new Date());
+        postServiceImpl.createOrUpdate(post);
+        return "redirect:/topics/{id}";
+    }
 }
 
 

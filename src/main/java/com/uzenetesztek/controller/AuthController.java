@@ -46,9 +46,9 @@ public class AuthController {
     @RequestMapping(path = "/activation/{code}", method = RequestMethod.GET)
     public String activation(@PathVariable("code") String code, HttpServletResponse response){
         String result = userDetailsService.userActivation(code);
-        if(result.equals("ok")){
+        if (result.equals("ok")) {
             return "redirect:/login";
-        }else{
+        } else {
             return "redirect:/login?error";
         }
     }

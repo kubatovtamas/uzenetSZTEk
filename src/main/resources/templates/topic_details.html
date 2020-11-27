@@ -69,7 +69,7 @@
                 <header class="flex relative">
                     <div class="text-2xl container text-center absolute szov">      <!--Topic's name-->
                         <b>
-                            <a href="topic_details.html" th:text="${specificTopic.getName()}">
+                            <a th:href="@{/topics/{id}(id=${specificTopic.getId()})}" th:text="${specificTopic.getName()}">
                                 Notified topic's name
                             </a>
                         </b>
@@ -148,8 +148,16 @@
             </div>
         </article>
         <div class="flex">
-            <input class="flex mx-auto border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 px-24 py-3 bg-current text-2xl text-center bord2 hat szov"
-                   placeholder="Posting a post" type="text">
+            <form sec:authorize="isAuthenticated()" th:object="${newPost}" th:action="@{/topics/{id}/post(id=${specificTopic.getId()})}" method="post">
+                <label for="postText"></label>
+                <input id="postText" class="flex mx-auto border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 px-24 py-3 bg-current text-2xl text-center bord2 hat szov"
+                       placeholder="Send new reply" type="text" th:field="*{textContent}">
+                <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat">
+                    Submit
+                </button>
+                <input type="hidden" id="id" th:field="*{id}">
+            </form>
+            
         </div>
     </div>
 </div>
