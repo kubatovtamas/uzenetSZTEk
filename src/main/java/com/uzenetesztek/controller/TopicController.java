@@ -55,7 +55,7 @@ public class TopicController {
     }
 
     @RequestMapping(path = {"/topics", "/topics/{id}"})
-    public String getTopics(@PathVariable("id") Optional<Long> id, Model model) throws RecordNotFoundException {
+    public String getTopics(@PathVariable("id") Optional<Long> id, @AuthenticationPrincipal UserDetailsImpl user, Model model) throws RecordNotFoundException {
         // Specific Topic
         if (id.isPresent()) {
             Topic topic = topicServiceImpl.getById(id.get());
@@ -63,6 +63,7 @@ public class TopicController {
             model.addAttribute("posts", postServiceImpl.getPostsByTopicOrdered(topic));
 
             model.addAttribute("newPost", new Post());
+            model.addAttribute("userEmail", user.getUsername());
 
             return "topic_details";
         }
