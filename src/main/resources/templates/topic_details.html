@@ -149,15 +149,10 @@
                             </div>
                         </header>
 
-                        <!-- Post Text Content -->
-                        <!-- ID Example: postContent113 -->
+                        <!-- Post Text Content ; ID Example: postContent113-->
                         <p class="mt-3 ml-5" th:id="'postContent' + ${post.getId()}" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
                             Post Content
                         </p>
-
-                        <!-- Edit Post Text Area -->
-                        <!-- ID Example: postTextarea113 -->
-                        <textarea th:form="'postSaveButton' + ${post.getId()}" th:id="'postTextArea' + ${post.getId()}" style='visibility:hidden' type="text"></textarea>
 
                         <footer>
                             <!-- Date Posted -->
@@ -179,10 +174,14 @@
                                 </a>
                             </div>
 
-                            <!-- Save Button -->
-                            <!-- ID Example: postSaveButton113 -->
-                            <div class="relative flex flex-row justify-center">
-                                <form th:id="'postSaveButton' + ${post.getId()}" style='visibility:hidden'>
+                            <!-- Save Button ; ID Example: postSaveButton113-->
+                            <div class="relative flex flex-row justify-center w-1/2">
+                                <form th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                                      th:id="'postSaveButton' + ${post.getId()}" style='visibility:hidden' th:object="${editedPost}"
+                                      method="post">
+                                    <textarea th:form="'postSaveButton' + ${post.getId()}" th:id="'postTextArea' + ${post.getId()}"
+                                              style='visibility:hidden' type="text" th:field="*{textContent}">
+                                    </textarea>
                                     <input type="submit" value="Save" class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
                                 </form>
                             </div>

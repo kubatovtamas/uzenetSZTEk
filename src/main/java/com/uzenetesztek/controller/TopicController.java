@@ -65,6 +65,7 @@ public class TopicController {
 
             model.addAttribute("newPost", new Post());
             model.addAttribute("userEmail", user.getUsername());
+            model.addAttribute("editedPost", new Post());
 
             return "topic_details";
         }
@@ -99,18 +100,24 @@ public class TopicController {
      * Saves A Post With Text Coming From HTML Form
      * @param topicId Current Topic's Id
      * @param postId Specific Post's Id
-     * @param user Currently Logged In User
      * @param post Existing Post Object
      * @return Redirect Back To Current Topic
      */
     @PostMapping("/topics/{topicId}/post/{postId}")
-    public String editExistingPost(@PathVariable("topicId") Long topicId, @PathVariable("postId") Long postId, @AuthenticationPrincipal UserDetailsImpl user, Post post) {
-
-        postServiceImpl.createOrUpdate(post);
+    public String editExistingPost(@PathVariable("topicId") Long topicId, @PathVariable("postId") Long postId, Post post) {
+        Post originalPost = postServiceImpl.getById(postId);
+        originalPost.setTextContent(post.getTextContent());
+        postServiceImpl.createOrUpdate(originalPost);
 
         return "redirect:/topics/{topicId}";
     }
 
+    /**
+     * Delete Post With Specified Id
+     * @param topicId Which Hold The Post
+     * @param postId Which To Delete
+     * @return Redirect To Containing Topic
+     */
     @GetMapping("/topics/{topicId}/deletePost/{postId}")
     public String deletePost(@PathVariable("topicId") Long topicId, @PathVariable("postId") Long postId) {
 
