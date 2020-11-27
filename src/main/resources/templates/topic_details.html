@@ -118,6 +118,8 @@
                             counter
                         </div>
 
+
+
                         <header class="flex">
                             <div class="flex flex-row inline-block text-xl">
                                 <img alt="Profile picture of the user" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord"
@@ -140,6 +142,20 @@
                                th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">
                                 2020/10/28 16:51
                             </p>
+                            <div class="relative">
+                                <button class="text-sm text-gray-500 flex absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2">
+                                    edit
+                                </button>
+                                <button class="text-sm text-gray-500 flex absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2">
+                                    delete
+                                </button>
+                                <!-- TODO: hello kuba -->
+                            </div>
+                            <div class="relative flex flex-row justify-center">
+                                <button class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
+                                    Save
+                                </button>
+                            </div>
                         </footer>
 
                     </article>
