@@ -4,14 +4,8 @@ function beginEditingPost(id) {
     let textarea = document.getElementById("postTextArea" + id);
     let saveButton = document.getElementById("postSaveButton" + id);
 
-    let originalTextContent = paragraph.textContent;
-
-    console.log(paragraph)
-    console.log(textarea)
-    console.log(saveButton)
-
     paragraph.style.visibility = 'hidden';
     textarea.style.visibility = 'visible';
-    textarea.value += originalTextContent;
+    textarea.value += paragraph.textContent;
     saveButton.style.visibility = 'visible';
 }

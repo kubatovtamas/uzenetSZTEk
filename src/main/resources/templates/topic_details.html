@@ -150,19 +150,14 @@
                         </header>
 
                         <!-- Post Text Content -->
-                        <!-- TODO: ID Example: postContent113 -->
+                        <!-- ID Example: postContent113 -->
                         <p class="mt-3 ml-5" th:id="'postContent' + ${post.getId()}" th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
                             Post Content
                         </p>
 
                         <!-- Edit Post Text Area -->
-                        <form>
-                            <!-- Content Text Area -->
-                            <!-- TODO: ID Example: postTextarea113 -->
-                            <label>
-                                <input th:id="'postTextArea' + ${post.getId()}" style='visibility:hidden' type="text">
-                            </label>
-                        </form>
+                        <!-- ID Example: postTextarea113 -->
+                        <textarea th:form="'postSaveButton' + ${post.getId()}" th:id="'postTextArea' + ${post.getId()}" style='visibility:hidden' type="text"></textarea>
 
                         <footer>
                             <!-- Date Posted -->
@@ -184,7 +179,7 @@
                             </div>
 
                             <!-- Save Button -->
-                            <!-- TODO: ID Example: postSaveButton113 -->
+                            <!-- ID Example: postSaveButton113 -->
                             <div class="relative flex flex-row justify-center">
                                 <form th:id="'postSaveButton' + ${post.getId()}" style='visibility:hidden'>
                                     <input type="submit" value="Save" class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
