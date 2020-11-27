@@ -106,7 +106,10 @@ public class TopicController {
     @PostMapping("/topics/{topicId}/post/{postId}")
     public String editExistingPost(@PathVariable("topicId") Long topicId, @PathVariable("postId") Long postId, Post post) {
         Post originalPost = postServiceImpl.getById(postId);
+
         originalPost.setTextContent(post.getTextContent());
+        originalPost.setTimestamp(new Date());
+
         postServiceImpl.createOrUpdate(originalPost);
 
         return "redirect:/topics/{topicId}";

@@ -161,29 +161,38 @@
                                 2020/10/28 16:51
                             </p>
 
+                            <!-- Show buttons only if user's own post -->
                             <div class="relative" th:if="${userEmail.equals(post.getUser().getEmail())}">
-                                <!-- Edit Button -->
-                                <button th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
-                                        class="text-sm text-gray-500 flex absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2">
+
+                                <!-- EDIT Button -->
+                                <!-- On Click: show textarea with original text content, show save button, hide text content -->
+                                <a th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'" class="text-sm text-gray-500 flex absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2">
                                     Edit
-                                </button>
-                                <!-- Delete Button -->
-                                <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
-                                        class="text-sm text-gray-500 flex absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2">
+                                </a>
+
+                                <!-- DELETE Button -->
+                                <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}" class="text-sm text-gray-500 flex absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2">
                                     Delete
                                 </a>
+
                             </div>
 
-                            <!-- Save Button ; ID Example: postSaveButton113-->
+                            <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
                             <div class="relative flex flex-row justify-center w-1/2">
+
                                 <form th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
-                                      th:id="'postSaveButton' + ${post.getId()}" style='visibility:hidden' th:object="${editedPost}"
-                                      method="post">
+                                      th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}" style='visibility:hidden' method="post">
+
+                                    <!-- Text Editing Area -->
                                     <textarea th:form="'postSaveButton' + ${post.getId()}" th:id="'postTextArea' + ${post.getId()}"
                                               style='visibility:hidden' type="text" th:field="*{textContent}">
                                     </textarea>
+
+                                    <!-- SAVE button -->
                                     <input type="submit" value="Save" class="flex flex-row text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6">
+
                                 </form>
+
                             </div>
 
                         </footer>
