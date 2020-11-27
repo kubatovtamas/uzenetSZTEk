@@ -107,4 +107,19 @@ public class PostServiceImpl implements ICrudService<Post, Long> {
             return new ArrayList<Post>();
         }
     }
+
+    /**
+     * Order By: Post.timestamp, DESC
+     * @param topic Whose Posts To Query
+     * @return One Topic's Every Post
+     */
+    public List<Post> getTop3PostsByTopicOrdered(Topic topic) {
+        List<Post> entities = (List<Post>) postRepo.findTop3ByParentTopicOrderByTimestampDesc(topic);
+
+        if (entities.size() > 0) {
+            return entities;
+        } else {
+            return new ArrayList<Post>();
+        }
+    }
 }

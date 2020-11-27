@@ -13,5 +13,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     List<Post> findAllByParentTopicOrderByTimestampDesc(Topic topic);
 
+    List<Post> findTop3ByParentTopicOrderByTimestampDesc(Topic topic);
+
     List<Post> findAllByUserOrderByTimestampDesc(User user);
 }
