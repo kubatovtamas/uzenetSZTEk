@@ -109,6 +109,7 @@ public class PostServiceImpl implements ICrudService<Post, Long> {
     }
 
     /**
+     * Limit: 3
      * Order By: Post.timestamp, DESC
      * @param topic Whose Posts To Query
      * @return One Topic's Every Post

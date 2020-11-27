@@ -43,6 +43,24 @@ public class TopicWithPostsService {
     }
 
     /**
+     * Limit Posts: 3
+     * Order By: Topic.name ASC => Post.timestamp DESC
+     * Limit Number Of Posts To 3
+     * @return Every Topic 3 Corresponding Posts
+     */
+    public Map<Topic, List<Post>> getAllTopicsWithTop3PostsOrdered() {
+        Map<Topic, List<Post>> orderedTopicsWithPosts = new HashMap<Topic, List<Post>>();
+        List<Topic> topics = topicServImpl.getAllTopicsOrdered();
+
+        for (Topic topic : topics) {
+            List<Post> posts = postServImpl.getTop3PostsByTopicOrdered(topic);
+            orderedTopicsWithPosts.put(topic, posts);
+        }
+
+        return orderedTopicsWithPosts;
+    }
+
+    /**
      * Order By: Topic.name ASC => Post.timestamp DESC
      * @param user Whose Topics To Query
      * @return One User's Topics With Corresponding Posts
@@ -60,13 +78,14 @@ public class TopicWithPostsService {
     }
 
     /**
+     * Limit Posts: 3
      * Order By: Topic.name ASC => Post.timestamp DESC
-     * Limit Number Of Posts To 3
-     * @return Every Topic 3 Corresponding Posts
+     * @param user Whose Topics To Query
+     * @return One User's Topics With Corresponding Posts
      */
-    public Map<Topic, List<Post>> getAllTopicsWithTop3PostsOrdered() {
+    public Map<Topic, List<Post>> getAllTopicsWithTop3PostsOrdered(User user) {
         Map<Topic, List<Post>> orderedTopicsWithPosts = new HashMap<Topic, List<Post>>();
-        List<Topic> topics = topicServImpl.getAllTopicsOrdered();
+        List<Topic> topics = topicServImpl.getAllTopicsOrdered(user);
 
         for (Topic topic : topics) {
             List<Post> posts = postServImpl.getTop3PostsByTopicOrdered(topic);

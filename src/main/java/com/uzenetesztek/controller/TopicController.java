@@ -37,7 +37,7 @@ public class TopicController {
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
-        model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
+        model.addAttribute("topicsWithTop3Posts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
         return "index";
     }
 
@@ -54,7 +54,7 @@ public class TopicController {
         // Every Topic
         else {
             model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
-            model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
+            model.addAttribute("topicsWithTop3Posts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
 
             return "topics";
         }

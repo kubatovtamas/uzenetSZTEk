@@ -42,7 +42,7 @@ public class UserController {
 
         model.addAttribute("user", user);
         model.addAttribute("topicsOfUser", topicServiceImpl.getAllTopicsOrdered(user));
-        model.addAttribute("topicsWithPostsOfUser", topicWithPostsService.getAllTopicsWithPostsOrdered(user));
+        model.addAttribute("topicsWithTop3PostsOfUser", topicWithPostsService.getAllTopicsWithTop3PostsOrdered(user));
 
         return "user";
     }
