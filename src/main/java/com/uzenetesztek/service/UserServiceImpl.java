@@ -13,7 +13,7 @@ import java.util.Optional;
 
 
 @Service
-public class UserService implements ICrudService<User, Long> {
+public class UserServiceImpl implements ICrudService<User, Long> {
 
     private UserRepository userRepo;
     @Autowired
@@ -100,22 +100,18 @@ public class UserService implements ICrudService<User, Long> {
         // TODO: meaningful errors on specific cases
     }
 
+    // TODO: ???
     public void userFollowsUser(User user, User userToFollow) {
 
     }
 
-    // returns optional for possible future use in UserDetails
-    public Optional<User> findByEmail(String email) throws RecordNotFoundException {
-        Optional<User> entity = userRepo.findByEmail(email);
 
-        if (entity.isPresent()) {
-            return entity;
-        } else {
-            throw new RecordNotFoundException("User with email: " + email + " not found");
-        }
-    }
-
-    // returns User
+    /**
+     *
+     * @param email Find User By User.email
+     * @return User With Specified Email
+     * @throws RecordNotFoundException When No User Is Found With Email
+     */
     public User getByEmail(String email) throws RecordNotFoundException {
         Optional<User> entity = userRepo.findByEmail(email);
 
@@ -126,8 +122,20 @@ public class UserService implements ICrudService<User, Long> {
         }
     }
 
-    public User findByActivation(String code){
-        return userRepo.findByActivation(code);
+    /**
+     *
+     * @param activationCode Find User By User.activationCode
+     * @return User With Specified Activation Code
+     * @throws RecordNotFoundException When No User Is Found With Activation Code
+     */
+    public User getByActivationCode(String activationCode) throws RecordNotFoundException {
+        Optional<User> entity = userRepo.findByActivationCode(activationCode);
+
+        if (entity.isPresent()) {
+            return entity.get();
+        } else {
+            throw new RecordNotFoundException("User with activation code: " + activationCode + " not found");
+        }
     }
 }
 

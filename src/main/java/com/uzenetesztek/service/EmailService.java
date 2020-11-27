@@ -8,30 +8,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
+
     private JavaMailSender javaMailSender;
-
-    @Value("${spring.mail.username}")
-    private String MESSAGE_FROM;
-
-    @Value("${EmailService.url}") //in the application-dev.properties. Currently it is localhost:8080/
-    private String URL;
-
     @Autowired
     public void setJavaMailSender(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
-    public void sendMessage(String email, String firstName, String activationCode){
+
+
+    @Value("${spring.mail.username}")
+    private String MESSAGE_FROM;
+
+    @Value("${EmailService.url}") //in the application-dev.properties. Currently it is localhost:8080/ TODO: update this when deployed
+    private String URL;
+
+    public void sendMessage(String email, String firstName, String activationCode) {
         SimpleMailMessage message = null;
 
-        try{
+        try {
             message = new SimpleMailMessage();
             message.setFrom(MESSAGE_FROM);
             message.setTo(email);
             message.setSubject("Account activation");
-            message.setText("Dear "+firstName+ "!\n\n" + "Click the link to activate your account: "+URL+activationCode);
+            message.setText("Dear " + firstName + "!\n\n" + "Click the link to activate your account: " + URL + activationCode);
             javaMailSender.send(message);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }

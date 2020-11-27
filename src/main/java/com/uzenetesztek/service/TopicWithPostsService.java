@@ -13,37 +13,49 @@ import java.util.Map;
 @Service
 public class TopicWithPostsService {
 
-    private PostService postServ;
+    private PostServiceImpl postServ;
     @Autowired
-    public void setPostService(PostService postServ) {
+    public void setPostService(PostServiceImpl postServ) {
         this.postServ = postServ;
     }
 
-    private TopicService topicServ;
+    private TopicServiceImpl topicServ;
     @Autowired
-    public void setTopicService(TopicService topicServ) {
+    public void setTopicService(TopicServiceImpl topicServ) {
         this.topicServ = topicServ;
     }
 
 
-
+    /**
+     * Order By: Topic.name ASC => Post.timestamp DESC
+     * @return Every Topic With Corresponding Posts
+     */
     public Map<Topic, List<Post>> getAllTopicsWithPostsOrdered() {
         Map<Topic, List<Post>> orderedTopicsWithPosts = new HashMap<Topic, List<Post>>();
         List<Topic> topics = topicServ.getAllTopicsOrdered();
+
         for (Topic topic : topics) {
             List<Post> posts = postServ.getPostsByTopicOrdered(topic);
             orderedTopicsWithPosts.put(topic, posts);
         }
+
         return orderedTopicsWithPosts;
     }
 
+    /**
+     * Order By: Topic.name ASC => Post.timestamp DESC
+     * @param user Whose Topics To Query
+     * @return One User's Topics With Corresponding Posts
+     */
     public Map<Topic, List<Post>> getAllTopicsWithPostsOrdered(User user) {
-        Map<Topic, List<Post>> ordered = new HashMap<Topic, List<Post>>();
+        Map<Topic, List<Post>> orderedTopicsWithPosts = new HashMap<Topic, List<Post>>();
         List<Topic> topics = topicServ.getAllTopicsOrdered(user);
+
         for (Topic topic : topics) {
             List<Post> posts = postServ.getPostsByTopicOrdered(topic);
-            ordered.put(topic, posts);
+            orderedTopicsWithPosts.put(topic, posts);
         }
-        return ordered;
+
+        return orderedTopicsWithPosts;
     }
 }

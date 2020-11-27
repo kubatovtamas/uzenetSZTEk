@@ -2,11 +2,10 @@ package com.uzenetesztek.controller;
 
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
-import com.uzenetesztek.service.PostService;
-import com.uzenetesztek.service.TopicService;
+import com.uzenetesztek.service.PostServiceImpl;
+import com.uzenetesztek.service.TopicServiceImpl;
 import com.uzenetesztek.service.TopicWithPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,16 +16,16 @@ import java.util.Optional;
 @Controller
 public class TopicController {
 
-    private PostService postService;
+    private PostServiceImpl postServiceImpl;
     @Autowired
-    public void setPostService(PostService postServ) {
-        this.postService = postServ;
+    public void setPostService(PostServiceImpl postServ) {
+        this.postServiceImpl = postServ;
     }
 
-    private TopicService topicService;
+    private TopicServiceImpl topicServiceImpl;
     @Autowired
-    public void setTopicService(TopicService topicServ) {
-        this.topicService = topicServ;
+    public void setTopicService(TopicServiceImpl topicServ) {
+        this.topicServiceImpl = topicServ;
     }
 
     private TopicWithPostsService topicWithPostsService;
@@ -45,17 +44,14 @@ public class TopicController {
     public String getTopics(@PathVariable("id") Optional<Long> id, Model model) throws RecordNotFoundException {
         // Specific Topic
         if (id.isPresent()) {
-
-            Topic topic = topicService.getById(id.get());
+            Topic topic = topicServiceImpl.getById(id.get());
             model.addAttribute("specificTopic", topic);
-            model.addAttribute("posts", postService.getPostsByTopicOrdered(topic));
+            model.addAttribute("posts", postServiceImpl.getPostsByTopicOrdered(topic));
 
             return "topic_details";
-
         }
         // Every Topic
         else {
-
             model.addAttribute("topicsWithPosts", topicWithPostsService.getAllTopicsWithPostsOrdered());
 
             return "topics";

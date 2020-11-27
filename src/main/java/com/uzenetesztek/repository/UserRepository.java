@@ -9,10 +9,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+
     @Override
     List<User> findAll();
 
     Optional<User> findByEmail(String email);
 
-    User findByActivation(String code);
+    Optional<User> findByActivationCode(String activationCode);
 }

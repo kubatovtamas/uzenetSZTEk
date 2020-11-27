@@ -10,74 +10,86 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private UserService userService;
-    private EmailService emailService;
-    private PasswordEncoder passwordEncoder;
-
+    private UserServiceImpl userServiceImpl;
     @Autowired
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
+    private EmailService emailService;
     @Autowired
     public void setEmailService(EmailService emailService) {
         this.emailService = emailService;
     }
 
+    private PasswordEncoder passwordEncoder;
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserService(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
+
+
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-//        Optional<User> entity = userService.findByEmail(userEmail);
-//        entity.map(UserDetailsService::new).get();
+        User entity = userServiceImpl.getByEmail(userEmail);
 
-        User entity = userService.getByEmail(userEmail);
         return new UserDetailsImpl(entity);
     }
 
+    /**
+     * TODO
+     * @param code
+     * @return
+     */
     public String userActivation(String code){
-        User user = userService.findByActivation(code);
-        if(!Objects.isNull(user)){
+        User user = userServiceImpl.getByActivationCode(code);
+
+        if (!Objects.isNull(user)) {
             user.setEnabled(true);
-            user.setActivation("");
-            userService.save(user);
+            user.setActivationCode("");
+            userServiceImpl.save(user);
+
             return "ok";
-        }else{
+        } else {
             return "error";
         }
     }
 
-    public String registerUser(User user){
-        try{
+    /**
+     * TODO
+     * @param user
+     * @return
+     */
+    public String registerUser(User user) {
+        try {
             user.setEnabled(false);
-            user.setActivation(generateKey());
+            user.setActivationCode(generateKey());
             user.setAuthority("ROLE_USER");
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setProfilePicture("images/upvote.png");
-            userService.save(user);//It throw an exception if the user already exist
-            emailService.sendMessage(user.getEmail(), user.getFirstName(), user.getActivation()); //activation code send to user
+            userServiceImpl.save(user);  // It throws an exception if the user already exists
+            emailService.sendMessage(user.getEmail(), user.getFirstName(), user.getActivationCode());  // activation code send to user
             return "ok";
-        }catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
-
     }
 
-    //a 16-length activation code
+    /**
+     *
+     * @return 16-Length Activation Code
+     */
     public String generateKey(){
         Random random = new Random();
         char[] word = new char[16];
-        for(int i=0;i< word.length;++i){
-            word[i] = (char) ('a'+random.nextInt(26));
+        for(int i = 0; i< word.length; ++i) {
+            word[i] = (char) ('a' + random.nextInt(26));
         }
         return new String(word);
     }

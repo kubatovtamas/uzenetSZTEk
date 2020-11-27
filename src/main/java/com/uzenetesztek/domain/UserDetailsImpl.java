@@ -15,49 +15,12 @@ import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
 
-//    private static final long serialVersionUID = 6529685098267757690L;      // circumvent error
+    private final User user;
 
-    private User user;
-//    private Long id;
-//    private String firstName;
-//    private String lastName;
-//    private Date dateOfBirth;
-//    private Date lastLogin;
-//    private String email;
-//    private String password;
-//    private String authority;
-//    private String profilePicture;
-//    private Set<Post> posts;
-//
-//    private Set<Topic> topics;
-//    private Set<User> follows;
-//    private Set<User> followers;
-//    private Set<Topic> followTopics;
-//    private Set<Post> likedPosts;
-
-
-    private List<GrantedAuthority> authorities;
+    private final List<GrantedAuthority> authorities;
 
     public UserDetailsImpl(User entity) {
         user = entity;
-//        authority =  entity.getAuthority();
-//        dateOfBirth =entity.getDateOfBirth();
-//        email = entity.getEmail();
-//        firstName = entity.getFirstName();
-//        lastName = entity.getLastName();
-//        followers = entity.getFollowers();
-//        follows = entity.getFollows();
-//        followTopics = entity.getFollowTopics();
-//        likedPosts = entity.getLikedPosts();
-//        topics = entity.getTopics();
-//        profilePicture = entity.getProfilePicture();
-//        posts = entity.getPosts();
-//        lastLogin = entity.getLastLogin();
-//        password = entity.getPassword();
-
-//        authorities = new ArrayList<>();
-//        authorities.add(new SimpleGrantedAuthority(entity.getAuthority()));
-
         this.authorities = Arrays.stream(user.getAuthority().split(","))
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());

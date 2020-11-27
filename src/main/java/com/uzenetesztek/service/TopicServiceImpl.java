@@ -5,14 +5,13 @@ import com.uzenetesztek.domain.User;
 import com.uzenetesztek.exceptions.DataIntegrityViolationException;
 import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.TopicRepository;
-import com.uzenetesztek.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-public class TopicService implements ICrudService<Topic, Long> {
+public class TopicServiceImpl implements ICrudService<Topic, Long> {
 
     private TopicRepository topicRepo;
     @Autowired
@@ -91,6 +90,10 @@ public class TopicService implements ICrudService<Topic, Long> {
         // TODO: meaningful errors on specific cases
     }
 
+    /**
+     * Order By: Topic.name, ASC
+     * @return Every Topic
+     */
     public List<Topic> getAllTopicsOrdered() {
         List<Topic> entities = (List<Topic>) topicRepo.findAllByOrderByNameAsc();
 
@@ -101,8 +104,13 @@ public class TopicService implements ICrudService<Topic, Long> {
         }
     }
 
+    /**
+     * Order By: Topic.name, ASC
+     * @param user Whose Topics To Query
+     * @return One User's Every Topic
+     */
     public List<Topic> getAllTopicsOrdered(User user) {
-        List<Topic> entities = (List<Topic>) topicRepo.findAllByUserOrderByTimestampAsc(user);
+        List<Topic> entities = (List<Topic>) topicRepo.findAllByUserOrderByNameAsc(user);
 
         if (entities.size() > 0) {
             return entities;

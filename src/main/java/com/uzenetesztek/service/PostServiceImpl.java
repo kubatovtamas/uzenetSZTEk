@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @Service
-public class PostService implements ICrudService<Post, Long> {
+public class PostServiceImpl implements ICrudService<Post, Long> {
 
     private PostRepository postRepo;
     @Autowired
@@ -93,6 +93,11 @@ public class PostService implements ICrudService<Post, Long> {
         // TODO: meaningful errors on specific cases
     }
 
+    /**
+     * Order By: Post.timestamp, DESC
+     * @param topic Whose Posts To Query
+     * @return One Topic's Every Post
+     */
     public List<Post> getPostsByTopicOrdered(Topic topic) {
         List<Post> entities = (List<Post>) postRepo.findAllByParentTopicOrderByTimestampDesc(topic);
 

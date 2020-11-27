@@ -19,10 +19,9 @@ import java.util.Map;
 public class ErrorPageController implements ErrorController {
     private static final String ERROR_PATH = "/error";
 
-    private ErrorAttributes errorAttributes;
-
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
+    private ErrorAttributes errorAttributes;
     @Autowired
     public void setErrorAttributes(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
@@ -75,6 +74,7 @@ public class ErrorPageController implements ErrorController {
                 thymeleafE.put((String) stringStringEntry.getKey(), sb.toString() + stringStringEntry.getValue());
             }
         }
+
         model.addAllAttributes(thymeleafE);
 
         LOG.error(error.get("timestamp").toString());

@@ -30,49 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService);
     }
 
-    /* In Memory Authentication */
-
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("foo")
-//                .password("foo")
-//                .roles("USER")
-//                .and()
-//                .withUser("bar")
-//                .password("bar")
-//                .roles("ADMIN");
-//    }
-
-
-    // ---- LAST WORKING VERSION ---- BEGIN
-    /* JDBC Authentication */
-
-//    @Autowired
-//    DataSource dataSource;
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .usersByUsernameQuery("SELECT EMAIL, PASSWORD, 'TRUE' FROM USER WHERE EMAIL = ?")
-//                .authoritiesByUsernameQuery(
-//                        "SELECT EMAIL, AUTHORITY FROM USER WHERE EMAIL = ?"
-//                );
-    // ---- LAST WORKING VERSION ---- END
-
-//                .withDefaultSchema()
-//                .withUser(
-//                        User.withUsername("user")
-//                                .password("pass")
-//                                .roles("USER")
-//                )
-//                .withUser(
-//                        User.withUsername("admin")
-//                                .password("pass")
-//                                .roles("ADMIN")
-//                );
-//    }
 
 
     @Override
@@ -106,23 +63,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //return NoOpPasswordEncoder.getInstance();
     }
 
+    /* JDBC Authentication Config: DEPRECATED */
+
+//    @Autowired
+//    DataSource dataSource;
+//
 //    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//            .authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/profile").hasRole("ADMIN")
-//                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
-//                .antMatchers("/registration").permitAll()
-//                .antMatchers("/reg").permitAll()
-//                .antMatchers("/db/**").permitAll() // TODO: Remove when migrating from H2
-//                .anyRequest().authenticated()
-//            .and()
-//                .formLogin()
-////                    .loginPage("/login")
-//                    .permitAll()
-//            .and()
-//                .logout()
-//                    .logoutSuccessUrl("/login?logout")
-//                    .permitAll();
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.jdbcAuthentication()
+//                .dataSource(dataSource)
+//                .usersByUsernameQuery("SELECT EMAIL, PASSWORD, 'TRUE' FROM USER WHERE EMAIL = ?")
+//                .authoritiesByUsernameQuery(
+//                        "SELECT EMAIL, AUTHORITY FROM USER WHERE EMAIL = ?"
+//                );
 //    }
 }

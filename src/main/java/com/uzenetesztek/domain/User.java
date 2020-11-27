@@ -54,7 +54,7 @@ public class User {
     @ToString.Include
     private String authority;
 
-    private String activation;
+    private String activationCode;
 
     private Boolean enabled;
 
