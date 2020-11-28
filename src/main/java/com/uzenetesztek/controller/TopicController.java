@@ -25,34 +25,39 @@ import java.util.Date;
 public class TopicController {
 
     private PostServiceImpl postServiceImpl;
+
     @Autowired
     public void setPostService(PostServiceImpl postServ) {
         this.postServiceImpl = postServ;
     }
 
     private TopicServiceImpl topicServiceImpl;
+
     @Autowired
     public void setTopicService(TopicServiceImpl topicServ) {
         this.topicServiceImpl = topicServ;
     }
 
     private TopicWithPostsService topicWithPostsService;
+
     @Autowired
-    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) { this.topicWithPostsService = topicWithPostsService; }
+    public void setTopicWithPostsService(TopicWithPostsService topicWithPostsService) {
+        this.topicWithPostsService = topicWithPostsService;
+    }
 
     private UserServiceImpl userServiceImpl;
+
     @Autowired
     public void setUserService(UserServiceImpl userServ) {
         this.userServiceImpl = userServ;
     }
 
 
-
     @RequestMapping("/")
     public String index(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         /* Check if user has already liked the post*/
         User user = userServiceImpl.getByEmail(userDetails.getUsername());
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
 
         model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
         model.addAttribute("topicsWithTop3Posts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
@@ -66,7 +71,7 @@ public class TopicController {
     public String getTopics(@PathVariable("id") Optional<Long> id, @AuthenticationPrincipal UserDetailsImpl userDetails, Model model) throws RecordNotFoundException {
         //check if user has already liked the post
         User user = userServiceImpl.getByEmail(userDetails.getUsername());
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
 
 
         // Specific Topic
@@ -91,9 +96,10 @@ public class TopicController {
 
     /**
      * Saves A Post With Text Content Coming From HTML Form, Sets User, ParentTopic, TimeStamp Automatically
+     *
      * @param topicId Current Topic's Id
-     * @param user Currently Logged In User
-     * @param post New Post Object
+     * @param user    Currently Logged In User
+     * @param post    New Post Object
      * @return Redirect Back To Current Topic
      */
     @PostMapping("/topics/{topicId}/post")
@@ -109,9 +115,10 @@ public class TopicController {
 
     /**
      * Saves A Post With Text Coming From HTML Form
+     *
      * @param topicId Current Topic's Id
-     * @param postId Specific Post's Id
-     * @param post Existing Post Object
+     * @param postId  Specific Post's Id
+     * @param post    Existing Post Object
      * @return Redirect Back To Current Topic
      */
     @PostMapping("/topics/{topicId}/post/{postId}")
@@ -128,8 +135,9 @@ public class TopicController {
 
     /**
      * Delete Post With Specified Id
+     *
      * @param topicId Which Hold The Post
-     * @param postId Which To Delete
+     * @param postId  Which To Delete
      * @return Redirect To Containing Topic
      */
     @GetMapping("/topics/{topicId}/deletePost/{postId}")
@@ -143,7 +151,8 @@ public class TopicController {
 
     /**
      * Saves A Topic With Text Content Coming From HTML Form, Sets User, TimeStamp Automatically
-     * @param user Currently Logged In User
+     *
+     * @param user  Currently Logged In User
      * @param topic New Topic Object
      * @return Redirect To Created Topic
      */
@@ -157,13 +166,22 @@ public class TopicController {
         var newTopicId = topic.getId();
         return "redirect:/topics/" + newTopicId;
     }
+
+    /**
+     * Like function from index/topics pages
+     *
+     * @param pageName    Current Page
+     * @param userDetails Currently Logged In User
+     * @param postId      Post Which Liked By User
+     * @return Redirect To Current Page
+     */
     @PostMapping("/{page}/{postId}/like")
     public String likePost(@PathVariable("page") String pageName, @PathVariable("postId") Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Post post = postServiceImpl.getById(postId);
         User user = userServiceImpl.getByEmail(userDetails.getUsername());
         post.getUserLikes().add(user);
         postServiceImpl.createOrUpdate(post);
-        switch(pageName){
+        switch (pageName) {
             case "index":
                 return "redirect:/";
             case "topics":
@@ -171,8 +189,17 @@ public class TopicController {
         }
         return "redirect:/topics";
     }
+
+    /**
+     * Like Function From the Topic Details page
+     *
+     * @param userDetails Currently Logged In User
+     * @param postId      Post Which Liked By User
+     * @param topicId     The Current Topic
+     * @return Redirect Back To Current Topic
+     */
     @PostMapping("/topicDetails/{postId}/{topicId}/like")
-    public String likePostInTopicsDetails(@PathVariable("postId") Long postId, @PathVariable("topicId") Long topicId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+    public String likePostInTopicsDetails(@PathVariable("postId") Long postId, @PathVariable("topicId") Long topicId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         Post post = postServiceImpl.getById(postId);
         User user = userServiceImpl.getByEmail(userDetails.getUsername());
         post.getUserLikes().add(user);
