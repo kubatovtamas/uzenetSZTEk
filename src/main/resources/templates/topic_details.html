@@ -95,14 +95,14 @@
                                  width="50">
                         </div>
                         <a class="clear-both" href="#"
-                           th:href="@{/user/{id}(email=${specificTopic.getUser().getId()})}">
+                           th:href="@{/user/{id}(id=${specificTopic.getUser().getId()})}">
                             <p class="pr-3 mt-4 ml-1 text-xl" th:text="${specificTopic.getUser().getFullName()}">
                                 Topic Poster's Name
                             </p>
                         </a>
                     </div>
 
-                    <form th:if="${!specificTopic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topicDetails/{id}/follow(id=${specificTopic.getId()})}" method="post">
+                    <form th:if="${!specificTopic.getFollowers().contains(user) and !specificTopic.getUser().equals(user)}" sec:authorize="isAuthenticated()" th:action="@{/topicDetails/{id}/follow(id=${specificTopic.getId()})}" method="post">
                         <!-- Follow Button -->
                         <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 px-2 shadow-xl ml-2" type="submit">
                             follow

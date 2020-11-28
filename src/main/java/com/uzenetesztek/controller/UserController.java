@@ -35,7 +35,9 @@ public class UserController {
 
 
     @RequestMapping("/profile")
-    public String profile(Model model) {
+    public String profile(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        model.addAttribute("user",user);
         return "profile";
     }
 
@@ -46,6 +48,12 @@ public class UserController {
     ) throws RecordNotFoundException {
         User user = userServiceImpl.getById(id);
 
+        //If the authorized user clicks on their own page
+        User authorizedUser = userServiceImpl.getByEmail(userDetails.getUsername());
+        if(user.equals(authorizedUser)){
+            model.addAttribute("user",user);
+            return "redirect:/profile";
+        }
         model.addAttribute("user", user);
         model.addAttribute("topicsOfUser", topicServiceImpl.getAllTopicsOrdered(user));
         model.addAttribute("topicsWithTop3PostsOfUser", topicWithPostsService.getAllTopicsWithTop3PostsOrdered(user));
@@ -60,7 +68,6 @@ public class UserController {
     /**
      * User follows user
      *
-     * @param pageName    Current Page (topics, topicDetails)
      * @param userDetails Currently Logged In User
      * @param followId      User Followed By Current User
      * @return Redirect To Current Page

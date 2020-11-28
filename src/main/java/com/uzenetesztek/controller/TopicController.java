@@ -231,6 +231,21 @@ public class TopicController {
         return "redirect:/topics";
 
     }
+    /**
+     * Unfollow function
+     *
+     * @param userDetails Currently Logged In User
+     * @param topicId     Topic Followed By User
+     * @return Redirect To Profile page
+     */
+    @PostMapping("/profile/unfollow/{topicId}")
+    public String unfollowTopic(@PathVariable("topicId") Long topicId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        Topic topic = topicServiceImpl.getById(topicId);
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        topic.getFollowers().remove(user);
+        topicServiceImpl.createOrUpdate(topic);
+        return "redirect:/profile";
+    }
 }
 
 

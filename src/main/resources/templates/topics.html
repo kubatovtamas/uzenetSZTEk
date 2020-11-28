@@ -84,7 +84,7 @@
                     </a>
                 </div>
 
-                <form th:if="${!topic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topics/{id}/follow(id=${topic.getId()})}" method="post">
+                <form th:if="${!topic.getFollowers().contains(user) and !topic.getUser().equals(user)}" sec:authorize="isAuthenticated()" th:action="@{/topics/{id}/follow(id=${topic.getId()})}" method="post">
                     <!-- Follow Button -->
                     <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 mb-2 px-2 shadow-xl ml-1" type="submit">
                         follow
