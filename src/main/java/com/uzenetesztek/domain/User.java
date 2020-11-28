@@ -73,7 +73,7 @@ public class User {
     @ManyToMany(mappedBy = "follows")           // user can follow other people and it's true backwards as well
     private Set<User> followers;                // people who follow us
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "followers")
     private Set<Topic> followTopics;
 
     @ManyToMany(mappedBy = "userLikes")

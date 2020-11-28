@@ -48,6 +48,13 @@ public class Topic {
     private User user;
 
     // User - Topics follows
-    @ManyToMany(mappedBy = "followTopics")
+    @ManyToMany
     private Set<User> followers;            //  unique followers per topic
+
+
+    public void addFollower(User user) {
+        if(followers.contains(user)) return;
+
+        followers.add(user);
+    }
 }

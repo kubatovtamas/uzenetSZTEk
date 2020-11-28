@@ -206,6 +206,33 @@ public class TopicController {
         postServiceImpl.createOrUpdate(post);
         return "redirect:/topics/{topicId}";
     }
+
+
+
+
+    /**
+     * Follow function from index/topics pages
+     *
+     * @param pageName    Current Page
+     * @param userDetails Currently Logged In User
+     * @param topicId     Post Which Liked By User
+     * @return Redirect To Current Page
+     */
+    @PostMapping("/{page}/{topicId}/follow")
+    public String followTopic(@PathVariable("page") String pageName, @PathVariable("topicId") Long topicId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Topic topic = topicServiceImpl.getById(topicId);
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        topic.getFollowers().add(user);
+        topicServiceImpl.createOrUpdate(topic);
+        switch (pageName) {
+            case "index":
+                return "redirect:/";
+            case "topics":
+                return "redirect:/topics";
+        }
+        return "redirect:/topics";
+
+    }
 }
 
 
