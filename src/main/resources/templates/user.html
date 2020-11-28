@@ -68,6 +68,17 @@
 
         <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">
 
+            <form th:if="${!user.getFollowers().contains(remoteUser)}" sec:authorize="isAuthenticated()" th:action="@{/user/{id}/follow(id=${user.getId()})}" method="post">
+                <!-- Follow Button -->
+                <div class="flex">
+                    <button type="submit"><img alt="Follow button" border="0" class="flex absolute mt-8" height="40px"
+                                   src="../static/images/follow.png"
+                                   th:src="@{../images/follow.png}"
+                                   width="40px">
+                    </button>
+                </div>
+            </form>
+
             <div class="text-gray-500 text-center py-2 szov" id="user_Name">     <!--User's name-->
                 Name
             </div>

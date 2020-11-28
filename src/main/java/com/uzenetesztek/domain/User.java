@@ -67,10 +67,10 @@ public class User {
     @OneToMany(mappedBy = "user")               // one user can have many topics, mapped by Topic.user object's id
     private Set<Topic> topics;                  // each topic is unique in this list
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "followers")
     private Set<User> follows;                  // people we follow
 
-    @ManyToMany(mappedBy = "follows")           // user can follow other people and it's true backwards as well
+    @ManyToMany           // user can follow other people and it's true backwards as well
     private Set<User> followers;                // people who follow us
 
     @ManyToMany(mappedBy = "followers")
