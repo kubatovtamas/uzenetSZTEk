@@ -76,10 +76,20 @@
             <div class="py-2">
                 You are following these topics:
             </div>
-            <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl bord">
+            <div class="flex relative justify-center ml-12 border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl bord">
                 <a href="">
                     Topic's name as link
                 </a>
+
+                <!-- TODO: SZIA MÁTÉ ITT KÉNE EGY UNFOLLOW KÖSZI -KURAI -->
+                <form sec:authorize="isAuthenticated()" method="post">
+                    <!-- Follow Button -->
+                    <div class="flex">
+                        <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl px-2 shadow-xl ml-3 content-center left-0" type="submit">
+                            unfollow
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -122,9 +132,35 @@
                 </div>
             </div>
         </div>
+
         <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center bord">
-            <!--Post's from the user-->
-            Something that the user posted..
+            <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
+                     th:each="topic : ${topicsOfUser}">
+
+                <header class="flex relative justify-center">
+                    <div class="text-2xl container text-center absolute">      <!--Topic's name-->
+                        <b><a href="topic_details.html" th:href="@{/topics/{id}(id=${topic.getId()})}"
+                              th:text="${topic.getName()}">
+                            Notified topic's name
+                        </a>
+                        </b>
+                    </div>
+
+                    <!-- TODO: href th:text content -->
+
+                    <p  class="flex mt-10">
+                        LOREM IPSUM
+                    </p>
+                </header>
+
+
+
+            </article>
+
+            </section>
+
+
+            </article>
         </div>
     </div>
 </div>
