@@ -184,7 +184,7 @@
                             </div>
 
                             <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
-                            <div class="relative flex flex-row justify-center">
+                            <div class="relative flex flex-row justify-center w-1/4">
 
                                 <form th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
                                       th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}" style='visibility:hidden' method="post">
