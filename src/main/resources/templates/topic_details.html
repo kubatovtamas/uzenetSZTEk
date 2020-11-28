@@ -109,7 +109,7 @@
                 </p>
 
                 <!-- Follow Button -->
-                <form th:if="${!specificTopic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topics/{id}/follow(id=${specificTopic.getId()})}" method="post">
+                <form th:if="${!specificTopic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topicDetails/{id}/follow(id=${specificTopic.getId()})}" method="post">
                     <!-- Follow Button -->
                         <button type="submit"><img alt="Follow button" border="0" class="flex absolute mt-8" height="40px" src="../static/images/follow.png"
                                                    th:src="@{../images/follow.png}" width="40px">

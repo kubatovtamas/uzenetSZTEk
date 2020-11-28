@@ -208,14 +208,12 @@ public class TopicController {
     }
 
 
-
-
     /**
-     * Follow function from index/topics pages
+     * Follow function
      *
-     * @param pageName    Current Page
+     * @param pageName    Current Page (topics, topicDetails)
      * @param userDetails Currently Logged In User
-     * @param topicId     Post Which Liked By User
+     * @param topicId     Topic Followed By User
      * @return Redirect To Current Page
      */
     @PostMapping("/{page}/{topicId}/follow")
@@ -225,10 +223,10 @@ public class TopicController {
         topic.getFollowers().add(user);
         topicServiceImpl.createOrUpdate(topic);
         switch (pageName) {
-            case "index":
-                return "redirect:/";
             case "topics":
                 return "redirect:/topics";
+            case "topicDetails":
+                return "redirect:/topics/{topicId}";
         }
         return "redirect:/topics";
 
