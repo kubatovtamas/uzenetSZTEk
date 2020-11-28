@@ -49,17 +49,26 @@ public class TopicController {
 
 
     @RequestMapping("/")
-    public String index(Model model, @AuthenticationPrincipal UserDetailsImpl user) {
+    public String index(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        /* Check if user has already liked the post*/
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        model.addAttribute("user",user);
+
         model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
         model.addAttribute("topicsWithTop3Posts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
         /* For New Topic Creation */
         model.addAttribute("newTopic", new Topic());
-        model.addAttribute("userEmail", user.getUsername());
+        model.addAttribute("userEmail", userDetails.getUsername());
         return "index";
     }
 
     @RequestMapping(path = {"/topics", "/topics/{id}"})
-    public String getTopics(@PathVariable("id") Optional<Long> id, @AuthenticationPrincipal UserDetailsImpl user, Model model) throws RecordNotFoundException {
+    public String getTopics(@PathVariable("id") Optional<Long> id, @AuthenticationPrincipal UserDetailsImpl userDetails, Model model) throws RecordNotFoundException {
+        //check if user has already liked the post
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        model.addAttribute("user",user);
+
+
         // Specific Topic
         if (id.isPresent()) {
             Topic topic = topicServiceImpl.getById(id.get());
@@ -68,17 +77,14 @@ public class TopicController {
 
             /* For New Post Creation */
             model.addAttribute("newPost", new Post());
-            model.addAttribute("userEmail", user.getUsername());
-            /* For Editing Existing Post */
+            model.addAttribute("userEmail", userDetails.getUsername());
             model.addAttribute("editedPost", new Post());
-
             return "topic_details";
         }
         // Every Topic
         else {
             model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
             model.addAttribute("topicsWithTop3Posts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
-
             return "topics";
         }
     }
@@ -134,6 +140,7 @@ public class TopicController {
         return "redirect:/topics/{topicId}";
     }
 
+
     /**
      * Saves A Topic With Text Content Coming From HTML Form, Sets User, TimeStamp Automatically
      * @param user Currently Logged In User
@@ -149,6 +156,28 @@ public class TopicController {
 
         var newTopicId = topic.getId();
         return "redirect:/topics/" + newTopicId;
+    }
+    @PostMapping("/{page}/{postId}/like")
+    public String likePost(@PathVariable("page") String pageName, @PathVariable("postId") Long postId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Post post = postServiceImpl.getById(postId);
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        post.getUserLikes().add(user);
+        postServiceImpl.createOrUpdate(post);
+        switch(pageName){
+            case "index":
+                return "redirect:/";
+            case "topics":
+                return "redirect:/topics";
+        }
+        return "redirect:/topics";
+    }
+    @PostMapping("/topicDetails/{postId}/{topicId}/like")
+    public String likePostInTopicsDetails(@PathVariable("postId") Long postId, @PathVariable("topicId") Long topicId, @AuthenticationPrincipal UserDetailsImpl userDetails){
+        Post post = postServiceImpl.getById(postId);
+        User user = userServiceImpl.getByEmail(userDetails.getUsername());
+        post.getUserLikes().add(user);
+        postServiceImpl.createOrUpdate(post);
+        return "redirect:/topics/{topicId}";
     }
 }
 

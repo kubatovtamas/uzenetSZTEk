@@ -120,18 +120,20 @@
                     <!-- Posts -->
                     <article th:each="post : ${posts}" class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
 
-                        <!-- Upvote Button -->
-                        <div class="flex right-0 absolute mr-4 mt-2">
-                            <button>
-                                <img alt="Upvote button" border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
-                                     th:src="@{../images/upvote.png}" width="30px">
-                            </button>
-                        </div>
+                        <form th:if="${!post.getUserLikes().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topicDetails/{id}/{id2}/like(id=${post.getId()}, id2=${specificTopic.getId()})}" method="post">
+                            <!-- Upvote Button -->
+                            <div class="flex right-0 absolute mr-4 mt-2">
+                                <button type="submit">
+                                    <img alt="Upvote button" border="0" class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px" src="../static/images/upvote.png"
+                                         th:src="@{../images/upvote.png}" width="30px">
+                                </button>
+                            </div>
+                        </form>
 
                         <br>
 
                         <!-- Upvote Counter -->
-                        <div class="text-sm flex absolute right-0 mr-3 mt-2">
+                        <div th:text="|Likes: ${post.getUserLikes().size()}|" class="text-sm flex absolute right-0 mr-3 mt-2">
                             counter
                         </div>
 

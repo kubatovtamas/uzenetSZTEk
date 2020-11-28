@@ -51,5 +51,5 @@ public class Post {
     private Set<Post> replyPosts;
 
     @ManyToMany
-    private Set<Post> userLikes;
+    private Set<User> userLikes;
 }

@@ -72,7 +72,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             user.setActivationCode(generateKey());
             user.setAuthority("ROLE_USER");
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.setProfilePicture("images/upvote.png");
+            user.setProfilePicture("https://robohash.org/remuttenetur.bmp?size=50x50&set=set1");
             userServiceImpl.save(user);  // It throws an exception if the user already exists
             emailService.sendMessage(user.getEmail(), user.getFirstName(), user.getActivationCode());  // activation code send to user
             return "ok";
