@@ -68,7 +68,7 @@
 
         <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">
 
-            <div class="text-gray-500 text-center py-2 szov" id="user_Name">     <!--User's name-->
+            <div class="text-gray-500 text-center py-2 szov" id="user_Name" th:text="${user.getFullName()}">     <!--User's name-->
                 Name
             </div>
             <!--Followed topics by the user-->
@@ -77,10 +77,10 @@
             </div>
             <div class="relative border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block flex inline-block mt-2 justify-center shadow-2xl ml-10 bord"
                  th:each="topic : ${user.getFollowTopics()}">
-                <a class="flex" href="" th:text="${topic.getName()}">
+                <a class="flex" th:href="@{/topics/{id}(id=${topic.getId()})}" th:text="${topic.getName()}">
                     Topic's name as link
                 </a>
-                <form th:if="${!user.getFollowers().contains(remoteUser)}" sec:authorize="isAuthenticated()" th:action="@{/user/{id}/follow(id=${user.getId()})}" method="post">
+                <form th:if="${!topic.getFollowers().contains(remoteUser) and !topic.getUser().equals(remoteUser)}" sec:authorize="isAuthenticated()" th:action="@{/users/{id}/follow(id=${topic.getId()})}" method="post">
                     <!-- Follow Button -->
                     <div class="flex">
                         <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl px-2 shadow-xl ml-3 content-center left-0" type="submit">
@@ -96,7 +96,7 @@
 
     <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
         <!--  <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord"> -->
-        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
+        <article class="container mx-auto border-teal-700 border-r-4 border-l-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
                  th:each="topic : ${topicsOfUser}">
 
             <header class="flex relative justify-center">
@@ -108,9 +108,7 @@
                     </b>
                 </div>
 
-                <!-- TODO: href th:text content -->
-
-                <p  class="flex mt-10">
+                <p th:text="${topic.getDescription()}" class="flex mt-10">
                     LOREM IPSUM
                 </p>
             </header>

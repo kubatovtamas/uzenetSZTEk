@@ -227,6 +227,8 @@ public class TopicController {
                 return "redirect:/topics";
             case "topicDetails":
                 return "redirect:/topics/{topicId}";
+            case "users":
+                return "redirect:/profile";
         }
         return "redirect:/topics";
 
