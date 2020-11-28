@@ -101,20 +101,20 @@
                             </p>
                         </a>
                     </div>
+
+                    <form th:if="${!specificTopic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topicDetails/{id}/follow(id=${specificTopic.getId()})}" method="post">
+                        <!-- Follow Button -->
+                        <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 px-2 shadow-xl ml-2" type="submit">
+                            follow
+                        </button>
+                    </form>
+
                 </header>
 
                 <!-- Topic's Description -->
-                <p class="ml-24" th:text="${specificTopic.getDescription()}">
+                <p class="ml-24 mb-2" th:text="${specificTopic.getDescription()}">
                     Description
                 </p>
-
-                <!-- Follow Button -->
-                <form th:if="${!specificTopic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topicDetails/{id}/follow(id=${specificTopic.getId()})}" method="post">
-                    <!-- Follow Button -->
-                        <button type="submit"><img alt="Follow button" border="0" class="flex absolute mt-8" height="40px" src="../static/images/follow.png"
-                                                   th:src="@{../images/follow.png}" width="40px">
-                        </button>
-                </form>
 
                 <!-- Posts In Topic Container -->
                 <section class="bg-current hat ml-16 rounded-2xl relative">
@@ -151,6 +151,8 @@
                                     </p>
                                 </a>
                             </div>
+
+
                         </header>
 
                         <!-- Post Text Content ; ID Example: postContent113-->
@@ -182,7 +184,7 @@
                             </div>
 
                             <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
-                            <div class="relative flex flex-row justify-center w-1/2">
+                            <div class="relative flex flex-row justify-center">
 
                                 <form th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
                                       th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}" style='visibility:hidden' method="post">
@@ -210,7 +212,7 @@
         </article>
 
         <!-- New Post Form -->
-        <div class="flex">
+        <div class="flex justify-center">
 
             <form sec:authorize="isAuthenticated()" th:object="${newPost}" th:action="@{/topics/{id}/post(id=${specificTopic.getId()})}" method="post">
 
@@ -218,9 +220,8 @@
                 <label for="postText"></label>
                 <input id="postText" class="flex mx-auto border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 px-24 py-3 bg-current text-2xl text-center bord2 hat szov"
                        placeholder="Send new reply" type="text" th:field="*{textContent}">
-
                 <!-- Submit -->
-                <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat">
+                <button class="flex mx-auto mt-5 border-2 border-blue-800 bg-current rounded-3xl text-gray-500 p-2 szov hat">
                     Submit
                 </button>
 

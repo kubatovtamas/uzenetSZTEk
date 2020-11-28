@@ -84,7 +84,12 @@
                     </a>
                 </div>
 
-
+                <form th:if="${!topic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topics/{id}/follow(id=${topic.getId()})}" method="post">
+                    <!-- Follow Button -->
+                    <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 mb-2 px-2 shadow-xl ml-1" type="submit">
+                        follow
+                    </button>
+                </form>
 
             </header>
             <!-- TODO: href th:text content -->
@@ -93,13 +98,6 @@
                 LOREM IPSUM
             </p>
 
-
-            <form th:if="${!topic.getFollowers().contains(user)}" sec:authorize="isAuthenticated()" th:action="@{/topics/{id}/follow(id=${topic.getId()})}" method="post">
-                <!-- Follow Button -->
-                    <button type="submit"><img alt="Follow button" border="0" class="flex absolute mt-8" height="40px" src="../static/images/follow.png"
-                                 th:src="@{../images/follow.png}" width="40px">
-                    </button>
-            </form>
 
             <section class="bg-current hat ml-16 rounded-2xl relative">
 
