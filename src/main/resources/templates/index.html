@@ -65,35 +65,34 @@
                 Create New Topic
             </button>
         </div>
+
         <!-- On Dropdown -->
         <div class="text-gray-500" id="drop" style="display: none;">
 
-            <div class=" pt-4 flex flex-row justify-center">
-                <label for="topicTitle"></label>
-                <input class="border-2 border-blue-800 rounded-3xl px-1 bg-current text-center text-2xl w-9/12 szov hat" id="topicTitle"
-                       placeholder="Topic Title"
-                       type="text">
-            </div>
+            <form th:object="${newTopic}" th:action="@{/createTopic}" method="post" id="newTopicForm">
 
-            <div class="pt-4 pb-4 flex flex-row justify-center">
-                <label for="mainContent"></label>
-                <textarea class=" border-2 border-blue-800 rounded-3xl px-1 bg-current text-2xl szov hat w-9/12" id="mainContent" name="mainContent"
-                          rows="3" cols="50" placeholder="Topic Description">
-                </textarea>
-            </div>
+                <div class=" pt-4 flex flex-row justify-center">
+                    <label for="topicTitle"></label>
+                    <input class="border-2 border-blue-800 rounded-3xl px-1 bg-current text-center text-2xl w-9/12 szov hat" id="topicTitle"
+                           placeholder="Topic Title"
+                           type="text" th:field="*{name}">
+                </div>
 
-            <div class="mx-40">
+                <div class="pt-4 pb-4 flex flex-row justify-center">
+                    <label for="mainContent"></label>
+                    <textarea form="newTopicForm" class=" border-2 border-blue-800 rounded-3xl px-1 bg-current text-2xl szov hat w-9/12" id="mainContent" name="mainContent"
+                              rows="3" cols="50" placeholder="Topic Description" type="text"
+                              th:field="*{description}">
+                    </textarea>
+                </div>
 
-                <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat">
-                    Submit
-                </button>
+                <div class="mx-40">
 
-                <input id="file" placeholder="File upload" style="display: none;" type="file">
-                <label class="bg-transparent border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-left p-2 szov hat"
-                       for="file">
-                    Upload File
-                </label>
-            </div>
+                    <input type="submit" value="Send" class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat">
+                    <input type="hidden" id="id" th:field="*{id}">
+                </div>
+
+            </form>
 
         </div>
     </div>

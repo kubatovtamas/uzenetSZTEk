@@ -49,9 +49,12 @@ public class TopicController {
 
 
     @RequestMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @AuthenticationPrincipal UserDetailsImpl user) {
         model.addAttribute("topics", topicServiceImpl.getAllTopicsOrdered());
         model.addAttribute("topicsWithTop3Posts", topicWithPostsService.getAllTopicsWithTop3PostsOrdered());
+        /* For New Topic Creation */
+        model.addAttribute("newTopic", new Topic());
+        model.addAttribute("userEmail", user.getUsername());
         return "index";
     }
 
@@ -63,8 +66,10 @@ public class TopicController {
             model.addAttribute("specificTopic", topic);
             model.addAttribute("posts", postServiceImpl.getPostsByTopicOrdered(topic));
 
+            /* For New Post Creation */
             model.addAttribute("newPost", new Post());
             model.addAttribute("userEmail", user.getUsername());
+            /* For Editing Existing Post */
             model.addAttribute("editedPost", new Post());
 
             return "topic_details";
@@ -79,7 +84,7 @@ public class TopicController {
     }
 
     /**
-     * Saves A Post With Text Content Coming From HTML Form, Sets User, ParentTopic, TimeStamp automatically
+     * Saves A Post With Text Content Coming From HTML Form, Sets User, ParentTopic, TimeStamp Automatically
      * @param topicId Current Topic's Id
      * @param user Currently Logged In User
      * @param post New Post Object
@@ -127,6 +132,23 @@ public class TopicController {
         postServiceImpl.deleteById(postId);
 
         return "redirect:/topics/{topicId}";
+    }
+
+    /**
+     * Saves A Topic With Text Content Coming From HTML Form, Sets User, TimeStamp Automatically
+     * @param user Currently Logged In User
+     * @param topic New Topic Object
+     * @return Redirect To Created Topic
+     */
+    @PostMapping("/createTopic")
+    public String createNewTopic(@AuthenticationPrincipal UserDetailsImpl user, Topic topic) {
+        topic.setUser(userServiceImpl.getByEmail(user.getUsername()));
+        topic.setTimestamp(new Date());
+
+        topicServiceImpl.createOrUpdate(topic);
+
+        var newTopicId = topic.getId();
+        return "redirect:/topics/" + newTopicId;
     }
 }
 
