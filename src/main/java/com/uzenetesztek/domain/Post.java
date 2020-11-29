@@ -15,6 +15,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Post {
 
     @GeneratedValue
