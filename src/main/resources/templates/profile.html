@@ -62,7 +62,7 @@
 
             <div>
                 <img alt="Profile picture of the user" class="rounded-3xl block m-auto py-2 " height="200" id="user_Pic"
-                     src="../public/pics/profile_pic.jpg" th:src="@{images/profile_pic.jpg}" width="200">
+                     src="../public/pics/profile_pic.jpg" th:src="${user.profilePicture}" width="200">
             </div>
             <div class="text-gray-500 text-center py-2 szov" th:text="${user.getFullName()}">     <!--User's name-->
                 Name
