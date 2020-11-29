@@ -71,7 +71,7 @@
     <div class="text-gray-500 text-2xl">
 
         <!-- Topics And Posts -->
-        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord  bord2 mt-5">
+        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord bord2 mt-5">
 
             <!-- Back button -->
             <a href="/">
@@ -95,7 +95,7 @@
 
                     <!-- Topic's Poster -->
                     <div class="flex text-2xl relative">
-                        <div>
+                        <div class="flex">
                             <img alt="Profile picture of the user"
                                  class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord"
                                  height="50" src="../static/images/profile_pic.jpg"
@@ -147,14 +147,14 @@
                 <div class="flex flex-row relative">
                     <div>
                         <!-- Topic's Description -->
-                        <p class="ml-24 mb-2" th:text="${specificTopic.getDescription()}">
+                        <p class="ml-24 top-0 py-10" th:text="${specificTopic.getDescription()}">
                             Description
                         </p>
                     </div>
 
 
                         <!-- TODO: EZT IS -->
-                    <form class="justify-center flex-row flex" th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                    <form class=" flex-row flex" th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
                           th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}"
                           style="visibility: hidden" method="post">
 
@@ -162,14 +162,14 @@
                         <label for="text">
                                         <textarea id="text" th:form="'postSaveButton' + ${post.getId()}"
                                                   th:id="'postTextArea' + ${post.getId()}" rows="1.5" cols="75"
-                                                  class=" left-0 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
+                                                  class=" left-0 ml-24 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
                                                   th:field="*{textContent}">
                                     </textarea>
 
                         </label>
                         <!-- SAVE button -->
                         <input type="submit" value="Save"
-                               class="flex bg-current text-xl absolute text-gray-500 px-5 mt-24 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
+                               class="flex absolute right-0 mr-8 bg-current text-xl text-gray-500 px-5 mt-20 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
                     </form>
                 </div>
 
