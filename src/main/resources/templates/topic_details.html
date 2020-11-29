@@ -123,23 +123,70 @@
 
                 </header>
 
-                <!-- Topic's Description -->
-                <p class="ml-24 mb-2" th:text="${specificTopic.getDescription()}">
-                    Description
-                </p>
+                <!-- Show buttons only if user's own post -->
+                <div class="relative float-right" th:if="${userEmail.equals(post.getUser().getEmail())}">
+
+
+                    <!-- TODO: KUBA EZT BEKÉNE DRÓTOSTÓT -->
+                    <!-- EDIT Button -->
+                    <!-- On Click: show textarea with original text content, show save button, hide text content -->
+                    <a th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
+                       class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
+                        Edit
+                    </a>
+
+                    <!-- DELETE Button -->
+                    <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                       class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
+                        Delete
+                    </a>
+
+                </div>
+
+                <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
+                <div class="flex flex-row relative">
+                    <div>
+                        <!-- Topic's Description -->
+                        <p class="ml-24 mb-2" th:text="${specificTopic.getDescription()}">
+                            Description
+                        </p>
+                    </div>
+
+
+                        <!-- TODO: EZT IS -->
+                    <form class="justify-center flex-row flex" th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                          th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}"
+                          style="visibility: hidden" method="post">
+
+                        <!-- Text Editing Area -->
+                        <label for="text">
+                                        <textarea id="text" th:form="'postSaveButton' + ${post.getId()}"
+                                                  th:id="'postTextArea' + ${post.getId()}" rows="1.5" cols="75"
+                                                  class=" left-0 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
+                                                  th:field="*{textContent}">
+                                    </textarea>
+
+                        </label>
+                        <!-- SAVE button -->
+                        <input type="submit" value="Save"
+                               class="flex bg-current text-xl absolute text-gray-500 px-5 mt-24 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
+                    </form>
+                </div>
+
+
 
                 <!-- Posts In Topic Container -->
                 <section class="bg-current hat ml-16 rounded-2xl relative">
 
                     <!-- Posts -->
                     <article th:each="post : ${posts}"
-                             class="bord px-3 py-10 border-b-4 border-blue-800 rounded-2xl hat ">
+                             class="bord px-3 py-24 border-b-4 border-blue-800 rounded-2xl hat relative">
 
                         <form th:if="${!post.getUserLikes().contains(user)}" sec:authorize="isAuthenticated()"
                               th:action="@{/topicDetails/{id}/{id2}/like(id=${post.getId()}, id2=${specificTopic.getId()})}"
                               method="post">
                             <!-- Upvote Button -->
-                            <div class="flex right-0 absolute mr-4 mt-2">
+                            <div class="flex right-0 absolute mr-4 top-0 mt-8">
                                 <button type="submit">
                                     <img alt="Upvote button" border="0"
                                          class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px"
@@ -149,17 +196,15 @@
                             </div>
                         </form>
 
-                        <br>
-
                         <!-- Upvote Counter -->
                         <div th:text="|Likes: ${post.getUserLikes().size()}|"
-                             class="text-sm flex absolute right-0 mr-3 mt-2">
+                             class="text-sm flex absolute right-0 mr-3 mt-16 top-0">
                             counter
                         </div>
 
                         <!-- Post Info Header -->
                         <header class="flex">
-                            <div class="flex flex-row inline-block text-xl">
+                            <div class="flex flex-row inline-block text-xl absolute top-0 mt-2">
                                 <img alt="Profile picture of the user"
                                      class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord"
                                      height="40" src="../static/images/profile_pic.jpg"
@@ -174,12 +219,35 @@
 
 
                         </header>
-<div>
-                        <!-- Post Text Content ; ID Example: postContent113-->
-                        <p class="mt-3 ml-5 break-normal break-words" th:id="'postContent' + ${post.getId()}"
-                           th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
-                            Post Content
-                        </p>
+
+                            <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
+                            <div class="flex flex-row relative">
+
+                                <!-- Post Text Content ; ID Example: postContent113-->
+                                <p class=" break-normal break-words flex left-0 top-0 text-md ml-2" th:id="'postContent' + ${post.getId()}"
+                                   th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                                    Post Content
+                                </p>
+
+                                <form class="justify-center flex-row flex" th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                                      th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}"
+                                      style="visibility: hidden" method="post">
+
+                                    <!-- Text Editing Area -->
+                                    <label for="text">
+                                        <textarea id="text" th:form="'postSaveButton' + ${post.getId()}"
+                                                  th:id="'postTextArea' + ${post.getId()}" rows="1.5" cols="75"
+                                                  class=" left-0 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
+                                                  th:field="*{textContent}">
+                                    </textarea>
+
+                                    </label>
+                                    <!-- SAVE button -->
+                                        <input type="submit" value="Save"
+                                            class="flex bg-current text-xl absolute text-gray-500 px-5 mt-24 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
+                                </form>
+                            </div>
+
 
                         <footer>
                             <!-- Date Posted -->
@@ -187,50 +255,25 @@
                                th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">
                                 2020/10/28 16:51
                             </p>
-
-                            <!-- Show buttons only if user's own post -->
-                            <div class=" float-right" th:if="${userEmail.equals(post.getUser().getEmail())}">
-
-                                <!-- EDIT Button -->
-                                <!-- On Click: show textarea with original text content, show save button, hide text content -->
-                                <a th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
-                                   class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
-                                    Edit
-                                </a>
-
-                                <!-- DELETE Button -->
-                                <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
-                                   class="text-sm text-gray-500  absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
-                                    Delete
-                                </a>
-
-                            </div>
-                            <div>
-                                <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
-                                <div class="flex flex-row">
-
-                                    <form th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
-                                          th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}"
-                                          style='visibility:hidden' method="post">
-
-                                        <!-- Text Editing Area -->
-                                        <label for="text">
-                                        <textarea id="text" th:form="'postSaveButton' + ${post.getId()}"
-                                                  th:id="'postTextArea' + ${post.getId()}" rows="1" cols="60"
-                                                  class="bg-teal-900 rounded-3xl px-4 szov bord resize max-w-3xl" type="text"
-                                                  th:field="*{textContent}">
-                                    </textarea>
-                                        </label>
-                                        <!-- SAVE button -->
-                                        <input type="submit" value="Save"
-                                               class="flex flex-row bg-current text-xl text-gray-500 absolute mb-3 border-l-2 border-t-2 border-teal-700 rounded-2xl mr-3 px-6 szov hat bord">
-
-                                    </form>
-
-                                </div>
-                            </div>
                         </footer>
-</div>
+
+                        <!-- Show buttons only if user's own post -->
+                        <div class="relative float-right" th:if="${userEmail.equals(post.getUser().getEmail())}">
+
+                            <!-- EDIT Button -->
+                            <!-- On Click: show textarea with original text content, show save button, hide text content -->
+                            <a th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
+                               class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
+                                Edit
+                            </a>
+
+                            <!-- DELETE Button -->
+                            <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                               class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
+                                Delete
+                            </a>
+
+                        </div>
                     </article>
 
                 </section>
