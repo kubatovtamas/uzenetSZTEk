@@ -18,14 +18,16 @@
             üzeneteSZTEk
         </h1>
         <!--- TODO: href thymeleaf --->
+        <div class="px-5 float-right ">
         <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
-            <button type="submit" class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+            <button type="submit" class="my-4 mx-8 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
                 Log Out
             </button>
         </form>
+        </div>
     </div>
 </header>
-<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat">
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat mr178">
     <nav class="space-x-56">
         <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
            th:href="@{/}">
