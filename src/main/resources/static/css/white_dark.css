@@ -40,7 +40,12 @@ body.white .szov{
 body.white .hat {
     background-color: #e3986c;
 }
-
+body.white .hat2 {
+    background-color: #802B2B;
+}
+body.white .hoverhat:hover{
+    background-color: #802B2B;
+}
 body.white .bord{
     border-color: #ab3e3e;
 }
@@ -71,5 +76,5 @@ body.white{
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;
+
 }
