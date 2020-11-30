@@ -78,6 +78,7 @@ public class TopicController {
         if (id.isPresent()) {
             Topic topic = topicServiceImpl.getById(id.get());
             model.addAttribute("specificTopic", topic);
+            model.addAttribute("editedTopic", new Topic());
             model.addAttribute("posts", postServiceImpl.getPostsByTopicOrdered(topic));
 
             /* For New Post Creation */
@@ -114,7 +115,7 @@ public class TopicController {
     }
 
     /**
-     * Saves A Post With Text Coming From HTML Form
+     * Saves An Edited Post With Text Coming From HTML Form
      *
      * @param topicId Current Topic's Id
      * @param postId  Specific Post's Id
@@ -129,6 +130,25 @@ public class TopicController {
         originalPost.setTimestamp(new Date());
 
         postServiceImpl.createOrUpdate(originalPost);
+
+        return "redirect:/topics/{topicId}";
+    }
+
+    /**
+     * Saves An Edited Topic With Text Coming From HTML Form
+     *
+     * @param topicId Current Topic's Id
+     * @param topic   Existing Post Object
+     * @return Redirect Back To Current Topic
+     */
+    @PostMapping("/topics/{topicId}/edit")
+    public String editExistingTopic(@PathVariable("topicId") Long topicId, Topic topic) {
+        Topic originalTopic = topicServiceImpl.getById(topicId);
+
+        originalTopic.setDescription(topic.getDescription());
+        originalTopic.setTimestamp(new Date());
+
+        topicServiceImpl.createOrUpdate(originalTopic);
 
         return "redirect:/topics/{topicId}";
     }
@@ -155,7 +175,7 @@ public class TopicController {
      * @return Redirect To Containing Topic
      */
     @GetMapping("/topics/{topicId}/delete")
-    public String deletePost(@PathVariable("topicId") Long topicId) {
+    public String deleteTopic(@PathVariable("topicId") Long topicId) {
 
         topicServiceImpl.deleteById(topicId);
 

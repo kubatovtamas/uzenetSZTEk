@@ -6,6 +6,6 @@ function beginEditingPost(id) {
 
     paragraph.style.visibility = 'hidden';
     textarea.style.visibility = 'visible';
-    textarea.value += paragraph.textContent;
+    textarea.value = paragraph.textContent;
     saveButton.style.visibility = 'visible';
 }

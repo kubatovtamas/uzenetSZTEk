@@ -128,7 +128,7 @@
                 <div class="relative float-right" th:if="${userEmail.equals(specificTopic.getUser().getEmail())}">
 
 
-                    <!-- EDIT Topic Button -->
+<!----------------------------------------------------------- EDIT Topic ---------------------------------------------------------------------------->
                     <!-- On Click: show textarea with original text content, show save button, hide text content -->
                     <a th:onclick="'javascript:beginEditingTopic(\'' + ${specificTopic.getId()} + '\');'"
                        class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat"
@@ -145,35 +145,36 @@
 
                 </div>
 
-                <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
+                <!-- Editing Topic Area  ; ID Example: postSaveButton113 -->
                 <div class="flex flex-row relative">
                     <div>
                         <!-- Topic's Description -->
-                        <p class="ml-24 top-0 py-10" th:text="${specificTopic.getDescription()}">
+                        <p class="ml-24 top-0 py-10" th:text="${specificTopic.getDescription()}"
+                           th:id="'topicDescription' + ${specificTopic.getId()}">
                             Description
                         </p>
                     </div>
 
-                    <!-- TODO: KUBA EZT BEKÉNE DRÓTOSTÓT -->
-                    <form class=" flex-row flex" th:action="@{/createTopic}"
-                          th:id="'topicSaveButton' + ${specificTopic.getId()}" th:object="${specificTopic}"
+
+                    <form class=" flex-row flex" th:action="@{/topics/{topicId}/edit (topicId=${specificTopic.getId()})}"
+                          th:id="'topicSaveButton' + ${specificTopic.getId()}" th:object="${editedTopic}"
                           style="visibility: hidden" method="post">
 
                         <!-- Text Editing Area -->
                         <label for="topicDescription">
-                                        <textarea id="topicDescription" th:form="'topicSaveButton' + ${specificTopic.getId()}"
-                                                  th:id="'topicTextArea' + ${specificTopic.getId()}" rows="1.5" cols="75"
-                                                  class=" left-0 ml-24 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
-                                                  th:field="*{description}">
-                                    </textarea>
-
+                            <textarea id="topicDescription" th:form="'topicSaveButton' + ${specificTopic.getId()}"
+                                      th:id="'topicDescriptionTextArea' + ${specificTopic.getId()}" rows="1.5" cols="75"
+                                      class=" left-0 ml-24 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
+                                      th:field="*{description}">
+                            </textarea>
                         </label>
+
                         <!-- SAVE button -->
                         <input type="submit" value="Save"
                                class="flex absolute right-0 mr-8 bg-current text-xl text-gray-500 px-5 mt-20 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
                     </form>
                 </div>
-
+<!----------------------------------------------------------- EDIT Topic END---------------------------------------------------------------------------->
 
 
                 <!-- Posts In Topic Container -->
@@ -221,6 +222,7 @@
 
                         </header>
 
+    <!----------------------------------------------------------- EDIT Post ---------------------------------------------------------------------------->
                             <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
                             <div class="flex flex-row relative">
 
@@ -273,7 +275,7 @@
                                class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
                                 Delete
                             </a>
-
+        <!----------------------------------------------------------- EDIT Post END ---------------------------------------------------------------------------->
                         </div>
                     </article>
 

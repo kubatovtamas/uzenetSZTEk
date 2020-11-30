@@ -80,7 +80,7 @@ public class TopicServiceImpl implements ICrudService<Topic, Long> {
         try {
             topicRepo.deleteById(id);
         } catch (org.springframework.dao.DataIntegrityViolationException e) {
-            throw new DataIntegrityViolationException("Data Integrity Validation");
+            throw new DataIntegrityViolationException("You can't delete topics that already contain posts.\n");
         }
 
     }
