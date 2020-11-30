@@ -36,7 +36,6 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles({"dev"})
@@ -103,18 +102,16 @@ public class AuthControllerIntTest {
     }
 
 
-    @Test
-//    @ParameterizedTest
+    @ParameterizedTest
     @WithMockUser(username = "testingmail", roles={"USER"})
-//    @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
-    public void loggedInWithInCorrectCredentialsCorrectPath() throws Exception {
+    @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
+    public void loggedInWithIncorrectCredentialsCorrectPath(String url) throws Exception {
 
-        String userEmail = "nonexistantuser";
-
+        String userEmail = "nonexistentuser";
 
         Assertions.assertThrows(RecordNotFoundException.class , () -> {
             UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
-            mvc.perform(MockMvcRequestBuilders.get("/").with(user(userDetails)));
+            mvc.perform(MockMvcRequestBuilders.get(url).with(user(userDetails)));
         });
 
 //        Assertions.assertThrows(RecordNotFoundException)
