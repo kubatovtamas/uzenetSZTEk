@@ -73,11 +73,16 @@ public class TopicServiceImpl implements ICrudService<Topic, Long> {
     public void deleteById(Long id) throws RecordNotFoundException {
         Optional<Topic> entity = topicRepo.findById(id);
 
-        if(entity.isPresent()) {
-            topicRepo.deleteById(id);
-        } else {
+        if(entity.isEmpty()) {
             throw new RecordNotFoundException("Topic with id: " + id + " not found");
         }
+
+        try {
+            topicRepo.deleteById(id);
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("Data Integrity Validation");
+        }
+
     }
 
     @Override
