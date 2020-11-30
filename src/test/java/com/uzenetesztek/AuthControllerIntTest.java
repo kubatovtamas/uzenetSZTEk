@@ -35,7 +35,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles({"dev"})
@@ -58,33 +57,49 @@ public class AuthControllerIntTest {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
     @DisplayName("User without access redirected to login page")
-    public void userWithoutAccessRedirectedToLoginPage() throws Exception {
+    public void userWithoutAccessRedirectedToLoginPage(String url) throws Exception {
 
-        mvc.perform(MockMvcRequestBuilders.get("/topics"))
+        mvc.perform(MockMvcRequestBuilders.get(url))
                 .andExpect(status().isFound());
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("Accessing non-existent page shows error page")
-    public void accessingNonExistentPageShowsErrorPage() throws Exception {
+    @ValueSource(strings = {"/thisRandomPageDoesntExist", "/page/within", "/how/deep/should/i/go"})
+    public void accessingNonExistentPageShowsErrorPage(String url) throws Exception {
 
-        mvc.perform(MockMvcRequestBuilders.get("/thisRandomThingDoesntExist"))
+        mvc.perform(MockMvcRequestBuilders.get(url))
                 .andExpect(status().isNotFound());
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"one", "two"})
-    public void paramaterizedTestsRun(String msg) {
-        assertNotNull(msg);
+    @DisplayName("Correct credentials wrong path should still show error page")
+    @WithMockUser(username = "testingmail", roles={"USER"})
+    @ValueSource(strings = {"/thisRandomPageDoesntExist", "/page/within", "/how/deep/should/i/go"})
+    public void correctCredentialsWrongPathShowsErrorPage(String url) throws Exception {
+
+        userRepository.save(getUser("testingmail", "password"));
+        UserDetails userDetails = userDetailsService.loadUserByUsername("testingmail");
+
+        mvc.perform(MockMvcRequestBuilders.get(url))
+                .andExpect(status().isNotFound());
     }
+
+//    @ParameterizedTest
+//    @ValueSource(strings = {"one", "two"})
+//    public void paramaterizedTestsRun(String msg) {
+//        assertNotNull(msg);
+//    }
 
 //    @Test
     @ParameterizedTest
     @WithMockUser(username = "testingmail", roles={"USER"})
     @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
-    public void loggedInWithCorrectCredentialsCorrectPath(String url) throws Exception {
+    @DisplayName("Logged in with correct credentials and correct path returns requested page")
+    public void loggedInWithCorrectCredentialsCorrectPathReturnsRequestedPage(String url) throws Exception {
 
         userRepository.save(getUser("testingmail", "password"));
         UserDetails userDetails = userDetailsService.loadUserByUsername("testingmail");
@@ -105,7 +120,8 @@ public class AuthControllerIntTest {
     @ParameterizedTest
     @WithMockUser(username = "testingmail", roles={"USER"})
     @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
-    public void loggedInWithIncorrectCredentialsCorrectPath(String url) throws Exception {
+    @DisplayName("Correct path but incorrect credentials should return RecordNotFound")
+    public void correctPathButIncorrectCredentialsShouldReturnRecordNotFound(String url) throws Exception {
 
         String userEmail = "nonexistentuser";
 
@@ -113,9 +129,6 @@ public class AuthControllerIntTest {
             UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
             mvc.perform(MockMvcRequestBuilders.get(url).with(user(userDetails)));
         });
-
-//        Assertions.assertThrows(RecordNotFoundException)
-//                .andExpect(result -> assertEquals("User with email: " + userEmail + " not found", result.getResolvedException().getMessage()));
 
     }
 
