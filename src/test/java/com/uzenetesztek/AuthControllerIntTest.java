@@ -3,10 +3,12 @@ package com.uzenetesztek;
 import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
+import com.uzenetesztek.exceptions.RecordNotFoundException;
 import com.uzenetesztek.repository.PostRepository;
 import com.uzenetesztek.repository.TopicRepository;
 import com.uzenetesztek.repository.UserRepository;
 import com.uzenetesztek.service.UserDetailsServiceImpl;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -101,23 +103,24 @@ public class AuthControllerIntTest {
     }
 
 
-//    @Test
-////    @ParameterizedTest
-//    @WithMockUser(username = "testingmail", roles={"USER"})
-////    @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
-//    public void loggedInWithInCorrectCredentialsCorrectPath() throws Exception {
-//
-//        String userEmail = "nonexistantuser";
-//        UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
-//
-//        Assertions.assertThrows(RecordNotFoundException.class , () -> {
-//            mvc.perform(MockMvcRequestBuilders.get("/").with(user(userDetails)));
-//        });
-//
-////        Assertions.assertThrows(RecordNotFoundException)
-////                .andExpect(result -> assertEquals("User with email: " + userEmail + " not found", result.getResolvedException().getMessage()));
-//
-//    }
+    @Test
+//    @ParameterizedTest
+    @WithMockUser(username = "testingmail", roles={"USER"})
+//    @ValueSource(strings = {"/", "/topics", "/profile", "/user/1","/topics/1"})
+    public void loggedInWithInCorrectCredentialsCorrectPath() throws Exception {
+
+        String userEmail = "nonexistantuser";
+
+
+        Assertions.assertThrows(RecordNotFoundException.class , () -> {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
+            mvc.perform(MockMvcRequestBuilders.get("/").with(user(userDetails)));
+        });
+
+//        Assertions.assertThrows(RecordNotFoundException)
+//                .andExpect(result -> assertEquals("User with email: " + userEmail + " not found", result.getResolvedException().getMessage()));
+
+    }
 
     private User getUser(String email, String password) {
         User user = new User();
