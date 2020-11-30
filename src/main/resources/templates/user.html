@@ -1,177 +1,131 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{../css/styles.css}">
-    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="@{../css/whitedark.css}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{../css/styles.css}">
+    <link href="../static/css/white_dark.css" rel="stylesheet" th:href="@{../css/white_dark.css}">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This pages also describes the user, but it's focused on the topics the user takes part in and not on the creationg of a new topic."/>
     <title>üzeneteSZTEk</title>
-
 </head>
 <body class="bg-gray-800">
 <header>
     <div>
         <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
-        <label for="Search"></label>
-        <input id="Search" class="float-right my-4 mx-2 bg-teal-800 hat" type="text" placeholder="Search...">
+        <!--- TODO: href thymeleaf --->
+        <form sec:authorize="isAuthenticated()" form-method="post" th:action="@{/logout}">
+            <button type="submit" class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+                Log Out
+            </button>
+        </form>
     </div>
 </header>
 
 <div>
     <div class=" bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord szov">
-        <a href="/" class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Main</a>
-        <a href="../profile" class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord">Profile</a>
-        <a href="../topic" class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov">Topic</a>
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov hoverhat"
+                th:href="@{/}">
+            Main
+        </a>
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat"
+                th:href="@{/profile}">
+            Profile
+        </a>
+        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov hoverhat"
+                th:href="@{/topics}">
+            Topics
+        </a>
     </div>
 </div>
 
 <div class="flex flex-row-reverse">
-    <button id="toggle-white-mode" class="absolute"></button>
+    <button class="absolute" id="toggle-white-mode"></button>
 
-    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current hat label hat bord">
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="@{../images/darkmode.png}"></i>
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="@{../images/whitemode.png}"></i> <!--white/dark theme button-->
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current hat label hat bord"
+           for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{../images/dark_mode.png}"
+                                               width="20"></i>
+        <i class="text-teal-700 relative"><img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{../images/white_mode.png}"
+                                               width="20"></i> <!--white/dark theme button-->
     </label>
 </div>
 
 
-
 <div class="text-gray-500 szov">
-<div class="ml-24 w-4/12 float-left">
-<div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
-    <!--Uploading photo-->
-    <div>
-        <img id="user_Pic" src="../public/pics/profpic.jpg" th:src="${user.profilePicture}" alt="kugya" width="200" height="200" class="rounded-3xl block m-auto py-2 ">
-    </div>
-    <div id="user_Name" class="text-gray-500 text-center py-2 szov" th:text="${user.getFullName()}">     <!--User's name-->
-        Name
-    </div>
-    <div id="Interests" class="text-gray-500 text-center py-2 szov">     <!--Something of the User-->
-        Interests
-    </div>
-    <div id="Details" class="text-gray-500 text-center py-2 szov">       <!--Details(birth date, university)-->
-        Details
-    </div>
+    <div class="ml-24 w-4/12 float-left">
+        <div class="border-t-4 border-l-4 border-r-4 border-blue-800 rounded-2xl bord">
+            <!--Uploading photo-->
+            <div>
+                <img alt="Profile picture of the user" class="rounded-3xl block m-auto py-2 " height="200" id="user_Pic"
+                     src="../public/pics/profpic.jpg" th:src="${user.profilePicture}" width="200">
+            </div>
 
 
-
-</div>
-
-    <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">      <!--Followed topics by the user-->
-        <div class="py-2">
-            You are following these topics:
         </div>
-        <div th:each="topic : ${user.getFollowTopics()}" class="border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block inline-block mt-2 shadow-2xl bord">
-            <a href="" th:text="${topic.getName()}">Topic's name as link</a>
+
+        <div class="border-r-4 border-b-4 border-l-4 text-center border-blue-800 rounded-2xl bord py-2">
+
+            <div class="text-gray-500 text-center py-2 szov" id="user_Name" th:text="${user.getFullName()}">     <!--User's name-->
+                Name
+            </div>
+            <!--Followed topics by the user-->
+            <div class="py-2">
+                Following these topics:
+            </div>
+            <div class="relative border-b-4 border-t-4 border-teal-700 rounded-2xl py-2 w-9/12 block flex inline-block mt-2 justify-center shadow-2xl ml-10 bord"
+                 th:each="topic : ${user.getFollowTopics()}">
+                <a class="flex" th:href="@{/topics/{id}(id=${topic.getId()})}" th:text="${topic.getName()}">
+                    Topic's name as link
+                </a>
+                <form th:if="${!topic.getFollowers().contains(remoteUser) and !topic.getUser().equals(remoteUser)}" sec:authorize="isAuthenticated()" th:action="@{/users/{id}/follow(id=${topic.getId()})}" method="post">
+                    <!-- Follow Button -->
+                    <div class="flex">
+                        <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl px-2 shadow-xl ml-3 content-center left-0" type="submit">
+                            follow
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
+
+
     </div>
 
+    <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
+        <!--  <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord"> -->
+        <article class="container mx-auto border-teal-700 border-r-4 border-l-4 rounded-2xl bord my-3 px-3 bord2 mt-5"
+                 th:each="topic : ${topicsOfUser}">
 
+            <header class="flex relative justify-center">
+                <div class="text-2xl container text-center absolute">      <!--Topic's name-->
+                    <b><a href="topic_details.html" th:href="@{/topics/{id}(id=${topic.getId()})}"
+                                th:text="${topic.getName()}">
+                            Notified topic's name
+                        </a>
+                    </b>
+                </div>
 
-</div>
-<!--<div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">-->
-<!--        <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord">        &lt;!&ndash;Posting&ndash;&gt;-->
-<!--            <input id="Posting" onfocus="posting(this)" class="bg-current text-center text-2xl hat" type="text" placeholder="Posting...">-->
-<!--        </div>-->
-<!--        <div class="border-b-4 border-t-4 border-teal-700 rounded-2xl mx-12 mb-6 text-center bord">      &lt;!&ndash;Post's from the user&ndash;&gt;-->
-<!--            Something that the user posted..-->
-<!--        </div>-->
-<!--</div>-->
-<!--    <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">-->
-<!--      &lt;!&ndash;  <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord"> &ndash;&gt;-->
-<!--            <article th:each="post : ${usersPosts}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">-->
-<!--                <header class="flex relative">-->
-<!--                    <div class="text-2xl container text-center absolute">      &lt;!&ndash;Topic's name&ndash;&gt;-->
-<!--                        <b><a th:href="@{/topics/{name}(name=${post.parentTopic.getName()})}" href="topicdetails.html" th:text="${post.parentTopic.getName()}">Notified topic's name</a></b>-->
-<!--                    </div>-->
-<!--                    <div class="flex relative text-xl">-->
-<!--                        <img th:src="${post.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">-->
-<!--                        <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-4 ml-1 text-xl" th:text="${post.getUser().getFullName()}">Name</p></a>-->
-<!--                    </div>-->
-
-<!--                </header>-->
-<!--                <button><img border="0" width="40px" height="40px" src="../static/images/follow.png" th:src="@{../images/follow.png}" class="flex mt-8 absolute"></button>-->
-
-<!--                &lt;!&ndash; Follow Button &ndash;&gt;-->
-<!--                <section class="bg-current hat ml-16 rounded-2xl relative">-->
-<!--                    <article th:each="post : ${post.parentTopic.getPosts()}" class="bord px-3 py-4 border-b-4 border-blue-800 rounded-2xl hat ">-->
-<!--                        &lt;!&ndash; upvote button/counter &ndash;&gt;-->
-<!--                        <div class="flex right-0 absolute mr-4 mt-2">-->
-<!--                            <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{../images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>-->
-<!--                        </div>-->
-<!--                        <br>-->
-<!--                        <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>-->
-<!--                        <header class="flex">-->
-<!--                            <div class="flex flex-row inline-block text-xl">-->
-<!--                                <img th:src="${post.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="40" height="40" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord">-->
-<!--                                <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>-->
-<!--                            </div>-->
-<!--                        </header>-->
-<!--                        <p th:text="${post.getTextContent()}" >LOREM IPSUM</p>-->
-<!--                        <footer>-->
-<!--                            <p class="flex-row-reverse flex text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>-->
-<!--                        </footer>-->
-<!--                    </article>-->
-
-<!--                </section>-->
+                <p th:text="${topic.getDescription()}" class="flex mt-10">
+                    LOREM IPSUM
+                </p>
+            </header>
 
 
 
-<!--            </article>-->
-        <div class="w-6/12 float-right mr-24 border-4 border-blue-800 rounded-2xl bord">
-            <!--  <div class="flex flex-row justify-center mx-32 my-16 border-t-4 border-b-4 border-blue-800 bg-current hat rounded-2xl py-3 bord"> -->
-            <article th:each="topic : ${topics}" class="container mx-auto border-teal-700 border-r-4 rounded-2xl bord my-3 px-3 bord2 mt-5">
+                </article>
 
-                <header class="flex relative">
-                    <div class="text-2xl container text-center absolute">      <!--Topic's name-->
-                        <b><a th:href="@{/topics/{name}(name=${topic.getName()})}" href="topicdetails.html" th:text="${topic.getName()}">Notified topic's name</a></b>
-                    </div>
-                    <div class="flex relative text-xl">
-                        <img th:src="${topic.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="50" height="50" class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord">
-                        <a th:href="@{/user/{email}(email=${topic.getUser().getEmail()})}" href="#"><p class="pr-3 mt-4 ml-1 text-xl" th:text="${topic.getUser().getFullName()}">Name</p></a>
-                    </div>
-
-                </header>
-                <button><img border="0" width="40px" height="40px" src="../static/images/follow.png" th:src="@{../images/follow.png}" class="flex mt-8 absolute"></button>
-
-                <!-- Follow Button -->
-                <section class="bg-current hat ml-16 rounded-2xl relative">
-                    <article th:each="post : ${topicsPosted.get(topic)}" class="bord px-3 py-4 border-b-4 border-blue-800 rounded-2xl hat ">
-                        <!-- upvote button/counter -->
-                        <div class="flex right-0 absolute mr-4 mt-2">
-                            <button><img border="0" width="30px" height="30px" src="../static/images/upvote.png" th:src="@{../images/upvote.png}" class="mr-1 border-2 border-blue-800 rounded-2xl bord"></button>
-                        </div>
-                        <br>
-                        <div class="text-sm flex absolute right-0 mr-3 mt-2">counter</div>
-                        <header class="flex">
-                            <div class="flex flex-row inline-block text-xl">
-                                <img th:src="${post.getUser().getProfilePicture()}" src="../static/images/profpic.jpg" width="40" height="40" class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord">
-                                <a th:href="@{/user/{email}(email=${post.getUser().getEmail()})}" href="#"><p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">Name</p></a>
-                            </div>
-                        </header>
-                        <p th:text="${post.getTextContent()}" >LOREM IPSUM</p>
-                        <footer>
-                            <p class="flex-row-reverse flex text-sm" th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">2020/10/28 16:51</p>
-                        </footer>
-                    </article>
-
-                </section>
+            </section>
 
 
-
-            </article>
+        </article>
     </div>
 </div>
-
-<script>
-    function posting(x) {
-        x.width = 400
-        x.height = 400
-    }
-
-
-</script>
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
 
 <script src="../static/js/main.js" th:src="@{../js/main.js}"></script>
 

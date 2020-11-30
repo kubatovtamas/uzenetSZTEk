@@ -1,0 +1,188 @@
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../../static/css/styles.css" rel="stylesheet" th:href="@{css/styles.css}">
+    <link href="../../static/css/white_dark.css" rel="stylesheet" th:href="@{css/white_dark.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is the registration site of the üzeneteSZTEk webapplication."/>
+    <title>üzeneteSZTEk</title>
+</head>
+<body class="bg-gray-800">
+
+<header>
+    <div>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
+            üzeneteSZTEk
+        </h1>
+        <!--- TODO: href thymeleaf --->
+        <div class="px-5 float-right ">
+        <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
+            <button type="submit" class="my-4 mx-8 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+                Log Out
+            </button>
+        </form>
+        </div>
+    </div>
+</header>
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat mr178">
+    <nav class="space-x-56">
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
+           th:href="@{/}">
+            Main
+        </a>
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat"
+           th:href="@{/profile}">
+            Profile
+        </a>
+        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
+           th:href="@{/topics}">
+            Topics
+        </a>
+    </nav>
+</div>
+
+<div class="flex flex-row-reverse">
+    <!-- White/Dark Theme Button -->
+    <button class="absolute" id="toggle-white-mode"></button>
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord" for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png" th:src="@{images/dark_mode.png}"
+                                               width="20">
+        </i>
+        <i class="text-teal-700 relative"><img alt="White mode toggle button" height="20" src="../static/images/white_mode.png" th:src="@{images/white_mode.png}"
+                                               width="20">
+        </i>
+    </label>
+</div>
+
+<div class="w-10/12 border-t-4 border-blue-800 rounded-3xl justify-center m-auto bord">
+    <div class="w-8/12 justify-center m-auto ">
+
+        <!-- Switch Login/Register -->
+        <div class="py-4 flex">
+
+            <!-- Login Button --> <!-- TODO: th:href login.html -->
+            <div class="flex flex-row m-auto">
+                <a th:href="@{/login}" class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord">
+                    Login
+                </a>
+            </div>
+
+            <!-- Register Button -->
+            <div class="flex flex-row-reverse m-auto">
+                <a class="toggle-btn border-l-2 border-r-2 rounded-2xl border-blue-800 text-3xl px-4 text-gray-500 szov bord hat2 bg-teal-700">
+                    Register
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Input Fields -->
+        <div class="flex flex-row justify-center py-4">
+            <div class=" border-r-4 border-t-4 border-blue-800 rounded-3xl bord formbox">
+
+                                    <!-- TODO: delete comment -->
+            <!--                &lt;!&ndash; Register &ndash;&gt; -->
+                    <div class="py-6 px-8 input-group" id="reg">
+
+                        <form name="registration" th:action="@{/reg}" th:object="${user}" method="post">
+
+                                    <!-- TODO: th:field, delete comment -->
+                            <!--     &lt;!&ndash; First Name &ndash;&gt; -->
+                                <div class="flex flex-row justify-center py-4 px-4">
+                                         <label for="first_name"></label>
+                                         <input th:field="*{firstName}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                                id="first_name" placeholder="First Name"
+                                                type="text">
+                                </div>
+
+                                 <!-- TODO: th:field, delete comment -->
+                             <!--    &lt;!&ndash; Last Name &ndash;&gt; -->
+                                 <div class="flex flex-row justify-center py-4 px-4">
+                                     <label for="last_name"></label>
+                                     <input th:field="*{lastName}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                            id="last_name" placeholder="Last name"
+                                            type="text">
+                                 </div>
+
+                                <!-- TODO: th:field, delete comment -->
+                            <!--    &lt;!&ndash; DOB &ndash;&gt; -->
+                                <div class="flex flex-row justify-center py-4 px-4">
+                                    <label for="birth_Date"></label>
+                                    <input th:field="*{dateOfBirth}" class="input-field px-6 bg-transparent text-center border-4 border-blue-800 rounded-3xl bord"
+                                           id="birth_Date" type="date">
+                             <!--      &lt;!&ndash; TODO: date description placeholder &ndash;&gt; -->
+                                </div>
+
+                                <!-- TODO: th:field, delete comment -->
+                             <!--   &lt;!&ndash; Email &ndash;&gt; -->
+                                <div class="flex flex-row justify-center py-4 px-4">
+                                    <label for="reg_Email"></label>
+                                    <input th:field="*{email}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                           id="reg_Email" placeholder="Email address"
+                                           type="email">
+                                </div>
+
+                                <!-- TODO: th:field, delete comment -->
+                             <!--   &lt;!&ndash; Password &ndash;&gt; -->
+                                <div class="flex flex-row justify-center py-4 px-4">
+                                    <label for="reg_Password"></label>
+                                    <input th:field="*{password}" class="input-field px-4 bg-transparent  text-center border-4 border-blue-800 rounded-3xl bord"
+                                           id="reg_Password" placeholder="Password"
+                                           type="password">
+                                </div>
+                                <input th:field="*{authority}" type="hidden" value="ROLE_USER">
+                                <!-- TODO: th:field, delete comment -->
+                            <!--    &lt;!&ndash; Submit &ndash;&gt; -->
+                                 <div class="flex flex-row justify-center">
+                                     <button type="submit" class="border-t-2 text-gray-500 text-2xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl px-3 mt-5">
+                                         Submit</button>
+                                     </div>
+
+                                <!-- TODO: delete comment -->
+                          <!--       &lt;!&ndash; TODO: add hidden form inputs for user object vreation on non-required fields &ndash;&gt; -->
+                             </form>
+                         </div>
+
+                     </div>
+
+                 </div>
+
+             </div>
+
+
+         </div>
+     </div>
+
+<p th:if="${param.logout}" class="text-gray-500 text-2xl mx-auto mb-3 flex flex-row justify-center">
+    You have successfully logged out.
+</p>
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
+     <script src="../../static/js/main.js" th:src="@{js/main.js}"></script>
+
+
+     </body>
+     </html>
+
+
+     <style>
+         input[type=text] {
+             color: #a0aec0;
+         }
+
+         input[type=date] {
+             color: #a0aec0;
+         }
+
+         input[type=password] {
+             color: #a0aec0;
+         }
+
+         input[type=email] {
+             color: #a0aec0;
+         }
+     </style>

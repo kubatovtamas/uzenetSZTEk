@@ -1,22 +1,18 @@
 package com.uzenetesztek.repository;
 
-import com.uzenetesztek.domain.Post;
 import com.uzenetesztek.domain.Topic;
 import com.uzenetesztek.domain.User;
-import lombok.NonNull;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TopicRepository extends CrudRepository<Topic, Long> {
     List<Topic> findAllByOrderByNameAsc();
 
-    Topic findFirstByName(String name);
+    Optional<Topic> findFirstByName(String name);
 
-    List<Topic> findAllByUser(User user);
-
-    List<Topic> findAllByUserOrderByTimestampAsc(User user);
+    List<Topic> findAllByUserOrderByNameAsc(User user);
 }

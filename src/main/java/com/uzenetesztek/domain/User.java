@@ -1,56 +1,85 @@
 package com.uzenetesztek.domain;
 
+
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
+
 @Entity
-@Getter @Setter @ToString @NoArgsConstructor @RequiredArgsConstructor @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of="id")
+@Getter
+@Setter
+@RequiredArgsConstructor
+//@NoArgsConstructor
+@AllArgsConstructor
 public class User {
+
     @GeneratedValue
-    @Id         // primary key
+    @Id
+    @ToString.Include
     private Long id;
+
+    @NotBlank(message = "First Name Cannot Be Blank")
+    @ToString.Include
     private String firstName;
+
+    @NotBlank(message = "Last Name Cannot Be Blank")
+    @ToString.Include
     private String lastName;
-    private Date dateOfBirth; // date of birth
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @ToString.Include
+    private Date dateOfBirth;
+
+    @ToString.Include
     private Date lastLogin;
-    @NonNull
-    @Column(unique=true)        // only one user per username
+
+    @NotNull
+    @Column(unique = true, nullable = false)      // only one user per username
+    @ToString.Include
     private String email;
-    @NonNull
+
+    @NotNull
     private String password;
-    @NonNull
-    private boolean isAdmin;
+
+    @NotNull
+    @ToString.Include
+    private String authority;
+
+    private String activationCode;
+
+    private Boolean enabled;
+
     @Column(columnDefinition = "TEXT")
     private String profilePicture;
 
-
-    // User Posts
-    @OneToMany(mappedBy = "user")          // one user can have many posts, mapped by Post.user object's id
+    @OneToMany(mappedBy = "user")               // one user can have many posts, mapped by Post.user object's id
     private Set<Post> posts;
 
-    // User Topics
-    @OneToMany(mappedBy = "user")          // one user can have many topics, mapped by Topic.user object's id
-    private Set<Topic> topics;             // each topic is unique in this list
+    @OneToMany(mappedBy = "user")               // one user can have many topics, mapped by Topic.user object's id
+    private Set<Topic> topics;                  // each topic is unique in this list
 
-    // User User
-    @ManyToMany
-    private List<User> follows;
-    @ManyToMany(mappedBy = "follows")      // user can follow other people and it's true backwards as well
-    private Set<User> followees;            // can't follow the same person twice
+    @ManyToMany(mappedBy = "followers")
+    private Set<User> follows;                  // people we follow
 
-    // User Topics
-    @ManyToMany
+    @ManyToMany           // user can follow other people and it's true backwards as well
+    private Set<User> followers;                // people who follow us
+
+    @ManyToMany(mappedBy = "followers")
     private Set<Topic> followTopics;
 
-    // Posts Liked by user
     @ManyToMany(mappedBy = "userLikes")
-    private Set<Post> likedPosts;       // only one like per post per user
+    private Set<Post> likedPosts;               // only one like per post per user
 
-    public String getFullName(){
+    public String getFullName() {
         return firstName + " " + lastName;
     }
 }

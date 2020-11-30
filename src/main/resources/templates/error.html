@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="../static/css/styles.css" th:href="${cssPath}">
-    <link rel="stylesheet" href="../static/css/whitedark.css" th:href="${whiteThemePath}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="${cssPath}">
+    <link href="../static/css/white_dark.css" rel="stylesheet" th:href="${whiteThemePath}">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This page describes the error with appropriate messages about what caused the problem, it's a helpful page for the üzeneteSZTEk user if something went wrong."/>
     <title>üzeneteSZTEk</title>
 </head>
 <body class="bg-gray-800">
 
 <header>
     <div>
-        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">üzeneteSZTEk</h1>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
+            üzeneteSZTEk
+        </h1>
+        <!--- TODO: href thymeleaf --->
+        <form sec:authorize="isAuthenticated()" form-method="post" th:action="@{/logout}">
+            <button type="submit" class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+                Log Out
+            </button>
+        </form>
     </div>
+
+    <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
+        <nav class="space-x-56">
+            <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
+               th:href="@{/}">
+                Main
+            </a>
+            <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat"
+               th:href="@{/profile}">
+                Profile
+            </a>
+            <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
+               th:href="@{/topics}">
+                Topics
+            </a>
+        </nav> <!--menu buttons-->
+    </div>
+
 </header>
 
 <div class="flex flex-row-reverse">
-    <button id="toggle-white-mode" class="absolute"></button>
+    <button class="absolute" id="toggle-white-mode"></button>
 
-    <label for="toggle-white-mode" class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord">
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/darkmode.png" th:src="${darkMode}"></i>
-        <i class="text-teal-700 relative"><img width="20" height="20" src="../static/images/whitemode.png" th:src="${whiteMode}"></i> <!--white/dark theme button-->
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord"
+           for="toggle-white-mode">
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/dark_mode.png" th:src="${darkMode}"
+                                               width="20"></i>
+        <i class="text-teal-700 relative"><img height="20" src="../static/images/white_mode.png" th:src="${whiteMode}"
+                                               width="20"></i> <!--white/dark theme button-->
     </label>
 </div>
 
@@ -29,8 +61,11 @@
     <div class="text-gray-500 border-b-4 rounded-2xl mx-16 py-8 px-5 border-teal-700 text-2xl szov bord2">
         <article class="relative">
             <header class="flex flex-row justify-center mb-5 pb-5 relative">
-                <p><img th:src="${errorImage}" src="../static/images/error_img.png"></p>
-                <div><div th:text="${status}" style="justify-content: center;
+                <p>
+                    <img src="../static/images/error_img.png" th:src="${errorImage}">
+                </p>
+                <div>
+                    <div style="justify-content: center;
                     align-items: center;
                     display: flex;
                     position: absolute;
@@ -38,32 +73,43 @@
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    font-size: 2.3em;">
-                    errorCode
-                </div></div>
+                    font-size: 2.3em;" th:text="${status}">
+                        errorCode
+                    </div>
+                </div>
             </header>
             <section class="flex flex-row justify-center mb-5 pb-5">
-                <p th:text="${message}">message</p>
-                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
+                <p th:text="${message}">
+                    message
+                </p>
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">
+                    timestamp
+                </p>
             </section>
             <!-- ErrorCode status -->
             <section class="flex flex-row justify-center mb-5 pb-5 relative">
             </section>
 
             <footer class="flex flex-row right-0 mb-2 absolute"> <!--Back to Main Page href-->
-                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">timestamp</p>
+                <p th:text="${#dates.format(timestamp, 'yyyy.MM.dd: HH:mm')}">
+                    timestamp
+                </p>
             </footer>
         </article>
-
     </div>
 </div>
+
 <div class="flex inline-block justify-center  text-2xl text-gray-500">
-    <a href="/" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">Back to Main Page</a>
+    <button onclick="goBack()" class="border-b-4 rounded-2xl border-blue-800 px-3 szov bord">
+        Go Back
+    </button>
 </div>
 
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
 
 <script src="../static/js/main.js" th:src="${themeSwitch}"></script>
-
 
 
 </body>

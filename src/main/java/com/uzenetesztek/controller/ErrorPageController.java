@@ -1,33 +1,27 @@
 package com.uzenetesztek.controller;
 
-import antlr.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 @Controller
 public class ErrorPageController implements ErrorController {
     private static final String ERROR_PATH = "/error";
 
-    private ErrorAttributes errorAttributes;
-
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
+    private ErrorAttributes errorAttributes;
     @Autowired
     public void setErrorAttributes(ErrorAttributes errorAttributes) {
         this.errorAttributes = errorAttributes;
@@ -64,24 +58,23 @@ public class ErrorPageController implements ErrorController {
         long countSymbol = path.chars().filter(ch -> ch == '/').count();
 
         Map<String, String> thymeleafE = new HashMap<>(); //contains html elements
-        thymeleafE.put("cssPath","css/styles.css");
-        thymeleafE.put("whiteThemePath","css/whitedark.css");
-        thymeleafE.put("errorImage","images/error_img.png");
-        thymeleafE.put("darkMode","images/darkmode.png");
-        thymeleafE.put("whiteMode","images/whitemode.png");
-        thymeleafE.put("themeSwitch","js/main.js");
+        thymeleafE.put("cssPath", "css/styles.css");
+        thymeleafE.put("whiteThemePath", "css/white_dark.css");
+        thymeleafE.put("errorImage", "images/error_img.png");
+        thymeleafE.put("darkMode", "images/dark_mode.png");
+        thymeleafE.put("whiteMode", "images/white_mode.png");
+        thymeleafE.put("themeSwitch", "js/main.js");
 
-        if(countSymbol > 1){ //If the url contains more than one "/"
+        if (countSymbol > 1) { //If the url contains more than one "/"
             StringBuilder sb = new StringBuilder();
-            for(int i=0;i<countSymbol-1;i++){
+            for (int i = 0; i < countSymbol - 1; i++) {
                 sb.append("../"); //the correct path form
             }
-            Iterator elements = thymeleafE.entrySet().iterator();
-            while (elements.hasNext()) {
-                Map.Entry element = (Map.Entry) elements.next();
-                thymeleafE.put((String) element.getKey(),sb.toString()+element.getValue());
+            for (Map.Entry<String, String> stringStringEntry : thymeleafE.entrySet()) {
+                thymeleafE.put((String) stringStringEntry.getKey(), sb.toString() + stringStringEntry.getValue());
             }
         }
+
         model.addAllAttributes(thymeleafE);
 
         LOG.error(error.get("timestamp").toString());

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{../css/styles.css}">
+    <link href="../static/css/white_dark.css" rel="stylesheet" th:href="@{../css/white_dark.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="This page further describes the conversation of a topic. The user can read all the posts connected to a specific topic and of course the user can reply to the post with his/her own opinion in form of a userpost."/>
+    <title>üzeneteSZTEk</title>
+</head>
+
+<body class="bg-gray-800">
+
+<!-- Nav Bar Start -->
+<header>
+    <div>
+        <h1 class="text-3xl text-teal-700 flex flex-row py-3 px-5 float-left szov">
+            üzeneteSZTEk
+        </h1>
+        <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
+            <button type="submit"
+                    class="float-right my-4 mx-8 px-5 border-t-2 text-gray-500 text-xl bord szov border-blue-800 border-r-2 rounded-3xl shadow-2xl">
+                Log Out
+            </button>
+        </form>
+    </div>
+</header>
+
+<div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 bord hat">
+    <nav class="space-x-56">
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
+           th:href="@{/}">
+            Main
+        </a>
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat"
+           th:href="@{/profile}">
+            Profile
+        </a>
+        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
+           th:href="@{/topics}">
+            Topics
+        </a>
+    </nav>
+</div>
+
+<div class="flex flex-row-reverse">
+    <!-- White/Dark Theme Button -->
+    <button class="absolute" id="toggle-white-mode"></button>
+    <label class="flex mr-16 border-blue-800 border-2 border-blue-800 rounded-3xl bg-current label hat bord"
+           for="toggle-white-mode">
+        <i class="text-teal-700 relative">
+            <img alt="Dark mode toggle button" height="20" src="../static/images/dark_mode.png"
+                 th:src="@{../images/dark_mode.png}" width="20">
+        </i>
+        <i class="text-teal-700 relative">
+            <img alt="White mode toggle button" height="20" src="../static/images/white_mode.png"
+                 th:src="@{../images/white_mode.png}" width="20">
+        </i>
+        <div class="absolute bg-gray-400 rounded-3xl w-5 h-5 ball"></div>
+    </label>
+</div>
+<!-- Nav Bar End -->
+
+<div class="border-b-4 border-t-4 border-blue-800 rounded-2xl m-12 mx-32 py-20 bord">
+
+    <!-- Topics And Posts Container -->
+    <div class="text-gray-500 text-2xl">
+
+        <!-- Topics And Posts -->
+        <article class="container mx-auto border-teal-700 border-r-4 rounded-2xl my-3 bord bord2 mt-5">
+
+            <!-- Back button -->
+            <a href="/">
+                <img alt="back" class="float-right" height="50" src="../static/images/arrow_one.png"
+                     th:src="@{../images/arrow_one.png}" width="50">
+            </a>
+
+            <div class="px-3">
+
+                <!-- Topic Info Header -->
+                <header class="flex relative">
+                    <!--Topic's name-->
+                    <div class="text-2xl container text-center absolute szov">
+                        <b>
+                            <a th:href="@{/topics/{id}(id=${specificTopic.getId()})}"
+                               th:text="${specificTopic.getName()}">
+                                Topic Name
+                            </a>
+                        </b>
+                    </div>
+
+                    <!-- Topic's Poster -->
+                    <div class="flex text-2xl relative">
+                        <div class="flex">
+                            <img alt="Profile picture of the user"
+                                 class="my-3 ml-2 mr-1 rounded-2xl border-blue-800 border-l-2 bord"
+                                 height="50" src="../static/images/profile_pic.jpg"
+                                 th:src="${specificTopic.getUser().getProfilePicture()}"
+                                 width="50">
+                        </div>
+                        <a class="clear-both" href="#"
+                           th:href="@{/user/{id}(id=${specificTopic.getUser().getId()})}">
+                            <p class="pr-3 mt-4 ml-1 text-xl" th:text="${specificTopic.getUser().getFullName()}">
+                                Topic Poster's Name
+                            </p>
+                        </a>
+                    </div>
+
+                    <form th:if="${!specificTopic.getFollowers().contains(user) and !specificTopic.getUser().equals(user)}"
+                          sec:authorize="isAuthenticated()"
+                          th:action="@{/topicDetails/{id}/follow(id=${specificTopic.getId()})}" method="post">
+                        <!-- Follow Button -->
+                        <button alt="Follow button" border="0"
+                                class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 px-2 shadow-xl ml-2 bord"
+                                style="z-index: 34;"
+                                type="submit">
+                            follow
+                        </button>
+                    </form>
+
+                </header>
+
+                <!-- Show buttons only if user's own post -->
+                <div class="relative float-right" th:if="${userEmail.equals(specificTopic.getUser().getEmail())}">
+
+
+<!----------------------------------------------------------- EDIT Topic ---------------------------------------------------------------------------->
+                    <!-- On Click: show textarea with original text content, show save button, hide text content -->
+                    <a th:onclick="'javascript:beginEditingTopic(\'' + ${specificTopic.getId()} + '\');'"
+                       class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat bord"
+                        style="z-index: 34">
+                        Edit
+                    </a>
+
+                    <!-- DELETE Topic Button -->
+                    <a th:href="@{/topics/{topicId}/delete (topicId=${specificTopic.getId()})}"
+                       class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat bord"
+                        style="z-index: 34">
+                        Delete
+                    </a>
+
+                </div>
+
+                <!-- Editing Topic Area  ; ID Example: postSaveButton113 -->
+                <div class="flex flex-row relative">
+                    <div>
+                        <!-- Topic's Description -->
+                        <p class="ml-24 top-0 py-10" th:text="${specificTopic.getDescription()}"
+                           th:id="'topicDescription' + ${specificTopic.getId()}">
+                            Description
+                        </p>
+                    </div>
+
+
+                    <form class=" flex-row flex" th:action="@{/topics/{topicId}/edit (topicId=${specificTopic.getId()})}"
+                          th:id="'topicSaveButton' + ${specificTopic.getId()}" th:object="${editedTopic}"
+                          style="visibility: hidden" method="post">
+
+                        <!-- Text Editing Area -->
+                        <label for="topicDescription">
+                            <textarea id="topicDescription" th:form="'topicSaveButton' + ${specificTopic.getId()}"
+                                      th:id="'topicDescriptionTextArea' + ${specificTopic.getId()}" rows="1.5" cols="75"
+                                      class=" left-0 ml-24 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
+                                      th:field="*{description}">
+                            </textarea>
+                        </label>
+
+                        <!-- SAVE button -->
+                        <input type="submit" value="Save"
+                               class="flex absolute right-0 mr-8 bg-current text-xl text-gray-500 px-5 mt-20 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
+                    </form>
+                </div>
+<!----------------------------------------------------------- EDIT Topic END---------------------------------------------------------------------------->
+
+
+                <!-- Posts In Topic Container -->
+                <section class="bg-current hat ml-16 rounded-2xl relative">
+
+                    <!-- Posts -->
+                    <article th:each="post : ${posts}"
+                             class="bord px-3 py-24 border-b-4 border-blue-800 rounded-2xl hat relative">
+
+                        <form th:if="${!post.getUserLikes().contains(user)}" sec:authorize="isAuthenticated()"
+                              th:action="@{/topicDetails/{id}/{id2}/like(id=${post.getId()}, id2=${specificTopic.getId()})}"
+                              method="post">
+                            <!-- Upvote Button -->
+                            <div class="flex right-0 absolute mr-4 top-0 mt-8">
+                                <button type="submit">
+                                    <img alt="Upvote button" border="0"
+                                         class="mr-1 border-2 border-blue-800 rounded-2xl bord" height="30px"
+                                         src="../static/images/upvote.png"
+                                         th:src="@{../images/upvote.png}" width="30px">
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Upvote Counter -->
+                        <div th:text="|Likes: ${post.getUserLikes().size()}|"
+                             class="text-sm flex absolute right-0 mr-3 mt-16 top-0">
+                            counter
+                        </div>
+
+                        <!-- Post Info Header -->
+                        <header class="flex">
+                            <div class="flex flex-row inline-block text-xl absolute top-0 mt-2">
+                                <img alt="Profile picture of the user"
+                                     class=" mr-1 rounded-2xl border-blue-800 border-l-2 bord"
+                                     height="40" src="../static/images/profile_pic.jpg"
+                                     th:src="${post.getUser().getProfilePicture()}"
+                                     width="40">
+                                <a href="#" th:href="@{/user/{id}(id=${post.getUser().getId()})}">
+                                    <p class="pr-3 mt-1 ml-1" th:text="${post.getUser().getFullName()}">
+                                        Poster Name
+                                    </p>
+                                </a>
+                            </div>
+
+
+                        </header>
+
+    <!----------------------------------------------------------- EDIT Post ---------------------------------------------------------------------------->
+                            <!-- Editing Post Area  ; ID Example: postSaveButton113 -->
+                            <div class="flex flex-row relative">
+
+                                <!-- Post Text Content ; ID Example: postContent113-->
+                                <p class=" break-normal break-words flex left-0 top-0 text-md ml-2" th:id="'postContent' + ${post.getId()}"
+                                   th:utext="${#strings.replace( #strings.escapeXml( post.getTextContent() ),T(java.lang.System).getProperty('line.separator'),'&lt;br /&gt;')}">
+                                    Post Content
+                                </p>
+
+                                <form class="justify-center flex-row flex" th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                                      th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}"
+                                      style="visibility: hidden" method="post">
+
+                                    <!-- Text Editing Area -->
+                                    <label for="text">
+                                        <textarea id="text" th:form="'postSaveButton' + ${post.getId()}"
+                                                  th:id="'postTextArea' + ${post.getId()}" rows="1.5" cols="75"
+                                                  class=" left-0 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
+                                                  th:field="*{textContent}">
+                                    </textarea>
+
+                                    </label>
+                                    <!-- SAVE button -->
+                                        <input type="submit" value="Save"
+                                            class="flex bg-current text-xl absolute text-gray-500 px-5 mt-24 border-l-2 border-t-2 border-teal-700 rounded-2xl szov hat bord">
+                                </form>
+                            </div>
+
+
+                        <footer>
+                            <!-- Date Posted -->
+                            <p class="flex-row-reverse flex text-sm"
+                               th:text="${#dates.format(post.getTimestamp(), 'yyyy.MM.dd: HH:mm')}">
+                                2020/10/28 16:51
+                            </p>
+                        </footer>
+
+                        <!-- Show buttons only if user's own post -->
+                        <div class="relative float-right" th:if="${userEmail.equals(post.getUser().getEmail())}">
+
+                            <!-- EDIT Button -->
+                            <!-- On Click: show textarea with original text content, show save button, hide text content -->
+                            <a th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
+                               class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat bord">
+                                Edit
+                            </a>
+
+                            <!-- DELETE Button -->
+                            <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
+                               class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat bord">
+                                Delete
+                            </a>
+        <!----------------------------------------------------------- EDIT Post END ---------------------------------------------------------------------------->
+                        </div>
+                    </article>
+
+                </section>
+
+            </div>
+
+        </article>
+
+        <!-- New Post Form -->
+        <div class="flex justify-center">
+
+            <form sec:authorize="isAuthenticated()" th:object="${newPost}"
+                  th:action="@{/topics/{id}/post(id=${specificTopic.getId()})}" method="post">
+
+                <!-- Content Text Area -->
+                <label for="postText"></label>
+                <textarea placeholder="Send new reply" type="text"  name="postText" id="postText" cols="50" rows="3" class="flex border-b-4 border-l-4 border-r-4 rounded-l-xl rounded-r-xl rounded-b-2xl mt-5 py-3 bg-current text-2xl bord2 hat szov" th:field="*{textContent}">
+
+                </textarea>
+
+
+
+                <!-- Submit -->
+                <button class="flex mx-auto mt-5 border-2 border-blue-800 bg-current rounded-3xl text-gray-500 p-2 szov hat bord">
+                    Submit
+                </button>
+
+                <input type="hidden" id="id" th:field="*{id}">
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
+<script src="../static/js/main.js" th:src="@{../js/main.js}"></script>
+<script src="../static/js/main.js" th:src="@{../js/postEditHandler.js}"></script>
+<script src="../static/js/main.js" th:src="@{../js/topicEditHandler.js}"></script>
+
+</body>
+
+</html>
