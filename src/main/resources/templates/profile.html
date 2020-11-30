@@ -28,14 +28,14 @@
 
 <div>
     <div class=" bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord szov">
-        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov"
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov hoverhat"
            th:href="@{/}">
             Main
         </a>
-        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov">
+        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov hat2">
             Profile
         </a>
-        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov"
+        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 bord border-blue-800 shadow-2xl szov hoverhat"
            th:href="@{/topics}">
             Topics
         </a>
@@ -84,7 +84,7 @@
                 <form sec:authorize="isAuthenticated()" th:action="@{/profile/unfollow/{id}(id=${topic.getId()})}" method="post">
                     <!-- Follow Button -->
                     <div class="flex">
-                        <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl px-2 shadow-xl ml-3 content-center left-0" type="submit">
+                        <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl px-2 shadow-xl ml-3 content-center left-0 bord" type="submit">
                             unfollow
                         </button>
                     </div>
@@ -99,7 +99,7 @@
             <!--   <input class="bg-current text-center text-2xl szov hat" type="text" placeholder="Posting..."> -->
             <div class="w-11/12">
                 <div class="flex flex-row justify-center">
-                    <h3>Posts</h3>
+                    <h3>You've created these topics</h3>
                 </div>
                 <div class="text-gray-500" id="drop" style="display: none;">
                     <div class=" pt-4 flex flex-row justify-center">
@@ -157,7 +157,9 @@
         </div>
     </div>
 </div>
-
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
 <script src="../static/js/main.js" th:src="@{js/main.js}"></script>
 
 

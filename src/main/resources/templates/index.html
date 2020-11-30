@@ -30,13 +30,13 @@
 
 <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
     <nav class="space-x-56">
-        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord">
+        <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bg-teal-900 szov bord hat2">
             Main
         </a>
-        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord" th:href="@{/profile}">
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat" th:href="@{/profile}">
             Profile
         </a>
-        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord" th:href="@{/topics}">
+        <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat" th:href="@{/topics}">
             Topics
         </a>
     </nav>
@@ -60,7 +60,7 @@
 
     <div class="w-11/12">
         <div class="flex flex-row justify-center">
-            <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 p-2 szov hat" id="dropDown"
+            <button class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 p-2 szov hat bord" id="dropDown"
                     onclick="dropDown()">
                 Create New Topic
             </button>
@@ -73,14 +73,14 @@
 
                 <div class=" pt-4 flex flex-row justify-center">
                     <label for="topicTitle"></label>
-                    <input class="border-2 border-blue-800 rounded-3xl px-1 bg-current text-center text-2xl w-9/12 szov hat" id="topicTitle"
+                    <input class="border-2 border-blue-800 rounded-3xl px-1 bg-current text-center text-2xl w-9/12 szov hat bord" id="topicTitle"
                            placeholder="Topic Title"
                            type="text" th:field="*{name}">
                 </div>
 
                 <div class="pt-4 pb-4 flex flex-row justify-center">
                     <label for="mainContent"></label>
-                    <textarea form="newTopicForm" class=" border-2 border-blue-800 rounded-3xl px-1 bg-current text-2xl szov hat w-9/12" id="mainContent" name="mainContent"
+                    <textarea form="newTopicForm" class=" border-2 border-blue-800 rounded-3xl px-1 bg-current text-2xl szov hat w-9/12 bord" id="mainContent" name="mainContent"
                               rows="3" cols="50" placeholder="Topic Description" type="text"
                               th:field="*{description}">
                     </textarea>
@@ -88,7 +88,7 @@
 
                 <div class="mx-40">
 
-                    <input type="submit" value="Send" class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat">
+                    <input type="submit" value="Send" class="border-2 border-blue-800 bg-current rounded-3xl text-center text-gray-500 float-right p-2 szov hat bord">
                     <input type="hidden" id="id" th:field="*{id}">
                 </div>
 
@@ -183,7 +183,9 @@
         </article>
     </div>
 </div>
-
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
 
 <script src="../static/js/main.js" th:src="@{js/main.js}"></script>
 

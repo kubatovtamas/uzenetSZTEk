@@ -29,13 +29,13 @@
 
 <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
     <nav class="space-x-56">
-        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord" th:href="@{/}">
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat" th:href="@{/}">
             Main
         </a>
-        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord" th:href="@{/profile}">
+        <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat" th:href="@{/profile}">
             Profile
         </a>
-        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov">
+        <a class="text-gray-500 bg-teal-900 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl bord border-b-2 border-blue-800 shadow-2xl szov hat2">
             Topics
         </a>
     </nav>
@@ -86,7 +86,7 @@
 
                 <form th:if="${!topic.getFollowers().contains(user) and !topic.getUser().equals(user)}" sec:authorize="isAuthenticated()" th:action="@{/topics/{id}/follow(id=${topic.getId()})}" method="post">
                     <!-- Follow Button -->
-                    <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 mb-2 px-2 shadow-xl ml-1" type="submit">
+                    <button alt="Follow button" border="0" class="flex absolute text-sm border-2 border-teal-600 rounded-2xl left-0 mt-20 mb-2 px-2 shadow-xl ml-1 bord" type="submit">
                         follow
                     </button>
                 </form>
@@ -145,7 +145,9 @@
 
     </div>
 </div>      <!--main div's end-->
-
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
 <script src="../static/js/main.js" th:src="@{js/main.js}"></script>
 
 

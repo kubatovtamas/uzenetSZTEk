@@ -28,15 +28,15 @@
 
     <div class="bg-current flex flex-row justify-center py-3 space-x-56 text-2xl border-b-2 border-blue-800 rounded-2xl shadow-2xl my-3 hat bord">
         <nav class="space-x-56">
-            <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+            <a class="text-gray-500 inline-block text-left px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
                th:href="@{/}">
                 Main
             </a>
-            <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord"
+            <a class="text-gray-500 inline-block text-center px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl szov bord hoverhat"
                th:href="@{/profile}">
                 Profile
             </a>
-            <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov"
+            <a class="text-gray-500 inline-block text-right px-2 py-0 hover:bg-gray-700 rounded-3xl border-b-2 border-blue-800 shadow-2xl bord szov hoverhat"
                th:href="@{/topics}">
                 Topics
             </a>
@@ -105,6 +105,9 @@
     </button>
 </div>
 
+<footer class="pl-3 footer text-left text-gray-500 bg-transparent">
+    Copyright © 2020 üzeneteSZTEk.
+</footer>
 
 <script src="../static/js/main.js" th:src="${themeSwitch}"></script>
 
