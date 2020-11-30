@@ -148,6 +148,20 @@ public class TopicController {
         return "redirect:/topics/{topicId}";
     }
 
+    /**
+     * Delete Topic With Specified Id
+     *
+     * @param topicId Topic to delete
+     * @return Redirect To Containing Topic
+     */
+    @GetMapping("/topics/{topicId}/delete")
+    public String deletePost(@PathVariable("topicId") Long topicId) {
+
+        topicServiceImpl.deleteById(topicId);
+
+        return "redirect:/topics";
+    }
+
 
     /**
      * Saves A Topic With Text Content Coming From HTML Form, Sets User, TimeStamp Automatically

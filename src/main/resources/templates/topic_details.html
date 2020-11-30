@@ -124,20 +124,21 @@
                 </header>
 
                 <!-- Show buttons only if user's own post -->
-                <div class="relative float-right" th:if="${userEmail.equals(post.getUser().getEmail())}">
+                <div class="relative float-right" th:if="${userEmail.equals(specificTopic.getUser().getEmail())}">
 
 
-                    <!-- TODO: KUBA EZT BEKÉNE DRÓTOSTÓT -->
-                    <!-- EDIT Button -->
+                    <!-- EDIT Topic Button -->
                     <!-- On Click: show textarea with original text content, show save button, hide text content -->
-                    <a th:onclick="'javascript:beginEditingPost(\'' + ${post.getId()} + '\');'"
-                       class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
+                    <a th:onclick="'javascript:beginEditingTopic(\'' + ${specificTopic.getId()} + '\');'"
+                       class="text-sm text-gray-500 absolute right-0 border-l-2 border-r-2 mr-20 mt-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat"
+                        style="z-index: 34">
                         Edit
                     </a>
 
-                    <!-- DELETE Button -->
-                    <a th:href="@{/topics/{topicId}/deletePost/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
-                       class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat">
+                    <!-- DELETE Topic Button -->
+                    <a th:href="@{/topics/{topicId}/delete (topicId=${specificTopic.getId()})}"
+                       class="text-sm text-gray-500 absolute right-0 mt-2 border-l-2 border-r-2 border-teal-700 rounded-md mr-3 px-2 cursor-pointer szov hat"
+                        style="z-index: 34">
                         Delete
                     </a>
 
@@ -152,18 +153,17 @@
                         </p>
                     </div>
 
-
-                        <!-- TODO: EZT IS -->
-                    <form class=" flex-row flex" th:action="@{/topics/{topicId}/post/{postId} (topicId=${specificTopic.getId()}, postId=${post.getId()})}"
-                          th:id="'postSaveButton' + ${post.getId()}" th:object="${editedPost}"
+                    <!-- TODO: KUBA EZT BEKÉNE DRÓTOSTÓT -->
+                    <form class=" flex-row flex" th:action="@{/createTopic}"
+                          th:id="'topicSaveButton' + ${specificTopic.getId()}" th:object="${specificTopic}"
                           style="visibility: hidden" method="post">
 
                         <!-- Text Editing Area -->
-                        <label for="text">
-                                        <textarea id="text" th:form="'postSaveButton' + ${post.getId()}"
-                                                  th:id="'postTextArea' + ${post.getId()}" rows="1.5" cols="75"
+                        <label for="topicDescription">
+                                        <textarea id="topicDescription" th:form="'topicSaveButton' + ${specificTopic.getId()}"
+                                                  th:id="'topicTextArea' + ${specificTopic.getId()}" rows="1.5" cols="75"
                                                   class=" left-0 ml-24 top-0 bg-transparent absolute rounded-3xl py-6 szov bord overflow-y-scroll text-md text-left" type="text"
-                                                  th:field="*{textContent}">
+                                                  th:field="*{description}">
                                     </textarea>
 
                         </label>
@@ -313,6 +313,7 @@
 
 <script src="../static/js/main.js" th:src="@{../js/main.js}"></script>
 <script src="../static/js/main.js" th:src="@{../js/postEditHandler.js}"></script>
+<script src="../static/js/main.js" th:src="@{../js/topicEditHandler.js}"></script>
 
 </body>
 
