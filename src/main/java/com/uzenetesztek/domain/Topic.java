@@ -18,8 +18,9 @@ import java.util.Set;
 @AllArgsConstructor
 public class Topic {
 
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @ToString.Include
     private Long id;
 

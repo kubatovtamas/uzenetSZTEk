@@ -18,8 +18,9 @@ import java.util.Set;
 @Builder
 public class Post {
 
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @ToString.Include
     private Long id;
 

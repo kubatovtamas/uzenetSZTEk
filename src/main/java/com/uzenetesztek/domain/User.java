@@ -19,10 +19,12 @@ import java.util.Set;
 @RequiredArgsConstructor
 //@NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "USERS")
 public class User {
 
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @ToString.Include
     private Long id;
 

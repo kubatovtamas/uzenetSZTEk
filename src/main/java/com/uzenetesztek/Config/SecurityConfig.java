@@ -47,13 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout");
-//                .and()
-//                .exceptionHandling().accessDeniedPage("/error");
-
-        // Required For H2 Console
-        // TODO: Remove this when H2 no longer needed
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
     }
 
     @Bean
@@ -61,19 +54,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
         //return NoOpPasswordEncoder.getInstance();
     }
-
-    /* JDBC Authentication Config: DEPRECATED */
-
-//    @Autowired
-//    DataSource dataSource;
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .usersByUsernameQuery("SELECT EMAIL, PASSWORD, 'TRUE' FROM USER WHERE EMAIL = ?")
-//                .authoritiesByUsernameQuery(
-//                        "SELECT EMAIL, AUTHORITY FROM USER WHERE EMAIL = ?"
-//                );
-//    }
 }
