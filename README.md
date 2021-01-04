@@ -7,7 +7,7 @@ https://uzenetesztek.herokuapp.com/
 Kanyó József        -  
 Kubatov Tamás       - https://github.com/kubatovtamas  
 Kurai István        - https://github.com/Kuraiistvan  
-Madarász Máté       -  
+Madarász Máté       - https://github.com/xMediMadix   
 Pusztai Ágnes Anna  - https://github.com/gigipusztai  
 Zombori Tamás       - https://github.com/zombori  
 ![gitlab](https://user-images.githubusercontent.com/45062503/103555966-5b210280-4eb1-11eb-8567-7dba6770b3fc.png)
