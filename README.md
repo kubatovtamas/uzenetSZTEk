@@ -4,7 +4,7 @@ Forum like webapp written in Spring Boot with MySQL database.
 https://uzenetesztek.herokuapp.com/
 
 ### Credits:
-Kanyó József        -  
+Kanyó József        - https://github.com/KanyJoz   
 Kubatov Tamás       - https://github.com/kubatovtamas  
 Kurai István        - https://github.com/Kuraiistvan  
 Madarász Máté       - https://github.com/xMediMadix   
