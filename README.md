@@ -13,9 +13,9 @@ Zombori Tamás       - https://github.com/zombori
 ![gitlab](https://user-images.githubusercontent.com/45062503/103555966-5b210280-4eb1-11eb-8567-7dba6770b3fc.png)
 
 ### Usage:
-Test user credentials:
-email: agregont32@mit.edu9
-password: password
+Test user credentials:  
+email: agregont32@mit.edu9  
+password: password  
 
 New user registration works, email verification necessary.
 
